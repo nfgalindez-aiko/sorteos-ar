@@ -1,0 +1,11 @@
+{
+  "juego": "brinco",
+  "sorteos": [
+    {
+      "sorteo": 1370,
+      "fecha": "2026-09-06",
+      "validado": true
+    }
+  ],
+  "generado": "2026-09-07T15:56:04-03:00"
+}

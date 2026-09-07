@@ -1,0 +1,11 @@
+# descargas en caliente del scraper (los fixtures de test viven en backend/tests/fixtures)
+backend/fixtures/
+backend/scraper.log
+backend/historico_run.txt
+__pycache__/
+*.pyc
+# Xcode
+ios/**/xcuserdata/
+ios/**/*.xcuserstate
+ios/**/DerivedData/
+.DS_Store

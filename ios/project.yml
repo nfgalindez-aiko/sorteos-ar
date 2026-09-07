@@ -1,0 +1,40 @@
+# Sorteos AR - especificación para XcodeGen (https://github.com/yonaskolb/XcodeGen)
+# En la Mac:  brew install xcodegen && cd ios && xcodegen generate && open SorteosAR.xcodeproj
+# Si no querés XcodeGen, seguí ios/README.md para crear el proyecto a mano.
+name: SorteosAR
+options:
+  bundleIdPrefix: ar.sorteos
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+    DEVELOPMENT_LANGUAGE: es
+targets:
+  SorteosAR:
+    type: application
+    platform: iOS
+    sources:
+      - path: SorteosAR
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ar.sorteos.app
+        INFOPLIST_KEY_CFBundleDisplayName: Sorteos AR
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceScreens: UIInterfaceOrientationPortrait
+        TARGETED_DEVICE_FAMILY: "1"
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: YES
+    info:
+      path: SorteosAR/Info.plist
+      properties:
+        CFBundleDisplayName: Sorteos AR
+        CFBundleDevelopmentRegion: es
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: false

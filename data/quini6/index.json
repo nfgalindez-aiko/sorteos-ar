@@ -1,0 +1,256 @@
+{
+  "juego": "quini6",
+  "sorteos": [
+    {
+      "sorteo": 3406,
+      "fecha": "2026-09-06",
+      "validado": true
+    },
+    {
+      "sorteo": 3405,
+      "fecha": "2026-09-02",
+      "validado": true
+    },
+    {
+      "sorteo": 3404,
+      "fecha": "2026-08-30",
+      "validado": true
+    },
+    {
+      "sorteo": 3403,
+      "fecha": "2026-08-26",
+      "validado": true
+    },
+    {
+      "sorteo": 3402,
+      "fecha": "2026-08-23",
+      "validado": true
+    },
+    {
+      "sorteo": 3401,
+      "fecha": "2026-08-19",
+      "validado": true
+    },
+    {
+      "sorteo": 3400,
+      "fecha": "2026-08-16",
+      "validado": true
+    },
+    {
+      "sorteo": 3399,
+      "fecha": "2026-08-12",
+      "validado": false
+    },
+    {
+      "sorteo": 3398,
+      "fecha": "2026-08-09",
+      "validado": false
+    },
+    {
+      "sorteo": 3397,
+      "fecha": "2026-08-05",
+      "validado": false
+    },
+    {
+      "sorteo": 3396,
+      "fecha": "2026-08-02",
+      "validado": true
+    },
+    {
+      "sorteo": 3395,
+      "fecha": "2026-07-29",
+      "validado": true
+    },
+    {
+      "sorteo": 3394,
+      "fecha": "2026-07-26",
+      "validado": true
+    },
+    {
+      "sorteo": 3393,
+      "fecha": "2026-07-22",
+      "validado": true
+    },
+    {
+      "sorteo": 3392,
+      "fecha": "2026-07-19",
+      "validado": true
+    },
+    {
+      "sorteo": 3391,
+      "fecha": "2026-07-16",
+      "validado": true
+    },
+    {
+      "sorteo": 3390,
+      "fecha": "2026-07-12",
+      "validado": true
+    },
+    {
+      "sorteo": 3389,
+      "fecha": "2026-07-08",
+      "validado": false
+    },
+    {
+      "sorteo": 3388,
+      "fecha": "2026-07-05",
+      "validado": true
+    },
+    {
+      "sorteo": 3387,
+      "fecha": "2026-07-01",
+      "validado": true
+    },
+    {
+      "sorteo": 3386,
+      "fecha": "2026-06-28",
+      "validado": false
+    },
+    {
+      "sorteo": 3385,
+      "fecha": "2026-06-24",
+      "validado": false
+    },
+    {
+      "sorteo": 3384,
+      "fecha": "2026-06-21",
+      "validado": false
+    },
+    {
+      "sorteo": 3383,
+      "fecha": "2026-06-17",
+      "validado": false
+    },
+    {
+      "sorteo": 3382,
+      "fecha": "2026-06-14",
+      "validado": false
+    },
+    {
+      "sorteo": 3381,
+      "fecha": "2026-06-10",
+      "validado": false
+    },
+    {
+      "sorteo": 3380,
+      "fecha": "2026-06-07",
+      "validado": false
+    },
+    {
+      "sorteo": 3379,
+      "fecha": "2026-06-03",
+      "validado": false
+    },
+    {
+      "sorteo": 3378,
+      "fecha": "2026-05-31",
+      "validado": false
+    },
+    {
+      "sorteo": 3377,
+      "fecha": "2026-05-27",
+      "validado": false
+    },
+    {
+      "sorteo": 3376,
+      "fecha": "2026-05-24",
+      "validado": false
+    },
+    {
+      "sorteo": 3375,
+      "fecha": "2026-05-20",
+      "validado": false
+    },
+    {
+      "sorteo": 3374,
+      "fecha": "2026-05-17",
+      "validado": false
+    },
+    {
+      "sorteo": 3373,
+      "fecha": "2026-05-13",
+      "validado": false
+    },
+    {
+      "sorteo": 3372,
+      "fecha": "2026-05-10",
+      "validado": false
+    },
+    {
+      "sorteo": 3371,
+      "fecha": "2026-05-06",
+      "validado": false
+    },
+    {
+      "sorteo": 3370,
+      "fecha": "2026-05-03",
+      "validado": false
+    },
+    {
+      "sorteo": 3369,
+      "fecha": "2026-04-29",
+      "validado": false
+    },
+    {
+      "sorteo": 3368,
+      "fecha": "2026-04-26",
+      "validado": false
+    },
+    {
+      "sorteo": 3367,
+      "fecha": "2026-04-22",
+      "validado": false
+    },
+    {
+      "sorteo": 3366,
+      "fecha": "2026-04-19",
+      "validado": false
+    },
+    {
+      "sorteo": 3365,
+      "fecha": "2026-04-15",
+      "validado": false
+    },
+    {
+      "sorteo": 3364,
+      "fecha": "2026-04-12",
+      "validado": false
+    },
+    {
+      "sorteo": 3363,
+      "fecha": "2026-04-08",
+      "validado": false
+    },
+    {
+      "sorteo": 3362,
+      "fecha": "2026-04-05",
+      "validado": false
+    },
+    {
+      "sorteo": 3361,
+      "fecha": "2026-04-01",
+      "validado": false
+    },
+    {
+      "sorteo": 3360,
+      "fecha": "2026-03-29",
+      "validado": false
+    },
+    {
+      "sorteo": 3359,
+      "fecha": "2026-03-25",
+      "validado": false
+    },
+    {
+      "sorteo": 3358,
+      "fecha": "2026-03-22",
+      "validado": false
+    },
+    {
+      "sorteo": 3357,
+      "fecha": "2026-03-18",
+      "validado": false
+    }
+  ],
+  "generado": "2026-09-07T16:06:49-03:00"
+}

@@ -1,0 +1,60 @@
+# Sorteos AR - scrape programado. Escribe data/ y lo commitea; GitHub Pages lo sirve.
+#
+# Horarios en UTC (Argentina = UTC-3, sin horario de verano):
+#   - Quini 6 sortea mie y dom 21:15 ART. Ventana 21:00-23:59 ART = 00:00-02:59 UTC de jue y lun.
+#   - Brinco sortea dom 21:00 ART: cae en la misma ventana del lunes UTC.
+#   - Corrida diaria 12:00 ART = 15:00 UTC.
+#
+# Requisitos del dueño (ver ESTADO.md):
+#   Settings > Pages > Source: "Deploy from a branch", branch main, folder / (root).
+#   Settings > Actions > General > Workflow permissions: "Read and write permissions".
+name: scrape
+
+on:
+  schedule:
+    - cron: "*/5 0-2 * * 1,4"   # cada 5 min, 21:00-23:59 ART, lunes y jueves UTC (= dom y mie ART)
+    - cron: "0 15 * * *"        # diaria 12:00 ART
+  workflow_dispatch:
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tests sin red
+        working-directory: backend
+        run: python3 -m unittest
+
+      - name: Scrape Quini 6 y Brinco
+        working-directory: backend
+        run: python3 run_all.py
+
+      - name: Commit y push de data/
+        if: always()
+        run: |
+          git config user.name "sorteos-ar-bot"
+          git config user.email "sorteos-ar-bot@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "sin cambios en data/"
+          else
+            git commit -m "data: $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+
+      - name: Subir log del scrape
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-log-${{ github.run_id }}
+          path: backend/scraper.log
+          retention-days: 14

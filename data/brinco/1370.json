@@ -1,0 +1,68 @@
+{
+  "juego": "brinco",
+  "sorteo": 1370,
+  "fecha": "2026-09-06",
+  "modalidades": {
+    "tradicional": {
+      "numeros": [
+        5,
+        13,
+        21,
+        22,
+        25,
+        36
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 265513676
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 10,
+          "premio": 655056
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 366,
+          "premio": 5906
+        },
+        {
+          "aciertos": 3,
+          "ganadores": 5316,
+          "premio": 1500
+        }
+      ]
+    },
+    "junior": {
+      "numeros": [
+        0,
+        1,
+        18,
+        20,
+        21,
+        23
+      ],
+      "premios": [
+        {
+          "aciertos": 5,
+          "ganadores": 6,
+          "premio": 5457092
+        }
+      ]
+    }
+  },
+  "pozo_extra": null,
+  "proximo": {
+    "sorteo": 1371,
+    "fecha": "2026-09-13",
+    "pozo": 360000000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "B"
+  ],
+  "generado": "2026-09-07T15:56:04-03:00"
+}

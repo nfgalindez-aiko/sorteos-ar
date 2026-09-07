@@ -1,0 +1,109 @@
+{
+  "juego": "quini6",
+  "sorteo": 3383,
+  "fecha": "2026-06-17",
+  "modalidades": {
+    "tradicional": {
+      "numeros": [
+        5,
+        12,
+        15,
+        21,
+        31,
+        44
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 2250681476
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 21,
+          "premio": 10867330
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 1422,
+          "premio": 8272
+        }
+      ]
+    },
+    "segunda": {
+      "numeros": [
+        4,
+        16,
+        22,
+        25,
+        30,
+        36
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 1100000000
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 32,
+          "premio": 1225435
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 1364,
+          "premio": 8624
+        }
+      ]
+    },
+    "revancha": {
+      "numeros": [
+        6,
+        8,
+        16,
+        22,
+        23,
+        37
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 3009575228
+        }
+      ]
+    },
+    "siempre_sale": {
+      "numeros": [
+        0,
+        5,
+        8,
+        14,
+        22,
+        35
+      ],
+      "premios": [
+        {
+          "aciertos": 5,
+          "ganadores": 47,
+          "premio": 7485716
+        }
+      ]
+    }
+  },
+  "pozo_extra": {
+    "ganadores": 1046,
+    "premio": 191204
+  },
+  "proximo": {
+    "sorteo": 3384,
+    "fecha": "2026-06-21",
+    "pozo": null
+  },
+  "validado": false,
+  "fuentes": [
+    "B"
+  ],
+  "generado": "2026-09-07T16:04:51-03:00"
+}
