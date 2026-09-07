@@ -1,0 +1,57 @@
+# Sorteos AR - verificador externo. Independiente del scraper: lee los JSON publicos como la app
+# y, si hay problemas, abre (o actualiza) un issue; cuando todo vuelve a estar bien, lo cierra.
+# GitHub manda mail al dueño por cada issue nuevo.
+name: verificar
+
+on:
+  schedule:
+    - cron: "20 * * * *"        # cada hora, a los 20 (el scraper corre a los 0/5/15/30/45)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verificar datos publicados
+        id: verificar
+        working-directory: backend
+        run: |
+          set +e
+          python3 verificador.py | tee reporte.txt
+          echo "estado=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Abrir o actualizar issue si hay problemas
+        if: steps.verificar.outputs.estado != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITULO="🔴 Verificador: datos publicados con problemas"
+          CUERPO="$(printf 'Corrida: %s\n\n```\n%s\n```\n' "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" "$(cat backend/reporte.txt)")"
+          NUM=$(gh issue list --label verificador --state open --json number -q '.[0].number')
+          if [ -z "$NUM" ]; then
+            gh label create verificador --color D93F0B --description "Abierto por el verificador automatico" 2>/dev/null || true
+            gh issue create --title "$TITULO" --label verificador --body "$CUERPO"
+          else
+            gh issue comment "$NUM" --body "$CUERPO"
+          fi
+
+      - name: Cerrar issue si todo esta bien
+        if: steps.verificar.outputs.estado == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          NUM=$(gh issue list --label verificador --state open --json number -q '.[0].number')
+          if [ -n "$NUM" ]; then
+            gh issue close "$NUM" --comment "Verificador en verde: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          fi
+
+      - name: Fallar el job si hubo problemas (para que se vea en rojo)
+        if: steps.verificar.outputs.estado != '0'
+        run: exit 1

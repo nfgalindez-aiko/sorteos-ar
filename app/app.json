@@ -31,9 +31,6 @@
     "plugins": [
       "expo-router"
     ],
-    "experiments": {
-      "typedRoutes": true
-    },
     "extra": {
       "baseURL": "https://nfgalindez-aiko.github.io/sorteos-ar/data/",
       "router": {},

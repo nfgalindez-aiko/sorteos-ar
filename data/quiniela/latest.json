@@ -1,0 +1,176 @@
+{
+  "juego": "quiniela",
+  "provincias": [
+    {
+      "provincia": "ciudad",
+      "nombre": "Ciudad de Buenos Aires",
+      "digitos": 4,
+      "fecha": "2026-09-07",
+      "turnos": [
+        {
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "7556",
+          "validado": false
+        },
+        {
+          "turno": "primera",
+          "hora": "12:00",
+          "cabeza": "2187",
+          "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "8669",
+          "validado": true
+        }
+      ]
+    },
+    {
+      "provincia": "provincia",
+      "nombre": "Provincia de Buenos Aires",
+      "digitos": 4,
+      "fecha": "2026-09-07",
+      "turnos": [
+        {
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "6329",
+          "validado": false
+        },
+        {
+          "turno": "primera",
+          "hora": "12:00",
+          "cabeza": "8790",
+          "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "5192",
+          "validado": true
+        }
+      ]
+    },
+    {
+      "provincia": "santafe",
+      "nombre": "Santa Fe",
+      "digitos": 4,
+      "fecha": "2026-09-07",
+      "turnos": [
+        {
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "9009",
+          "validado": false
+        },
+        {
+          "turno": "primera",
+          "hora": "12:00",
+          "cabeza": "9589",
+          "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "7656",
+          "validado": true
+        }
+      ]
+    },
+    {
+      "provincia": "cordoba",
+      "nombre": "Córdoba",
+      "digitos": 4,
+      "fecha": "2026-09-07",
+      "turnos": [
+        {
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "0228",
+          "validado": false
+        },
+        {
+          "turno": "primera",
+          "hora": "12:00",
+          "cabeza": "1386",
+          "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "2235",
+          "validado": true
+        }
+      ]
+    },
+    {
+      "provincia": "uruguay",
+      "nombre": "Montevideo (Uruguay)",
+      "digitos": 3,
+      "fecha": "2026-09-07",
+      "turnos": [
+        {
+          "turno": "vespertina",
+          "hora": "15:00",
+          "cabeza": "765",
+          "validado": true
+        }
+      ]
+    },
+    {
+      "provincia": "mendoza",
+      "nombre": "Mendoza",
+      "digitos": 4,
+      "fecha": "2026-09-07",
+      "turnos": [
+        {
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "3768",
+          "validado": false
+        },
+        {
+          "turno": "primera",
+          "hora": "12:00",
+          "cabeza": "4874",
+          "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "9000",
+          "validado": false
+        }
+      ]
+    },
+    {
+      "provincia": "entrerios",
+      "nombre": "Entre Ríos",
+      "digitos": 4,
+      "fecha": "2026-09-07",
+      "turnos": [
+        {
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "8375",
+          "validado": false
+        },
+        {
+          "turno": "primera",
+          "hora": "12:00",
+          "cabeza": "3486",
+          "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "9120",
+          "validado": false
+        }
+      ]
+    }
+  ],
+  "generado": "2026-09-07T17:21:31-03:00"
+}

@@ -1,0 +1,47 @@
+{
+  "juego": "quiniela",
+  "provincia": "uruguay",
+  "nombre": "Montevideo (Uruguay)",
+  "digitos": 3,
+  "fecha": "2026-09-05",
+  "turnos": [
+    {
+      "turno": "nocturna",
+      "hora": "21:00",
+      "numeros": [
+        "389",
+        "432",
+        "065",
+        "517",
+        "476",
+        "419",
+        "863",
+        "948",
+        "557",
+        "269",
+        "834",
+        "814",
+        "967",
+        "067",
+        "867",
+        "598",
+        "622",
+        "055",
+        "037",
+        "274"
+      ],
+      "letras": null,
+      "validado": true,
+      "fuentes": [
+        "A",
+        "M"
+      ]
+    }
+  ],
+  "validado": true,
+  "fuentes": [
+    "A",
+    "M"
+  ],
+  "generado": "2026-09-07T17:21:30-03:00"
+}

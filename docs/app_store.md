@@ -25,6 +25,7 @@ QUÉ PODÉS VER
 • Último sorteo de Quini 6 (Tradicional, Segunda vuelta, Revancha, Siempre sale y Pozo extra) y de Brinco (Tradicional y Junior).
 • Tabla de premios por modalidad: aciertos, cantidad de ganadores y premio por apuesta.
 • Pozo estimado y cuenta regresiva al próximo sorteo.
+• Quinielas de Ciudad, Provincia de Buenos Aires, Santa Fe, Córdoba, Mendoza, Entre Ríos y Montevideo: los 20 números de cada turno, con la cabeza destacada y las letras.
 • Histórico de sorteos anteriores.
 • Controlar tus números: cargás tus 6 números y la app marca cuáles salieron en cada modalidad. Solo compara; no recomienda ni sugiere números.
 

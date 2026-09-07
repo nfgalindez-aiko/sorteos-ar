@@ -5,7 +5,8 @@ import { useResultados } from "../src/api";
 import { BannerSinConexion, Chip, CuentaRegresiva, Disclaimer, FilaBolillas, Tarjeta } from "../src/componentes";
 import { Espacio, usePaleta, useTema } from "../src/design";
 import { fechaLarga, horaCorta, instanteSorteo, pesos } from "../src/formato";
-import { JUEGOS, JuegoId, ORDEN_JUEGOS, Sorteo } from "../src/modelos";
+import { JUEGOS, JuegoId, ORDEN_JUEGOS, PROVINCIAS, ResumenProvincia, Sorteo, nombreTurno } from "../src/modelos";
+import { paletaQuiniela } from "../src/quiniela-detalle";
 
 export default function Inicio() {
   const t = useTema();
@@ -28,9 +29,22 @@ export default function Inicio() {
         refreshControl={<RefreshControl refreshing={r.cargando} onRefresh={r.recargar} tintColor={t.textoSec} />}
       >
         {r.sinConexion && <BannerSinConexion />}
+        {desactualizado(r.ultimos.quini6?.fecha) && (
+          <View style={{ backgroundColor: t.avisoFondo, padding: Espacio.m, borderRadius: 10 }} accessibilityRole="text">
+            <Text style={{ color: t.aviso, fontSize: 13 }}>Los datos parecen desactualizados. El último sorteo publicado es anterior al esperado; vale el extracto oficial.</Text>
+          </View>
+        )}
         {ORDEN_JUEGOS.map((j) => (
           <TarjetaJuego key={j} juego={j} sorteo={r.ultimos[j]} />
         ))}
+        {r.quinielas && r.quinielas.provincias.length > 0 && (
+          <View style={{ gap: Espacio.s }}>
+            <Text style={{ color: t.textoSec, fontSize: 12, fontWeight: "600", textTransform: "uppercase", letterSpacing: 0.5 }}>Quinielas</Text>
+            {r.quinielas.provincias.map((q) => (
+              <TarjetaQuiniela key={q.provincia} q={q} />
+            ))}
+          </View>
+        )}
         {r.ultimaActualizacion && (
           <Text style={{ color: t.textoSec, fontSize: 11, textAlign: "center" }}>Actualizado {horaCorta(r.ultimaActualizacion)}</Text>
         )}
@@ -73,6 +87,52 @@ function TarjetaJuego({ juego, sorteo }: { juego: JuegoId; sorteo?: Sorteo }) {
         ) : (
           <Text style={{ color: t.textoSec }}>Todavía no hay resultados cargados.</Text>
         )}
+      </Tarjeta>
+    </Pressable>
+  );
+}
+
+/** true si el último Quini 6 publicado es anterior al último sorteo que ya debería estar (mié/dom 21:15 + 2 h). */
+function desactualizado(fechaIso?: string): boolean {
+  if (!fechaIso) return false;
+  const ahora = new Date();
+  for (let i = 0; i < 8; i++) {
+    const d = new Date(ahora.getTime() - i * 86400000);
+    // día en hora Argentina (UTC-3)
+    const art = new Date(d.getTime() - 3 * 3600000);
+    const dow = art.getUTCDay();
+    if (dow === 0 || dow === 3) {
+      const iso = art.toISOString().slice(0, 10);
+      const limite = new Date(`${iso}T23:15:00-03:00`);
+      if (ahora >= limite) return fechaIso < iso;
+    }
+  }
+  return false;
+}
+
+function TarjetaQuiniela({ q }: { q: ResumenProvincia }) {
+  const t = useTema();
+  const p = paletaQuiniela(t.oscuro);
+  const router = useRouter();
+  const nombre = PROVINCIAS[q.provincia]?.corto ?? q.nombre;
+  return (
+    <Pressable onPress={() => router.push(`/quiniela/${q.provincia}`)} accessibilityRole="button" accessibilityHint={`Abre la quiniela de ${nombre}`}>
+      <Tarjeta fondo={p.fondoTarjeta} style={{ gap: Espacio.xs }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+          <Text style={{ color: p.primario, fontSize: 17, fontWeight: "700" }}>{nombre}</Text>
+          <Text style={{ color: t.textoSec, fontSize: 12 }}>{fechaLarga(q.fecha)}</Text>
+        </View>
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: Espacio.s }} accessible accessibilityLabel={`${nombre}: ${q.turnos.map((x) => `${nombreTurno(x.turno)} ${x.cabeza ?? "sin datos"}`).join(", ")}`}>
+          {q.turnos.map((x) => (
+            <View key={x.turno} style={{ alignItems: "center", minWidth: 58 }}>
+              <Text style={{ color: t.textoSec, fontSize: 11 }}>{nombreTurno(x.turno)}</Text>
+              <Text style={{ color: x.validado ? t.texto : t.aviso, fontSize: 18, fontWeight: "800", fontVariant: ["tabular-nums"], letterSpacing: 1 }}>
+                {x.cabeza ?? "—"}
+              </Text>
+            </View>
+          ))}
+          {q.turnos.length === 0 && <Text style={{ color: t.textoSec, fontSize: 13 }}>Sin sorteos publicados todavía.</Text>}
+        </View>
       </Tarjeta>
     </Pressable>
   );

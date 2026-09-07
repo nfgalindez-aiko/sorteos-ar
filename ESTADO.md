@@ -22,7 +22,9 @@ Leyenda: ✅ verificado · ⏳ pendiente · 🔴 falló / bloqueado · 🔎 en i
 | 9 | Diseño: paleta inspirada, tipografía de sistema, bolillas, dark mode, Dynamic Type | ✅ código | `app/src/design.ts`, `componentes.tsx`. `useColorScheme` para oscuro; `maxFontSizeMultiplier` en bolillas |
 | 10 | Compila sin warnings, offline, VoiceOver | ⏳ | Compila (Metro + tsc). Offline y VoiceOver: labels puestos, falta probar en el teléfono. **EAS Build iOS: bloqueado** hasta que el dueño cargue credenciales de Apple una vez (ver pendientes) |
 | 11 | Textos App Store, privacidad | ✅ borrador | `docs/app_store.md`, `docs/privacidad.md`. Capturas: requieren la app compilada |
-| 12 | Push notifications | ⏳ fase 2 | No empezado |
+| 12 | Push notifications | ⏳ fase 2 | Base lista (`novedades.json`). Falta APNs |
+| 13 | Quinielas (pedido sesión 4) | ✅ backend / ⏳ en teléfono | 7 provincias en `data/quiniela/`. Ciudad, Provincia, Santa Fe y Córdoba con A+B; Montevideo con A+quinielamontevideo.com; Mendoza y Entre Ríos solo A (turnos `validado:false`). 10 tests nuevos. Pantallas en la app, publicadas en EAS Update |
+| 14 | Verificador externo (pedido sesión 4) | ✅ | `backend/verificador.py` + workflow `verificar` cada hora. Probado en local: 0 problemas hoy; simula bien un sorteo faltante. Abre/cierra issue en GitHub |
 
 ## Reglas aprendidas
 
@@ -183,3 +185,39 @@ Hecho:
 Lo que NO se verificó:
 - La app corriendo en un iPhone real (Expo Go). Todo lo visual, offline y VoiceOver queda a probar.
 - EAS Build y TestFlight: bloqueados por credenciales de Apple.
+
+## Sesión 4 — 07/09/2026 (noche)
+
+Pedido: agregar las quinielas más usadas y un verificador externo que corra aparte de la app.
+
+Hecho:
+- `backend/quiniela_scraper.py`: 7 provincias. Fuentes: tujugada (A) para todas; quini-6-resultados
+  (B) para Ciudad, Provincia, Santa Fe y Córdoba; quinielamontevideo.com (M) para Uruguay. La
+  validación es **por turno** (cada turno tiene su `validado` y `fuentes`); si dos fuentes no
+  coinciden, ese turno se publica sin números y marcado `conflicto`. Un turno validado nunca se
+  pisa con uno no validado. Regla 16 (nueva): A mete un texto anti-copia ("---MENSAJE PARA EL
+  VISITANTE...") en medio del extracto, entre la posición 2 y su número; se filtra con regex antes
+  de parsear. Regla 17: B no publica la Previa, así que la Previa de esas 4 quinielas queda
+  siempre con una sola fuente. Regla 18: los HTML de A vienen en latin-1; `read_fixture` ahora
+  prueba utf-8 y cae a latin-1.
+- Datos publicados hoy: primera y matutina validadas en las 4 quinielas con doble fuente, vespertina
+  de Montevideo validada. `data/quiniela/latest.json` es el resumen (cabezas) para la portada.
+- Cron: cada 15 min de 10:00 a 22:59 ART, lunes a sábado, además del cron de Quini/Brinco.
+- `backend/verificador.py` + `.github/workflows/verificar.yml` (cada hora a los :20). Lee los JSON
+  públicos como la app: esquema, rangos, orden, índices, y **frescura** (si ya pasó la hora del
+  sorteo + 75 min y no está, es problema). Si falla, crea o comenta un issue con etiqueta
+  `verificador` (GitHub avisa por mail); cuando vuelve a verde, lo cierra. Probado contra un
+  servidor local: hoy 0 problemas; simulando el miércoles 09/09 a las 23:00 detecta el 3407 faltante.
+- App: sección Quinielas en Inicio (cabezas por turno), pantalla por provincia con los 20 números
+  (cabeza destacada, letras, chip de validación), días anteriores, día puntual. Banner "datos
+  desactualizados" calculado en el teléfono. `tsc` limpio, export OK, `expo-doctor` 21/21.
+  Regla 19: los typed routes de expo-router generaron tipos rotos para `quiniela/[prov]` en
+  Windows (rutas estáticas y una entrada `/../src/quiniela-detalle`); se desactivaron
+  (`experiments.typedRoutes`). Las rutas van como string.
+- Suite backend: 33 tests OK.
+
+Lo que NO se verificó:
+- Las quinielas en el teléfono (publicadas en EAS Update, sin abrir todavía).
+- Vespertina y nocturna de hoy: al momento de la corrida no habían salido. El cron las tiene que
+  tomar solo; el verificador de las 22:20 ART lo va a controlar.
+- Sábados: asumí sin vespertina en varias provincias (el verificador lo trata como aviso, no error).

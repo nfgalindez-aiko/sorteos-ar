@@ -14,6 +14,10 @@ on:
   schedule:
     - cron: "*/5 0-2 * * 1,4"   # cada 5 min, 21:00-23:59 ART, lunes y jueves UTC (= dom y mie ART)
     - cron: "0 15 * * *"        # diaria 12:00 ART
+    # Quinielas: lunes a sabado, turnos 10:15 / 12:00 / 15:00 / 18:00 / 21:00 ART.
+    # Cada 15 min de 10:00 a 22:59 ART = 13:00-23:59 UTC (lun-sab) y 00:00-01:59 UTC (mar-dom).
+    - cron: "*/15 13-23 * * 1-6"
+    - cron: "*/15 0-1 * * 0,2-6"
   workflow_dispatch:
 
 concurrency:

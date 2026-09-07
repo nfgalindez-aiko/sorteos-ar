@@ -1,0 +1,17 @@
+{
+  "juego": "quiniela",
+  "provincia": "provincia",
+  "fechas": [
+    {
+      "fecha": "2026-09-07",
+      "turnos": 3,
+      "validado": false
+    },
+    {
+      "fecha": "2026-09-05",
+      "turnos": 2,
+      "validado": false
+    }
+  ],
+  "generado": "2026-09-07T17:21:28-03:00"
+}

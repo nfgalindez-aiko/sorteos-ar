@@ -86,6 +86,67 @@ export function modalidadesOrdenadas(s: Sorteo, meta: JuegoMeta): { clave: strin
     .map((k) => ({ clave: k, modalidad: s.modalidades[k] }));
 }
 
+// ---------------------------------------------------------------- Quinielas
+
+export type ProvinciaId = "ciudad" | "provincia" | "santafe" | "cordoba" | "uruguay" | "mendoza" | "entrerios";
+export const ORDEN_PROVINCIAS: ProvinciaId[] = ["ciudad", "provincia", "santafe", "cordoba", "uruguay", "mendoza", "entrerios"];
+
+export const PROVINCIAS: Record<ProvinciaId, { nombre: string; corto: string }> = {
+  ciudad: { nombre: "Ciudad de Buenos Aires", corto: "Ciudad" },
+  provincia: { nombre: "Provincia de Buenos Aires", corto: "Provincia" },
+  santafe: { nombre: "Santa Fe", corto: "Santa Fe" },
+  cordoba: { nombre: "Córdoba", corto: "Córdoba" },
+  uruguay: { nombre: "Montevideo (Uruguay)", corto: "Montevideo" },
+  mendoza: { nombre: "Mendoza", corto: "Mendoza" },
+  entrerios: { nombre: "Entre Ríos", corto: "Entre Ríos" },
+};
+
+export function esProvincia(x: string | undefined): x is ProvinciaId {
+  return x !== undefined && (ORDEN_PROVINCIAS as string[]).includes(x);
+}
+
+export const TURNOS = ["previa", "primera", "matutina", "vespertina", "nocturna"] as const;
+export type TurnoId = (typeof TURNOS)[number];
+
+export function nombreTurno(t: string): string {
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+export interface TurnoQuiniela {
+  turno: TurnoId;
+  hora: string | null;
+  numeros: string[] | null; // 20 strings con ceros a la izquierda; null si las fuentes no coinciden
+  letras: string | null;
+  validado: boolean;
+  fuentes: string[];
+  conflicto?: boolean;
+}
+
+export interface DiaQuiniela {
+  juego: "quiniela";
+  provincia: ProvinciaId;
+  nombre: string;
+  digitos: number;
+  fecha: string;
+  turnos: TurnoQuiniela[];
+  validado: boolean;
+  fuentes: string[];
+  generado: string;
+}
+
+export interface ResumenProvincia {
+  provincia: ProvinciaId;
+  nombre: string;
+  digitos: number;
+  fecha: string;
+  turnos: { turno: TurnoId; hora: string | null; cabeza: string | null; validado: boolean }[];
+}
+
+export interface ResumenQuinielas { juego: "quiniela"; provincias: ResumenProvincia[]; generado: string }
+
+export interface IndiceQuinielaItem { fecha: string; turnos: number; validado: boolean }
+export interface IndiceQuiniela { juego: "quiniela"; provincia: ProvinciaId; fechas: IndiceQuinielaItem[]; generado: string }
+
 export const DISCLAIMER =
   "Aplicación informativa independiente. No está afiliada a Lotería de Santa Fe ni a ningún organismo oficial. No permite apostar. Ante cualquier discrepancia vale el extracto oficial. Jugar compulsivamente es perjudicial para la salud. +18.";
 

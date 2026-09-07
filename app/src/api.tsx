@@ -3,7 +3,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
-import { Indice, IndiceItem, JuegoId, ORDEN_JUEGOS, Sorteo } from "./modelos";
+import { DiaQuiniela, Indice, IndiceItem, IndiceQuiniela, JuegoId, ORDEN_JUEGOS, ProvinciaId, ResumenQuinielas, Sorteo } from "./modelos";
 
 const BASE: string =
   (Constants.expoConfig?.extra?.baseURL as string | undefined) ?? "https://nfgalindez-aiko.github.io/sorteos-ar/data/";
@@ -59,8 +59,11 @@ interface EstadoResultados {
   sinConexion: boolean;
   cargando: boolean;
   ultimaActualizacion: Date | null;
+  quinielas: ResumenQuinielas | null;
   recargar: () => Promise<void>;
   sorteo: (juego: JuegoId, numero: number) => Promise<Sorteo>;
+  quinielaDia: (prov: ProvinciaId, fecha: string | "latest") => Promise<DiaQuiniela>;
+  quinielaIndice: (prov: ProvinciaId) => Promise<IndiceQuiniela>;
 }
 
 const Ctx = createContext<EstadoResultados | null>(null);
@@ -71,6 +74,7 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
   const [sinConexion, setSinConexion] = useState(false);
   const [cargando, setCargando] = useState(false);
   const [ultimaActualizacion, setUltima] = useState<Date | null>(null);
+  const [quinielas, setQuinielas] = useState<ResumenQuinielas | null>(null);
   const enCurso = useRef(false);
 
   const recargar = useCallback(async () => {
@@ -94,6 +98,12 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
         /* el índice es opcional */
       }
     }
+    try {
+      const r = await obtener<ResumenQuinielas>("quiniela/latest.json");
+      setQuinielas(r.valor);
+    } catch {
+      /* las quinielas son opcionales en la portada */
+    }
     const offline = fallos + deCache === ORDEN_JUEGOS.length;
     setSinConexion(offline);
     if (!offline) setUltima(new Date());
@@ -110,6 +120,8 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
         const i = await leerCache<Indice>(`${juego}/index.json`);
         if (i) setIndices((x) => ({ ...x, [juego]: i.sorteos }));
       }
+      const q = await leerCache<ResumenQuinielas>("quiniela/latest.json");
+      if (q) setQuinielas(q);
       await recargar();
     })();
   }, [recargar]);
@@ -127,9 +139,20 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
     }
   }, []);
 
+  /** Un día de quiniela. El día de hoy puede cambiar (van saliendo turnos): red primero, caché si falla. */
+  const quinielaDia = useCallback(async (prov: ProvinciaId, fecha: string | "latest"): Promise<DiaQuiniela> => {
+    const r = await obtener<DiaQuiniela>(`quiniela/${prov}/${fecha}.json`);
+    return r.valor;
+  }, []);
+
+  const quinielaIndice = useCallback(async (prov: ProvinciaId): Promise<IndiceQuiniela> => {
+    const r = await obtener<IndiceQuiniela>(`quiniela/${prov}/index.json`);
+    return r.valor;
+  }, []);
+
   const valor = useMemo<EstadoResultados>(
-    () => ({ ultimos, indices, sinConexion, cargando, ultimaActualizacion, recargar, sorteo }),
-    [ultimos, indices, sinConexion, cargando, ultimaActualizacion, recargar, sorteo],
+    () => ({ ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, recargar, sorteo, quinielaDia, quinielaIndice }),
+    [ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, recargar, sorteo, quinielaDia, quinielaIndice],
   );
   return <Ctx.Provider value={valor}>{children}</Ctx.Provider>;
 }

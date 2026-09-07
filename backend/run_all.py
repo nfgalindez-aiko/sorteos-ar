@@ -3,7 +3,7 @@
 # Sale con 1 si algun juego no quedo validado, para que el job se vea en rojo; data/ se commitea igual.
 import sys, os
 from common import log, log_robots, build, publish, write_json, FIX
-import quini6_scraper, brinco_scraper
+import quini6_scraper, brinco_scraper, quiniela_scraper
 
 JUEGOS = (quini6_scraper, brinco_scraper)
 
@@ -22,6 +22,12 @@ def main():
             publish(mod.JUEGO, out)
         if estado != "OK":
             fallos.append(f"{mod.JUEGO}:{diffs}")
+    try:
+        fallos_q = quiniela_scraper.correr()
+        fallos += [f"quiniela:{p}" for p in fallos_q]
+    except Exception as e:
+        log(f"quiniela ERROR general {e}")
+        fallos.append(f"quiniela:{e}")
     log(f"RUN_ALL fin fallos={fallos}")
     sys.exit(1 if fallos else 0)
 

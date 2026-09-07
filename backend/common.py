@@ -47,8 +47,14 @@ def save_fixture(name, text):
 
 
 def read_fixture(name):
-    with open(os.path.join(FIX, name), encoding="utf-8") as f:
-        return f.read()
+    with open(os.path.join(FIX, name), "rb") as f:
+        raw = f.read()
+    for enc in ("utf-8", "latin-1"):
+        try:
+            return raw.decode(enc)
+        except UnicodeDecodeError:
+            pass
+    return raw.decode("utf-8", "replace")
 
 
 def log_robots():

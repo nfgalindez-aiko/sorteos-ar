@@ -21,10 +21,15 @@ python3 -m unittest -v          # tests sin red sobre HTML real congelado
 python3 quini6_scraper.py       # scrapea, cruza A y B, publica data/quini6/ si coinciden
 python3 brinco_scraper.py
 python3 historico.py 50         # últimos 50 sorteos de Quini 6 (pausa 2 s entre pedidos)
+python3 quiniela_scraper.py     # quinielas (7 provincias), validación por turno
+python3 verificador.py          # lee los JSON públicos como la app y falla si algo está roto
 python3 run_all.py              # lo que corre el cron
 ```
 
 Contrato de `data/<juego>/latest.json`, `NNNN.json` e `index.json`: brief, sección 6.5.
+Quinielas: `data/quiniela/<prov>/<YYYY-MM-DD>.json`, `latest.json`, `index.json` y el resumen
+`data/quiniela/latest.json` (cabezas del día por provincia). Validación por turno.
+Verificador: workflow `verificar` cada hora; abre un issue con etiqueta `verificador` si hay problemas y lo cierra al normalizarse.
 `validado:true` solo cuando las dos fuentes coinciden; si no, `latest.json` no se toca.
 
 ## Publicación

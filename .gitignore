@@ -24,3 +24,6 @@ app/*.mobileprovision
 app/.env*.local
 backend/npm_install.txt
 backend/eas_build.txt
+backend/eas_update.txt
+backend/httpserver.txt
+backend/reporte.txt
