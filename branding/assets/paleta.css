@@ -1,0 +1,10 @@
+:root {
+  --sorteos-azul-noche: #0A0F1C;      /* fondo, numeral sobre oro */
+  --sorteos-azul-icono: #17263E;     /* recuadro del icono */
+  --sorteos-marfil: #EDE6D6;        /* bolillas y logotipo */
+  --sorteos-oro-sol-de-mayo: #F6B21B; /* acento primario (lente) */
+  --sorteos-celeste: #75AADB;     /* acento alternativo */
+  --sorteos-azul-bandera: #2E6FB7;   /* bolillas sobre claro */
+  --sorteos-blanco-hueso: #F2EFE6;  /* fondo claro */
+  --sorteos-gris-texto: #8C8779;     /* texto secundario */
+}

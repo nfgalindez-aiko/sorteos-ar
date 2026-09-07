@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #060B14; }
+  a { color: #74C0E8; text-decoration: none; }
+  a:hover { color: #EDE6D6; }
+</style>
+<script>window.OM_SCENES = '[{"name":"Fuentes","dur":2.4,"desc":"Dos bolillas entran desde los costados con numeros girando: las dos fuentes independientes"},{"name":"Coinciden","dur":2,"desc":"Las bolillas se cruzan, los numeros se igualan en 17 y la interseccion se enciende"},{"name":"Marca","dur":2.2,"desc":"La camara se aleja y el icono de app se dibuja alrededor de la marca"},{"name":"Firma","dur":3.4,"desc":"El logotipo Sorteos AR aparece al costado del icono, y la escena cierra en negro"}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"loop"}';</script>
+</helmet>
+<div style="min-height: 100vh; background: #060B14; font-family: Archivo, system-ui, sans-serif; color: #EDE6D6; padding: 0 0 72px;">
+  <div style="width: 100%; background: #0A0F1C;">
+    <x-import component-from-global-scope="SorteosLogoVideo" from="./animations-v3.jsx ./sorteos-logo-scene.jsx" accent="{{ accent }}" word="{{ word }}" tagline="{{ tagline }}" hint-size="100%,auto"></x-import>
+  </div>
+
+  <div style="max-width: 1100px; margin: 0 auto; padding: 56px 32px 0; display: grid; gap: 40px;">
+    <div style="display: grid; gap: 10px;">
+      <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #74C0E8; font-weight: 600;">Sorteos AR · identidad</div>
+      <div style="font-size: 22px; line-height: 1.45; font-weight: 500; max-width: 62ch; color: #C9C2B4; text-wrap: pretty;">Dos círculos, dos fuentes de resultados. La intersección —el único número que las dos publican igual— es la marca: un 17 encendido dentro de la lente.</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px;">
+      <div style="display: grid; gap: 12px; justify-items: start;">
+        <svg viewBox="-340 -340 680 680" style="width: 100%; max-width: 220px; border-radius: 22%; display: block;">
+          <rect x="-330" y="-330" width="660" height="660" rx="152" fill="#17263E" stroke="#74C0E8" stroke-opacity="0.5" stroke-width="5"></rect>
+          <defs><clipPath id="lensA"><circle cx="-55" cy="0" r="150"></circle></clipPath></defs>
+          <g clip-path="url(#lensA)"><circle cx="55" cy="0" r="150" fill="#74C0E8"></circle></g>
+          <circle cx="-55" cy="0" r="150" fill="none" stroke="#EDE6D6" stroke-opacity="0.9" stroke-width="9"></circle>
+          <circle cx="55" cy="0" r="150" fill="none" stroke="#EDE6D6" stroke-opacity="0.9" stroke-width="9"></circle>
+          <text x="0" y="6" text-anchor="middle" dominant-baseline="central" fill="#0A0F1C" font-family="Archivo, sans-serif" font-weight="800" font-size="132" letter-spacing="-7">17</text>
+        </svg>
+        <div style="font-size: 13px; color: #8C8779; letter-spacing: 0.04em; text-wrap: balance;">Icono iOS · primario</div>
+      </div>
+
+      <div style="display: grid; gap: 12px; justify-items: start;">
+        <svg viewBox="-340 -340 680 680" style="width: 100%; max-width: 220px; border-radius: 22%; display: block;">
+          <rect x="-330" y="-330" width="660" height="660" rx="152" fill="#EDE6D6"></rect>
+          <defs><clipPath id="lensB"><circle cx="-55" cy="0" r="150"></circle></clipPath></defs>
+          <g clip-path="url(#lensB)"><circle cx="55" cy="0" r="150" fill="#0A0F1C"></circle></g>
+          <circle cx="-55" cy="0" r="150" fill="none" stroke="#0A0F1C" stroke-opacity="0.85" stroke-width="9"></circle>
+          <circle cx="55" cy="0" r="150" fill="none" stroke="#0A0F1C" stroke-opacity="0.85" stroke-width="9"></circle>
+          <text x="0" y="6" text-anchor="middle" dominant-baseline="central" fill="#EDE6D6" font-family="Archivo, sans-serif" font-weight="800" font-size="132" letter-spacing="-7">17</text>
+        </svg>
+        <div style="font-size: 13px; color: #8C8779; letter-spacing: 0.04em;">Sobre claro</div>
+      </div>
+
+      <div style="display: grid; gap: 12px; justify-items: start;">
+        <svg viewBox="-340 -340 680 680" style="width: 100%; max-width: 220px; border-radius: 22%; display: block;">
+          <rect x="-330" y="-330" width="660" height="660" rx="152" fill="none" stroke="#EDE6D6" stroke-opacity="0.28" stroke-width="4"></rect>
+          <circle cx="-55" cy="0" r="150" fill="none" stroke="#EDE6D6" stroke-width="9"></circle>
+          <circle cx="55" cy="0" r="150" fill="none" stroke="#EDE6D6" stroke-width="9"></circle>
+          <text x="0" y="6" text-anchor="middle" dominant-baseline="central" fill="#EDE6D6" font-family="Archivo, sans-serif" font-weight="800" font-size="132" letter-spacing="-7">17</text>
+        </svg>
+        <div style="font-size: 13px; color: #8C8779; letter-spacing: 0.04em; text-wrap: balance;">Monocromo · 1 color</div>
+      </div>
+
+      <div style="grid-column: 1 / -1; display: grid; gap: 12px; justify-items: start; align-content: start; border-top: 1px solid rgba(237,230,214,0.12); padding-top: 24px;">
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <svg viewBox="-340 -340 680 680" style="width: 64px; height: 64px; display: block; flex: none;">
+            <rect x="-330" y="-330" width="660" height="660" rx="152" fill="#17263E"></rect>
+            <defs><clipPath id="lensC"><circle cx="-55" cy="0" r="150"></circle></clipPath></defs>
+            <g clip-path="url(#lensC)"><circle cx="55" cy="0" r="150" fill="#74C0E8"></circle></g>
+            <circle cx="-55" cy="0" r="150" fill="none" stroke="#EDE6D6" stroke-opacity="0.9" stroke-width="12"></circle>
+            <circle cx="55" cy="0" r="150" fill="none" stroke="#EDE6D6" stroke-opacity="0.9" stroke-width="12"></circle>
+            <text x="0" y="6" text-anchor="middle" dominant-baseline="central" fill="#0A0F1C" font-family="Archivo, sans-serif" font-weight="800" font-size="132" letter-spacing="-7">17</text>
+          </svg>
+          <div style="display: grid; gap: 2px;">
+            <div style="font-size: 26px; font-weight: 800; letter-spacing: -0.01em; white-space: nowrap;">Sorteos AR</div>
+            <div style="font-size: 13px; font-weight: 500; color: #74C0E8; white-space: nowrap;">Sorteos Argentinos</div>
+          </div>
+        </div>
+        <div style="font-size: 13px; color: #8C8779; letter-spacing: 0.04em; white-space: nowrap;">Lockup horizontal · 64 px</div>
+      </div>
+    </div>
+
+    <div style="display: grid; gap: 20px; border-top: 1px solid rgba(237,230,214,0.12); padding-top: 32px;">
+      <div style="display: grid; gap: 8px;">
+        <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #74C0E8; font-weight: 600;">Tres configuraciones de color</div>
+        <div style="font-size: 17px; font-weight: 500; color: #C9C2B4; max-width: 60ch; text-wrap: pretty;">Todas salen de la paleta argentina: celeste y blanco de la bandera, y el oro del Sol de Mayo. Elegí una y la aplico al video con el control de acento.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+      <div style="display: grid; gap: 14px; justify-items: start;">
+        <svg viewBox="-340 -340 680 680" style="width: 100%; max-width: 240px; border-radius: 22%; display: block;">
+          <rect x="-330" y="-330" width="660" height="660" rx="152" fill="#0F1E33" stroke="#75AADB" stroke-opacity="0.5" stroke-width="5"></rect>
+          <defs><clipPath id="lensD"><circle cx="-55" cy="0" r="150"></circle></clipPath></defs>
+          <g clip-path="url(#lensD)"><circle cx="55" cy="0" r="150" fill="#75AADB"></circle></g>
+          <circle cx="-55" cy="0" r="150" fill="none" stroke="#F2EFE6" stroke-opacity="0.9" stroke-width="9"></circle>
+          <circle cx="55" cy="0" r="150" fill="none" stroke="#F2EFE6" stroke-opacity="0.9" stroke-width="9"></circle>
+          <text x="0" y="6" text-anchor="middle" dominant-baseline="central" fill="#0A1526" font-family="Archivo, sans-serif" font-weight="800" font-size="132" letter-spacing="-7">17</text>
+        </svg>
+        <div style="display: grid; gap: 4px;">
+          <div style="font-size: 15px; font-weight: 600; letter-spacing: 0.01em;">Celeste y blanco</div>
+          <div style="font-size: 13px; color: #8C8779; letter-spacing: 0.04em;">Acento #75AADB · noche</div>
+        </div>
+      </div>
+      <div style="display: grid; gap: 14px; justify-items: start;">
+        <svg viewBox="-340 -340 680 680" style="width: 100%; max-width: 240px; border-radius: 22%; display: block;">
+          <rect x="-330" y="-330" width="660" height="660" rx="152" fill="#1A2233" stroke="#F6B21B" stroke-opacity="0.5" stroke-width="5"></rect>
+          <defs><clipPath id="lensE"><circle cx="-55" cy="0" r="150"></circle></clipPath></defs>
+          <g clip-path="url(#lensE)"><circle cx="55" cy="0" r="150" fill="#F6B21B"></circle></g>
+          <circle cx="-55" cy="0" r="150" fill="none" stroke="#F5EFE2" stroke-opacity="0.9" stroke-width="9"></circle>
+          <circle cx="55" cy="0" r="150" fill="none" stroke="#F5EFE2" stroke-opacity="0.9" stroke-width="9"></circle>
+          <text x="0" y="6" text-anchor="middle" dominant-baseline="central" fill="#221A05" font-family="Archivo, sans-serif" font-weight="800" font-size="132" letter-spacing="-7">17</text>
+        </svg>
+        <div style="display: grid; gap: 4px;">
+          <div style="font-size: 15px; font-weight: 600; letter-spacing: 0.01em;">Sol de Mayo</div>
+          <div style="font-size: 13px; color: #8C8779; letter-spacing: 0.04em;">Acento #F6B21B · noche</div>
+        </div>
+      </div>
+      <div style="display: grid; gap: 14px; justify-items: start;">
+        <svg viewBox="-340 -340 680 680" style="width: 100%; max-width: 240px; border-radius: 22%; display: block;">
+          <rect x="-330" y="-330" width="660" height="660" rx="152" fill="#F2EFE6"></rect>
+          <defs><clipPath id="lensF"><circle cx="-55" cy="0" r="150"></circle></clipPath></defs>
+          <g clip-path="url(#lensF)"><circle cx="55" cy="0" r="150" fill="#75AADB"></circle></g>
+          <circle cx="-55" cy="0" r="150" fill="none" stroke="#2E6FB7" stroke-opacity="0.9" stroke-width="9"></circle>
+          <circle cx="55" cy="0" r="150" fill="none" stroke="#2E6FB7" stroke-opacity="0.9" stroke-width="9"></circle>
+          <text x="0" y="6" text-anchor="middle" dominant-baseline="central" fill="#0A1526" font-family="Archivo, sans-serif" font-weight="800" font-size="132" letter-spacing="-7">17</text>
+        </svg>
+        <div style="display: grid; gap: 4px;">
+          <div style="font-size: 15px; font-weight: 600; letter-spacing: 0.01em;">Bandera invertida</div>
+          <div style="font-size: 13px; color: #8C8779; letter-spacing: 0.04em;">Acento #75AADB · sobre claro</div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div style="display: grid; gap: 18px; border-top: 1px solid rgba(237,230,214,0.12); padding-top: 32px;">
+      <div style="display: grid; gap: 8px;">
+        <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #74C0E8; font-weight: 600;">Kit de descarga</div>
+        <div style="font-size: 17px; font-weight: 500; color: #C9C2B4; max-width: 60ch; text-wrap: pretty;">Todo está en la carpeta <span style="font-family: ui-monospace, monospace; font-size: 15px; color: #EDE6D6;">assets/</span> del proyecto: SVG vectorial para web, PNG en los tamaños de iOS y del favicon, y la paleta en CSS y JSON.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+        <div style="display: grid; gap: 8px; padding: 18px 20px; background: #0C1526; border: 1px solid rgba(237,230,214,0.1); border-radius: 14px;">
+          <div style="font-size: 15px; font-weight: 600;">SVG · vectorial</div>
+          <div style="display: grid; gap: 5px; font-size: 13px; line-height: 1.5;">
+            <a href="assets/svg/icono-appstore-1024.svg">icono-appstore-1024.svg</a>
+            <a href="assets/svg/icono-web-redondeado.svg">icono-web-redondeado.svg</a>
+            <a href="assets/svg/lockup-horizontal.svg">lockup-horizontal.svg</a>
+            <a href="assets/svg/logotipo-solo.svg">logotipo-solo.svg</a>
+            <a href="assets/svg/icono-monocromo.svg">icono-monocromo.svg</a>
+            <a href="assets/svg/icono-sobre-claro.svg">icono-sobre-claro.svg</a>
+          </div>
+        </div>
+        <div style="display: grid; gap: 8px; padding: 18px 20px; background: #0C1526; border: 1px solid rgba(237,230,214,0.1); border-radius: 14px;">
+          <div style="font-size: 15px; font-weight: 600;">Las tres paletas</div>
+          <div style="display: grid; gap: 5px; font-size: 13px; line-height: 1.5;">
+            <a href="assets/svg/config-1-celeste-y-blanco.svg">config-1-celeste-y-blanco.svg</a>
+            <a href="assets/svg/config-2-sol-de-mayo.svg">config-2-sol-de-mayo.svg</a>
+            <a href="assets/svg/config-3-bandera-invertida.svg">config-3-bandera-invertida.svg</a>
+            <a href="assets/paleta.css">paleta.css</a>
+            <a href="assets/paleta.json">paleta.json</a>
+            <a href="assets/LEEME.md">LEEME.md</a>
+          </div>
+        </div>
+        <div style="display: grid; gap: 8px; padding: 18px 20px; background: #0C1526; border: 1px solid rgba(237,230,214,0.1); border-radius: 14px;">
+          <div style="font-size: 15px; font-weight: 600;">PNG · iOS y favicon</div>
+          <div style="display: grid; gap: 5px; font-size: 13px; line-height: 1.5;">
+            <a href="assets/png/icono-1024.png">icono-1024.png</a>
+            <a href="assets/png/icono-512.png">icono-512.png</a>
+            <a href="assets/png/icono-256.png">icono-256.png</a>
+            <a href="assets/png/icono-180.png">icono-180.png</a>
+            <a href="assets/png/icono-120.png">icono-120.png</a>
+            <a href="assets/png/icono-87.png">icono-87.png · 60 · 40</a>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px;">
+        <div style="font-size: 13px; color: #8C8779; letter-spacing: 0.03em;">Tipografía: Archivo (Google Fonts), pesos 500 / 600 / 800. El video se exporta aparte desde Share → Export → Video.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motionEditor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Animación&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F4B740&quot;,&quot;options&quot;:[&quot;#75AADB&quot;,&quot;#F6B21B&quot;,&quot;#F2EFE6&quot;,&quot;#2E6FB7&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;word&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Sorteos AR&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;tagline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#F4B740',
+      word: this.props.word ?? 'Sorteos AR',
+      tagline: this.props.tagline ?? '',
+    };
+  }
+}
+</script>
+</body>
+</html>

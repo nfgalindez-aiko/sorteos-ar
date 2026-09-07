@@ -1,0 +1,41 @@
+{
+  "fuente": {
+    "familia": "Archivo",
+    "pesos": [
+      500,
+      600,
+      800
+    ],
+    "enlace": "https://fonts.google.com/specimen/Archivo"
+  },
+  "colores": {
+    "azulNoche": "#0A0F1C",
+    "azulIcono": "#17263E",
+    "marfil": "#EDE6D6",
+    "oroSolDeMayo": "#F6B21B",
+    "celeste": "#75AADB",
+    "azulBandera": "#2E6FB7",
+    "blancoHueso": "#F2EFE6",
+    "grisTexto": "#8C8779"
+  },
+  "configuraciones": {
+    "solDeMayo": {
+      "tile": "#1A2233",
+      "lens": "#F6B21B",
+      "ring": "#F5EFE2",
+      "num": "#221A05"
+    },
+    "celesteYBlanco": {
+      "tile": "#0F1E33",
+      "lens": "#75AADB",
+      "ring": "#F2EFE6",
+      "num": "#0A1526"
+    },
+    "banderaInvertida": {
+      "tile": "#F2EFE6",
+      "lens": "#75AADB",
+      "ring": "#2E6FB7",
+      "num": "#0A1526"
+    }
+  }
+}

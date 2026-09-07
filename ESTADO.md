@@ -268,3 +268,23 @@ Lo que NO se verificó:
 - Loto Plus en cron real: primer sorteo, miércoles 09/09 21:30 (3916).
 - Control de jugada para Poceada (8 números) y Loto Plus: no se hizo todavía. Loto Plus usa la
   misma pantalla de control que Quini 6 (6 números 0–45), así que funciona; Poceada no tiene.
+
+## Sesión 6 — 07/09/2026 (noche)
+
+Pedido: que el logo animado de la carpeta "Logo animado para sorteos app" aparezca al abrir
+https://nfgalindez.com/sorteos/.
+
+- El zip estaba en la raíz del proyecto (`Logo animado para sorteos app.zip`); antes lo busqué en
+  discos, Drive, artefactos y sesiones y no lo encontré porque no existía como carpeta. Descomprimido
+  en `branding/`: kit de marca (SVG, PNG 40–1024, paleta, tipografía Archivo) y la animación, que es
+  una escena React sobre un motor propio de 60 KB (`animations-v3.jsx`), no un video.
+- Regla 25: para la web se porteó la escena a SVG + JS puro (`site/assets/js/sorteos-intro.js`,
+  ~180 líneas), copiando la coreografía exacta (mismos cues, easings y números). En `/sorteos/`
+  corre como intro a pantalla completa al cargar (una vez, a 1,25×, "tocá para saltar", respeta
+  `prefers-reduced-motion`) y como hero en loop debajo del título. Verificado con capturas en el
+  deploy de Cloudflare: bolillas → 17 encendido → ícono → firma "Sorteos AR".
+- Regla 26: `generar.py` usa `str.format`, así que las llaves de JavaScript en las portadas van
+  dobles (`{{loop:true}}`); el primer intento explotó con `KeyError: 'loop'`.
+- Ícono del kit (`icono-1024.png`) puesto como ícono de la app Expo, foreground de Android y
+  favicon; el ícono de iOS solo cambia con un build nuevo (en Expo Go no se ve). Ícono también en la
+  tarjeta de la portada del sitio.
