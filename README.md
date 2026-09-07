@@ -26,11 +26,10 @@ python3 run_all.py              # lo que corre el cron
 Contrato de `data/<juego>/latest.json`, `NNNN.json` e `index.json`: brief, sección 6.5.
 `validado:true` solo cuando las dos fuentes coinciden; si no, `latest.json` no se toca.
 
-## Publicación (lo tiene que hacer el dueño)
+## Publicación
 
-1. `git init`, subir a GitHub.
-2. Settings > Actions > General > Workflow permissions: *Read and write*.
-3. Settings > Pages > Deploy from a branch: `main`, carpeta `/ (root)`.
-4. Actions > scrape > *Run workflow* y verificar que
-   `https://USUARIO.github.io/REPO/data/quini6/latest.json` responda 200.
-5. Poner esa URL base en `ios/SorteosAR/SorteosARApp.swift` (`Config.baseURL`).
+- Repo: https://github.com/nfgalindez-aiko/sorteos-ar (público; Pages desde `main`, carpeta raíz).
+- Actions con permiso de escritura: el workflow `scrape` commitea `data/` solo.
+- JSON público: `https://nfgalindez-aiko.github.io/sorteos-ar/data/quini6/latest.json`
+  (también `brinco/latest.json`, `<juego>/index.json`, `<juego>/NNNN.json`).
+- La app ya apunta a esa base (`Config.baseURL` en `ios/SorteosAR/SorteosARApp.swift`).

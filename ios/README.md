@@ -25,9 +25,9 @@ Opción B, a mano en Xcode:
 
 ## Antes de correr
 
-Editar `SorteosARApp.swift` → `Config.baseURL` con la URL real de GitHub Pages
-(`https://USUARIO.github.io/REPO/data/`). Hasta que exista el repo la app arranca en modo
-"sin conexión" y muestra la pantalla vacía.
+`Config.baseURL` en `SorteosARApp.swift` ya apunta a
+`https://nfgalindez-aiko.github.io/sorteos-ar/data/` (GitHub Pages del repo). Sin red la app
+arranca en modo "sin conexión" con lo último cacheado.
 
 Para probar sin backend publicado: servir `data/` localmente
 (`cd .. && python3 -m http.server 8000`) y usar `http://localhost:8000/data/` como base

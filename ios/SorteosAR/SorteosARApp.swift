@@ -17,9 +17,9 @@ struct SorteosARApp: App {
 
 /// Configuración fija de la app. La app NO scrapea: consume el JSON que publica el backend.
 enum Config {
-    /// URL base de GitHub Pages del repo del backend. Reemplazar USUARIO y REPO cuando exista el repo.
+    /// URL base de GitHub Pages del repo del backend (nfgalindez-aiko/sorteos-ar).
     /// Debe terminar en "/data/".
-    static let baseURL = URL(string: "https://USUARIO.github.io/REPO/data/")!
+    static let baseURL = URL(string: "https://nfgalindez-aiko.github.io/sorteos-ar/data/")!
     static let version = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "0.1.0"
     static let disclaimer = "Aplicación informativa independiente. No está afiliada a Lotería de Santa Fe ni a ningún organismo oficial. No permite apostar. Ante cualquier discrepancia vale el extracto oficial. Jugar compulsivamente es perjudicial para la salud. +18."
     static let fuentes = ["tujugada.com.ar", "quini-6-resultados.com.ar"]

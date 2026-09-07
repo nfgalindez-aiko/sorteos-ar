@@ -208,9 +208,20 @@ def dump(obj):
 
 
 def write_json(path, obj):
+    """Escribe solo si el contenido (ignorando 'generado') cambio, para que el cron no
+    commitee archivos identicos cada 5 minutos. Devuelve True si escribio."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    if os.path.exists(path):
+        try:
+            prev = read_json(path)
+            sin_ts = lambda d: {k: v for k, v in d.items() if k != "generado"}
+            if sin_ts(prev) == sin_ts(obj):
+                return False
+        except Exception:
+            pass
     with open(path, "w", encoding="utf-8") as f:
         f.write(dump(obj) + "\n")
+    return True
 
 
 def read_json(path):

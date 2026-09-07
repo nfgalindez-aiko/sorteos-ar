@@ -49,7 +49,7 @@ abogado confirma que el uso descriptivo en palabras clave es defendible, se pued
 ## URL de soporte / política de privacidad
 
 - Política de privacidad: publicar `docs/privacidad.md` en GitHub Pages
-  (`https://USUARIO.github.io/REPO/privacidad.html`) y pegar esa URL en App Store Connect.
+  (`https://nfgalindez-aiko.github.io/sorteos-ar/docs/privacidad`) y pegar esa URL en App Store Connect.
 - Soporte: un mail del dueño del proyecto (pendiente).
 
 ## Clasificación por edades (cuestionario de App Store Connect)

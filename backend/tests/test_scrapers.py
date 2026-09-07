@@ -211,6 +211,17 @@ class TestCommon(unittest.TestCase):
                 common.DATA, common.LOG = old_data, old_log
 
 
+class TestWriteJson(unittest.TestCase):
+    def test_no_reescribe_si_solo_cambia_generado(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = os.path.join(tmp, "x.json")
+            self.assertTrue(common.write_json(p, {"a": 1, "generado": "t1"}))
+            self.assertFalse(common.write_json(p, {"a": 1, "generado": "t2"}))
+            self.assertEqual(common.read_json(p)["generado"], "t1")
+            self.assertTrue(common.write_json(p, {"a": 2, "generado": "t3"}))
+            self.assertEqual(common.read_json(p)["a"], 2)
+
+
 class TestRobots(unittest.TestCase):
     def test_robots_permiten_las_paginas_usadas(self):
         ra = fx("robots_www.tujugada.com.ar.txt")
