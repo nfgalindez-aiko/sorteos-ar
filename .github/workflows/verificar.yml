@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: "20 * * * *"        # cada hora, a los 20 (el scraper corre a los 0/5/15/30/45)
   workflow_dispatch:
+    inputs:
+      base:
+        description: "URL base a verificar (vacío = producción). Para probar la alerta: https://nfgalindez-aiko.github.io/sorteos-ar/no-existe/"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -24,8 +29,13 @@ jobs:
         working-directory: backend
         run: |
           set +e
-          python3 verificador.py | tee reporte.txt
-          echo "estado=$?" >> "$GITHUB_OUTPUT"
+          BASE="${{ github.event.inputs.base }}"
+          if [ -n "$BASE" ]; then
+            python3 verificador.py --base "$BASE" | tee reporte.txt
+          else
+            python3 verificador.py | tee reporte.txt
+          fi
+          echo "estado=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
 
       - name: Abrir o actualizar issue si hay problemas
         if: steps.verificar.outputs.estado != '0'

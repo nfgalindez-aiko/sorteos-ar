@@ -90,7 +90,13 @@ class TestCombinar(unittest.TestCase):
     def test_conflicto_no_publica_numeros(self):
         r = self.res("ciudad", ["A", "B"])
         r["B"]["2026-09-07"]["primera"]["numeros"][5] = "0000"
-        out = q.combinar("ciudad", r)["2026-09-07"]
+        with tempfile.TemporaryDirectory() as tmp:
+            old_log = common.LOG
+            common.LOG = os.path.join(tmp, "log")  # que el MISMATCH simulado no ensucie scraper.log
+            try:
+                out = q.combinar("ciudad", r)["2026-09-07"]
+            finally:
+                common.LOG = old_log
         por = {t["turno"]: t for t in out["turnos"]}
         self.assertIsNone(por["primera"]["numeros"])
         self.assertTrue(por["primera"].get("conflicto"))
