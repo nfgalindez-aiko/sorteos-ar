@@ -33,3 +33,4 @@ Contrato de `data/<juego>/latest.json`, `NNNN.json` e `index.json`: brief, secci
 - JSON público: `https://nfgalindez-aiko.github.io/sorteos-ar/data/quini6/latest.json`
   (también `brinco/latest.json`, `<juego>/index.json`, `<juego>/NNNN.json`).
 - La app ya apunta a esa base (`Config.baseURL` en `ios/SorteosAR/SorteosARApp.swift`).
+- Página, privacidad, términos y soporte: https://nfgalindez.com/sorteos/ (repo `nfgalindez.com`, `generar.py`).

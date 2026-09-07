@@ -1,5 +1,7 @@
 # Política de privacidad — Sorteos AR
 
+> Versión canónica publicada en https://nfgalindez.com/sorteos/privacidad/ . Este archivo es respaldo.
+
 Última actualización: 7 de septiembre de 2026.
 
 ## Resumen
@@ -38,7 +40,7 @@ actualizada.
 
 ## Contacto
 
-Pendiente: dirección de correo del responsable del proyecto.
+Responsable: https://nfgalindez.com
 
 ---
 

@@ -207,6 +207,12 @@ class TestCommon(unittest.TestCase):
                 self.assertTrue(os.path.exists(os.path.join(tmp, "quini6", "3407.json")))
                 idx = common.read_json(os.path.join(tmp, "quini6", "index.json"))
                 self.assertEqual([s["sorteo"] for s in idx["sorteos"]], [3407, 3406])
+                # novedades: solo el validado, y una sola vez aunque se republique
+                nov = common.read_json(os.path.join(tmp, "novedades.json"))["novedades"]
+                self.assertEqual([(n["juego"], n["sorteo"]) for n in nov], [("quini6", 3406)])
+                self.assertFalse(common.registrar_novedad("quini6", out))
+                nov = common.read_json(os.path.join(tmp, "novedades.json"))["novedades"]
+                self.assertEqual(len(nov), 1)
             finally:
                 common.DATA, common.LOG = old_data, old_log
 

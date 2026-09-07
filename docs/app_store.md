@@ -48,9 +48,12 @@ abogado confirma que el uso descriptivo en palabras clave es defendible, se pued
 
 ## URL de soporte / política de privacidad
 
-- Política de privacidad: publicar `docs/privacidad.md` en GitHub Pages
-  (`https://nfgalindez-aiko.github.io/sorteos-ar/docs/privacidad`) y pegar esa URL en App Store Connect.
-- Soporte: un mail del dueño del proyecto (pendiente).
+- Política de privacidad (publicada): `https://nfgalindez.com/sorteos/privacidad/`
+- URL de soporte (publicada): `https://nfgalindez.com/sorteos/soporte/`
+- Términos: `https://nfgalindez.com/sorteos/terminos/` · Página de la app: `https://nfgalindez.com/sorteos/`
+- Esas páginas se generan con `generar.py` en el repo `nfgalindez-aiko/nfgalindez.com` y se
+  despliegan con `npx wrangler pages deploy site --project-name nfgalindez`. La copia en
+  `docs/privacidad.*` de este repo es respaldo; la canónica es la de nfgalindez.com.
 
 ## Clasificación por edades (cuestionario de App Store Connect)
 

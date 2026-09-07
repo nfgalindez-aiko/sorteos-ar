@@ -244,6 +244,22 @@ def rebuild_index(juego):
     return items
 
 
+def registrar_novedad(juego, out, maximo=50):
+    """Base para las push notifications (brief 6.12): deja constancia en data/novedades.json
+    de cada sorteo nuevo que paso a validado:true. Idempotente por (juego, sorteo)."""
+    path = os.path.join(DATA, "novedades.json")
+    nov = read_json(path) if os.path.exists(path) else {"novedades": []}
+    if any(n["juego"] == juego and n["sorteo"] == out["sorteo"] for n in nov["novedades"]):
+        return False
+    nov["novedades"].insert(0, {"juego": juego, "sorteo": out["sorteo"], "fecha": out["fecha"],
+                                "validado_en": now_art()})
+    nov["novedades"] = nov["novedades"][:maximo]
+    nov["generado"] = now_art()
+    write_json(path, nov)
+    log(f"NOVEDAD {juego} sorteo {out['sorteo']} validado")
+    return True
+
+
 def publish(juego, out, force_latest=False):
     """Escribe data/<juego>/NNNN.json siempre que haya sorteo; latest.json solo si validado
     y es igual o mas nuevo que el actual. Devuelve True si actualizo latest."""
@@ -260,6 +276,8 @@ def publish(juego, out, force_latest=False):
             write_json(latest, out)
             updated = True
             log(f"PUBLISH {juego}: latest.json -> sorteo {out['sorteo']}")
+            if out["validado"]:
+                registrar_novedad(juego, out)
         else:
             log(f"PUBLISH {juego}: sorteo {out['sorteo']} es anterior a latest {prev}, no toco latest")
     else:
