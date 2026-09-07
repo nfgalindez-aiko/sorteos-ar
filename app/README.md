@@ -62,6 +62,7 @@ app/                  rutas (expo-router)
     historico.tsx     índice de sorteos anteriores
     sorteo/[numero].tsx  un sorteo puntual (con caché)
     control.tsx       jugadas guardadas + alta de 6 números + aciertos por modalidad
+  poceada/            index (último), historico, [numero]
   quiniela/[prov]/
     index.tsx         día vigente de la quiniela (turnos con 20 números, cabeza, letras)
     historico.tsx     días anteriores
@@ -75,6 +76,7 @@ src/
   componentes.tsx     Bolilla, FilaBolillas, PremiosTabla, CuentaRegresiva, banners
   sorteo-detalle.tsx  render completo de un sorteo
   quiniela-detalle.tsx render de un día de quiniela
+  poceada-detalle.tsx render de un sorteo de la Poceada
 ```
 
 ## Reglas legales aplicadas

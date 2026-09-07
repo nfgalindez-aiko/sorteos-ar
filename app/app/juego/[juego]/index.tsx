@@ -4,7 +4,7 @@ import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useResultados } from "../../../src/api";
 import { BannerSinConexion, Boton, Disclaimer, Vacio } from "../../../src/componentes";
 import { Espacio, usePaleta, useTema } from "../../../src/design";
-import { JUEGOS, esJuego } from "../../../src/modelos";
+import { JUEGOS, JuegoId, esJuego } from "../../../src/modelos";
 import { SorteoDetalle } from "../../../src/sorteo-detalle";
 
 export default function DetalleJuego() {
@@ -16,7 +16,7 @@ export default function DetalleJuego() {
   return <Cuerpo juego={juego} t={t} r={r} router={router} />;
 }
 
-function Cuerpo({ juego, t, r, router }: { juego: "quini6" | "brinco"; t: ReturnType<typeof useTema>; r: ReturnType<typeof useResultados>; router: ReturnType<typeof useRouter> }) {
+function Cuerpo({ juego, t, r, router }: { juego: JuegoId; t: ReturnType<typeof useTema>; r: ReturnType<typeof useResultados>; router: ReturnType<typeof useRouter> }) {
   const p = usePaleta(juego);
   const s = r.ultimos[juego];
   return (

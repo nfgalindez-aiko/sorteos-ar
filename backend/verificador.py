@@ -93,6 +93,32 @@ def check_poceado(base, juego, dias, hora, rango, mods, ahora):
         problema(f"{juego}/index.json: {e}")
 
 
+def check_poceada_ciudad(base, ahora):
+    print("[poceada]")
+    try:
+        j = bajar(base, "poceada/latest.json")
+    except Exception as e:
+        # latest.json solo existe cuando hubo un sorteo validado (cruce con la nocturna de Ciudad de 2 fuentes)
+        try:
+            bajar(base, "poceada/index.json")
+            aviso(f"poceada: todavia sin sorteo validado publicado ({e})")
+        except Exception:
+            problema(f"poceada/latest.json no se puede leer: {e}")
+        return
+    n = j.get("numeros", [])
+    if len(n) != 20 or len(set(n)) != 20 or any(not re.fullmatch(r"\d{2}", x) for x in n) or n != sorted(n):
+        problema(f"poceada: numeros invalidos {n}")
+    if not j.get("validado"):
+        problema("poceada: latest.json no esta validado")
+    try:
+        fecha = date.fromisoformat(j["fecha"])
+        esperado = ultimo_sorteo_esperado(ahora, (0, 1, 2, 3, 4, 5), "21:00")
+        if esperado and fecha < esperado:
+            problema(f"poceada: DESACTUALIZADO. Ultimo publicado {j['fecha']} (sorteo {j['sorteo']}); ya deberia estar el del {esperado}")
+    except (KeyError, ValueError) as e:
+        problema(f"poceada: fecha invalida: {e}")
+
+
 def check_quiniela(base, prov, ahora):
     print(f"[quiniela/{prov}]")
     try:
@@ -142,6 +168,8 @@ def main(argv):
     print(f"Verificador Sorteos AR · base {base} · ahora (ART) {ahora:%Y-%m-%d %H:%M}")
     check_poceado(base, "quini6", (2, 6), "21:15", (0, 45), ["tradicional", "segunda", "revancha", "siempre_sale"], ahora)
     check_poceado(base, "brinco", (6,), "21:00", (0, 39), ["tradicional", "junior"], ahora)
+    check_poceado(base, "lotoplus", (2, 5), "21:30", (0, 45), ["tradicional", "match", "desquite", "sale_o_sale"], ahora)
+    check_poceada_ciudad(base, ahora)
     for prov in PROVINCIAS:
         check_quiniela(base, prov, ahora)
     print("[novedades]")

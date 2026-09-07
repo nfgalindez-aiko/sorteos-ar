@@ -21,7 +21,9 @@ python3 -m unittest -v          # tests sin red sobre HTML real congelado
 python3 quini6_scraper.py       # scrapea, cruza A y B, publica data/quini6/ si coinciden
 python3 brinco_scraper.py
 python3 historico.py 50         # últimos 50 sorteos de Quini 6 (pausa 2 s entre pedidos)
+python3 lotoplus_scraper.py     # Loto Plus (A+B), mismo formato que Quini 6 + numero_plus
 python3 quiniela_scraper.py     # quinielas (7 provincias), validación por turno
+python3 poceada_scraper.py      # Poceada (A) cruzada con la nocturna de la Quiniela de la Ciudad
 python3 verificador.py          # lee los JSON públicos como la app y falla si algo está roto
 python3 run_all.py              # lo que corre el cron
 ```

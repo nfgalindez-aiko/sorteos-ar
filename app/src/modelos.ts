@@ -1,6 +1,6 @@
 // Modelos del JSON publicado por el backend (brief 6.5) y metadatos de cada juego.
 
-export type JuegoId = "quini6" | "brinco";
+export type JuegoId = "quini6" | "brinco" | "lotoplus";
 
 export interface PremioFila { aciertos: number; ganadores: number; premio: number }
 export interface Modalidad { numeros: number[]; premios: PremioFila[] }
@@ -13,6 +13,20 @@ export interface Sorteo {
   fecha: string; // YYYY-MM-DD
   modalidades: Record<string, Modalidad>;
   pozo_extra: PozoExtra | null;
+  numero_plus?: number | null;
+  proximo: Proximo | null;
+  validado: boolean;
+  fuentes: string[];
+  generado: string;
+}
+
+export interface Poceada {
+  juego: "poceada";
+  sorteo: number;
+  fecha: string;
+  numeros: string[]; // 20 números de 2 cifras, ordenados
+  letras: string | null;
+  premios: (PremioFila & { nota?: string })[];
   proximo: Proximo | null;
   validado: boolean;
   fuentes: string[];
@@ -60,13 +74,25 @@ export const JUEGOS: Record<JuegoId, JuegoMeta> = {
     hora: "21:00",
     modalidades: ["tradicional", "junior"],
   },
+  lotoplus: {
+    id: "lotoplus",
+    nombre: "Loto Plus",
+    min: 0,
+    max: 45,
+    dias: [3, 6],
+    hora: "21:30",
+    modalidades: ["tradicional", "match", "desquite", "sale_o_sale"],
+  },
 };
 
-export const ORDEN_JUEGOS: JuegoId[] = ["quini6", "brinco"];
+export const ORDEN_JUEGOS: JuegoId[] = ["quini6", "brinco", "lotoplus"];
 
 export function esJuego(x: string | undefined): x is JuegoId {
-  return x === "quini6" || x === "brinco";
+  return x === "quini6" || x === "brinco" || x === "lotoplus";
 }
+
+/** Poceada de la Ciudad: 8 números del 00 al 99 contra 20; sortea lunes a sábado 21:00 con la nocturna. */
+export const POCEADA = { nombre: "Poceada", hora: "21:00", dias: [1, 2, 3, 4, 5, 6] };
 
 const NOMBRES_MOD: Record<string, string> = {
   tradicional: "Tradicional",
@@ -74,6 +100,9 @@ const NOMBRES_MOD: Record<string, string> = {
   revancha: "Revancha",
   siempre_sale: "Siempre sale",
   junior: "Junior",
+  match: "Match",
+  desquite: "Desquite",
+  sale_o_sale: "Sale o sale",
 };
 
 export function nombreModalidad(clave: string): string {
@@ -92,7 +121,7 @@ export type ProvinciaId = "ciudad" | "provincia" | "santafe" | "cordoba" | "urug
 export const ORDEN_PROVINCIAS: ProvinciaId[] = ["ciudad", "provincia", "santafe", "cordoba", "uruguay", "mendoza", "entrerios"];
 
 export const PROVINCIAS: Record<ProvinciaId, { nombre: string; corto: string }> = {
-  ciudad: { nombre: "Ciudad de Buenos Aires", corto: "Ciudad" },
+  ciudad: { nombre: "Nacional (Ciudad de Buenos Aires)", corto: "Nacional (Ciudad)" },
   provincia: { nombre: "Provincia de Buenos Aires", corto: "Provincia" },
   santafe: { nombre: "Santa Fe", corto: "Santa Fe" },
   cordoba: { nombre: "Córdoba", corto: "Córdoba" },
@@ -148,7 +177,7 @@ export interface IndiceQuinielaItem { fecha: string; turnos: number; validado: b
 export interface IndiceQuiniela { juego: "quiniela"; provincia: ProvinciaId; fechas: IndiceQuinielaItem[]; generado: string }
 
 export const DISCLAIMER =
-  "Aplicación informativa independiente. No está afiliada a Lotería de Santa Fe ni a ningún organismo oficial. No permite apostar. Ante cualquier discrepancia vale el extracto oficial. Jugar compulsivamente es perjudicial para la salud. +18.";
+  "Aplicación informativa independiente. No está afiliada a Lotería de Santa Fe, a Lotería de la Ciudad ni a ningún organismo oficial. No permite apostar. Ante cualquier discrepancia vale el extracto oficial. Jugar compulsivamente es perjudicial para la salud. +18.";
 
 export const FUENTES = ["tujugada.com.ar", "quini-6-resultados.com.ar"];
 export const SITIO = "https://nfgalindez.com/sorteos/";

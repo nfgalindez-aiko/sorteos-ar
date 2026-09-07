@@ -18,6 +18,8 @@ on:
     # Cada 15 min de 10:00 a 22:59 ART = 13:00-23:59 UTC (lun-sab) y 00:00-01:59 UTC (mar-dom).
     - cron: "*/15 13-23 * * 1-6"
     - cron: "*/15 0-1 * * 0,2-6"
+    # Loto Plus sortea miercoles (ya cubierto) y sabados 21:30 ART = domingo 00:00-02:59 UTC.
+    - cron: "*/5 0-2 * * 0"
   workflow_dispatch:
 
 concurrency:

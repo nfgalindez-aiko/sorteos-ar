@@ -1,0 +1,108 @@
+{
+  "juego": "lotoplus",
+  "sorteo": 3915,
+  "fecha": "2026-09-05",
+  "modalidades": {
+    "tradicional": {
+      "numeros": [
+        8,
+        20,
+        23,
+        28,
+        39,
+        44
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 3867231609
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 3,
+          "premio": 6815358
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 230,
+          "premio": 17779
+        }
+      ]
+    },
+    "match": {
+      "numeros": [
+        1,
+        24,
+        25,
+        26,
+        37,
+        38
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 1735132235
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 4,
+          "premio": 5111518
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 141,
+          "premio": 29001
+        }
+      ]
+    },
+    "desquite": {
+      "numeros": [
+        0,
+        7,
+        30,
+        37,
+        38,
+        41
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 2290577435
+        }
+      ]
+    },
+    "sale_o_sale": {
+      "numeros": [
+        0,
+        8,
+        15,
+        30,
+        37,
+        42
+      ],
+      "premios": [
+        {
+          "aciertos": 5,
+          "ganadores": 2,
+          "premio": 26332065
+        }
+      ]
+    }
+  },
+  "numero_plus": 1,
+  "pozo_extra": null,
+  "proximo": {
+    "sorteo": 3916,
+    "fecha": "2026-09-09",
+    "pozo": 23858000000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "B"
+  ],
+  "generado": "2026-09-07T18:14:15-03:00"
+}

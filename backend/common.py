@@ -145,7 +145,7 @@ def premio_eq(x, y):
 def compare(a, b):
     """Devuelve lista de claves con diferencias entre dos dicts parseados."""
     diffs = []
-    for k in ("sorteo", "fecha"):
+    for k in ("sorteo", "fecha", "numero_plus"):
         if a.get(k) != b.get(k):
             diffs.append(k)
     mods = set(a.get("modalidades", {})) | set(b.get("modalidades", {}))

@@ -3,7 +3,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
-import { DiaQuiniela, Indice, IndiceItem, IndiceQuiniela, JuegoId, ORDEN_JUEGOS, ProvinciaId, ResumenQuinielas, Sorteo } from "./modelos";
+import { DiaQuiniela, Indice, IndiceItem, IndiceQuiniela, JuegoId, ORDEN_JUEGOS, Poceada, ProvinciaId, ResumenQuinielas, Sorteo } from "./modelos";
 
 const BASE: string =
   (Constants.expoConfig?.extra?.baseURL as string | undefined) ?? "https://nfgalindez-aiko.github.io/sorteos-ar/data/";
@@ -60,7 +60,10 @@ interface EstadoResultados {
   cargando: boolean;
   ultimaActualizacion: Date | null;
   quinielas: ResumenQuinielas | null;
+  poceada: Poceada | null;
+  poceadaIndice: IndiceItem[];
   recargar: () => Promise<void>;
+  poceadaSorteo: (numero: number) => Promise<Poceada>;
   sorteo: (juego: JuegoId, numero: number) => Promise<Sorteo>;
   quinielaDia: (prov: ProvinciaId, fecha: string | "latest") => Promise<DiaQuiniela>;
   quinielaIndice: (prov: ProvinciaId) => Promise<IndiceQuiniela>;
@@ -75,6 +78,8 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
   const [cargando, setCargando] = useState(false);
   const [ultimaActualizacion, setUltima] = useState<Date | null>(null);
   const [quinielas, setQuinielas] = useState<ResumenQuinielas | null>(null);
+  const [poceada, setPoceada] = useState<Poceada | null>(null);
+  const [poceadaIndice, setPoceadaIndice] = useState<IndiceItem[]>([]);
   const enCurso = useRef(false);
 
   const recargar = useCallback(async () => {
@@ -104,6 +109,14 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
     } catch {
       /* las quinielas son opcionales en la portada */
     }
+    try {
+      const r = await obtener<Poceada>("poceada/latest.json");
+      setPoceada(r.valor);
+      const i = await obtener<Indice>("poceada/index.json");
+      setPoceadaIndice(i.valor.sorteos);
+    } catch {
+      /* la poceada es opcional en la portada */
+    }
     const offline = fallos + deCache === ORDEN_JUEGOS.length;
     setSinConexion(offline);
     if (!offline) setUltima(new Date());
@@ -122,6 +135,8 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
       }
       const q = await leerCache<ResumenQuinielas>("quiniela/latest.json");
       if (q) setQuinielas(q);
+      const po = await leerCache<Poceada>("poceada/latest.json");
+      if (po) setPoceada(po);
       await recargar();
     })();
   }, [recargar]);
@@ -150,9 +165,21 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
     return r.valor;
   }, []);
 
+  const poceadaSorteo = useCallback(async (numero: number): Promise<Poceada> => {
+    const path = `poceada/${numero}.json`;
+    const c = await leerCache<Poceada>(path);
+    if (c && c.validado) return c;
+    try {
+      return await descargar<Poceada>(path);
+    } catch (e) {
+      if (c) return c;
+      throw e;
+    }
+  }, []);
+
   const valor = useMemo<EstadoResultados>(
-    () => ({ ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, recargar, sorteo, quinielaDia, quinielaIndice }),
-    [ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, recargar, sorteo, quinielaDia, quinielaIndice],
+    () => ({ ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, poceada, poceadaIndice, recargar, sorteo, quinielaDia, quinielaIndice, poceadaSorteo }),
+    [ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, poceada, poceadaIndice, recargar, sorteo, quinielaDia, quinielaIndice, poceadaSorteo],
   );
   return <Ctx.Provider value={valor}>{children}</Ctx.Provider>;
 }

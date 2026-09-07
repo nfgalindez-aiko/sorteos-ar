@@ -3,9 +3,9 @@
 # Sale con 1 si algun juego no quedo validado, para que el job se vea en rojo; data/ se commitea igual.
 import sys, os
 from common import log, log_robots, build, publish, write_json, FIX
-import quini6_scraper, brinco_scraper, quiniela_scraper
+import quini6_scraper, brinco_scraper, lotoplus_scraper, quiniela_scraper, poceada_scraper
 
-JUEGOS = (quini6_scraper, brinco_scraper)
+JUEGOS = (quini6_scraper, brinco_scraper, lotoplus_scraper)
 
 
 def main():
@@ -28,6 +28,13 @@ def main():
     except Exception as e:
         log(f"quiniela ERROR general {e}")
         fallos.append(f"quiniela:{e}")
+    try:
+        out, diffs = poceada_scraper.correr()  # despues de quinielas: cruza con la nocturna de Ciudad
+        if out is None:
+            fallos.append("poceada:sin datos")
+    except Exception as e:
+        log(f"poceada ERROR general {e}")
+        fallos.append(f"poceada:{e}")
     log(f"RUN_ALL fin fallos={fallos}")
     sys.exit(1 if fallos else 0)
 

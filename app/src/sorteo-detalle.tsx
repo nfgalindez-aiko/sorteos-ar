@@ -32,6 +32,14 @@ export function SorteoDetalle({ juego, sorteo }: { juego: JuegoId; sorteo: Sorte
         </Tarjeta>
       ))}
 
+      {sorteo.numero_plus != null && (
+        <Tarjeta fondo={p.fondoTarjeta}>
+          <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} accessible accessibilityLabel={`Número Plus ${sorteo.numero_plus}`}>
+            <Text style={{ color: p.primario, fontWeight: "600" }}>Número Plus</Text>
+            <Text style={{ color: t.texto, fontWeight: "800", fontSize: 22, fontVariant: ["tabular-nums"] }}>{sorteo.numero_plus}</Text>
+          </View>
+        </Tarjeta>
+      )}
       {sorteo.pozo_extra && (
         <Tarjeta fondo={p.fondoTarjeta}>
           <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} accessible>

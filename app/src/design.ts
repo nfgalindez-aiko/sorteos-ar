@@ -52,6 +52,10 @@ const PALETAS: Record<JuegoId, { claro: Paleta; oscuro: Paleta }> = {
     claro: { primario: "#0D7345", secundario: "#D9A60D", bolilla: "#F7D640", textoBolilla: "#1A331F", fondoTarjeta: "#EAF7EE" },
     oscuro: { primario: "#59CC8C", secundario: "#FACC40", bolilla: "#E6BF33", textoBolilla: "#14241A", fondoTarjeta: "#1A2E21" },
   },
+  lotoplus: {
+    claro: { primario: "#8A1C3B", secundario: "#C98A00", bolilla: "#F3C8D4", textoBolilla: "#4A0F22", fondoTarjeta: "#FBEFF2" },
+    oscuro: { primario: "#F08DA8", secundario: "#F2C14E", bolilla: "#6B2140", textoBolilla: "#FDECF1", fondoTarjeta: "#2D1720" },
+  },
   brinco: {
     claro: { primario: "#1F529E", secundario: "#E6661A", bolilla: "#FA8C33", textoBolilla: "#FFFFFF", fondoTarjeta: "#EBF2FC" },
     oscuro: { primario: "#80B3FA", secundario: "#FF994D", bolilla: "#F28C38", textoBolilla: "#1A140D", fondoTarjeta: "#172438" },

@@ -7,6 +7,8 @@ import { Espacio, usePaleta, useTema } from "../src/design";
 import { fechaLarga, horaCorta, instanteSorteo, pesos } from "../src/formato";
 import { JUEGOS, JuegoId, ORDEN_JUEGOS, PROVINCIAS, ResumenProvincia, Sorteo, nombreTurno } from "../src/modelos";
 import { paletaQuiniela } from "../src/quiniela-detalle";
+import { paletaPoceada } from "../src/poceada-detalle";
+import { POCEADA, Poceada } from "../src/modelos";
 
 export default function Inicio() {
   const t = useTema();
@@ -37,6 +39,7 @@ export default function Inicio() {
         {ORDEN_JUEGOS.map((j) => (
           <TarjetaJuego key={j} juego={j} sorteo={r.ultimos[j]} />
         ))}
+        {r.poceada && <TarjetaPoceada s={r.poceada} />}
         {r.quinielas && r.quinielas.provincias.length > 0 && (
           <View style={{ gap: Espacio.s }}>
             <Text style={{ color: t.textoSec, fontSize: 12, fontWeight: "600", textTransform: "uppercase", letterSpacing: 0.5 }}>Quinielas</Text>
@@ -133,6 +136,35 @@ function TarjetaQuiniela({ q }: { q: ResumenProvincia }) {
           ))}
           {q.turnos.length === 0 && <Text style={{ color: t.textoSec, fontSize: 13 }}>Sin sorteos publicados todavía.</Text>}
         </View>
+      </Tarjeta>
+    </Pressable>
+  );
+}
+
+function TarjetaPoceada({ s }: { s: Poceada }) {
+  const t = useTema();
+  const p = paletaPoceada(t.oscuro);
+  const router = useRouter();
+  const prox = s.proximo;
+  const objetivo = prox?.fecha ? instanteSorteo(prox.fecha, POCEADA.hora) : null;
+  return (
+    <Pressable onPress={() => router.push("/poceada")} accessibilityRole="button" accessibilityHint="Abre el detalle de la Poceada">
+      <Tarjeta fondo={p.fondoTarjeta} style={{ borderColor: p.primario + "40", gap: Espacio.s }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+          <Text style={{ color: p.primario, fontSize: 22, fontWeight: "700" }}>Poceada</Text>
+          <Chip texto={`Sorteo ${s.sorteo}`} color={p.primario} />
+        </View>
+        <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(s.fecha)}</Text>
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 6 }} accessible accessibilityLabel={`Números: ${s.numeros.join(", ")}`}>
+          {s.numeros.map((n) => (
+            <View key={n} style={{ paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, backgroundColor: p.bolilla }}>
+              <Text style={{ color: p.textoBolilla, fontWeight: "700", fontVariant: ["tabular-nums"] }}>{n}</Text>
+            </View>
+          ))}
+        </View>
+        {prox?.pozo != null && <Text style={{ color: p.secundario, fontWeight: "600" }}>Próximo pozo estimado: {pesos(prox.pozo)}</Text>}
+        {objetivo && <CuentaRegresiva objetivo={objetivo} />}
+        {!s.validado && <Chip texto="Pendiente de confirmación" color={t.aviso} />}
       </Tarjeta>
     </Pressable>
   );

@@ -22,10 +22,11 @@ Resultados de los sorteos poceados argentinos la misma noche, confirmados por do
 Sorteos AR es una aplicación informativa independiente para consultar los resultados de las loterías poceadas de Argentina. No permite apostar ni comprar cupones: solo muestra los números sorteados, los premios y el pozo estimado del próximo sorteo.
 
 QUÉ PODÉS VER
-• Último sorteo de Quini 6 (Tradicional, Segunda vuelta, Revancha, Siempre sale y Pozo extra) y de Brinco (Tradicional y Junior).
+• Último sorteo de Quini 6 (Tradicional, Segunda vuelta, Revancha, Siempre sale y Pozo extra), Brinco (Tradicional y Junior) y Loto Plus (Tradicional, Match, Desquite, Sale o sale y Número Plus).
+• Poceada de la Ciudad: los 20 números, letras, premios y próximo pozo.
 • Tabla de premios por modalidad: aciertos, cantidad de ganadores y premio por apuesta.
 • Pozo estimado y cuenta regresiva al próximo sorteo.
-• Quinielas de Ciudad, Provincia de Buenos Aires, Santa Fe, Córdoba, Mendoza, Entre Ríos y Montevideo: los 20 números de cada turno, con la cabeza destacada y las letras.
+• Quinielas Nacional (Ciudad), Provincia de Buenos Aires, Santa Fe, Córdoba, Mendoza, Entre Ríos y Montevideo: los 20 números de cada turno, con la cabeza destacada y las letras.
 • Histórico de sorteos anteriores.
 • Controlar tus números: cargás tus 6 números y la app marca cuáles salieron en cada modalidad. Solo compara; no recomienda ni sugiere números.
 
@@ -36,7 +37,7 @@ CÓMO FUNCIONA
 • Compatible con VoiceOver y Dynamic Type.
 
 AVISO
-Aplicación informativa independiente. No está afiliada a Lotería de Santa Fe ni a ningún organismo oficial. No permite apostar. Ante cualquier discrepancia vale el extracto oficial. Jugar compulsivamente es perjudicial para la salud. +18.
+Aplicación informativa independiente. No está afiliada a Lotería de Santa Fe, a Lotería de la Ciudad ni a ningún organismo oficial. No permite apostar. Ante cualquier discrepancia vale el extracto oficial. Jugar compulsivamente es perjudicial para la salud. +18.
 
 Los nombres de los juegos se mencionan únicamente con fines descriptivos y pertenecen a sus respectivos titulares.
 

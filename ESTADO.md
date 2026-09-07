@@ -24,6 +24,8 @@ Leyenda: ✅ verificado · ⏳ pendiente · 🔴 falló / bloqueado · 🔎 en i
 | 11 | Textos App Store, privacidad | ✅ borrador | `docs/app_store.md`, `docs/privacidad.md`. Capturas: requieren la app compilada |
 | 12 | Push notifications | ⏳ fase 2 | Base lista (`novedades.json`). Falta APNs |
 | 13 | Quinielas (pedido sesión 4) | ✅ backend / ⏳ en teléfono | 7 provincias en `data/quiniela/`. Ciudad, Provincia, Santa Fe y Córdoba con A+B; Montevideo con A+quinielamontevideo.com; Mendoza y Entre Ríos solo A (turnos `validado:false`). 10 tests nuevos. Pantallas en la app, publicadas en EAS Update |
+| 15 | Loto Plus (pedido sesión 5) | ✅ | A+B, sorteo 3915 del 05/09 `OK`. Mismo formato que Quini 6 más `numero_plus`. Cron de sábados agregado |
+| 16 | Poceada (pedido sesión 5) | ✅ con matiz | Solo A tiene la página, pero se valida cruzando con la nocturna de la Quiniela de la Ciudad (que viene de A+B). El 9712 del sábado quedó sin validar porque esa nocturna vino de una sola fuente; el primer `latest.json` sale cuando valide el 9713 (lunes 07/09 a la noche) |
 | 14 | Verificador externo (pedido sesión 4) | ✅ | `backend/verificador.py` + workflow `verificar` cada hora. Probado en local: 0 problemas hoy; simula bien un sorteo faltante. Abre/cierra issue en GitHub |
 
 ## Reglas aprendidas
@@ -234,3 +236,35 @@ Cierre de la sesión 4 (verificación en GitHub):
   siguiente → verde y el issue quedó cerrado solo. GitHub manda mail al dueño en cada apertura.
 - EAS Update con quinielas publicado en `preview`:
   https://expo.dev/accounts/gestionaiko/projects/sorteos-ar/updates/4c10769a-6256-40b0-8ba5-de383d70f708
+
+## Sesión 5 — 07/09/2026 (noche)
+
+Pedido: agregar Loto Plus y Poceada. Pregunta: "¿se puede poner Nacional y Provincia?" → ya
+estaban: "Nacional" es la Quiniela de la Ciudad de Buenos Aires (ex Lotería Nacional) y
+"Provincia" la de Buenos Aires. Se renombró la etiqueta a "Nacional (Ciudad)".
+
+Hecho:
+- `lotoplus_scraper.py`: A (tujugada `loto.asp`) + B (`quini-6-resultados.com.ar/loto/`). Regla 22:
+  B usa formato de dinero yanqui (`$3,867,231,609.72`); `money_us()` lo trunca a entero. A redondea,
+  como en Quini 6 (tolerancia ±1 ya existente). `compare` ahora también compara `numero_plus`.
+- `poceada_scraper.py`: solo A tiene página. Regla 23: la Poceada se sortea con la nocturna de la
+  Quiniela de la Ciudad y sus 20 números son las dos últimas cifras de esa nocturna, así que se
+  cruza con `data/quiniela/ciudad/<fecha>.json`. Regla 24 (vista en el 9712 del 05/09): cuando dos
+  números de la nocturna terminan igual (dos "…52"), el extracto oficial agrega un número extra
+  (apareció el 62); la regla implementada es "todas las terminaciones distintas tienen que estar
+  en la Poceada" (confirma 19 de 20 en ese caso). Queda `validado:true` solo si además la nocturna
+  vino de dos fuentes. `run_all` corre la Poceada después de las quinielas por eso.
+- Verificador: Loto Plus (mié/sáb 21:30) y Poceada (lun–sáb 21:00). Si la Poceada todavía no tiene
+  `latest.json` pero sí índice, es aviso y no problema (arranque).
+- App: Loto Plus como tercer juego poceado (misma pantalla que Quini 6, más tarjeta "Número
+  Plus"); Poceada con tarjeta en Inicio, detalle (20 números, letras, premios, próximo pozo),
+  histórico y sorteo puntual. Disclaimer ampliado: "…Lotería de Santa Fe, a Lotería de la Ciudad
+  ni a ningún organismo oficial" (en app, docs y sitio). `tsc` limpio, export OK.
+- Tests: 42 OK (9 nuevos para Loto Plus y Poceada, incluido el caso del número extra).
+
+Lo que NO se verificó:
+- Poceada validada de verdad: primera oportunidad hoy a la noche (9713). El verificador de las
+  22:20 lo va a decir.
+- Loto Plus en cron real: primer sorteo, miércoles 09/09 21:30 (3916).
+- Control de jugada para Poceada (8 números) y Loto Plus: no se hizo todavía. Loto Plus usa la
+  misma pantalla de control que Quini 6 (6 números 0–45), así que funciona; Poceada no tiene.
