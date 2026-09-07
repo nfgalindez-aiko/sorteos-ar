@@ -221,3 +221,16 @@ Lo que NO se verificó:
 - Vespertina y nocturna de hoy: al momento de la corrida no habían salido. El cron las tiene que
   tomar solo; el verificador de las 22:20 ART lo va a controlar.
 - Sábados: asumí sin vespertina en varias provincias (el verificador lo trata como aviso, no error).
+
+Cierre de la sesión 4 (verificación en GitHub):
+- Workflow `scrape` con quinielas: tests 33 OK, 7 provincias, "sin cambios en data/" (lo publicado
+  desde acá ya era igual). Regla 20: el `MISMATCH` que aparece en el log del runner viene del test
+  de conflicto, no de datos reales; ahora ese test escribe a un log temporal.
+- Regla 21 (bug propio): en el workflow `verificar`, `python ... | tee` seguido de `$?` devolvía el
+  exit de `tee` (siempre 0), así que la primera corrida con 7 problemas quedó en verde y no abrió
+  issue. Corregido con `${PIPESTATUS[0]}`.
+- Alerta probada de punta a punta: corrida con base rota (input `base`) → job rojo e issue #1
+  "🔴 Verificador: datos publicados con problemas" con etiqueta `verificador`; corrida normal
+  siguiente → verde y el issue quedó cerrado solo. GitHub manda mail al dueño en cada apertura.
+- EAS Update con quinielas publicado en `preview`:
+  https://expo.dev/accounts/gestionaiko/projects/sorteos-ar/updates/4c10769a-6256-40b0-8ba5-de383d70f708
