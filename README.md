@@ -7,7 +7,8 @@ Estado, errores y reglas aprendidas: [ESTADO.md](ESTADO.md).
 ```
 backend/     scrapers Python (solo stdlib), tests, histórico   -> escriben data/
 data/        JSON publicado (GitHub Pages): quini6/, brinco/   -> lo consume la app
-ios/         app SwiftUI (iOS 16+), sin dependencias
+app/         app Expo (React Native + TypeScript, expo-router); EAS Build/Update
+legacy-swiftui/  primer intento en SwiftUI, descartado (ver DESCARTADO.md)
 docs/        textos de App Store y política de privacidad
 .github/     cron de GitHub Actions que corre los scrapers y commitea data/
 ```
@@ -32,5 +33,5 @@ Contrato de `data/<juego>/latest.json`, `NNNN.json` e `index.json`: brief, secci
 - Actions con permiso de escritura: el workflow `scrape` commitea `data/` solo.
 - JSON público: `https://nfgalindez-aiko.github.io/sorteos-ar/data/quini6/latest.json`
   (también `brinco/latest.json`, `<juego>/index.json`, `<juego>/NNNN.json`).
-- La app ya apunta a esa base (`Config.baseURL` en `ios/SorteosAR/SorteosARApp.swift`).
+- La app ya apunta a esa base (`extra.baseURL` en `app/app.json`).
 - Página, privacidad, términos y soporte: https://nfgalindez.com/sorteos/ (repo `nfgalindez.com`, `generar.py`).

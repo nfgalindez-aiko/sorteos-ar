@@ -5,7 +5,22 @@ backend/historico_run*.txt
 __pycache__/
 *.pyc
 # Xcode
-ios/**/xcuserdata/
-ios/**/*.xcuserstate
-ios/**/DerivedData/
+legacy-swiftui/**/xcuserdata/
+legacy-swiftui/**/*.xcuserstate
+legacy-swiftui/**/DerivedData/
 .DS_Store
+# Expo / React Native (app/)
+app/node_modules/
+app/.expo/
+app/dist/
+app/web-build/
+app/expo-env.d.ts
+app/*.orig.*
+app/*.jks
+app/*.p8
+app/*.p12
+app/*.key
+app/*.mobileprovision
+app/.env*.local
+backend/npm_install.txt
+backend/eas_build.txt

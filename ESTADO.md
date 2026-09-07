@@ -17,10 +17,10 @@ Leyenda: ✅ verificado · ⏳ pendiente · 🔴 falló / bloqueado · 🔎 en i
 | 4 | Histórico 50 sorteos Quini 6 en `data/quini6/NNNN.json` | ✅ con matiz | 50 archivos (3357–3406), todos con 4 modalidades × 6 números. Solo 16 `validado:true` (ver regla 4 y 5) |
 | 5 | Formato JSON publicado + `index.json` + no publicar si no coincide | ✅ | `data/quini6/latest.json`, `data/brinco/latest.json`, tests `test_build_formato_publicado` y `test_publish_no_pisa_latest_si_no_validado` |
 | 6 | GitHub Actions cron + Pages | ✅ | Repo `nfgalindez-aiko/sorteos-ar`, Pages desde `main`/root, permisos write. Runs 34155591245 y 34156176636 en verde. `https://nfgalindez-aiko.github.io/sorteos-ar/data/quini6/latest.json` → 200 con sorteo 3406. El cron real se observa el 09/09 |
-| 7 | Proyecto Xcode SwiftUI iOS 16+, bundle `ar.sorteos.app` | ⏳ sin compilar | Fuentes en `ios/SorteosAR/`, `ios/project.yml` (XcodeGen). No hay Xcode en esta máquina (Windows) |
-| 8 | Pantallas: Inicio, Detalle, Histórico, Control de jugada, Ajustes | ⏳ sin compilar | Escritas. Sin ejecutar |
-| 9 | Diseño: paleta inspirada, SF Pro, bolillas, dark mode, Dynamic Type | ⏳ sin compilar | `Design/Tokens.swift`, `Componentes.swift` |
-| 10 | Compila sin warnings, offline, VoiceOver | 🔴 no verificable acá | Plan de verificación en `ios/README.md` |
+| 7 | ~~Proyecto Xcode SwiftUI~~ → **App Expo** (decisión del dueño, sesión 3), bundle `ar.sorteos.app` | ✅ | `app/` Expo SDK 57 + expo-router + TS estricto. `tsc` OK, `expo-doctor` 21/21, `expo export --platform ios` genera el bundle. SwiftUI archivado en `legacy-swiftui/` |
+| 8 | Pantallas: Inicio, Detalle, Histórico, Control de jugada, Ajustes | ✅ código / ⏳ en teléfono | Publicadas en EAS Update rama `preview` (runtime `exposdk:57.0.0`) para abrir en Expo Go. Sin probar todavía en un iPhone |
+| 9 | Diseño: paleta inspirada, tipografía de sistema, bolillas, dark mode, Dynamic Type | ✅ código | `app/src/design.ts`, `componentes.tsx`. `useColorScheme` para oscuro; `maxFontSizeMultiplier` en bolillas |
+| 10 | Compila sin warnings, offline, VoiceOver | ⏳ | Compila (Metro + tsc). Offline y VoiceOver: labels puestos, falta probar en el teléfono. **EAS Build iOS: bloqueado** hasta que el dueño cargue credenciales de Apple una vez (ver pendientes) |
 | 11 | Textos App Store, privacidad | ✅ borrador | `docs/app_store.md`, `docs/privacidad.md`. Capturas: requieren la app compilada |
 | 12 | Push notifications | ⏳ fase 2 | No empezado |
 
@@ -76,7 +76,10 @@ Leyenda: ✅ verificado · ⏳ pendiente · 🔴 falló / bloqueado · 🔎 en i
 - [x] ~~Correr el workflow y confirmar 200.~~ Runs 34155591245 y 34156176636 en verde; `latest.json` 200.
 - [x] ~~URL base en la app.~~ `Config.baseURL` apunta a Pages.
 - [x] ~~Mail/URL de soporte y privacidad.~~ https://nfgalindez.com/sorteos/privacidad/ y /soporte/ (mails hola@ y privacidad@nfgalindez.com del sitio).
-- [ ] Mac con Xcode: compilar (`ios/README.md`), corregir lo que marque el compilador y anotarlo acá.
+- [x] ~~Mac con Xcode.~~ Ya no hace falta: EAS Build compila en la nube (sesión 3).
+- [ ] **Credenciales de Apple en EAS (una vez, interactivo):** en tu terminal `cd app && npx eas-cli build --platform ios --profile production` y loguearte con el Apple ID cuando lo pida (o cargar una API key de App Store Connect con `npx eas-cli credentials`). Después `npx eas-cli submit --platform ios --latest` sube a TestFlight.
+- [ ] Abrir la app en Expo Go (expo.dev → sorteos-ar → Updates → preview → Open in Expo Go) y probar: offline, VoiceOver, texto grande.
+- [ ] Ícono propio para la app (hoy placeholder del template).
 - [ ] Decidir el nombre definitivo (regla 4 del brief: sin "Quini", "Brinco", "Lotería de Santa Fe"). Hoy: "Sorteos AR".
 - [ ] Cuenta Apple Developer antes de publicar.
 - [ ] Opcional: consultar con abogado si "quini"/"brinco" como palabras clave de App Store es defendible.
@@ -153,3 +156,30 @@ Errores propios de la sesión:
 Lo que NO se verificó:
 - Sigue sin compilarse nada de iOS (no hay Mac).
 - El cron en horario real: primer sorteo a observar, 3407, miércoles 09/09/2026 21:15.
+
+## Sesión 3 — 07/09/2026 (noche)
+
+Pedido del dueño: la app se hace con Expo y EAS Build; primero Expo Go, después TestFlight.
+Cambia la decisión 1 del brief (SwiftUI nativo). Ventaja inmediata: no hace falta Mac.
+
+Hecho:
+- `app/` creado con `create-expo-app` (SDK 57, blank-typescript) + expo-router, safe-area, screens,
+  AsyncStorage, expo-constants, expo-linking, expo-updates. Toda la app reescrita en TS: mismas
+  pantallas y reglas que la versión SwiftUI. SwiftUI movido a `legacy-swiftui/` con `DESCARTADO.md`.
+- Verificado sin teléfono: `tsc --noEmit` limpio (strict), `expo-doctor` 21/21,
+  `expo export --platform ios` produce el bundle Hermes (2,4 MB).
+- Proyecto EAS creado y linkeado: `@gestionaiko/sorteos-ar`, id `294ffa73-6981-4b7a-b0fa-15ddcfcd88d7`.
+- EAS Update configurado y publicado dos veces en la rama `preview`. Regla 13 (nueva): **con
+  `runtimeVersion.policy = appVersion` Expo Go no puede abrir el update**; hay que usar
+  `sdkVersion` (runtime `exposdk:57.0.0`). Corregido y republicado:
+  https://expo.dev/accounts/gestionaiko/projects/sorteos-ar/updates/2f3ea35d-a6c7-4da8-9276-2ad4c044a760
+- Regla 14: `npm install` del template falla con ERESOLVE (react-dom 19.2.8 vs react 19.2.3);
+  se instala con `--legacy-peer-deps`. Documentado en `app/README.md`.
+- Regla 15: `eas update --non-interactive` exige `--environment`.
+- EAS Build iOS `preview` intentado en modo no interactivo: falla en credenciales ("couldn't find
+  any credentials suitable for internal distribution"). Es esperable: la primera vez necesita el
+  Apple ID del dueño en una terminal interactiva. No se puede hacer desde acá.
+
+Lo que NO se verificó:
+- La app corriendo en un iPhone real (Expo Go). Todo lo visual, offline y VoiceOver queda a probar.
+- EAS Build y TestFlight: bloqueados por credenciales de Apple.
