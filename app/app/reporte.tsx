@@ -13,7 +13,6 @@ export default function Reporte() {
   const t = useTema();
   const router = useRouter();
   const [texto, setTexto] = useState("");
-  const [contacto, setContacto] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [estado, setEstado] = useState<{ ok: boolean; msg: string } | null>(null);
   const color = t.oscuro ? "#7FD1C7" : "#0F6E63";
@@ -22,7 +21,7 @@ export default function Reporte() {
   const enviar = async () => {
     setEnviando(true);
     setEstado(null);
-    const r = await enviarReporte(texto, contacto, { pantalla: pantalla ?? "desconocida", juego, sorteo });
+    const r = await enviarReporte(texto, "", { pantalla: pantalla ?? "desconocida", juego, sorteo });
     setEnviando(false);
     if (r.ok) {
       setEstado({ ok: true, msg: "Enviado. Gracias por avisar." });
@@ -39,7 +38,7 @@ export default function Reporte() {
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined} style={{ flex: 1 }} keyboardVerticalOffset={90}>
         <ScrollView contentContainerStyle={{ padding: Espacio.m, gap: Espacio.m }} keyboardShouldPersistTaps="handled">
           <Text style={{ color: t.textoSec, fontSize: 14, lineHeight: 20 }}>
-            ¿Un número que no coincide con el extracto, algo que no carga, un texto mal? Contalo acá y le llega directo al desarrollador. No hace falta dejar ningún dato.
+            ¿Un número que no coincide con el extracto, algo que no carga, un texto mal? Contalo acá y le llega directo al desarrollador. No hace falta dejar ningún dato tuyo.
           </Text>
           <TextInput
             allowFontScaling={false}
@@ -52,18 +51,6 @@ export default function Reporte() {
             textAlignVertical="top"
             style={{ minHeight: 140, backgroundColor: t.superficie, color: t.texto, padding: 12, borderRadius: Radio.chip, borderWidth: 1, borderColor: t.borde, fontSize: 16 * esc }}
             accessibilityLabel="Descripción del error"
-          />
-          <TextInput
-            allowFontScaling={false}
-            placeholder="Cómo contactarte, si querés respuesta (opcional)"
-            placeholderTextColor={t.textoSec}
-            value={contacto}
-            onChangeText={setContacto}
-            maxLength={120}
-            autoCapitalize="none"
-            keyboardType="email-address"
-            style={{ backgroundColor: t.superficie, color: t.texto, padding: 12, borderRadius: Radio.chip, borderWidth: 1, borderColor: t.borde, fontSize: 16 * esc }}
-            accessibilityLabel="Contacto opcional"
           />
           <Tarjeta style={{ gap: 4 }}>
             <Text style={{ color: t.textoSec, fontSize: 12 }}>Se adjunta solo para ubicar el problema:</Text>
