@@ -288,3 +288,20 @@ https://nfgalindez.com/sorteos/.
 - Ícono del kit (`icono-1024.png`) puesto como ícono de la app Expo, foreground de Android y
   favicon; el ícono de iOS solo cambia con un build nuevo (en Expo Go no se ve). Ícono también en la
   tarjeta de la portada del sitio.
+
+## Sesión 7 — 08/09/2026
+
+- Primer build de EAS falló en "Install dependencies": regla 27, el `package-lock.json` estaba
+  desincronizado por instalar con `--legacy-peer-deps` (faltaban react-dom, gesture-handler,
+  reanimated, worklets). En la nube EAS corre `npm ci`, que exige el lock exacto. Se instalaron las
+  versiones del SDK 57 con `expo install`, se regeneró el lock sin flags y se verificó con `npm ci`
+  desde cero (560 paquetes). Segundo build OK en 5 min: `fae12ccb`, versión 0.1.0, build 3.
+- Credenciales de Apple: el dueño hizo el login interactivo una vez; certificado de distribución y
+  API key de App Store Connect son los mismos de sus otras apps (son por cuenta, no por app). Desde
+  ahora `eas build` y `eas submit` corren no interactivos desde esta máquina.
+- App creada en App Store Connect (ASC App ID 6809660906), grupo TestFlight "Team (Expo)", tester
+  nfgalindez@gmail.com. Submission 1b5c7d39 aceptada; Apple procesa y avisa por mail.
+  `ascAppId` guardado en `app/eas.json`.
+- Etiquetas de la app: "1 fuente" / "2 fuentes" en vez de "pendiente de confirmación".
+- Poceada 9713 (lun 07/09) quedó `validado:true` por cruce con la nocturna de Ciudad de dos fuentes:
+  primer `data/poceada/latest.json`. El cron publicó solo la vespertina y la nocturna de las quinielas.
