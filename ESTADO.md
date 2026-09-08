@@ -428,3 +428,24 @@ monetización (decisión del dueño). Primer sorteo grande con la app pública: 
   con un token nuevo con Read and write → 204 y corrida `workflow_dispatch` en marcha. El Worker
   `sorteos-ar-cron` queda activo cada 5 min dentro de las ventanas. `/tick` solo dispara dentro de
   ventana (se quitó el `force` de diagnóstico).
+
+## Sesión 15 — 08/09/2026 · Notificaciones push (1.1)
+
+- Arquitectura: `worker/push/` (Worker `sorteos-ar-push` + KV `SUSCRIPCIONES`): la app registra su
+  token de Expo con los temas elegidos (`/registrar`, `/baja`, clave APP_KEY); el backend llama a
+  `/enviar` (clave SEND_KEY = secreto `PUSH_SEND_KEY` en GitHub Actions) y el Worker manda por el
+  servicio de push de Expo, en lotes de 100, dando de baja tokens `DeviceNotRegistered`.
+  Temas: quini6, brinco, lotoplus, poceada y quiniela:<prov>.
+- Backend: `common.notificar()`; se dispara en `registrar_novedad` (sorteo nuevo validado) y en
+  `quiniela_scraper.publicar_prov` por turno recién validado, SOLO del día de hoy (regla 36: las
+  páginas traen días anteriores; sin ese filtro se notificaría el pasado al crear archivos nuevos).
+  Sin `PUSH_SEND_KEY` (corridas locales/tests) solo loguea.
+- App: `expo-notifications` + `expo-device`; `src/notificaciones.tsx` (permiso, token, registro,
+  preferencias en AsyncStorage); sección "Notificaciones" en Ajustes con un interruptor por juego y
+  por quiniela y "Apagar todas"; tocar la notificación abre la pantalla del sorteo (`data.ruta`).
+- Privacidad (regla 34 aplicada ANTES de enviar): sitio nfgalindez.com/sorteos/privacidad/ y docs
+  actualizados con el token anónimo + temas. En App Store Connect, antes de enviar la 1.1: declarar
+  Identificadores → ID del dispositivo, funcionalidad, no vinculado, sin rastreo.
+- Build 10 (perfil `testflight`) lanzado. Pendiente de confirmar: si EAS creó la llave APNs de push
+  en modo no interactivo; si el envío devuelve `InvalidCredentials`, el dueño corre
+  `npx eas-cli credentials --platform ios` una vez y elige "Push Notifications: Set up".
