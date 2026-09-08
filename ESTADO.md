@@ -396,3 +396,18 @@ monetización (decisión del dueño). Primer sorteo grande con la app pública: 
   (tope 1,5×) y con él crecen las bolillas, las celdas de la grilla de jugada y las de la Poceada.
   Dynamic Type sigue funcionando hasta 1,5×; más allá, la app no crece más pero no se rompe.
 - Build 8 (perfil `testflight`) para que el dueño lo pruebe con la letra grande.
+
+## Sesión 13 — 08/09/2026 · Ajustes finos y auditoría de privacidad
+
+- Tope de letra 1,25×; botones con texto centrado; tabla de premios con anchos 0,7 / 1 / 1,6 y
+  Ganadores centrada; reporte sin campo de contacto. Todo publicado como EAS Update al canal
+  `testflight` (build 9). Nada tocó al build 5 en revisión.
+- Auditoría de privacidad (regla 34, fija): antes de publicar cualquier versión o update, revisar
+  que la declaración de App Store, la política del sitio y lo que la app hace coincidan.
+  Estado hoy: "no se recolectan datos" sigue siendo correcto (el reporte es voluntario, avisado,
+  sin identificadores; excepción de Apple para feedback opcional). La 1.1 con notificaciones
+  SÍ cambia la declaración: identificadores de dispositivo (token de push), no vinculados, para la
+  función de la app + política del sitio. Hacerlo ANTES de enviar la 1.1.
+- Pendiente con el dueño: cuando Apple apruebe la 1.0, esperar su confirmación y recién entonces
+  `eas update --branch production --environment production --platform ios` con el mismo código
+  del canal testflight. Después, 1.1: notificaciones (Worker de tokens + Expo Push + APNs key).
