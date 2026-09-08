@@ -424,3 +424,7 @@ monetización (decisión del dueño). Primer sorteo grande con la app pública: 
   fine-grained de GitHub (solo repo sorteos-ar, Actions: write) como secreto `GITHUB_TOKEN`;
   lo carga el dueño con `wrangler secret put`, no pasa por el chat. El cron de GitHub queda como
   respaldo. Desplegado y respondiendo; sin token todavía (no hace nada hasta que esté).
+- Cierre sesión 14: el token del dueño estaba con "Actions: Read" (403 `actions=write` requerido);
+  con un token nuevo con Read and write → 204 y corrida `workflow_dispatch` en marcha. El Worker
+  `sorteos-ar-cron` queda activo cada 5 min dentro de las ventanas. `/tick` solo dispara dentro de
+  ventana (se quitó el `force` de diagnóstico).

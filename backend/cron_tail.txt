@@ -1,0 +1,99 @@
+{
+    "wallTime": 294,
+    "cpuTime": 1,
+    "truncated": false,
+    "executionModel": "stateless",
+    "outcome": "ok",
+    "scriptVersion": {
+        "id": "bb62045d-01ad-4873-a491-88d4a532dbc6"
+    },
+    "scriptName": "sorteos-ar-cron",
+    "diagnosticsChannelEvents": [],
+    "exceptions": [],
+    "logs": [],
+    "eventTimestamp": 1788904845434,
+    "event": {
+        "request": {
+            "url": "https://sorteos-ar-cron.nfgalindez.workers.dev/tick?force=1",
+            "method": "GET",
+            "headers": {
+                "accept": "*/*",
+                "accept-encoding": "gzip, br",
+                "cf-connecting-ip": "181.224.186.90",
+                "cf-ipcountry": "AR",
+                "cf-ray": "a3813a53db45b6e6",
+                "cf-visitor": "{\"scheme\":\"https\"}",
+                "connection": "Keep-Alive",
+                "host": "sorteos-ar-cron.nfgalindez.workers.dev",
+                "user-agent": "curl/8.21.0",
+                "x-forwarded-proto": "https",
+                "x-real-ip": "181.224.186.90"
+            },
+            "cf": {
+                "httpProtocol": "HTTP/1.1",
+                "requestPriority": "",
+                "edgeRequestKeepAliveStatus": 1,
+                "requestHeaderNames": {},
+                "clientTcpRtt": 36,
+                "clientQuicRtt": 0,
+                "colo": "GRU",
+                "asn": 52453,
+                "asOrganization": "Atcco S.R.L.",
+                "country": "AR",
+                "isEUCountry": false,
+                "city": "San Clemente del Tuyú",
+                "continent": "SA",
+                "region": "Buenos Aires",
+                "regionCode": "B",
+                "timezone": "America/Argentina/Buenos_Aires",
+                "longitude": "-56.72568",
+                "latitude": "-36.35419",
+                "postalCode": "7105",
+                "tlsVersion": "TLSv1.2",
+                "tlsCipher": "ECDHE-ECDSA-AES128-GCM-SHA256",
+                "tlsClientRandom": "aqCFjS1ci0ITo6NijKyZBHLxzVMrcFIXi474sVr804I=",
+                "tlsClientCiphersSha1": "OeQPcEYDgqo1GMKGYd0qWuAiHW8=",
+                "tlsClientExtensionsSha1": "CRkQ5euuu2651vt+v0zfIPfqJ8A=",
+                "tlsClientExtensionsSha1Le": "vN/sLbiiNfOvkFXFDvjB0+A6Jfg=",
+                "tlsExportedAuthenticator": {
+                    "clientHandshake": "328579c877400c97c7a9286fa5cfc8845753918cb2ed8ff70281caaed893d23b",
+                    "serverHandshake": "6528343f38afdf2a778af66fc71b9fd05182b5488b5ba6b767c72e7b09e797c8",
+                    "clientFinished": "1c0d426b31f91bb5248e755fffc606a41617cd5594676081649b25a3583874fa",
+                    "serverFinished": "dbac5eb07b547ed7acf02c66f093907d8377167cd7445313fcc76699748cb233"
+                },
+                "tlsClientHelloLength": "215",
+                "tlsClientAuth": {
+                    "certPresented": "0",
+                    "certVerified": "NONE",
+                    "certRevoked": "0",
+                    "certIssuerDN": "",
+                    "certSubjectDN": "",
+                    "certIssuerDNRFC2253": "",
+                    "certSubjectDNRFC2253": "",
+                    "certIssuerDNLegacy": "",
+                    "certSubjectDNLegacy": "",
+                    "certSerial": "",
+                    "certIssuerSerial": "",
+                    "certSKI": "",
+                    "certIssuerSKI": "",
+                    "certFingerprintSHA1": "",
+                    "certFingerprintSHA256": "",
+                    "certNotBefore": "",
+                    "certNotAfter": "",
+                    "certRFC9440": "",
+                    "certRFC9440TooLarge": false,
+                    "certChainRFC9440": "",
+                    "certChainRFC9440TooLarge": false
+                },
+                "verifiedBotCategory": "",
+                "edgeL4": {
+                    "deliveryRate": 77405
+                }
+            }
+        },
+        "response": {
+            "status": 200
+        }
+    }
+}
+fin tail
