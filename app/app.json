@@ -39,6 +39,14 @@
             "backgroundColor": "#0A0F1C"
           }
         }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/android-icon-monochrome.png",
+          "color": "#0F1E33",
+          "defaultChannel": "sorteos"
+        }
       ]
     ],
     "extra": {
@@ -48,7 +56,9 @@
         "projectId": "294ffa73-6981-4b7a-b0fa-15ddcfcd88d7"
       },
       "reportesURL": "https://sorteos-ar-reportes.nfgalindez.workers.dev/reporte",
-      "reportesKey": "_FMVjP1VOf5V4UHsWsHldRHM2JDcejt2"
+      "reportesKey": "_FMVjP1VOf5V4UHsWsHldRHM2JDcejt2",
+      "pushURL": "https://sorteos-ar-push.nfgalindez.workers.dev",
+      "pushKey": "UPYqvufedt0KROOa9xXWETXGmhS6N_z8"
     },
     "owner": "gestionaiko",
     "runtimeVersion": {

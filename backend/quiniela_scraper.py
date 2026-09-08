@@ -197,8 +197,16 @@ def publicar_prov(prov, por_fecha):
     cambios = 0
     for fecha, out in por_fecha.items():
         path = os.path.join(d, f"{fecha}.json")
-        if os.path.exists(path):
-            prev = read_json(path)
+        prev = read_json(path) if os.path.exists(path) else None
+        validados_antes = {t["turno"] for t in (prev or {}).get("turnos", []) if t.get("validado")}
+        hoy = common.datetime.now(common.ART).date().isoformat()
+        for t in out["turnos"]:
+            # solo se avisa el dia del sorteo (las paginas traen dias anteriores; no hay que notificar el pasado)
+            if fecha == hoy and t["validado"] and t["numeros"] and t["turno"] not in validados_antes:
+                nombre = PROVINCIAS[prov]["nombre"].split(" (")[0]
+                common.notificar(f"quiniela:{prov}", f"Quiniela {nombre} · {t['turno'].capitalize()}",
+                                 f"A la cabeza: {t['numeros'][0]} · Tocá para ver los 20 números", f"/quiniela/{prov}")
+        if prev is not None:
             # nunca pisar un turno validado con uno no validado, ni borrar turnos ya publicados
             prev_t = {t["turno"]: t for t in prev.get("turnos", [])}
             nuevos = []

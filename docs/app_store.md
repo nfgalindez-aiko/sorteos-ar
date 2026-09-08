@@ -26,6 +26,7 @@ QUÉ PODÉS VER
 • Poceada de la Ciudad: los 20 números, letras, premios y próximo pozo.
 • Tabla de premios por modalidad: aciertos, cantidad de ganadores y premio por apuesta.
 • Pozo estimado y cuenta regresiva al próximo sorteo.
+• Notificaciones opcionales: elegís qué sorteos y qué quinielas te avisan cuando el resultado queda confirmado.
 • Quinielas Nacional (Ciudad), Provincia de Buenos Aires, Santa Fe, Córdoba, Mendoza, Entre Ríos y Montevideo: los 20 números de cada turno, con la cabeza destacada y las letras.
 • Histórico de sorteos anteriores.
 • Controlar tus números: cargás tus 6 números y la app marca cuáles salieron en cada modalidad. Solo compara; no recomienda ni sugiere números.
@@ -80,3 +81,10 @@ abogado confirma que el uso descriptivo en palabras clave es defendible, se pued
 a sitios de apuestas. Los datos provienen de un JSON público estático generado por nuestro
 backend a partir de dos fuentes de resultados; no se requiere cuenta. Las jugadas que el
 usuario carga se guardan localmente para comparar con los números sorteados."
+
+
+## Privacidad en App Store Connect (versión 1.1, con notificaciones)
+
+Cambiar "No se recopilan datos" por: **Identificadores → ID del dispositivo** (token de push), uso
+"Funcionalidad de la app", **no vinculado** a la identidad, **no** usado para rastreo. Hacerlo ANTES
+de enviar la 1.1 a revisión. La política del sitio ya lo describe.

@@ -18,6 +18,10 @@ no usa publicidad ni herramientas de análisis, y no comparte información con t
   resultados desde un sitio alojado en GitHub Pages. Esa descarga no incluye ningún dato tuyo
   más allá de lo que cualquier conexión HTTPS transmite (dirección IP y cabeceras estándar), que
   GitHub puede registrar según su propia política de privacidad.
+- **Notificaciones, si las activás**: se guarda un código anónimo del teléfono (token de
+  notificaciones) y la lista de juegos elegidos en un servicio en Cloudflare, para avisarte
+  cuando un sorteo queda confirmado. No se vincula a tu identidad ni a tus jugadas; se borra al
+  apagar todas las notificaciones o al desinstalar la app.
 - **Caché**: los últimos resultados se guardan en el dispositivo para que la app funcione sin
   conexión. Se pueden eliminar desinstalando la app.
 

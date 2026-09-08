@@ -250,6 +250,38 @@ def rebuild_index(juego):
     return items
 
 
+PUSH_URL = "https://sorteos-ar-push.nfgalindez.workers.dev/enviar"
+NOMBRES = {"quini6": "Quini 6", "brinco": "Brinco", "lotoplus": "Loto Plus", "poceada": "Poceada"}
+
+
+def notificar(tema, titulo, cuerpo, ruta):
+    """Manda una push a los suscriptos del tema via el Worker. Sin PUSH_SEND_KEY (corridas locales) no hace nada."""
+    clave = os.environ.get("PUSH_SEND_KEY")
+    if not clave:
+        log(f"PUSH {tema} (sin PUSH_SEND_KEY, no se envia): {titulo} / {cuerpo}")
+        return None
+    datos = json.dumps({"tema": tema, "titulo": titulo, "cuerpo": cuerpo, "data": {"ruta": ruta}}).encode("utf-8")
+    req = urllib.request.Request(PUSH_URL, data=datos, method="POST",
+                                 headers={"Content-Type": "application/json", "x-sorteos-send": clave, "User-Agent": UA})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            res = json.loads(r.read().decode("utf-8"))
+        log(f"PUSH {tema}: {res}")
+        return res
+    except Exception as e:
+        log(f"PUSH {tema} ERROR {e}")
+        return None
+
+
+def cuerpo_poceado(out):
+    trad = out.get("modalidades", {}).get("tradicional", {}).get("numeros")
+    if trad:
+        return "Tradicional: " + " ".join(f"{n:02d}" for n in trad) + " · Tocá para ver todas las modalidades"
+    if out.get("numeros"):
+        return " ".join(out["numeros"][:10]) + "… · Tocá para ver el extracto"
+    return "Resultado confirmado. Tocá para verlo."
+
+
 def registrar_novedad(juego, out, maximo=50):
     """Base para las push notifications (brief 6.12): deja constancia en data/novedades.json
     de cada sorteo nuevo que paso a validado:true. Idempotente por (juego, sorteo)."""
@@ -263,6 +295,8 @@ def registrar_novedad(juego, out, maximo=50):
     nov["generado"] = now_art()
     write_json(path, nov)
     log(f"NOVEDAD {juego} sorteo {out['sorteo']} validado")
+    ruta = "/poceada" if juego == "poceada" else f"/juego/{juego}"
+    notificar(juego, f"{NOMBRES.get(juego, juego)} · Sorteo {out['sorteo']}", cuerpo_poceado(out), ruta)
     return True
 
 

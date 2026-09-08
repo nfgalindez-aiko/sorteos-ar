@@ -1,0 +1,10 @@
+# Sorteos AR - suscripciones y envio de notificaciones push (via Expo Push Service).
+# La app registra su token anonimo con los temas elegidos; el backend (GitHub Actions) llama a /enviar
+# cuando un sorteo queda confirmado. No se guarda nada mas que el token y los temas.
+name = "sorteos-ar-push"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+kv_namespaces = [
+  { binding = "SUSCRIPCIONES", id = "222e9830c13844cd98b0b0ce801a3a0d" }
+]

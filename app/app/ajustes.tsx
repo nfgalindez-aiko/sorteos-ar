@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Linking, Pressable, ScrollView, View } from "react-native";
+import { Alert, Linking, Pressable, ScrollView, Switch, View } from "react-native";
 import { Text } from "../src/texto";
 import Constants from "expo-constants";
 import { Boton, Disclaimer, Tarjeta } from "../src/componentes";
@@ -7,12 +7,15 @@ import { useRouter } from "expo-router";
 import { Espacio, useTema } from "../src/design";
 import { useJugadas } from "../src/jugadas";
 import { FUENTES, SITIO } from "../src/modelos";
+import { TEMAS, useNotificaciones } from "../src/notificaciones";
 
 export default function Ajustes() {
   const t = useTema();
   const js = useJugadas();
   const version = Constants.expoConfig?.version ?? "0.1.0";
   const router = useRouter();
+  const n = useNotificaciones();
+  const acento = t.oscuro ? "#7FD1C7" : "#0F6E63";
 
   const Seccion = ({ titulo, children }: { titulo: string; children: React.ReactNode }) => (
     <View style={{ gap: Espacio.s }}>
@@ -25,6 +28,34 @@ export default function Ajustes() {
     <ScrollView contentContainerStyle={{ padding: Espacio.m, gap: Espacio.l }}>
       <Seccion titulo="Aviso">
         <Disclaimer />
+      </Seccion>
+      <Seccion titulo="Notificaciones">
+        <Text style={{ color: t.textoSec, fontSize: 13, lineHeight: 18 }}>
+          Te avisamos cuando un sorteo queda confirmado por dos fuentes. Elegí qué querés recibir. No hace falta cuenta: solo se guarda un código anónimo del teléfono y esta lista.
+        </Text>
+        {n.permiso === "denegado" && (
+          <Text style={{ color: t.aviso, fontSize: 13 }}>Las notificaciones están apagadas para esta app en el iPhone. Activalas en Ajustes → Sorteos AR → Notificaciones.</Text>
+        )}
+        {(["juegos", "quinielas"] as const).map((grupo) => (
+          <View key={grupo} style={{ gap: 6 }}>
+            <Text style={{ color: t.textoSec, fontSize: 12, fontWeight: "600", marginTop: 4 }}>{grupo === "juegos" ? "Sorteos" : "Quinielas"}</Text>
+            {TEMAS.filter((x) => x.grupo === grupo).map((x) => {
+              const activo = n.temas.includes(x.tema);
+              return (
+                <View key={x.tema} style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                  <Text style={{ color: t.texto, fontSize: 15, flex: 1 }}>{x.nombre}</Text>
+                  <Switch value={activo} disabled={n.ocupado} onValueChange={(v) => n.cambiar(x.tema, v)} trackColor={{ true: acento }} accessibilityLabel={`Notificar ${x.nombre}`} />
+                </View>
+              );
+            })}
+          </View>
+        ))}
+        {n.error && <Text style={{ color: t.aviso, fontSize: 13 }}>{n.error}</Text>}
+        {n.temas.length > 0 && (
+          <Pressable onPress={() => n.apagarTodo()} disabled={n.ocupado} accessibilityRole="button">
+            <Text style={{ color: t.textoSec, fontSize: 13, textDecorationLine: "underline" }}>Apagar todas</Text>
+          </Pressable>
+        )}
       </Seccion>
       <Seccion titulo="Fuentes de los resultados">
         {FUENTES.map((f) => (
