@@ -18,6 +18,12 @@
           "hora": "12:00",
           "cabeza": "3120",
           "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "5051",
+          "validado": false
         }
       ]
     },
@@ -38,6 +44,12 @@
           "hora": "12:00",
           "cabeza": "1059",
           "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "9993",
+          "validado": false
         }
       ]
     },
@@ -58,6 +70,12 @@
           "hora": "12:00",
           "cabeza": "2998",
           "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "9876",
+          "validado": false
         }
       ]
     },
@@ -78,6 +96,12 @@
           "hora": "12:00",
           "cabeza": "7599",
           "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "8265",
+          "validado": false
         }
       ]
     },
@@ -85,19 +109,13 @@
       "provincia": "uruguay",
       "nombre": "Montevideo (Uruguay)",
       "digitos": 3,
-      "fecha": "2026-09-07",
+      "fecha": "2026-09-08",
       "turnos": [
         {
           "turno": "vespertina",
           "hora": "15:00",
-          "cabeza": "765",
-          "validado": true
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "192",
-          "validado": true
+          "cabeza": "930",
+          "validado": false
         }
       ]
     },
@@ -117,6 +135,12 @@
           "turno": "primera",
           "hora": "12:00",
           "cabeza": "8025",
+          "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "3067",
           "validado": false
         }
       ]
@@ -138,9 +162,15 @@
           "hora": "12:00",
           "cabeza": "2951",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "2485",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-09-08T14:01:07-03:00"
+  "generado": "2026-09-08T15:25:45-03:00"
 }
