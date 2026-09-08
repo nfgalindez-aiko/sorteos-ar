@@ -14,10 +14,20 @@
     "production": {
       "autoIncrement": true,
       "channel": "production"
+    },
+    "testflight": {
+      "extends": "production",
+      "channel": "testflight"
     }
   },
   "submit": {
     "production": {
+      "ios": {
+        "ascAppId": "6809660906",
+        "appleTeamId": "7JH457P2TA"
+      }
+    },
+    "testflight": {
       "ios": {
         "ascAppId": "6809660906",
         "appleTeamId": "7JH457P2TA"

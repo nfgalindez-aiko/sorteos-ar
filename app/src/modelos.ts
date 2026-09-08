@@ -36,12 +36,22 @@ export interface Poceada {
 export interface IndiceItem { sorteo: number; fecha: string; validado: boolean }
 export interface Indice { juego: JuegoId; sorteos: IndiceItem[]; generado: string }
 
+export interface ResultadoJugada {
+  sorteo: number;
+  fecha: string;
+  aciertos: Record<string, number[]>; // por modalidad
+}
+
 export interface Jugada {
   id: string;
   juego: JuegoId;
   numeros: number[];
   nombre: string;
   creada: string;
+  /** Sorteo para el que se jugó. null = "la juego siempre" (se compara con cada sorteo nuevo). */
+  objetivo?: number | null;
+  /** Resultado congelado cuando salió el sorteo objetivo. */
+  resultado?: ResultadoJugada | null;
 }
 
 export interface JuegoMeta {

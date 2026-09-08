@@ -44,10 +44,10 @@ export default function QuinielaHoy() {
         refreshControl={<RefreshControl refreshing={cargando} onRefresh={cargar} tintColor={t.textoSec} />}
       >
         {r.sinConexion && <BannerSinConexion />}
-        {dia ? <QuinielaDia dia={dia} /> : error ? <Vacio texto={`No se pudo cargar. ${error}`} /> : <ActivityIndicator color={t.textoSec} style={{ padding: Espacio.xl }} />}
         <View style={{ flexDirection: "row" }}>
           <Boton titulo="Días anteriores" color={p.primario} onPress={() => router.push(`/quiniela/${prov}/historico`)} />
         </View>
+        {dia ? <QuinielaDia dia={dia} /> : error ? <Vacio texto={`No se pudo cargar. ${error}`} /> : <ActivityIndicator color={t.textoSec} style={{ padding: Espacio.xl }} />}
         <Disclaimer compacto />
       </ScrollView>
     </>

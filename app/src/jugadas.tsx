@@ -9,7 +9,8 @@ const CLAVE = "jugadas:v1";
 interface EstadoJugadas {
   jugadas: Jugada[];
   de: (juego: JuegoId) => Jugada[];
-  agregar: (juego: JuegoId, numeros: number[], nombre: string) => Promise<void>;
+  agregar: (juego: JuegoId, numeros: number[], nombre: string, objetivo?: number | null) => Promise<void>;
+  actualizar: (id: string, cambios: Partial<Jugada>) => Promise<void>;
   borrar: (id: string) => Promise<void>;
   borrarTodas: () => Promise<void>;
 }
@@ -41,15 +42,29 @@ export function JugadasProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const agregar = useCallback(
-    (juego: JuegoId, numeros: number[], nombre: string) =>
-      guardar([...jugadas, { id: nuevoId(), juego, numeros: [...numeros].sort((a, b) => a - b), nombre: nombre.trim(), creada: new Date().toISOString() }]),
+    (juego: JuegoId, numeros: number[], nombre: string, objetivo: number | null = null) =>
+      guardar([...jugadas, { id: nuevoId(), juego, numeros: [...numeros].sort((a, b) => a - b), nombre: nombre.trim(), creada: new Date().toISOString(), objetivo, resultado: null }]),
     [jugadas, guardar],
   );
+  // Funcional: varias actualizaciones seguidas (p. ej. congelar resultados) no se pisan entre sí.
+  const actualizar = useCallback(async (id: string, cambios: Partial<Jugada>) => {
+    let lista: Jugada[] = [];
+    setJugadas((prev) => {
+      lista = prev.map((j) => (j.id === id ? { ...j, ...cambios } : j));
+      return lista;
+    });
+    await new Promise((r) => setTimeout(r, 0));
+    try {
+      await AsyncStorage.setItem(CLAVE, JSON.stringify(lista));
+    } catch {
+      /* queda en memoria */
+    }
+  }, []);
   const borrar = useCallback((id: string) => guardar(jugadas.filter((j) => j.id !== id)), [jugadas, guardar]);
   const borrarTodas = useCallback(() => guardar([]), [guardar]);
   const de = useCallback((juego: JuegoId) => jugadas.filter((j) => j.juego === juego), [jugadas]);
 
-  const valor = useMemo<EstadoJugadas>(() => ({ jugadas, de, agregar, borrar, borrarTodas }), [jugadas, de, agregar, borrar, borrarTodas]);
+  const valor = useMemo<EstadoJugadas>(() => ({ jugadas, de, agregar, actualizar, borrar, borrarTodas }), [jugadas, de, agregar, actualizar, borrar, borrarTodas]);
   return <Ctx.Provider value={valor}>{children}</Ctx.Provider>;
 }
 

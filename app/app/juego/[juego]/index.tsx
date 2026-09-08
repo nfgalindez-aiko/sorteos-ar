@@ -27,11 +27,11 @@ function Cuerpo({ juego, t, r, router }: { juego: JuegoId; t: ReturnType<typeof 
         refreshControl={<RefreshControl refreshing={r.cargando} onRefresh={r.recargar} tintColor={t.textoSec} />}
       >
         {r.sinConexion && <BannerSinConexion />}
-        {s ? <SorteoDetalle juego={juego} sorteo={s} /> : <Vacio texto="Sin resultados disponibles todavía. Deslizá para actualizar." />}
         <View style={{ flexDirection: "row", gap: Espacio.m }}>
           <Boton titulo="Sorteos anteriores" color={p.primario} onPress={() => router.push(`/juego/${juego}/historico`)} />
           <Boton titulo="Controlar jugada" color={p.primario} relleno onPress={() => router.push(`/juego/${juego}/control`)} />
         </View>
+        {s ? <SorteoDetalle juego={juego} sorteo={s} /> : <Vacio texto="Sin resultados disponibles todavía. Deslizá para actualizar." />}
         <Disclaimer compacto />
       </ScrollView>
     </>

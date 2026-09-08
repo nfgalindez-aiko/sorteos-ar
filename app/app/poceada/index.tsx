@@ -19,10 +19,10 @@ export default function PoceadaHoy() {
         refreshControl={<RefreshControl refreshing={r.cargando} onRefresh={r.recargar} tintColor={t.textoSec} />}
       >
         {r.sinConexion && <BannerSinConexion />}
-        {r.poceada ? <PoceadaDetalle sorteo={r.poceada} /> : <Vacio texto="Sin resultados disponibles todavía. Deslizá para actualizar." />}
         <View style={{ flexDirection: "row" }}>
           <Boton titulo="Sorteos anteriores" color={p.primario} onPress={() => router.push("/poceada/historico")} />
         </View>
+        {r.poceada ? <PoceadaDetalle sorteo={r.poceada} /> : <Vacio texto="Sin resultados disponibles todavía. Deslizá para actualizar." />}
         <Disclaimer compacto />
       </ScrollView>
     </>
