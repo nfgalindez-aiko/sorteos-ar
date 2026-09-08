@@ -368,3 +368,21 @@ monetización (decisión del dueño). Primer sorteo grande con la app pública: 
 - Canales EAS: el build 5 (en revisión) queda en `production` sin tocar; el build 6 se hizo con
   el perfil `testflight` (canal `testflight`) y se subió a TestFlight para que el dueño lo pruebe.
   Cuando Apple apruebe: `eas update --branch production` con el mismo código.
+
+## Sesión 11 — 08/09/2026 · Jugada en el home, reporte de errores, splash con toque
+
+- Home: debajo de la cuenta regresiva de cada juego se muestran las jugadas vigentes del usuario
+  (hasta 3), con la etiqueta "para el sorteo N" / "la jugás siempre" y los aciertos resaltados si ya
+  hay sorteo.
+- Reporte de errores: botón "¿Ves algún error? Dejámelo acá" al pie de Controlar jugada y de
+  Ajustes → pantalla `app/reporte.tsx` → `POST` al Worker de Cloudflare `sorteos-ar-reportes`
+  (`worker/reportes/`), que arma el mail y lo manda con el binding `send_email` de Email Routing
+  (remitente reportes@nfgalindez.com → destino nfgalindez@gmail.com). Regla 32: el mail del dueño
+  vive solo en el Worker; la app lleva una clave compartida (`extra.reportesKey`) que frena spam
+  casual, más límite de 2000 caracteres y 1 reporte por minuto por IP. Probado con curl: mail
+  enviado (`{"ok":true}`) y 401 sin clave. La clave está en `backend/app_key.txt` (gitignored).
+- Privacidad: la política del sitio ahora describe el reporte opcional (texto, contacto opcional,
+  pantalla, versiones, modelo). Pendiente: en App Store Connect, cuando se actualice la ficha,
+  cambiar "no se recolectan datos" por "Datos de contacto (opcional, no vinculados)" si Apple lo pide.
+- Splash: un toque lo cierra (igual que la intro).
+- Build 7 (perfil `testflight`) subido a TestFlight. Apple sigue revisando el 5.
