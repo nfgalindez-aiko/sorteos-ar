@@ -52,14 +52,14 @@ export function PoceadaDetalle({ sorteo }: { sorteo: Poceada }) {
       <Tarjeta fondo={p.fondoTarjeta} style={{ gap: Espacio.xs }}>
         <View style={{ flexDirection: "row" }}>
           {["Aciertos", "Ganadores", "Premio"].map((h, i) => (
-            <Text key={h} style={{ flex: 1, textAlign: i === 0 ? "left" : "right", color: t.textoSec, fontSize: 12, fontWeight: "600" }}>{h}</Text>
+            <Text key={h} style={{ flex: [0.7, 1, 1.6][i], textAlign: (["left", "center", "right"] as const)[i], color: t.textoSec, fontSize: 12, fontWeight: "600" }}>{h}</Text>
           ))}
         </View>
         {sorteo.premios.map((f) => (
           <View key={f.aciertos} style={{ flexDirection: "row" }} accessible accessibilityLabel={`${f.aciertos} aciertos, ${f.ganadores === 0 ? "vacante" : `${f.ganadores} ganadores`}, ${f.nota ?? `premio ${pesos(f.premio)}`}`}>
-            <Text style={{ flex: 1, color: t.texto, fontSize: 14, fontVariant: ["tabular-nums"] }}>{f.aciertos}</Text>
-            <Text style={{ flex: 1, textAlign: "right", color: t.texto, fontSize: 14, fontVariant: ["tabular-nums"] }}>{f.ganadores === 0 ? "Vacante" : entero(f.ganadores)}</Text>
-            <Text style={{ flex: 1, textAlign: "right", color: t.texto, fontSize: 14, fontVariant: ["tabular-nums"] }}>{f.nota ? "Recuperan la apuesta" : pesos(f.premio)}</Text>
+            <Text style={{ flex: 0.7, color: t.texto, fontSize: 14, fontVariant: ["tabular-nums"] }}>{f.aciertos}</Text>
+            <Text style={{ flex: 1, textAlign: "center", color: t.texto, fontSize: 14, fontVariant: ["tabular-nums"] }}>{f.ganadores === 0 ? "Vacante" : entero(f.ganadores)}</Text>
+            <Text style={{ flex: 1.6, textAlign: "right", color: t.texto, fontSize: 14, fontVariant: ["tabular-nums"] }}>{f.nota ? "Recuperan la apuesta" : pesos(f.premio)}</Text>
           </View>
         ))}
       </Tarjeta>

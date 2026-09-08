@@ -47,8 +47,10 @@ export function FilaBolillas({ titulo, numeros, paleta, resaltados = [] }: { tit
 
 export function PremiosTabla({ premios }: { premios: PremioFila[] }) {
   const t = useTema();
-  const col = (txt: string, align: "left" | "right", bold = false) => (
-    <Text style={{ flex: 1, textAlign: align, color: bold ? t.textoSec : t.texto, fontSize: bold ? 12 : 14, fontWeight: bold ? "600" : "400", fontVariant: ["tabular-nums"] }}>
+  // Aciertos es corto, Premio es largo: anchos 0,7 / 1 / 1,6 y Ganadores centrada
+  const ANCHO = { left: 0.7, center: 1, right: 1.6 } as const;
+  const col = (txt: string, align: "left" | "center" | "right", bold = false) => (
+    <Text style={{ flex: ANCHO[align], textAlign: align, color: bold ? t.textoSec : t.texto, fontSize: bold ? 12 : 14, fontWeight: bold ? "600" : "400", fontVariant: ["tabular-nums"] }}>
       {txt}
     </Text>
   );
@@ -56,7 +58,7 @@ export function PremiosTabla({ premios }: { premios: PremioFila[] }) {
     <View style={{ gap: Espacio.xs }}>
       <View style={{ flexDirection: "row" }}>
         {col("Aciertos", "left", true)}
-        {col("Ganadores", "right", true)}
+        {col("Ganadores", "center", true)}
         {col("Premio", "right", true)}
       </View>
       {premios.map((f) => (
@@ -67,7 +69,7 @@ export function PremiosTabla({ premios }: { premios: PremioFila[] }) {
           accessibilityLabel={`${f.aciertos} aciertos, ${f.ganadores === 0 ? "vacante" : `${f.ganadores} ganadores`}, premio ${pesos(f.premio)}`}
         >
           {col(String(f.aciertos), "left")}
-          {col(f.ganadores === 0 ? "Vacante" : entero(f.ganadores), "right")}
+          {col(f.ganadores === 0 ? "Vacante" : entero(f.ganadores), "center")}
           {col(pesos(f.premio), "right")}
         </View>
       ))}
