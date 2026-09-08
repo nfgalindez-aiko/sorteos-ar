@@ -46,7 +46,9 @@
       "router": {},
       "eas": {
         "projectId": "294ffa73-6981-4b7a-b0fa-15ddcfcd88d7"
-      }
+      },
+      "reportesURL": "https://sorteos-ar-reportes.nfgalindez.workers.dev/reporte",
+      "reportesKey": "_FMVjP1VOf5V4UHsWsHldRHM2JDcejt2"
     },
     "owner": "gestionaiko",
     "runtimeVersion": {

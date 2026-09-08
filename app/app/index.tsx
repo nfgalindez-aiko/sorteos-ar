@@ -2,7 +2,9 @@ import React from "react";
 import { Pressable, RefreshControl, ScrollView, Text, View } from "react-native";
 import { Link, Stack, useRouter } from "expo-router";
 import { useResultados } from "../src/api";
-import { BannerSinConexion, Chip, ChipFuentes, CuentaRegresiva, Disclaimer, FilaBolillas, Tarjeta } from "../src/componentes";
+import { useJugadas } from "../src/jugadas";
+import { BannerSinConexion, Bolilla, Chip, ChipFuentes, CuentaRegresiva, Disclaimer, FilaBolillas, Tarjeta } from "../src/componentes";
+import { aciertos } from "../src/jugadas";
 import { Espacio, usePaleta, useTema } from "../src/design";
 import { fechaLarga, horaCorta, instanteSorteo, pesos } from "../src/formato";
 import { JUEGOS, JuegoId, ORDEN_JUEGOS, PROVINCIAS, ResumenProvincia, Sorteo, nombreTurno } from "../src/modelos";
@@ -85,6 +87,7 @@ function TarjetaJuego({ juego, sorteo }: { juego: JuegoId; sorteo?: Sorteo }) {
               </Text>
             )}
             {objetivo && <CuentaRegresiva objetivo={objetivo} />}
+            <JugadasEnCurso juego={juego} ultimo={sorteo} paleta={p} />
             {!sorteo.validado && <ChipFuentes fuentes={sorteo.fuentes} validado={false} color={p.primario} />}
           </>
         ) : (
@@ -167,5 +170,35 @@ function TarjetaPoceada({ s }: { s: Poceada }) {
         {!s.validado && <ChipFuentes fuentes={s.fuentes} validado={false} color={p.primario} />}
       </Tarjeta>
     </Pressable>
+  );
+}
+
+/** Jugadas vigentes del usuario para este juego (las "para el próximo sorteo" y las "siempre"). */
+function JugadasEnCurso({ juego, ultimo, paleta }: { juego: JuegoId; ultimo: Sorteo; paleta: ReturnType<typeof usePaleta> }) {
+  const t = useTema();
+  const js = useJugadas();
+  const vigentes = js.de(juego).filter((j) => !j.resultado);
+  if (vigentes.length === 0) return null;
+  return (
+    <View style={{ gap: Espacio.xs, marginTop: Espacio.xs, paddingTop: Espacio.s, borderTopWidth: 1, borderTopColor: t.borde }}>
+      {vigentes.slice(0, 3).map((j) => {
+        const paraProximo = j.objetivo != null && j.objetivo > ultimo.sorteo;
+        const hits = paraProximo ? [] : Array.from(new Set(Object.values(aciertos(j, ultimo)).flat()));
+        const etiqueta = j.objetivo == null ? "la jugás siempre" : paraProximo ? `para el sorteo ${j.objetivo}` : `sorteo ${j.objetivo}`;
+        return (
+          <View key={j.id} accessible accessibilityLabel={`Tu jugada ${j.nombre || ""}: ${j.numeros.join(", ")}, ${etiqueta}`}>
+            <Text style={{ color: t.textoSec, fontSize: 12 }}>
+              Tu jugada{j.nombre ? ` "${j.nombre}"` : ""} · {etiqueta}
+            </Text>
+            <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: 2 }}>
+              {j.numeros.map((n) => (
+                <Bolilla key={n} numero={n} paleta={paleta} resaltada={hits.includes(n)} tamano={30} />
+              ))}
+            </View>
+          </View>
+        );
+      })}
+      {vigentes.length > 3 && <Text style={{ color: t.textoSec, fontSize: 12 }}>y {vigentes.length - 3} más</Text>}
+    </View>
   );
 }

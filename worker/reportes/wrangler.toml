@@ -1,0 +1,13 @@
+# Sorteos AR - Worker que recibe reportes de error desde la app y los manda por mail al dueño.
+# La direccion de destino vive SOLO aca (y en Email Routing de Cloudflare): la app nunca la conoce.
+name = "sorteos-ar-reportes"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+send_email = [
+  { name = "MAIL", destination_address = "nfgalindez@gmail.com" }
+]
+
+[vars]
+REMITENTE = "reportes@nfgalindez.com"
+MAX_CARACTERES = "2000"

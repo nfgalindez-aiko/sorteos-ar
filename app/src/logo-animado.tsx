@@ -147,9 +147,9 @@ export function SplashLogo({ visible, onFin }: { visible: boolean; onFin?: () =>
   const T = useReloj(visible, 1.0, () => onFin?.(), SPLASH_DESDE);
   if (!visible) return null;
   return (
-    <View style={[StyleSheet.absoluteFill, { backgroundColor: INK, alignItems: "center", justifyContent: "center", zIndex: 1000 }]} accessibilityLabel="Sorteos AR">
+    <Pressable onPress={() => onFin?.()} style={[StyleSheet.absoluteFill, { backgroundColor: INK, alignItems: "center", justifyContent: "center", zIndex: 1000 }]} accessibilityLabel="Sorteos AR. Tocá para entrar" accessibilityRole="button">
       <CuadroLogo T={T} width={width} height={Math.min(height, (width * 9) / 16)} />
       <Text style={{ position: "absolute", bottom: 40, color: "#8C8779", fontSize: 11, letterSpacing: 2, opacity: outro(T) }}>SOLO CONSULTA · +18</Text>
-    </View>
+    </Pressable>
   );
 }

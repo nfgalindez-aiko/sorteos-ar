@@ -27,3 +27,6 @@ backend/eas_build.txt
 backend/eas_update.txt
 backend/httpserver.txt
 backend/reporte.txt
+backend/app_key.txt
+worker/**/node_modules/
+worker/**/.wrangler/

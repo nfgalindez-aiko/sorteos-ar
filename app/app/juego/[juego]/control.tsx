@@ -3,7 +3,7 @@
 // resultado se congela y la jugada pasa a "Anteriores", con opción de repetirla. Solo compara: no aconseja.
 import React, { useEffect, useMemo, useState } from "react";
 import { Alert, Modal, Pressable, ScrollView, Switch, Text, TextInput, View } from "react-native";
-import { Stack, useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useResultados } from "../../../src/api";
 import { Boton, Chip, FilaBolillas, Tarjeta, Vacio } from "../../../src/componentes";
 import { Espacio, Radio, usePaleta, useTema } from "../../../src/design";
@@ -39,6 +39,7 @@ function Cuerpo({ juego }: { juego: JuegoId }) {
   const r = useResultados();
   const js = useJugadas();
   const [alta, setAlta] = useState<{ numeros?: number[]; nombre?: string } | null>(null);
+  const router = useRouter();
   const ultimo = r.ultimos[juego];
   const lista = js.de(juego);
   const proximoSorteo = ultimo?.proximo?.sorteo ?? (ultimo ? ultimo.sorteo + 1 : null);
@@ -113,6 +114,9 @@ function Cuerpo({ juego }: { juego: JuegoId }) {
         <Text style={{ color: t.textoSec, fontSize: 11, lineHeight: 15 }}>
           Las jugadas quedan guardadas únicamente en este dispositivo. Esta pantalla solo compara números: no recomienda ni sugiere jugadas. Ante cualquier discrepancia vale el extracto oficial.
         </Text>
+        <View style={{ flexDirection: "row" }}>
+          <Boton titulo="¿Ves algún error? Dejámelo acá" color={t.textoSec} onPress={() => router.push(`/reporte?pantalla=control&juego=${juego}&sorteo=${ultimo?.sorteo ?? ""}`)} />
+        </View>
       </ScrollView>
       <NuevaJugada
         visible={alta !== null}

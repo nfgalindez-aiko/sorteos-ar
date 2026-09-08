@@ -1,7 +1,8 @@
 import React from "react";
 import { Alert, Linking, Pressable, ScrollView, Text, View } from "react-native";
 import Constants from "expo-constants";
-import { Disclaimer, Tarjeta } from "../src/componentes";
+import { Boton, Disclaimer, Tarjeta } from "../src/componentes";
+import { useRouter } from "expo-router";
 import { Espacio, useTema } from "../src/design";
 import { useJugadas } from "../src/jugadas";
 import { FUENTES, SITIO } from "../src/modelos";
@@ -10,6 +11,7 @@ export default function Ajustes() {
   const t = useTema();
   const js = useJugadas();
   const version = Constants.expoConfig?.version ?? "0.1.0";
+  const router = useRouter();
 
   const Seccion = ({ titulo, children }: { titulo: string; children: React.ReactNode }) => (
     <View style={{ gap: Espacio.s }}>
@@ -65,6 +67,9 @@ export default function Ajustes() {
           Los nombres de los juegos se usan de manera descriptiva. Esta app no está afiliada a ningún organismo ni operador de juegos de azar.
         </Text>
       </Seccion>
+      <View style={{ flexDirection: "row" }}>
+        <Boton titulo="¿Ves algún error? Dejámelo acá" color={t.textoSec} onPress={() => router.push("/reporte?pantalla=ajustes")} />
+      </View>
       <Pressable onPress={() => Linking.openURL("https://nfgalindez.com")} accessibilityRole="link" style={{ alignItems: "center", paddingVertical: Espacio.m }}>
         <Text style={{ color: t.textoSec, fontSize: 13 }}>Hecha por Nicolás Galindez</Text>
         <Text style={{ color: t.texto, fontSize: 13, fontWeight: "600", textDecorationLine: "underline" }}>nfgalindez.com</Text>
