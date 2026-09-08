@@ -24,7 +24,7 @@ export function PoceadaDetalle({ sorteo }: { sorteo: Poceada }) {
           <Text style={{ color: t.texto, fontSize: 20, fontWeight: "700" }}>Sorteo {sorteo.sorteo}</Text>
           <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(sorteo.fecha)}</Text>
         </View>
-        {sorteo.validado ? <Chip texto="Confirmado" color={p.primario} /> : <Chip texto="Pendiente de confirmación" color={t.aviso} />}
+        {sorteo.validado ? <Chip texto="2 fuentes" color={p.primario} /> : <Chip texto="1 fuente" color={t.aviso} />}
       </View>
 
       <Tarjeta fondo={p.fondoTarjeta} style={{ gap: Espacio.s }}>

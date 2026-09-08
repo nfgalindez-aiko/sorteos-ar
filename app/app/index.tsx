@@ -85,7 +85,7 @@ function TarjetaJuego({ juego, sorteo }: { juego: JuegoId; sorteo?: Sorteo }) {
               </Text>
             )}
             {objetivo && <CuentaRegresiva objetivo={objetivo} />}
-            {!sorteo.validado && <Chip texto="Pendiente de confirmación" color={t.aviso} />}
+            {!sorteo.validado && <Chip texto="1 fuente" color={t.aviso} />}
           </>
         ) : (
           <Text style={{ color: t.textoSec }}>Todavía no hay resultados cargados.</Text>
@@ -164,7 +164,7 @@ function TarjetaPoceada({ s }: { s: Poceada }) {
         </View>
         {prox?.pozo != null && <Text style={{ color: p.secundario, fontWeight: "600" }}>Próximo pozo estimado: {pesos(prox.pozo)}</Text>}
         {objetivo && <CuentaRegresiva objetivo={objetivo} />}
-        {!s.validado && <Chip texto="Pendiente de confirmación" color={t.aviso} />}
+        {!s.validado && <Chip texto="1 fuente" color={t.aviso} />}
       </Tarjeta>
     </Pressable>
   );

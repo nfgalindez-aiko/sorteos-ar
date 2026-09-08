@@ -23,7 +23,7 @@ export function QuinielaDia({ dia }: { dia: DiaQuiniela }) {
           <Text style={{ color: t.texto, fontSize: 20, fontWeight: "700" }}>{dia.nombre}</Text>
           <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(dia.fecha)}</Text>
         </View>
-        {dia.validado ? <Chip texto="Confirmado" color={p.primario} /> : <Chip texto="Parcial" color={t.aviso} />}
+        {dia.validado ? <Chip texto="2 fuentes" color={p.primario} /> : <Chip texto="Turnos con 1 fuente" color={t.aviso} />}
       </View>
       {dia.turnos.map((turno) => (
         <TurnoView key={turno.turno} turno={turno} paleta={p} />
@@ -46,7 +46,7 @@ function TurnoView({ turno, paleta }: { turno: TurnoQuiniela; paleta: Paleta }) 
         ) : turno.validado ? (
           <Chip texto="2 fuentes" color={paleta.primario} />
         ) : (
-          <Chip texto="Pendiente de confirmación" color={t.aviso} />
+          <Chip texto="1 fuente" color={t.aviso} />
         )}
       </View>
       {nums ? (

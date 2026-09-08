@@ -28,7 +28,7 @@ export default function Ajustes() {
           <Text key={f} style={{ color: t.texto, fontSize: 15 }}>{f}</Text>
         ))}
         <Text style={{ color: t.textoSec, fontSize: 13, lineHeight: 18 }}>
-          Cada sorteo se publica solo cuando dos fuentes independientes coinciden número por número. Los sorteos marcados como pendientes tienen una sola fuente o una discrepancia entre fuentes.
+          Cada sorteo se publica solo cuando dos fuentes independientes coinciden número por número. Cuando un dato dice "1 fuente" es porque por ahora lo publicó un solo sitio; se confirma solo cuando el segundo coincide.
         </Text>
       </Seccion>
       <Seccion titulo="Tus datos">

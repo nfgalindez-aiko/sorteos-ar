@@ -27,7 +27,7 @@ export default function Historico() {
           <Pressable
             onPress={() => router.push(`/juego/${juego}/sorteo/${item.sorteo}`)}
             accessibilityRole="button"
-            accessibilityLabel={`Sorteo ${item.sorteo}, ${fechaLarga(item.fecha)}${item.validado ? "" : ", pendiente de confirmación"}`}
+            accessibilityLabel={`Sorteo ${item.sorteo}, ${fechaLarga(item.fecha)}${item.validado ? "" : ", una sola fuente"}`}
             style={({ pressed }) => ({
               backgroundColor: t.superficie,
               opacity: pressed ? 0.7 : 1,

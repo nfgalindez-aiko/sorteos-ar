@@ -39,7 +39,7 @@ export default function QuinielaHistorico() {
             <Pressable
               onPress={() => router.push(`/quiniela/${prov}/${item.fecha}`)}
               accessibilityRole="button"
-              accessibilityLabel={`${fechaLarga(item.fecha)}, ${item.turnos} sorteos${item.validado ? "" : ", parcial"}`}
+              accessibilityLabel={`${fechaLarga(item.fecha)}, ${item.turnos} sorteos${item.validado ? "" : ", con turnos de una sola fuente"}`}
               style={({ pressed }) => ({
                 backgroundColor: t.superficie,
                 opacity: pressed ? 0.7 : 1,
