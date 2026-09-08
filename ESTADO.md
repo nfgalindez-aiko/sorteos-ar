@@ -330,3 +330,29 @@ Feedback del dueño y resolución:
   cuadro final de la animación (ícono + "Sorteos AR · Sorteos Argentinos") ~1,3 s, después entra.
 - Verificado: tsc, expo-doctor 21/21, export, `npm ci` desde el lock (574 paquetes).
   Build de producción nuevo y envío a TestFlight lanzados desde acá, no interactivos.
+
+## Sesión 9 — 08/09/2026 · Enviada a revisión de App Store
+
+Pedido: subir al App Store. Antes, dos ajustes: ícono celeste (ya estaba en el build 4; el dueño
+tenía el 3) y que en cada apertura se reproduzca el tramo final del logo animado. Build 5
+(0.1.0) con eso, subido a TestFlight y enlazado a la versión 1.0.
+
+App Store Connect, hecho desde el navegador del dueño con su sesión (él dio permiso expreso):
+- Ficha en inglés y en español (México): texto promocional, descripción, palabras clave, URLs de
+  soporte y marketing, copyright, contacto de revisión (teléfono provisto por el dueño), notas.
+- Información de la app: subtítulo, derechos de contenido ("sí, y tengo los derechos": los
+  resultados son datos públicos), categorías Noticias/Utilidades, clasificación 18+ (173 países).
+  Categorías y clasificación se cargaron por API con EAS Metadata (`app/store.config.json`); los
+  textos no, porque la herramienta falla con la API nueva de Apple (regla 29).
+- Privacidad: URL de la política, "No se recopilan datos", publicada.
+- Precio gratis (base EE. UU.) y disponibilidad en 175 países.
+- Capturas 6,5": las 5 que mandó el dueño desde el iPhone, reescaladas a 1284×2778 en el
+  navegador embebido (`docs/capturas/`). Se subieron con `file_upload` sobre el input oculto.
+- Regla 30: tipear textos largos tecla por tecla en App Store Connect cuelga la pestaña; los
+  campos React se cargan con el setter nativo + evento `input` vía JavaScript. Y la casilla "Es
+  necesario iniciar sesión" viene marcada por defecto: hay que desmarcarla o pide usuario/clave.
+- Resultado: "1 artículo enviado", estado **Pendiente de revisión**. Apple: hasta 48 h, avisa por mail.
+  Publicación configurada como automática al aprobarse.
+
+Pendiente después de la aprobación: notificaciones push, control de jugada para Poceada,
+monetización (decisión del dueño). Primer sorteo grande con la app pública: Quini 6 3407, mié 09/09.
