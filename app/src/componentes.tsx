@@ -187,7 +187,7 @@ export function Boton({ titulo, onPress, color, relleno = false, disabled = fals
         alignItems: "center",
       })}
     >
-      <Text style={{ color: relleno ? textoRelleno : color, fontWeight: "700", fontSize: 15 }}>{titulo}</Text>
+      <Text style={{ color: relleno ? textoRelleno : color, fontWeight: "700", fontSize: 15, textAlign: "center" }}>{titulo}</Text>
     </Pressable>
   );
 }
