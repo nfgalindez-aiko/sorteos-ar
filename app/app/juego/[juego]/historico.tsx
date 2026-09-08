@@ -42,7 +42,6 @@ export default function Historico() {
               <Text style={{ color: t.texto, fontWeight: "600", fontSize: 16 }}>Sorteo {item.sorteo}</Text>
               <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(item.fecha)}</Text>
             </View>
-            {!item.validado && <Text style={{ color: t.aviso, fontSize: 18 }}>⚠︎</Text>}
           </Pressable>
         )}
       />

@@ -1,7 +1,7 @@
 // Render de un sorteo completo (lo usan el detalle del último y el histórico).
 import React from "react";
 import { Text, View } from "react-native";
-import { Chip, CuentaRegresiva, FilaBolillas, PremiosTabla, Tarjeta } from "./componentes";
+import { ChipFuentes, CuentaRegresiva, FilaBolillas, PremiosTabla, Tarjeta } from "./componentes";
 import { Espacio, usePaleta, useTema } from "./design";
 import { entero, fechaLarga, instanteSorteo, pesos } from "./formato";
 import { JUEGOS, JuegoId, Sorteo, modalidadesOrdenadas, nombreModalidad } from "./modelos";
@@ -20,7 +20,7 @@ export function SorteoDetalle({ juego, sorteo }: { juego: JuegoId; sorteo: Sorte
           <Text style={{ color: t.texto, fontSize: 20, fontWeight: "700" }}>Sorteo {sorteo.sorteo}</Text>
           <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(sorteo.fecha)}</Text>
         </View>
-        {sorteo.validado ? <Chip texto="2 fuentes" color={p.primario} /> : <Chip texto="1 fuente" color={t.aviso} />}
+        <ChipFuentes fuentes={sorteo.fuentes} validado={sorteo.validado} color={p.primario} />
       </View>
 
       {modalidadesOrdenadas(sorteo, meta).map(({ clave, modalidad }) => (

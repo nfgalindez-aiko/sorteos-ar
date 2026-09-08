@@ -54,7 +54,6 @@ export default function QuinielaHistorico() {
                 <Text style={{ color: t.texto, fontWeight: "600", fontSize: 16 }}>{fechaLarga(item.fecha)}</Text>
                 <Text style={{ color: t.textoSec, fontSize: 14 }}>{item.turnos} {item.turnos === 1 ? "sorteo" : "sorteos"}</Text>
               </View>
-              {!item.validado && <Text style={{ color: t.aviso, fontSize: 18 }}>⚠︎</Text>}
             </Pressable>
           )}
         />

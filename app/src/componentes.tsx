@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Pressable, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { Alert, Pressable, StyleSheet, Text, View, ViewStyle } from "react-native";
 import { Espacio, Paleta, Radio, useTema } from "./design";
 import { cuentaRegresiva, dosDigitos, entero, pesos } from "./formato";
 import { DISCLAIMER, PremioFila } from "./modelos";
@@ -111,6 +111,43 @@ export function Chip({ texto, color }: { texto: string; color: string }) {
   );
 }
 
+const NOMBRES_FUENTE: Record<string, string> = {
+  A: "tujugada.com.ar",
+  B: "quini-6-resultados.com.ar",
+  M: "quinielamontevideo.com",
+  "ciudad-nocturna": "Nocturna de la Quiniela de la Ciudad (cruce)",
+  "ciudad-nocturna(A+B)": "Nocturna de la Quiniela de la Ciudad, publicada por dos sitios (cruce)",
+};
+
+/** "1 fuente" / "2 fuentes" tocable: al tocar dice de qué sitios salió el dato. Sin tono de alarma. */
+export function ChipFuentes({ fuentes, validado, conflicto = false, color }: { fuentes: string[]; validado: boolean; conflicto?: boolean; color: string }) {
+  const t = useTema();
+  const distintas = Array.from(new Set(fuentes));
+  const n = validado ? Math.max(2, distintas.length) : Math.max(1, distintas.length);
+  const texto = conflicto ? "Fuentes no coinciden" : validado ? `${n} fuentes` : `${n === 1 ? "1 fuente" : `${n} fuentes`}`;
+  const detalle = distintas.map((f) => `• ${NOMBRES_FUENTE[f] ?? f}`).join("\n");
+  const explicacion = conflicto
+    ? "Los sitios publicaron números distintos para este dato, así que no se muestra hasta que coincidan."
+    : validado
+      ? "Los sitios coincidieron número por número."
+      : "Por ahora lo publicó un solo sitio. Se marca como confirmado cuando un segundo sitio coincide.";
+  const tono = conflicto ? t.aviso : validado ? color : t.textoSec;
+  return (
+    <Pressable
+      onPress={() => Alert.alert(texto, `${detalle}\n\n${explicacion}\n\nAnte cualquier discrepancia vale el extracto oficial.`)}
+      accessibilityRole="button"
+      accessibilityLabel={`${texto}. Tocá para ver cuáles`}
+      hitSlop={6}
+      style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}
+    >
+      <View style={{ backgroundColor: tono + "24", paddingHorizontal: Espacio.s, paddingVertical: Espacio.xs, borderRadius: 999, flexDirection: "row", alignItems: "center", gap: 4 }}>
+        <Text style={{ color: tono, fontSize: 12, fontWeight: "600" }}>{texto}</Text>
+        <Text style={{ color: tono, fontSize: 11 }}>ⓘ</Text>
+      </View>
+    </Pressable>
+  );
+}
+
 export function Tarjeta({ children, style, fondo }: { children: React.ReactNode; style?: ViewStyle; fondo?: string }) {
   const t = useTema();
   return (
@@ -120,7 +157,19 @@ export function Tarjeta({ children, style, fondo }: { children: React.ReactNode;
   );
 }
 
+/** Luminancia relativa aproximada de un color #RRGGBB, para elegir texto claro u oscuro encima. */
+function esClaro(hex: string): boolean {
+  const m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i.exec(hex);
+  if (!m) return false;
+  const [r, g, b] = [m[1], m[2], m[3]].map((x) => parseInt(x, 16) / 255);
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.55;
+}
+
 export function Boton({ titulo, onPress, color, relleno = false, disabled = false }: { titulo: string; onPress: () => void; color: string; relleno?: boolean; disabled?: boolean }) {
+  const t = useTema();
+  // relleno: fondo del color del juego y texto que contraste de verdad (oscuro sobre colores claros, claro sobre oscuros)
+  // contorno: superficie de la tarjeta, borde y texto del color del juego, en negrita
+  const textoRelleno = esClaro(color) ? "#0F1311" : "#FFFFFF";
   return (
     <Pressable
       onPress={onPress}
@@ -128,14 +177,16 @@ export function Boton({ titulo, onPress, color, relleno = false, disabled = fals
       accessibilityRole="button"
       style={({ pressed }) => ({
         flex: 1,
-        opacity: disabled ? 0.4 : pressed ? 0.7 : 1,
-        backgroundColor: relleno ? color : color + "22",
+        opacity: disabled ? 0.4 : pressed ? 0.75 : 1,
+        backgroundColor: relleno ? color : t.superficie,
+        borderWidth: 2,
+        borderColor: color,
         paddingVertical: 12,
         borderRadius: Radio.chip,
         alignItems: "center",
       })}
     >
-      <Text style={{ color: relleno ? "#FFFFFF" : color, fontWeight: "600", fontSize: 15 }}>{titulo}</Text>
+      <Text style={{ color: relleno ? textoRelleno : color, fontWeight: "700", fontSize: 15 }}>{titulo}</Text>
     </Pressable>
   );
 }

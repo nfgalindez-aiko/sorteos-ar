@@ -1,7 +1,7 @@
 // Render de un sorteo de la Poceada: 20 números de dos cifras, letras, tabla de premios y próximo pozo.
 import React from "react";
 import { Text, View } from "react-native";
-import { Chip, CuentaRegresiva, Tarjeta } from "./componentes";
+import { ChipFuentes, CuentaRegresiva, Tarjeta } from "./componentes";
 import { Espacio, Paleta, useTema } from "./design";
 import { entero, fechaLarga, instanteSorteo, pesos } from "./formato";
 import { POCEADA, Poceada } from "./modelos";
@@ -24,7 +24,7 @@ export function PoceadaDetalle({ sorteo }: { sorteo: Poceada }) {
           <Text style={{ color: t.texto, fontSize: 20, fontWeight: "700" }}>Sorteo {sorteo.sorteo}</Text>
           <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(sorteo.fecha)}</Text>
         </View>
-        {sorteo.validado ? <Chip texto="2 fuentes" color={p.primario} /> : <Chip texto="1 fuente" color={t.aviso} />}
+        <ChipFuentes fuentes={sorteo.fuentes} validado={sorteo.validado} color={p.primario} />
       </View>
 
       <Tarjeta fondo={p.fondoTarjeta} style={{ gap: Espacio.s }}>

@@ -65,6 +65,10 @@ export default function Ajustes() {
           Los nombres de los juegos se usan de manera descriptiva. Esta app no está afiliada a ningún organismo ni operador de juegos de azar.
         </Text>
       </Seccion>
+      <Pressable onPress={() => Linking.openURL("https://nfgalindez.com")} accessibilityRole="link" style={{ alignItems: "center", paddingVertical: Espacio.m }}>
+        <Text style={{ color: t.textoSec, fontSize: 13 }}>Hecha por Nicolás Galindez</Text>
+        <Text style={{ color: t.texto, fontSize: 13, fontWeight: "600", textDecorationLine: "underline" }}>nfgalindez.com</Text>
+      </Pressable>
     </ScrollView>
   );
 }

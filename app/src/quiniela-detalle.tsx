@@ -1,7 +1,7 @@
 // Render de un día de quiniela: cada turno con sus 20 números (1-10 y 11-20), cabeza destacada y letras.
 import React from "react";
 import { Text, View } from "react-native";
-import { Chip, Tarjeta } from "./componentes";
+import { ChipFuentes, Tarjeta } from "./componentes";
 import { Espacio, Paleta, useTema } from "./design";
 import { fechaLarga } from "./formato";
 import { DiaQuiniela, TurnoQuiniela, nombreTurno } from "./modelos";
@@ -23,7 +23,6 @@ export function QuinielaDia({ dia }: { dia: DiaQuiniela }) {
           <Text style={{ color: t.texto, fontSize: 20, fontWeight: "700" }}>{dia.nombre}</Text>
           <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(dia.fecha)}</Text>
         </View>
-        {dia.validado ? <Chip texto="2 fuentes" color={p.primario} /> : <Chip texto="Turnos con 1 fuente" color={t.aviso} />}
       </View>
       {dia.turnos.map((turno) => (
         <TurnoView key={turno.turno} turno={turno} paleta={p} />
@@ -41,13 +40,7 @@ function TurnoView({ turno, paleta }: { turno: TurnoQuiniela; paleta: Paleta }) 
     <Tarjeta fondo={paleta.fondoTarjeta} style={{ gap: Espacio.s }}>
       <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
         <Text style={{ color: paleta.primario, fontWeight: "700", fontSize: 16 }}>{etiqueta}</Text>
-        {turno.conflicto ? (
-          <Chip texto="Fuentes no coinciden" color={t.aviso} />
-        ) : turno.validado ? (
-          <Chip texto="2 fuentes" color={paleta.primario} />
-        ) : (
-          <Chip texto="1 fuente" color={t.aviso} />
-        )}
+        <ChipFuentes fuentes={turno.fuentes} validado={turno.validado} conflicto={!!turno.conflicto} color={paleta.primario} />
       </View>
       {nums ? (
         <>

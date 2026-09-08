@@ -2,7 +2,7 @@ import React from "react";
 import { Pressable, RefreshControl, ScrollView, Text, View } from "react-native";
 import { Link, Stack, useRouter } from "expo-router";
 import { useResultados } from "../src/api";
-import { BannerSinConexion, Chip, CuentaRegresiva, Disclaimer, FilaBolillas, Tarjeta } from "../src/componentes";
+import { BannerSinConexion, Chip, ChipFuentes, CuentaRegresiva, Disclaimer, FilaBolillas, Tarjeta } from "../src/componentes";
 import { Espacio, usePaleta, useTema } from "../src/design";
 import { fechaLarga, horaCorta, instanteSorteo, pesos } from "../src/formato";
 import { JUEGOS, JuegoId, ORDEN_JUEGOS, PROVINCIAS, ResumenProvincia, Sorteo, nombreTurno } from "../src/modelos";
@@ -85,7 +85,7 @@ function TarjetaJuego({ juego, sorteo }: { juego: JuegoId; sorteo?: Sorteo }) {
               </Text>
             )}
             {objetivo && <CuentaRegresiva objetivo={objetivo} />}
-            {!sorteo.validado && <Chip texto="1 fuente" color={t.aviso} />}
+            {!sorteo.validado && <ChipFuentes fuentes={sorteo.fuentes} validado={false} color={p.primario} />}
           </>
         ) : (
           <Text style={{ color: t.textoSec }}>Todavía no hay resultados cargados.</Text>
@@ -129,7 +129,7 @@ function TarjetaQuiniela({ q }: { q: ResumenProvincia }) {
           {q.turnos.map((x) => (
             <View key={x.turno} style={{ alignItems: "center", minWidth: 58 }}>
               <Text style={{ color: t.textoSec, fontSize: 11 }}>{nombreTurno(x.turno)}</Text>
-              <Text style={{ color: x.validado ? t.texto : t.aviso, fontSize: 18, fontWeight: "800", fontVariant: ["tabular-nums"], letterSpacing: 1 }}>
+              <Text style={{ color: t.texto, fontSize: 18, fontWeight: "800", fontVariant: ["tabular-nums"], letterSpacing: 1 }}>
                 {x.cabeza ?? "—"}
               </Text>
             </View>
@@ -164,7 +164,7 @@ function TarjetaPoceada({ s }: { s: Poceada }) {
         </View>
         {prox?.pozo != null && <Text style={{ color: p.secundario, fontWeight: "600" }}>Próximo pozo estimado: {pesos(prox.pozo)}</Text>}
         {objetivo && <CuentaRegresiva objetivo={objetivo} />}
-        {!s.validado && <Chip texto="1 fuente" color={t.aviso} />}
+        {!s.validado && <ChipFuentes fuentes={s.fuentes} validado={false} color={p.primario} />}
       </Tarjeta>
     </Pressable>
   );

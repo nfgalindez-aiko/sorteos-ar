@@ -305,3 +305,28 @@ https://nfgalindez.com/sorteos/.
 - Etiquetas de la app: "1 fuente" / "2 fuentes" en vez de "pendiente de confirmación".
 - Poceada 9713 (lun 07/09) quedó `validado:true` por cruce con la nocturna de Ciudad de dos fuentes:
   primer `data/poceada/latest.json`. El cron publicó solo la vespertina y la nocturna de las quinielas.
+
+## Sesión 8 — 08/09/2026 (después de la primera prueba en TestFlight)
+
+Feedback del dueño y resolución:
+- "1 fuente / 2 fuentes" ahora es un chip tocable (`ChipFuentes`): al tocar dice qué sitios
+  publicaron el dato y por qué se marca así. Sin tono de alarma: color neutro para "1 fuente";
+  se quitó el triángulo naranja de los históricos y el naranja de las cabezas de quiniela.
+- Botones "Sorteos anteriores" / "Controlar jugada": el relleno usaba texto blanco sobre el color
+  del juego, que en modo oscuro es claro (verde #59CC8C) → sin contraste. Ahora el texto se elige
+  por luminancia (oscuro sobre colores claros) y el botón de contorno tiene borde de 2 px y negrita.
+- Ajustes, al pie: "Hecha por Nicolás Galindez · nfgalindez.com" (abre el navegador).
+  Revisión legal del link: App Store permite links al sitio del desarrollador; lo que prohíbe la
+  guideline 5.3 son links a apuestas o compra de cupones, y la 3.1.1 links a pagos externos.
+  nfgalindez.com no tiene nada de eso. Se mantiene: sin links a loterías ni casas de apuestas.
+- Ícono: el primario del kit era la configuración "sol de mayo" (lente dorada). Se pasó a
+  "celeste y blanco" (tile #0F1E33, lente #75AADB). Regla 28: se renderizó desde el SVG del kit
+  en el navegador embebido con la fuente Archivo cargada y se exportó a PNG 1024 (sin Archivo el
+  "17" salía en Arial). Guardado en `branding/assets/png/icono-celeste-*.png`, app y sitio.
+- Intro en la app: la animación completa solo la PRIMERA vez en ese teléfono (flag en
+  AsyncStorage), sin leyenda; un toque la cierra. Implementada en `react-native-svg` con la misma
+  coreografía (`src/logo-animado.tsx`).
+- Splash en cada apertura: splash nativo (`expo-splash-screen`, ícono sobre azul noche) y encima el
+  cuadro final de la animación (ícono + "Sorteos AR · Sorteos Argentinos") ~1,3 s, después entra.
+- Verificado: tsc, expo-doctor 21/21, export, `npm ci` desde el lock (574 paquetes).
+  Build de producción nuevo y envío a TestFlight lanzados desde acá, no interactivos.
