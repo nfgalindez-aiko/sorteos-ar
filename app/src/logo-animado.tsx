@@ -96,8 +96,8 @@ export function CuadroLogo({ T, width, height, conOutro = true }: { T: number; w
 }
 
 /** Reproduce T de 0 a DURACION con requestAnimationFrame. */
-function useReloj(activo: boolean, velocidad: number, alTerminar?: () => void) {
-  const [T, setT] = useState(0);
+function useReloj(activo: boolean, velocidad: number, alTerminar?: () => void, desde = 0) {
+  const [T, setT] = useState(desde);
   const inicio = useRef<number | null>(null);
   const fin = useRef(alTerminar);
   fin.current = alTerminar;
@@ -107,14 +107,14 @@ function useReloj(activo: boolean, velocidad: number, alTerminar?: () => void) {
     const tick = (now: number) => {
       if (!vivo) return;
       if (inicio.current == null) inicio.current = now;
-      const t = ((now - inicio.current) / 1000) * velocidad;
+      const t = desde + ((now - inicio.current) / 1000) * velocidad;
       if (t >= TOTAL) { setT(TOTAL); fin.current?.(); return; }
       setT(t);
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => { vivo = false; cancelAnimationFrame(raf); };
-  }, [activo, velocidad]);
+  }, [activo, velocidad, desde]);
   return T;
 }
 
@@ -140,15 +140,16 @@ export function IntroPrimeraVez({ onFin }: { onFin: () => void }) {
   );
 }
 
-/** Ícono + nombre un instante al abrir (cuadro final de la animación). */
-export function SplashLogo({ visible }: { visible: boolean }) {
+/** Tramo final del video en cada apertura: el ícono ya dibujado, la cámara se corre, aparece la firma y se funde. */
+export const SPLASH_DESDE = CUES.Firma - 0.1;
+export function SplashLogo({ visible, onFin }: { visible: boolean; onFin?: () => void }) {
   const { width, height } = useWindowDimensions();
+  const T = useReloj(visible, 1.0, () => onFin?.(), SPLASH_DESDE);
   if (!visible) return null;
-  const T = CUES.Firma + 1.6; // todo dibujado, antes del fundido
   return (
     <View style={[StyleSheet.absoluteFill, { backgroundColor: INK, alignItems: "center", justifyContent: "center", zIndex: 1000 }]} accessibilityLabel="Sorteos AR">
-      <CuadroLogo T={T} width={width} height={Math.min(height, (width * 9) / 16)} conOutro={false} />
-      <Text style={{ position: "absolute", bottom: 40, color: "#8C8779", fontSize: 11, letterSpacing: 2 }}>SOLO CONSULTA · +18</Text>
+      <CuadroLogo T={T} width={width} height={Math.min(height, (width * 9) / 16)} />
+      <Text style={{ position: "absolute", bottom: 40, color: "#8C8779", fontSize: 11, letterSpacing: 2, opacity: outro(T) }}>SOLO CONSULTA · +18</Text>
     </View>
   );
 }

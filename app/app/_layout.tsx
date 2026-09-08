@@ -28,11 +28,6 @@ export default function Layout() {
     };
   }, []);
 
-  useEffect(() => {
-    if (arranque !== "splash") return;
-    const id = setTimeout(() => setArranque("listo"), 1300);
-    return () => clearTimeout(id);
-  }, [arranque]);
 
   const terminarIntro = () => {
     marcarIntroVista();
@@ -56,7 +51,7 @@ export default function Layout() {
           <Stack.Screen name="ajustes" options={{ title: "Ajustes" }} />
         </Stack>
         {arranque === "intro" && <IntroPrimeraVez onFin={terminarIntro} />}
-        <SplashLogo visible={arranque === "splash" || arranque === "cargando"} />
+        <SplashLogo visible={arranque === "splash" || arranque === "cargando"} onFin={() => setArranque((a) => (a === "splash" ? "listo" : a))} />
       </JugadasProvider>
     </ResultadosProvider>
   );
