@@ -411,3 +411,16 @@ monetización (decisión del dueño). Primer sorteo grande con la app pública: 
 - Pendiente con el dueño: cuando Apple apruebe la 1.0, esperar su confirmación y recién entonces
   `eas update --branch production --environment production --platform ios` con el mismo código
   del canal testflight. Después, 1.1: notificaciones (Worker de tokens + Expo Push + APNs key).
+
+## Sesión 14 — 08/09/2026 · El cron de GitHub se saltea
+
+- Regla 35: **el cron de GitHub Actions no es confiable**. El 08/09 no corrió entre las 23:13 y las
+  14:00 ART (14 horas); a las 11:32 el verificador abrió el issue #2 por la previa faltante y a las
+  15:40 lo cerró solo cuando el cron volvió. GitHub documenta que las tareas programadas pueden
+  atrasarse o descartarse con carga.
+- Solución: Worker `sorteos-ar-cron` (`worker/cron/`) con cron trigger de Cloudflare cada 5 min
+  (puntual). Dentro de las ventanas (quinielas lun–sáb 10–23 cada 15 min; noches de sorteo mié/sáb/dom
+  21–24 cada 5 min; diaria 12:00) dispara `scrape.yml` por `workflow_dispatch`. Necesita un token
+  fine-grained de GitHub (solo repo sorteos-ar, Actions: write) como secreto `GITHUB_TOKEN`;
+  lo carga el dueño con `wrangler secret put`, no pasa por el chat. El cron de GitHub queda como
+  respaldo. Desplegado y respondiendo; sin token todavía (no hace nada hasta que esté).
