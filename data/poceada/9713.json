@@ -40,6 +40,12 @@
       "aciertos": 6,
       "ganadores": 14,
       "premio": 108709
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 189,
+      "premio": 0,
+      "nota": "recuperan la apuesta"
     }
   ],
   "proximo": {
@@ -52,5 +58,5 @@
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-09-07T21:59:04-03:00"
+  "generado": "2026-09-07T23:13:38-03:00"
 }
