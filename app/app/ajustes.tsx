@@ -26,9 +26,6 @@ export default function Ajustes() {
 
   return (
     <ScrollView contentContainerStyle={{ padding: Espacio.m, gap: Espacio.l }}>
-      <Seccion titulo="Aviso">
-        <Disclaimer />
-      </Seccion>
       <Seccion titulo="Notificaciones">
         <Text style={{ color: t.textoSec, fontSize: 13, lineHeight: 18 }}>
           Te avisamos cuando un sorteo queda confirmado por dos fuentes. Elegí qué querés recibir. No hace falta cuenta: solo se guarda un código anónimo del teléfono y esta lista.
@@ -56,6 +53,9 @@ export default function Ajustes() {
             <Text style={{ color: t.textoSec, fontSize: 13, textDecorationLine: "underline" }}>Apagar todas</Text>
           </Pressable>
         )}
+      </Seccion>
+      <Seccion titulo="Aviso">
+        <Disclaimer />
       </Seccion>
       <Seccion titulo="Fuentes de los resultados">
         {FUENTES.map((f) => (
