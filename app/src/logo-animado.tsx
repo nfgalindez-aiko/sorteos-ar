@@ -3,7 +3,8 @@
 // - <IntroPrimeraVez/>: la animación completa, una sola vez por dispositivo; un toque la cierra.
 // - <SplashLogo/>: el cuadro final (ícono + nombre) un instante en cada apertura.
 import React, { useEffect, useRef, useState } from "react";
-import { Pressable, StyleSheet, Text, View, useWindowDimensions } from "react-native";
+import { Pressable, StyleSheet, View, useWindowDimensions } from "react-native";
+import { Text } from "./texto";
 import Svg, { Circle, ClipPath, Defs, G, Rect, Text as SvgText } from "react-native-svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

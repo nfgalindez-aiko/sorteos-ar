@@ -386,3 +386,13 @@ monetización (decisión del dueño). Primer sorteo grande con la app pública: 
   cambiar "no se recolectan datos" por "Datos de contacto (opcional, no vinculados)" si Apple lo pide.
 - Splash: un toque lo cierra (igual que la intro).
 - Build 7 (perfil `testflight`) subido a TestFlight. Apple sigue revisando el 5.
+
+## Sesión 12 — 08/09/2026 · Letra grande
+
+- Con Dynamic Type en tamaños de accesibilidad, los textos se cortaban por la mitad y las
+  bolillas quedaban fijas (captura del dueño, build 7). Regla 33: `src/texto.tsx` exporta un
+  `Text` con `maxFontSizeMultiplier = 1.5` y todos los archivos lo importan en lugar del de
+  React Native (aliasado como `Text`, sin tocar el JSX). `useEscala()` devuelve el factor real
+  (tope 1,5×) y con él crecen las bolillas, las celdas de la grilla de jugada y las de la Poceada.
+  Dynamic Type sigue funcionando hasta 1,5×; más allá, la app no crece más pero no se rompe.
+- Build 8 (perfil `testflight`) para que el dueño lo pruebe con la letra grande.

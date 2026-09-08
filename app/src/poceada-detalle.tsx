@@ -1,6 +1,7 @@
 // Render de un sorteo de la Poceada: 20 números de dos cifras, letras, tabla de premios y próximo pozo.
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { Text, useEscala } from "./texto";
 import { ChipFuentes, CuentaRegresiva, Tarjeta } from "./componentes";
 import { Espacio, Paleta, useTema } from "./design";
 import { entero, fechaLarga, instanteSorteo, pesos } from "./formato";
@@ -17,6 +18,7 @@ export function PoceadaDetalle({ sorteo }: { sorteo: Poceada }) {
   const p = paletaPoceada(t.oscuro);
   const prox = sorteo.proximo;
   const objetivo = prox?.fecha ? instanteSorteo(prox.fecha, POCEADA.hora) : null;
+  const celda = 46 * useEscala();
   return (
     <View style={{ gap: Espacio.m }}>
       <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} accessible>
@@ -35,7 +37,7 @@ export function PoceadaDetalle({ sorteo }: { sorteo: Poceada }) {
           accessibilityLabel={`Números sorteados: ${sorteo.numeros.join(", ")}`}
         >
           {sorteo.numeros.map((n) => (
-            <View key={n} style={{ width: 46, height: 46, borderRadius: 23, backgroundColor: p.bolilla, alignItems: "center", justifyContent: "center" }}>
+            <View key={n} style={{ width: celda, height: celda, borderRadius: celda / 2, backgroundColor: p.bolilla, alignItems: "center", justifyContent: "center" }}>
               <Text style={{ color: p.textoBolilla, fontWeight: "800", fontSize: 18, fontVariant: ["tabular-nums"] }}>{n}</Text>
             </View>
           ))}

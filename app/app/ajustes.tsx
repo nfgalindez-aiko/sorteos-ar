@@ -1,5 +1,6 @@
 import React from "react";
-import { Alert, Linking, Pressable, ScrollView, Text, View } from "react-native";
+import { Alert, Linking, Pressable, ScrollView, View } from "react-native";
+import { Text } from "../src/texto";
 import Constants from "expo-constants";
 import { Boton, Disclaimer, Tarjeta } from "../src/componentes";
 import { useRouter } from "expo-router";

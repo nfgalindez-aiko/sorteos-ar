@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Pressable, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { Alert, Pressable, StyleSheet, View, ViewStyle } from "react-native";
+import { Text, useEscala } from "./texto";
 import { Espacio, Paleta, Radio, useTema } from "./design";
 import { cuentaRegresiva, dosDigitos, entero, pesos } from "./formato";
 import { DISCLAIMER, PremioFila } from "./modelos";
 
-export function Bolilla({ numero, paleta, resaltada = false, tamano = 44 }: { numero: number; paleta: Paleta; resaltada?: boolean; tamano?: number }) {
+export function Bolilla({ numero, paleta, resaltada = false, tamano: base = 44 }: { numero: number; paleta: Paleta; resaltada?: boolean; tamano?: number }) {
+  const tamano = base * useEscala(); // crece con la letra grande, hasta 1,5×
   return (
     <View
       accessible
@@ -21,8 +23,7 @@ export function Bolilla({ numero, paleta, resaltada = false, tamano = 44 }: { nu
       }}
     >
       <Text
-        style={{ color: paleta.textoBolilla, fontWeight: "800", fontSize: tamano * 0.42, fontVariant: ["tabular-nums"] }}
-        maxFontSizeMultiplier={1.3}
+        style={{ color: paleta.textoBolilla, fontWeight: "800", fontSize: base * 0.42, fontVariant: ["tabular-nums"] }}
       >
         {dosDigitos(numero)}
       </Text>

@@ -1,6 +1,7 @@
 // Render de un día de quiniela: cada turno con sus 20 números (1-10 y 11-20), cabeza destacada y letras.
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { Text } from "./texto";
 import { ChipFuentes, Tarjeta } from "./componentes";
 import { Espacio, Paleta, useTema } from "./design";
 import { fechaLarga } from "./formato";

@@ -1,5 +1,6 @@
 import React from "react";
-import { Pressable, RefreshControl, ScrollView, Text, View } from "react-native";
+import { Pressable, RefreshControl, ScrollView, View } from "react-native";
+import { Text } from "../src/texto";
 import { Link, Stack, useRouter } from "expo-router";
 import { useResultados } from "../src/api";
 import { useJugadas } from "../src/jugadas";

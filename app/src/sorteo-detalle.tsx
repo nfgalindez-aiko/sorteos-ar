@@ -1,6 +1,7 @@
 // Render de un sorteo completo (lo usan el detalle del último y el histórico).
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { Text } from "./texto";
 import { ChipFuentes, CuentaRegresiva, FilaBolillas, PremiosTabla, Tarjeta } from "./componentes";
 import { Espacio, usePaleta, useTema } from "./design";
 import { entero, fechaLarga, instanteSorteo, pesos } from "./formato";

@@ -1,7 +1,8 @@
 // "¿Ves algún error? Dejámelo acá": el usuario escribe, la app lo manda al Worker y el Worker
 // se lo envía por mail al dueño. Sin exponer direcciones ni abrir el correo del usuario.
 import React, { useState } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, View } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, TextInput, View } from "react-native";
+import { Text } from "../src/texto";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { Boton, Tarjeta } from "../src/componentes";
 import { Espacio, Radio, useTema } from "../src/design";

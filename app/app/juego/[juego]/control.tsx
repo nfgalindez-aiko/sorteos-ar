@@ -2,7 +2,8 @@
 // sorteo ("para el sorteo 3407") o marcada como "la juego siempre". Cuando sale su sorteo, el
 // resultado se congela y la jugada pasa a "Anteriores", con opción de repetirla. Solo compara: no aconseja.
 import React, { useEffect, useMemo, useState } from "react";
-import { Alert, Modal, Pressable, ScrollView, Switch, Text, TextInput, View } from "react-native";
+import { Alert, Modal, Pressable, ScrollView, Switch, TextInput, View } from "react-native";
+import { Text, useEscala } from "../../../src/texto";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useResultados } from "../../../src/api";
 import { Boton, Chip, FilaBolillas, Tarjeta, Vacio } from "../../../src/componentes";
@@ -207,6 +208,7 @@ function NuevaJugada({ visible, juego, proximoSorteo, inicial, onCerrar, onGuard
   const [nombre, setNombre] = useState("");
   const [sel, setSel] = useState<number[]>([]);
   const [siempre, setSiempre] = useState(false);
+  const celda = 46 * useEscala();
   const rango = Array.from({ length: meta.max - meta.min + 1 }, (_, i) => meta.min + i);
 
   useEffect(() => {
@@ -268,9 +270,9 @@ function NuevaJugada({ visible, juego, proximoSorteo, inicial, onCerrar, onGuard
                   accessibilityLabel={`Número ${n}`}
                   accessibilityState={{ selected: activo, disabled: bloqueado }}
                   style={{
-                    width: 46,
-                    height: 46,
-                    borderRadius: 23,
+                    width: celda,
+                    height: celda,
+                    borderRadius: celda / 2,
                     alignItems: "center",
                     justifyContent: "center",
                     backgroundColor: activo ? p.bolilla : t.superficie,

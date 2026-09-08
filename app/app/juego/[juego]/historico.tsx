@@ -1,5 +1,6 @@
 import React from "react";
-import { FlatList, Pressable, RefreshControl, Text, View } from "react-native";
+import { FlatList, Pressable, RefreshControl, View } from "react-native";
+import { Text } from "../../../src/texto";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useResultados } from "../../../src/api";
 import { Vacio } from "../../../src/componentes";
