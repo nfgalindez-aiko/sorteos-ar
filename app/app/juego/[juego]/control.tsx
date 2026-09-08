@@ -159,7 +159,7 @@ function FilaJugada({ jugada, estado, ultimo, juego, onBorrar, onRepetir }: { ju
   return (
     <Tarjeta style={{ gap: Espacio.s, opacity: estado.tipo === "resuelta" ? 0.92 : 1 }}>
       <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-        <Text style={{ color: t.texto, fontWeight: "600", fontSize: 16 }}>{jugada.nombre || "Jugada"}</Text>
+        <Text style={{ color: t.texto, fontWeight: "600", fontSize: 16 * esc }}>{jugada.nombre || "Jugada"}</Text>
         <View style={{ flexDirection: "row", gap: Espacio.m }}>
           <Pressable onPress={onRepetir} accessibilityLabel="Repetir esta jugada para el próximo sorteo" hitSlop={12}>
             <Text style={{ color: p.primario, fontSize: 13, fontWeight: "600" }}>Repetir</Text>
@@ -208,7 +208,8 @@ function NuevaJugada({ visible, juego, proximoSorteo, inicial, onCerrar, onGuard
   const [nombre, setNombre] = useState("");
   const [sel, setSel] = useState<number[]>([]);
   const [siempre, setSiempre] = useState(false);
-  const celda = 46 * useEscala();
+  const esc = useEscala();
+  const celda = 46 * esc;
   const rango = Array.from({ length: meta.max - meta.min + 1 }, (_, i) => meta.min + i);
 
   useEffect(() => {
@@ -232,20 +233,21 @@ function NuevaJugada({ visible, juego, proximoSorteo, inicial, onCerrar, onGuard
       <View style={{ flex: 1, backgroundColor: t.fondo }}>
         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: Espacio.m }}>
           <Pressable onPress={cerrar} hitSlop={12} accessibilityRole="button">
-            <Text style={{ color: p.primario, fontSize: 16 }}>Cancelar</Text>
+            <Text style={{ color: p.primario, fontSize: 16 * esc }}>Cancelar</Text>
           </Pressable>
-          <Text style={{ color: t.texto, fontWeight: "600", fontSize: 16 }}>Nueva jugada · {meta.nombre}</Text>
+          <Text style={{ color: t.texto, fontWeight: "600", fontSize: 16 * esc }}>Nueva jugada · {meta.nombre}</Text>
           <Pressable onPress={guardar} disabled={sel.length !== 6} hitSlop={12} accessibilityRole="button">
             <Text style={{ color: p.primario, fontSize: 16, fontWeight: "700", opacity: sel.length === 6 ? 1 : 0.4 }}>Guardar</Text>
           </Pressable>
         </View>
         <ScrollView contentContainerStyle={{ padding: Espacio.m, gap: Espacio.m }}>
           <TextInput
+            allowFontScaling={false}
             placeholder="Nombre (opcional)"
             placeholderTextColor={t.textoSec}
             value={nombre}
             onChangeText={setNombre}
-            style={{ backgroundColor: t.superficie, color: t.texto, padding: 12, borderRadius: Radio.chip, borderWidth: 1, borderColor: t.borde, fontSize: 16 }}
+            style={{ backgroundColor: t.superficie, color: t.texto, padding: 12, borderRadius: Radio.chip, borderWidth: 1, borderColor: t.borde, fontSize: 16 * esc }}
           />
           <Tarjeta style={{ gap: Espacio.xs }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>

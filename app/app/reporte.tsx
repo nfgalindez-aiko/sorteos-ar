@@ -2,7 +2,7 @@
 // se lo envía por mail al dueño. Sin exponer direcciones ni abrir el correo del usuario.
 import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, TextInput, View } from "react-native";
-import { Text } from "../src/texto";
+import { Text, useEscala } from "../src/texto";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { Boton, Tarjeta } from "../src/componentes";
 import { Espacio, Radio, useTema } from "../src/design";
@@ -17,6 +17,7 @@ export default function Reporte() {
   const [enviando, setEnviando] = useState(false);
   const [estado, setEstado] = useState<{ ok: boolean; msg: string } | null>(null);
   const color = t.oscuro ? "#7FD1C7" : "#0F6E63";
+  const esc = useEscala();
 
   const enviar = async () => {
     setEnviando(true);
@@ -41,6 +42,7 @@ export default function Reporte() {
             ¿Un número que no coincide con el extracto, algo que no carga, un texto mal? Contalo acá y le llega directo al desarrollador. No hace falta dejar ningún dato.
           </Text>
           <TextInput
+            allowFontScaling={false}
             placeholder="Qué viste, en qué pantalla y qué esperabas"
             placeholderTextColor={t.textoSec}
             value={texto}
@@ -48,10 +50,11 @@ export default function Reporte() {
             multiline
             maxLength={2000}
             textAlignVertical="top"
-            style={{ minHeight: 140, backgroundColor: t.superficie, color: t.texto, padding: 12, borderRadius: Radio.chip, borderWidth: 1, borderColor: t.borde, fontSize: 16 }}
+            style={{ minHeight: 140, backgroundColor: t.superficie, color: t.texto, padding: 12, borderRadius: Radio.chip, borderWidth: 1, borderColor: t.borde, fontSize: 16 * esc }}
             accessibilityLabel="Descripción del error"
           />
           <TextInput
+            allowFontScaling={false}
             placeholder="Cómo contactarte, si querés respuesta (opcional)"
             placeholderTextColor={t.textoSec}
             value={contacto}
@@ -59,7 +62,7 @@ export default function Reporte() {
             maxLength={120}
             autoCapitalize="none"
             keyboardType="email-address"
-            style={{ backgroundColor: t.superficie, color: t.texto, padding: 12, borderRadius: Radio.chip, borderWidth: 1, borderColor: t.borde, fontSize: 16 }}
+            style={{ backgroundColor: t.superficie, color: t.texto, padding: 12, borderRadius: Radio.chip, borderWidth: 1, borderColor: t.borde, fontSize: 16 * esc }}
             accessibilityLabel="Contacto opcional"
           />
           <Tarjeta style={{ gap: 4 }}>

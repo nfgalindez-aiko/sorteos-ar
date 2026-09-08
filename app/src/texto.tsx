@@ -1,16 +1,24 @@
-// Texto con tope de escala de accesibilidad. Dynamic Type sigue funcionando (hasta 1,5×), pero sin
-// que los tamaños extremos rompan tarjetas, filas y bolillas. Se importa como `Text` en toda la app.
+// Texto con escala de accesibilidad hecha a mano. En iOS (arquitectura nueva) el escalado
+// automático mide la línea con la letra normal y la dibuja con la grande, y el texto se corta por la
+// mitad. Acá se apaga el escalado del sistema (`allowFontScaling={false}`) y se multiplica el
+// fontSize y el lineHeight por el factor del sistema (tope 1,5×): lo medido y lo dibujado coinciden.
 import React, { forwardRef } from "react";
-import { Text as RNText, TextProps, useWindowDimensions } from "react-native";
+import { StyleSheet, Text as RNText, TextProps, TextStyle, useWindowDimensions } from "react-native";
 
 export const ESCALA_MAX = 1.5;
 
-export const Text = forwardRef<RNText, TextProps>(function Texto(props, ref) {
-  return <RNText maxFontSizeMultiplier={ESCALA_MAX} {...props} ref={ref} />;
-});
-
-/** Factor para agrandar elementos que no son texto (bolillas, chips) junto con la letra. */
+/** Factor de escala real del sistema, con tope. Sirve también para bolillas y celdas. */
 export function useEscala(): number {
   const { fontScale } = useWindowDimensions();
   return Math.min(Math.max(fontScale, 1), ESCALA_MAX);
 }
+
+export const Text = forwardRef<RNText, TextProps>(function Texto(props, ref) {
+  const esc = useEscala();
+  const plano = (StyleSheet.flatten(props.style) || {}) as TextStyle;
+  const estilo: TextStyle = { ...plano };
+  // Sin fontSize explícito se deja heredar (textos anidados) o el default de 14 escalado.
+  estilo.fontSize = (plano.fontSize ?? 14) * esc;
+  if (plano.lineHeight != null) estilo.lineHeight = plano.lineHeight * esc;
+  return <RNText allowFontScaling={false} {...props} style={estilo} ref={ref} />;
+});
