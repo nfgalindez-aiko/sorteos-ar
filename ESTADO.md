@@ -356,3 +356,15 @@ App Store Connect, hecho desde el navegador del dueño con su sesión (él dio p
 
 Pendiente después de la aprobación: notificaciones push, control de jugada para Poceada,
 monetización (decisión del dueño). Primer sorteo grande con la app pública: Quini 6 3407, mié 09/09.
+
+## Sesión 10 — 08/09/2026 · Mejoras para TestFlight mientras Apple revisa
+
+- Botones de acción arriba del detalle en todos los juegos y quinielas.
+- Jugadas: ahora quedan atadas al próximo sorteo (`objetivo`) o marcadas "la juego siempre"
+  (`objetivo: null`). Cuando el sorteo objetivo se publica, el resultado se congela en
+  `resultado` y la jugada pasa a "Anteriores"; botón "Repetir". Las jugadas viejas (sin
+  `objetivo`) se tratan como "siempre". Regla 31: `actualizar` del store es funcional (setState
+  con función) porque varias jugadas se congelan seguidas y con el cierre viejo se pisaban.
+- Canales EAS: el build 5 (en revisión) queda en `production` sin tocar; el build 6 se hizo con
+  el perfil `testflight` (canal `testflight`) y se subió a TestFlight para que el dueño lo pruebe.
+  Cuando Apple apruebe: `eas update --branch production` con el mismo código.
