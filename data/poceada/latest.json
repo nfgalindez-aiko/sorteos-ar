@@ -1,0 +1,56 @@
+{
+  "juego": "poceada",
+  "sorteo": 9713,
+  "fecha": "2026-09-07",
+  "numeros": [
+    "06",
+    "11",
+    "15",
+    "17",
+    "28",
+    "30",
+    "31",
+    "32",
+    "35",
+    "45",
+    "49",
+    "63",
+    "69",
+    "72",
+    "74",
+    "77",
+    "86",
+    "89",
+    "93",
+    "98"
+  ],
+  "letras": "DLXY",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 100000000
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 2,
+      "premio": 3433343
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 14,
+      "premio": 108709
+    }
+  ],
+  "proximo": {
+    "sorteo": 9714,
+    "fecha": "2026-09-08",
+    "pozo": 104400000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-09-07T21:59:04-03:00"
+}
