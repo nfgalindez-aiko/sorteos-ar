@@ -31,15 +31,17 @@
         "446"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "M"
       ]
     }
   ],
-  "validado": false,
+  "validado": true,
   "fuentes": [
-    "A"
+    "A",
+    "M"
   ],
-  "generado": "2026-09-08T15:25:44-03:00"
+  "generado": "2026-09-08T16:53:59-03:00"
 }
