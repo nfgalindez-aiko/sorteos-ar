@@ -1,0 +1,76 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "copyright": "2026 Nicolás Galindez",
+    "categories": [
+      "NEWS",
+      "UTILITIES"
+    ],
+    "advisory": {
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gamblingSimulated": "NONE",
+      "medicalOrTreatmentInformation": "NONE",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "matureOrSuggestiveThemes": "NONE",
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "gambling": false,
+      "unrestrictedWebAccess": false,
+      "kidsAgeBand": null,
+      "ageRatingOverride": "SEVENTEEN_PLUS",
+      "koreaAgeRatingOverride": "NONE"
+    },
+    "info": {
+      "es-MX": {
+        "title": "Sorteos AR",
+        "subtitle": "Resultados de loterías en AR",
+        "description": "Sorteos AR es una aplicación informativa independiente para consultar los resultados de las loterías poceadas y quinielas de Argentina. No permite apostar ni comprar cupones: solo muestra los números sorteados, los premios y el pozo estimado del próximo sorteo.\n\nQUÉ PODÉS VER\n• Último sorteo de Quini 6 (Tradicional, Segunda vuelta, Revancha, Siempre sale y Pozo extra), Brinco (Tradicional y Junior) y Loto Plus (Tradicional, Match, Desquite, Sale o sale y Número Plus).\n• Poceada de la Ciudad: los 20 números, letras, premios y próximo pozo.\n• Quinielas Nacional (Ciudad), Provincia de Buenos Aires, Santa Fe, Córdoba, Mendoza, Entre Ríos y Montevideo: los 20 números de cada turno, con la cabeza destacada y las letras.\n• Tabla de premios por modalidad: aciertos, cantidad de ganadores y premio por apuesta.\n• Pozo estimado y cuenta regresiva al próximo sorteo.\n• Histórico de sorteos anteriores.\n• Controlar tus números: cargás tus 6 números y la app marca cuáles salieron en cada modalidad. Solo compara; no recomienda ni sugiere números.\n\nCÓMO FUNCIONA\n• Cada dato se publica indicando cuántos sitios lo confirmaron: \"2 fuentes\" cuando dos sitios independientes coinciden número por número, \"1 fuente\" cuando por ahora lo publicó uno solo. Tocás la etiqueta y ves cuáles.\n• Funciona sin conexión con el último resultado guardado.\n• Sin cuenta, sin registro y sin publicidad. Tus jugadas quedan solo en tu dispositivo.\n• Compatible con VoiceOver y Dynamic Type.\n\nAVISO\nAplicación informativa independiente. No está afiliada a Lotería de Santa Fe, a Lotería de la Ciudad ni a ningún organismo oficial. No permite apostar. Ante cualquier discrepancia vale el extracto oficial. Jugar compulsivamente es perjudicial para la salud. +18.\n\nLos nombres de los juegos se mencionan únicamente con fines descriptivos y pertenecen a sus respectivos titulares.",
+        "keywords": [
+          "resultados",
+          "sorteos",
+          "loteria",
+          "poceado",
+          "argentina",
+          "numeros",
+          "ganadores",
+          "pozo",
+          "extracto",
+          "control"
+        ],
+        "releaseNotes": "Primera versión: Quini 6, Brinco, Loto Plus, Poceada y quinielas, con control de jugada e histórico.",
+        "promoText": "Resultados de los sorteos poceados y quinielas argentinas la misma noche del sorteo, confirmados por dos fuentes, con histórico y control de tus números. Sin apuestas.",
+        "privacyPolicyUrl": "https://nfgalindez.com/sorteos/privacidad/",
+        "supportUrl": "https://nfgalindez.com/sorteos/soporte/",
+        "marketingUrl": "https://nfgalindez.com/sorteos/"
+      },
+      "en-US": {
+        "title": "Sorteos AR",
+        "subtitle": "Argentine lottery results",
+        "description": "Sorteos AR is an independent, information-only app to check the results of Argentina's lottery draws and quinielas. It does not allow betting or buying tickets: it only shows the drawn numbers, prizes and the estimated jackpot of the next draw.\n\nWHAT YOU CAN SEE\n• Latest draw of Quini 6, Brinco and Loto Plus, with every game mode and its prize table.\n• Poceada de la Ciudad: the 20 numbers, letters, prizes and next jackpot.\n• Quinielas of Buenos Aires City (Nacional), Buenos Aires Province, Santa Fe, Córdoba, Mendoza, Entre Ríos and Montevideo: the 20 numbers of every draw of the day.\n• Estimated jackpot and countdown to the next draw.\n• Past draws.\n• Check your numbers: enter your 6 numbers and the app marks which ones came out. It only compares; it never suggests numbers.\n\nHOW IT WORKS\n• Every result says how many sites confirmed it: \"2 fuentes\" when two independent sites match number by number, \"1 fuente\" when only one has published it so far. Tap the label to see which ones.\n• Works offline with the last saved results.\n• No account, no sign-up, no ads. Your saved numbers never leave your device.\n• VoiceOver and Dynamic Type supported.\n\nNOTICE\nIndependent informational app. Not affiliated with Lotería de Santa Fe, Lotería de la Ciudad or any official body. No betting. In case of discrepancy the official record prevails. Compulsive gambling is harmful to health. 18+.\n\nGame names are mentioned for descriptive purposes only and belong to their respective owners.",
+        "keywords": [
+          "results",
+          "lottery",
+          "argentina",
+          "quiniela",
+          "numbers",
+          "winners",
+          "jackpot",
+          "draw"
+        ],
+        "releaseNotes": "First release: Quini 6, Brinco, Loto Plus, Poceada and quinielas, with number checking and history.",
+        "promoText": "Argentine lottery and quiniela results the same night, confirmed by two sources, with history and number checking. No betting.",
+        "privacyPolicyUrl": "https://nfgalindez.com/sorteos/privacidad/",
+        "supportUrl": "https://nfgalindez.com/sorteos/soporte/",
+        "marketingUrl": "https://nfgalindez.com/sorteos/"
+      }
+    },
+    "release": {
+      "automaticRelease": false
+    }
+  }
+}
