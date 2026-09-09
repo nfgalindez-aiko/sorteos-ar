@@ -73,7 +73,7 @@
           "turno": "nocturna",
           "hora": "21:00",
           "cabeza": "0204",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -110,8 +110,8 @@
         {
           "turno": "nocturna",
           "hora": "21:00",
-          "cabeza": null,
-          "validado": false
+          "cabeza": "3099",
+          "validado": true
         }
       ]
     },
@@ -149,7 +149,7 @@
           "turno": "nocturna",
           "hora": "21:00",
           "cabeza": "6873",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -169,7 +169,7 @@
           "turno": "nocturna",
           "hora": "21:00",
           "cabeza": "637",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -250,5 +250,5 @@
       ]
     }
   ],
-  "generado": "2026-09-08T21:30:51-03:00"
+  "generado": "2026-09-08T21:45:46-03:00"
 }
