@@ -158,9 +158,10 @@
         "0314"
       ],
       "letras": "URVX",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -169,5 +170,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-09-08T21:15:48-03:00"
+  "generado": "2026-09-08T21:30:48-03:00"
 }
