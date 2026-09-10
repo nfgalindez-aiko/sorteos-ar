@@ -97,12 +97,12 @@
   "proximo": {
     "sorteo": 3916,
     "fecha": "2026-09-09",
-    "pozo": 0
+    "pozo": 24174000000
   },
   "validado": false,
   "fuentes": [
     "A",
     "B"
   ],
-  "generado": "2026-09-09T22:15:42-03:00"
+  "generado": "2026-09-09T22:26:17-03:00"
 }
