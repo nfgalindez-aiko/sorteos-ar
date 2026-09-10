@@ -163,7 +163,7 @@
           "turno": "nocturna",
           "hora": "21:00",
           "cabeza": "719",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -244,5 +244,5 @@
       ]
     }
   ],
-  "generado": "2026-09-09T21:30:58-03:00"
+  "generado": "2026-09-09T21:35:49-03:00"
 }

@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9715,
+  "fecha": "2026-09-09",
+  "numeros": [
+    "03",
+    "07",
+    "08",
+    "23",
+    "26",
+    "45",
+    "47",
+    "56",
+    "57",
+    "59",
+    "60",
+    "70",
+    "76",
+    "77",
+    "79",
+    "81",
+    "83",
+    "87",
+    "91",
+    "96"
+  ],
+  "letras": "RWYZ",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 109551590
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 6411725
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 9,
+      "premio": 187540
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 118,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9716,
+    "fecha": "2026-09-10",
+    "pozo": 126400000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-09-09T21:35:49-03:00"
+}
