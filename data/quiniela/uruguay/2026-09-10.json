@@ -63,16 +63,17 @@
         "318"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "M"
       ]
     }
   ],
-  "validado": false,
+  "validado": true,
   "fuentes": [
     "A",
     "M"
   ],
-  "generado": "2026-09-10T21:30:58-03:00"
+  "generado": "2026-09-10T21:45:50-03:00"
 }
