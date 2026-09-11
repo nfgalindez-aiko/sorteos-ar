@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9716,
+  "fecha": "2026-09-10",
+  "numeros": [
+    "05",
+    "12",
+    "28",
+    "32",
+    "37",
+    "40",
+    "41",
+    "44",
+    "48",
+    "51",
+    "52",
+    "66",
+    "69",
+    "74",
+    "75",
+    "78",
+    "84",
+    "88",
+    "92",
+    "94"
+  ],
+  "letras": "UUUX",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 119140226
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 3077182
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 14,
+      "premio": 109899
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 135,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9717,
+    "fecha": "2026-09-11",
+    "pozo": 134500000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-09-10T21:30:59-03:00"
+}
