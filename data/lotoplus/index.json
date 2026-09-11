@@ -2,10 +2,15 @@
   "juego": "lotoplus",
   "sorteos": [
     {
+      "sorteo": 3916,
+      "fecha": "2026-09-09",
+      "validado": true
+    },
+    {
       "sorteo": 3915,
       "fecha": "2026-09-05",
       "validado": false
     }
   ],
-  "generado": "2026-09-09T22:15:42-03:00"
+  "generado": "2026-09-11T15:18:35-03:00"
 }
