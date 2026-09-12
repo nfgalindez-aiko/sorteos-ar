@@ -23,7 +23,7 @@
           "turno": "matutina",
           "hora": "15:00",
           "cabeza": "1151",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -49,7 +49,7 @@
           "turno": "matutina",
           "hora": "15:00",
           "cabeza": "5949",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -101,7 +101,7 @@
           "turno": "matutina",
           "hora": "15:00",
           "cabeza": "7107",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -168,9 +168,15 @@
           "hora": "12:00",
           "cabeza": "2174",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "1582",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-09-12T15:15:52-03:00"
+  "generado": "2026-09-12T15:30:52-03:00"
 }
