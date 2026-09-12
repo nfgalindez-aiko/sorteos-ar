@@ -126,9 +126,10 @@
         "5922"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -137,5 +138,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-09-12T18:15:48-03:00"
+  "generado": "2026-09-12T18:31:01-03:00"
 }
