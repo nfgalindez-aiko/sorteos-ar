@@ -1,6 +1,6 @@
 # Sorteos AR - tests sin red sobre HTML real congelado en tests/fixtures/.
 # Correr desde backend/:  python -m unittest -v
-import os, sys, unittest, json, tempfile
+import os, sys, unittest, json, tempfile, contextlib, io
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
@@ -149,6 +149,19 @@ class TestBrinco(unittest.TestCase):
 
 
 class TestCommon(unittest.TestCase):
+    def setUp(self):
+        """Los avisos de estos tests no van al scraper.log ni al log de GitHub Actions: leidos
+        ahi confunden con datos reales (ya pasó con MISMATCH, regla 20)."""
+        self._log, self._tmp = common.LOG, tempfile.TemporaryDirectory()
+        common.LOG = os.path.join(self._tmp.name, "log")
+        self._pila = contextlib.ExitStack()
+        self._pila.enter_context(contextlib.redirect_stdout(io.StringIO()))
+
+    def tearDown(self):
+        self._pila.close()
+        common.LOG = self._log
+        self._tmp.cleanup()
+
     def test_money_y_count(self):
         self.assertEqual(common.money("$ 2.078.421,33"), 2078421)
         self.assertEqual(common.money("1.855.130.508"), 1855130508)
