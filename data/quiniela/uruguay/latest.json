@@ -63,16 +63,17 @@
         "206"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "M"
       ]
     }
   ],
-  "validado": false,
+  "validado": true,
   "fuentes": [
     "A",
     "M"
   ],
-  "generado": "2026-09-11T21:27:16-03:00"
+  "generado": "2026-09-11T22:16:00-03:00"
 }
