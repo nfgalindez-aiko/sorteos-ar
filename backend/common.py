@@ -189,24 +189,40 @@ def merge(a, b):
 
 
 def build(juego, res):
-    """res = {"A": dict|{"error"}, "B": dict|{"error"}} -> salida completa."""
+    """res = {"A": dict|{"error"}, "B": dict|{"error"}} -> (salida, conflictos).
+
+    Tres situaciones que antes se confundian en una sola (regla 37):
+      1. Mismo sorteo y datos iguales -> validado, fuentes A+B.
+      2. Sorteos DISTINTOS: una fuente todavia no publico el nuevo. No es un conflicto, es
+         desfasaje. Se toma el mas nuevo con una sola fuente (la app lo muestra "1 fuente") y
+         pasa a confirmado cuando la otra se pone al dia.
+      3. Mismo sorteo con datos distintos -> conflicto real: va en `conflictos`, el job queda
+         en rojo y `publish` no pisa lo que ya estaba confirmado.
+    """
     a, b = res.get("A", {}), res.get("B", {})
     ok_a, ok_b = "error" not in a, "error" not in b
-    if ok_a and ok_b:
-        diffs = compare(a, b)
-        data = merge(a, b)
-        fuentes = ["A", "B"]
+    conflictos = []
+    if ok_a and ok_b and a.get("sorteo") == b.get("sorteo"):
+        conflictos = compare(a, b)
+        data, fuentes, validado = merge(a, b), ["A", "B"], not conflictos
+    elif ok_a and ok_b:
+        nueva, cual = (a, "A") if a.get("sorteo", -1) > b.get("sorteo", -1) else (b, "B")
+        vieja = b if cual == "A" else a
+        log(f"{juego} DESFASAJE: {cual} tiene el sorteo {nueva.get('sorteo')} y la otra todavia "
+            f"el {vieja.get('sorteo')}; se publica con 1 fuente hasta que coincidan")
+        data, fuentes, validado = copy.deepcopy(nueva), [cual], False
     else:
-        diffs = ["A" if not ok_a else "B"]
+        caidas = ", ".join(n for n, ok in (("A", ok_a), ("B", ok_b)) if not ok)
+        log(f"{juego} SIN DATOS de la fuente {caidas}")
         data = copy.deepcopy(b if ok_b else a if ok_a else {})
         fuentes = ["B"] if ok_b else ["A"] if ok_a else []
-    validado = ok_a and ok_b and not diffs
+        validado = False
     out = {"juego": juego}
     out.update(data)
     out["validado"] = validado
     out["fuentes"] = fuentes
     out["generado"] = now_art()
-    return out, diffs
+    return out, conflictos
 
 
 def dump(obj):
@@ -301,26 +317,42 @@ def registrar_novedad(juego, out, maximo=50):
 
 
 def publish(juego, out, force_latest=False):
-    """Escribe data/<juego>/NNNN.json siempre que haya sorteo; latest.json solo si validado
-    y es igual o mas nuevo que el actual. Devuelve True si actualizo latest."""
+    """Escribe data/<juego>/NNNN.json y avanza latest.json.
+
+    - Nunca degrada un sorteo ya confirmado (regla 38): si el archivo existente tiene
+      validado:true y llega el mismo sorteo con menos fuentes, se conserva el que estaba.
+    - latest.json avanza a un sorteo mas nuevo aunque venga de una sola fuente (la app lo
+      muestra como "1 fuente") y se reescribe cuando ese mismo sorteo pasa a confirmado,
+      que es el momento en que se registra la novedad y sale la notificacion.
+    """
     if "sorteo" not in out:
         log(f"PUBLISH {juego}: sin datos, no escribo nada")
         return False
     d = os.path.join(DATA, juego)
-    write_json(os.path.join(d, f"{out['sorteo']}.json"), out)
+    path = os.path.join(d, f"{out['sorteo']}.json")
+    if os.path.exists(path):
+        try:
+            prev = read_json(path)
+            if prev.get("validado") and not out["validado"]:
+                log(f"PUBLISH {juego}: el sorteo {out['sorteo']} ya estaba confirmado, no lo degrado")
+                out = prev
+        except Exception:
+            pass
+    write_json(path, out)
+    latest = os.path.join(d, "latest.json")
+    actual = read_json(latest) if os.path.exists(latest) else None
+    prev_sorteo = actual["sorteo"] if actual else -1
+    mas_nuevo = out["sorteo"] > prev_sorteo
+    confirma = out["sorteo"] == prev_sorteo and out["validado"] and not bool(actual and actual.get("validado"))
     updated = False
-    if out["validado"] or force_latest:
-        latest = os.path.join(d, "latest.json")
-        prev = read_json(latest)["sorteo"] if os.path.exists(latest) else -1
-        if out["sorteo"] >= prev:
-            write_json(latest, out)
-            updated = True
-            log(f"PUBLISH {juego}: latest.json -> sorteo {out['sorteo']}")
-            if out["validado"]:
-                registrar_novedad(juego, out)
-        else:
-            log(f"PUBLISH {juego}: sorteo {out['sorteo']} es anterior a latest {prev}, no toco latest")
+    if mas_nuevo or confirma or force_latest:
+        write_json(latest, out)
+        updated = True
+        log(f"PUBLISH {juego}: latest.json -> sorteo {out['sorteo']} "
+            f"({'2 fuentes' if out['validado'] else '1 fuente'})")
+        if out["validado"]:
+            registrar_novedad(juego, out)
     else:
-        log(f"PUBLISH {juego}: sorteo {out['sorteo']} NO validado, latest.json queda como estaba")
+        log(f"PUBLISH {juego}: latest.json queda en el sorteo {prev_sorteo}")
     rebuild_index(juego)
     return updated

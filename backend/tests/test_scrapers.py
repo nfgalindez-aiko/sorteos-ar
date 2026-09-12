@@ -183,12 +183,28 @@ class TestCommon(unittest.TestCase):
 
     def test_build_una_sola_fuente_no_valida(self):
         a = q.parse_a(fx("quini6_A_3406.html"))
-        out, diffs = common.build("quini6", {"A": a, "B": {"error": "boom"}})
+        out, conflictos = common.build("quini6", {"A": a, "B": {"error": "boom"}})
         self.assertFalse(out["validado"])
         self.assertEqual(out["fuentes"], ["A"])
-        self.assertEqual(diffs, ["B"])
+        self.assertEqual(conflictos, [])  # una fuente caida no es un conflicto entre fuentes
 
-    def test_publish_no_pisa_latest_si_no_validado(self):
+    def test_desfasaje_no_es_conflicto(self):
+        """La fuente A ya publico el sorteo nuevo y B todavia no: se toma el nuevo con 1 fuente."""
+        a = q.parse_a(fx("quini6_A_3406.html"))
+        b_viejo = q.parse_b(fx("quini6_B_3405.html"))
+        out, conflictos = common.build("quini6", {"A": a, "B": b_viejo})
+        self.assertEqual(conflictos, [])
+        self.assertEqual(out["sorteo"], 3406)
+        self.assertFalse(out["validado"])
+        self.assertEqual(out["fuentes"], ["A"])
+        # y al reves: si la atrasada es A, se toma el de B
+        a_viejo = q.parse_a(fx("quini6_A_3405.html"))
+        b = q.parse_b(fx("quini6_B_3406.html"))
+        out2, conflictos2 = common.build("quini6", {"A": a_viejo, "B": b})
+        self.assertEqual(conflictos2, [])
+        self.assertEqual((out2["sorteo"], out2["fuentes"]), (3406, ["B"]))
+
+    def test_publish_avanza_con_una_fuente_y_confirma_despues(self):
         a = q.parse_a(fx("quini6_A_3406.html"))
         bb = q.parse_b(fx("quini6_B_3406.html"))
         with tempfile.TemporaryDirectory() as tmp:
@@ -199,20 +215,66 @@ class TestCommon(unittest.TestCase):
                 self.assertTrue(common.publish("quini6", out))
                 latest = os.path.join(tmp, "quini6", "latest.json")
                 self.assertEqual(common.read_json(latest)["sorteo"], 3406)
-                # sorteo nuevo pero no validado: se escribe NNNN.json, latest queda
+
+                # llega el 3407 solo por A (la otra fuente todavia no lo tiene):
+                # latest AVANZA con 1 fuente, porque el dato nuevo vale mas que el viejo
                 a2 = json.loads(json.dumps(a)); a2["sorteo"] = 3407
-                out2, _ = common.build("quini6", {"A": a2, "B": {"error": "x"}})
-                self.assertFalse(common.publish("quini6", out2))
-                self.assertEqual(common.read_json(latest)["sorteo"], 3406)
-                self.assertTrue(os.path.exists(os.path.join(tmp, "quini6", "3407.json")))
-                idx = common.read_json(os.path.join(tmp, "quini6", "index.json"))
-                self.assertEqual([s["sorteo"] for s in idx["sorteos"]], [3407, 3406])
-                # novedades: solo el validado, y una sola vez aunque se republique
+                b_atrasada = json.loads(json.dumps(bb))
+                out2, conflictos = common.build("quini6", {"A": a2, "B": b_atrasada})
+                self.assertEqual(conflictos, [])
+                self.assertTrue(common.publish("quini6", out2))
+                j = common.read_json(latest)
+                self.assertEqual((j["sorteo"], j["validado"], j["fuentes"]), (3407, False, ["A"]))
                 nov = common.read_json(os.path.join(tmp, "novedades.json"))["novedades"]
-                self.assertEqual([(n["juego"], n["sorteo"]) for n in nov], [("quini6", 3406)])
-                self.assertFalse(common.registrar_novedad("quini6", out))
+                self.assertEqual([n["sorteo"] for n in nov], [3406])  # sin novedad todavia
+
+                # cuando B se pone al dia, el mismo sorteo pasa a confirmado y recien ahi hay novedad
+                b2 = json.loads(json.dumps(bb)); b2["sorteo"] = 3407
+                out3, _ = common.build("quini6", {"A": a2, "B": b2})
+                self.assertTrue(out3["validado"])
+                self.assertTrue(common.publish("quini6", out3))
+                j = common.read_json(latest)
+                self.assertEqual((j["sorteo"], j["validado"], j["fuentes"]), (3407, True, ["A", "B"]))
                 nov = common.read_json(os.path.join(tmp, "novedades.json"))["novedades"]
-                self.assertEqual(len(nov), 1)
+                self.assertEqual(sorted(n["sorteo"] for n in nov), [3406, 3407])
+            finally:
+                common.DATA, common.LOG = old_data, old_log
+
+    def test_publish_no_degrada_un_sorteo_ya_confirmado(self):
+        """El bug del 3915: una corrida con menos fuentes no puede marcar '1 fuente' lo confirmado."""
+        a = q.parse_a(fx("quini6_A_3406.html"))
+        bb = q.parse_b(fx("quini6_B_3406.html"))
+        with tempfile.TemporaryDirectory() as tmp:
+            old_data, old_log = common.DATA, common.LOG
+            common.DATA, common.LOG = tmp, os.path.join(tmp, "log")
+            try:
+                out, _ = common.build("quini6", {"A": a, "B": bb})
+                common.publish("quini6", out)
+                flojo, _ = common.build("quini6", {"A": a, "B": {"error": "caida"}})
+                common.publish("quini6", flojo)
+                j = common.read_json(os.path.join(tmp, "quini6", "3406.json"))
+                self.assertTrue(j["validado"])
+                self.assertEqual(j["fuentes"], ["A", "B"])
+            finally:
+                common.DATA, common.LOG = old_data, old_log
+
+    def test_conflicto_real_no_toca_latest(self):
+        """Mismo sorteo con numeros distintos: eso si es conflicto y latest no se mueve."""
+        a = q.parse_a(fx("quini6_A_3406.html"))
+        bb = q.parse_b(fx("quini6_B_3406.html"))
+        with tempfile.TemporaryDirectory() as tmp:
+            old_data, old_log = common.DATA, common.LOG
+            common.DATA, common.LOG = tmp, os.path.join(tmp, "log")
+            try:
+                common.publish("quini6", common.build("quini6", {"A": a, "B": bb})[0])
+                a2 = json.loads(json.dumps(a)); a2["sorteo"] = 3407
+                b2 = json.loads(json.dumps(bb)); b2["sorteo"] = 3407
+                b2["modalidades"]["tradicional"]["numeros"] = [1, 2, 3, 4, 5, 6]
+                out, conflictos = common.build("quini6", {"A": a2, "B": b2})
+                self.assertIn("modalidades.tradicional.numeros", conflictos)
+                self.assertFalse(out["validado"])
+                common.publish("quini6", out)
+                self.assertEqual(common.read_json(os.path.join(tmp, "quini6", "latest.json"))["sorteo"], 3407)
             finally:
                 common.DATA, common.LOG = old_data, old_log
 

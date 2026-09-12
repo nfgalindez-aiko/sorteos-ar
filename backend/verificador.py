@@ -53,8 +53,16 @@ def check_poceado(base, juego, dias, hora, rango, mods, ahora):
     for k in ("sorteo", "fecha", "modalidades", "proximo", "validado", "fuentes", "generado"):
         if k not in j:
             problema(f"{juego}: falta '{k}' en latest.json")
+    # Un sorteo recien publicado puede tener una sola fuente mientras la otra se pone al dia
+    # (regla 37): eso es un aviso. Si sigue sin confirmarse despues de 2 dias, si es un problema.
     if not j.get("validado"):
-        problema(f"{juego}: latest.json no esta validado (nunca deberia publicarse asi)")
+        try:
+            antiguedad = (ahora.date() - date.fromisoformat(j["fecha"])).days
+        except (KeyError, ValueError):
+            antiguedad = 99
+        (problema if antiguedad > 2 else aviso)(
+            f"{juego}: el sorteo {j.get('sorteo')} sigue con una sola fuente"
+            + (f" despues de {antiguedad} dias" if antiguedad > 2 else " (la otra todavia no lo publico)"))
     for m in mods:
         mod = j.get("modalidades", {}).get(m)
         if not mod:
@@ -109,7 +117,13 @@ def check_poceada_ciudad(base, ahora):
     if len(n) != 20 or len(set(n)) != 20 or any(not re.fullmatch(r"\d{2}", x) for x in n) or n != sorted(n):
         problema(f"poceada: numeros invalidos {n}")
     if not j.get("validado"):
-        problema("poceada: latest.json no esta validado")
+        try:
+            antiguedad = (ahora.date() - date.fromisoformat(j["fecha"])).days
+        except (KeyError, ValueError):
+            antiguedad = 99
+        (problema if antiguedad > 2 else aviso)(
+            f"poceada: el sorteo {j.get('sorteo')} sigue con una sola fuente"
+            + (f" despues de {antiguedad} dias" if antiguedad > 2 else ""))
     try:
         fecha = date.fromisoformat(j["fecha"])
         esperado = ultimo_sorteo_esperado(ahora, (0, 1, 2, 3, 4, 5), "21:00")

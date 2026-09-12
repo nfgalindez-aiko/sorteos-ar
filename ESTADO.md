@@ -449,3 +449,32 @@ monetización (decisión del dueño). Primer sorteo grande con la app pública: 
 - Build 10 (perfil `testflight`) lanzado. Pendiente de confirmar: si EAS creó la llave APNs de push
   en modo no interactivo; si el envío devuelve `InvalidCredentials`, el dueño corre
   `npx eas-cli credentials --platform ios` una vez y elige "Push Notifications: Set up".
+
+## Sesión 16 — 11/09/2026 · El job en rojo 83 veces: desfasaje ≠ conflicto
+
+Síntoma: 83 de las últimas 100 corridas de `scrape` en rojo, todas con el mismo
+`fallos=["lotoplus: ... 17 diferencias ..."]`.
+
+Causa (regla 37): la fuente A publicó el Loto Plus 3916 el miércoles a la noche y la B siguió
+mostrando el 3915 del sábado durante ~2 días. `build()` comparaba los dos dicts campo por campo
+sin mirar que eran **sorteos distintos**, así que reportaba 17 "diferencias" falsas. Tres
+consecuencias, en orden de gravedad:
+  1. **La app mostró el sorteo viejo durante 2 días.** `merge()` toma a B como base, así que la
+     salida era el 3915 y el 3916 nunca se publicaba, aunque una fuente ya lo tenía.
+  2. **Se degradó un sorteo confirmado**: `publish()` reescribió `3915.json` con `validado:false`,
+     y en la app el 3915 pasó a mostrarse como "1 fuente" estando confirmado por las dos. Los
+     números nunca se corrompieron, solo el sello. Restaurado desde el commit e3421f3.
+  3. El rojo permanente hizo que el rojo dejara de significar algo.
+
+Arreglo:
+- `build()` distingue tres casos: mismo sorteo y datos iguales (confirmado), **sorteos distintos**
+  (desfasaje: se toma el más nuevo con 1 fuente, la app ya sabe mostrarlo, y se confirma cuando la
+  otra se pone al día), y mismo sorteo con datos distintos (conflicto real).
+- `publish()` (regla 38): nunca degrada un sorteo ya confirmado, y `latest.json` avanza a un sorteo
+  más nuevo aunque venga de una sola fuente. La novedad y la notificación siguen saliendo solo
+  cuando el sorteo queda confirmado por dos fuentes.
+- `run_all` falla solo por conflicto real o falta total de datos. Fuente atrasada o caída: verde.
+- Verificador: 1 fuente es aviso; pasa a problema si el sorteo sigue sin confirmarse a los 2 días.
+  Se corrigió de paso una variable pisada (`dias`) que hubiera roto el chequeo de frescura.
+- Tests: 45 (4 nuevos: desfasaje en ambos sentidos, avance con 1 fuente y confirmación posterior,
+  no degradar lo confirmado, conflicto real).

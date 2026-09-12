@@ -14,14 +14,18 @@ def main():
     for mod in JUEGOS:
         res = mod.scrape()
         out, diffs = build(mod.JUEGO, res)
-        estado = "OK" if out["validado"] else "MISMATCH"
+        estado = "OK" if out["validado"] else ("CONFLICTO" if diffs else "1 fuente")
         write_json(os.path.join(FIX, f"{mod.JUEGO}_out.json"),
                    {"fuentes": res, "diferencias": diffs, "estado": estado, "salida": out})
-        log(f"{mod.JUEGO} ESTADO {estado} diferencias={diffs}")
+        log(f"{mod.JUEGO} ESTADO {estado} conflictos={diffs}")
         if "sorteo" in out:
             publish(mod.JUEGO, out)
-        if estado != "OK":
+        # Solo es fallo un conflicto real entre fuentes o quedarse sin datos. Que una fuente vaya
+        # atrasada (desfasaje) o este caida es normal: se publica con 1 fuente y el job sigue verde.
+        if diffs:
             fallos.append(f"{mod.JUEGO}:{diffs}")
+        elif "sorteo" not in out:
+            fallos.append(f"{mod.JUEGO}:sin datos")
     try:
         fallos_q = quiniela_scraper.correr()
         fallos += [f"quiniela:{p}" for p in fallos_q]
