@@ -62,15 +62,17 @@
         "6116"
       ],
       "letras": "UDLP",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-12T12:15:40-03:00"
+  "generado": "2026-09-12T12:30:46-03:00"
 }

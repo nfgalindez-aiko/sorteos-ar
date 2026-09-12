@@ -62,15 +62,17 @@
         "4324"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-12T12:15:41-03:00"
+  "generado": "2026-09-12T12:30:47-03:00"
 }
