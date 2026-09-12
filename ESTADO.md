@@ -478,3 +478,29 @@ Arreglo:
   Se corrigió de paso una variable pisada (`dias`) que hubiera roto el chequeo de frescura.
 - Tests: 45 (4 nuevos: desfasaje en ambos sentidos, avance con 1 fuente y confirmación posterior,
   no degradar lo confirmado, conflicto real).
+
+## Sesión 17 — 11/09/2026 · Respuesta a Apple (2.1) y reenvío a revisión
+
+Apple rechazó la 1.0 con **Guideline 2.1 — Information Needed**. No es un defecto de la app: es el
+pedido estándar de información que le hacen a las cuentas de desarrollador nuevas. Pidieron 6 cosas.
+
+- Video demo: la grabación original del dueño (`ScreenRecording_09-11-2026 21-57-12_1`, 1:20, 94 MB)
+  no entra en el formulario. Comprimida con `ffmpeg-static` a **4,1 MB** → `docs/sorteos-ar-demo.mp4`.
+- Texto de la respuesta: `docs/respuesta-apple-2.1.md` (queda versionado para reusar). El campo del
+  mensaje tiene **límite de 4000 caracteres** y la primera versión se pasaba por 126 → recortada a
+  3694. Ojo: al re-setear el textarea se pierde el adjunto, hay que volver a adjuntar el video.
+- El mismo texto se pegó en **App Review Information → Notes** para que no lo vuelvan a pedir.
+- **Privacidad (regla 34)**: antes de reenviar se completó la declaración de App Privacy, que estaba
+  pendiente desde que se agregaron las notificaciones push. Queda publicada así:
+  Identificadores → **ID del dispositivo**, uso **Funcionalidad de la app**, **no vinculado** a la
+  identidad del usuario, **sin rastreo**. Coincide con nfgalindez.com/sorteos/privacidad/.
+
+### Regla 39 — el canal de EAS queda grabado en el binario que sube a la App Store
+
+La versión 1.0 estaba enlazada a la compilación 5 y ya existía la 11, así que App Store Connect
+ofreció enviar "la compilación más reciente". **Se canceló**: la 11 se compiló con el perfil
+`testflight`, o sea canal `testflight`. Si ese binario sale a la App Store, **todos los usuarios de
+producción quedan atados al canal de pruebas** y reciben cada `eas update` de test.
+Se lanzó una compilación nueva con `--profile production` (canal `production`) → **compilación 12**,
+commit 7462a52, y esa es la que se enlaza a la 1.0. Antes de enviar cualquier binario a la App
+Store: `eas build:view <id>` y confirmar que dice `Channel production`.
