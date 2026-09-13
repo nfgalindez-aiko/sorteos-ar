@@ -133,13 +133,42 @@ def check_poceada_ciudad(base, ahora):
         problema(f"poceada: fecha invalida: {e}")
 
 
-def check_quiniela(base, prov, ahora):
-    print(f"[quiniela/{prov}]")
-    try:
-        j = bajar(base, f"quiniela/{prov}/latest.json")
-    except Exception as e:
-        problema(f"quiniela/{prov}/latest.json no se puede leer: {e}")
-        return
+def horarios(prov, dia):
+    """Turnos que ESE dia tienen sorteo, con su hora. Domingo no hay quiniela."""
+    if dia.weekday() == 6:
+        return {}
+    if prov == "uruguay":
+        # Montevideo los sabados sortea SOLO la nocturna (verificado en los datos publicados
+        # del 05/09 y del 12/09/2026). Exigirle la vespertina hacia fallar el verificador
+        # todos los sabados entre las 16:15 y las 22:15.
+        return {"nocturna": "21:00"} if dia.weekday() == 5 else {"vespertina": "15:00", "nocturna": "21:00"}
+    # Las provincias argentinas SI tienen los cinco turnos el sabado (verificado el 12/09/2026).
+    return {"previa": "10:15", "primera": "12:00", "matutina": "15:00",
+            "vespertina": "18:00", "nocturna": "21:00"}
+
+
+def vencidos_de(prov, ahora):
+    """Turnos de hoy cuya hora + tolerancia ya paso: el resultado ya deberia estar publicado."""
+    hoy = ahora.date()
+    out = []
+    for turno, hora in horarios(prov, hoy).items():
+        h, m = map(int, hora.split(":"))
+        if ahora >= datetime.combine(hoy, time(h, m)) + timedelta(minutes=TOLERANCIA_MIN):
+            out.append(turno)
+    return out
+
+
+def dias_de_sorteo_entre(desde, hasta):
+    """Dias de sorteo (lunes a sabado) posteriores a `desde` y hasta `hasta` inclusive."""
+    n, d = 0, desde + timedelta(days=1)
+    while d <= hasta:
+        if d.weekday() != 6:
+            n += 1
+        d += timedelta(days=1)
+    return n
+
+
+def check_extractos(prov, j):
     dig = j.get("digitos", 4)
     for t in j.get("turnos", []):
         n = t.get("numeros")
@@ -148,29 +177,54 @@ def check_quiniela(base, prov, ahora):
             continue
         if not n or len(n) != 20 or any(not re.fullmatch(r"\d{%d}" % dig, x) for x in n):
             problema(f"quiniela/{prov} {j['fecha']} {t['turno']}: extracto invalido {n}")
-    # frescura: de lunes a sabado, cada turno cuya hora + tolerancia ya paso tiene que estar
+
+
+def check_frescura(prov, j, ahora, alguna_publico_hoy):
+    """Cada turno de hoy cuya hora ya paso tiene que estar publicado.
+
+    Un feriado nacional (la quiniela no sortea) se ve igual que una fuente caida: no hay datos
+    de hoy. Se distinguen mirando al resto: si NINGUNA quiniela publico hoy es feriado o la
+    fuente esta caida, y eso es un aviso, no siete problemas. Pasa a problema si el atraso
+    supera los 2 dias de sorteo, que ya no lo explica ningun feriado.
+    """
     hoy = ahora.date()
-    if hoy.weekday() == 6:
-        return
-    horas = {"vespertina": "15:00", "nocturna": "21:00"} if prov == "uruguay" else \
-            {"previa": "10:15", "primera": "12:00", "matutina": "15:00", "vespertina": "18:00", "nocturna": "21:00"}
-    if prov in ("provincia", "santafe", "cordoba", "mendoza", "entrerios", "ciudad") and hoy.weekday() == 5:
-        horas.pop("vespertina", None)  # sabados sin vespertina en varias provincias
-    vencidos = []
-    for turno, hora in horas.items():
-        h, m = map(int, hora.split(":"))
-        if ahora >= datetime.combine(hoy, time(h, m)) + timedelta(minutes=TOLERANCIA_MIN):
-            vencidos.append(turno)
+    vencidos = vencidos_de(prov, ahora)
     if not vencidos:
         return
     if j.get("fecha") != hoy.isoformat():
-        problema(f"quiniela/{prov}: DESACTUALIZADO. Ultimo dia publicado {j.get('fecha')}, hoy {hoy} ya paso {vencidos}")
+        if alguna_publico_hoy:
+            problema(f"quiniela/{prov}: DESACTUALIZADO. Ultimo dia publicado {j.get('fecha')}, "
+                     f"hoy {hoy} ya paso {vencidos} y las demas quinielas si publicaron")
+            return
+        try:
+            atraso = dias_de_sorteo_entre(date.fromisoformat(j["fecha"]), hoy)
+        except (KeyError, ValueError):
+            atraso = 99
+        (aviso if atraso <= 2 else problema)(
+            f"quiniela/{prov}: sin datos del {hoy} (ultimo dia {j.get('fecha')}, {atraso} dia(s) de sorteo sin publicar)"
+            + ("; ninguna quiniela publico hoy: feriado o fuente caida" if atraso <= 2 else "; DESACTUALIZADO"))
         return
     presentes = {t["turno"] for t in j["turnos"]}
     faltan = [t for t in vencidos if t not in presentes]
     if faltan:
         # la previa y algunos turnos no estan en todas las fuentes: aviso, no problema, salvo que falte todo
         (problema if len(faltan) == len(vencidos) else aviso)(f"quiniela/{prov} {hoy}: faltan turnos {faltan}")
+
+
+def check_quinielas(base, provincias, ahora):
+    datos = {}
+    for prov in provincias:
+        print(f"[quiniela/{prov}]")
+        try:
+            datos[prov] = bajar(base, f"quiniela/{prov}/latest.json")
+        except Exception as e:
+            problema(f"quiniela/{prov}/latest.json no se puede leer: {e}")
+            continue
+        check_extractos(prov, datos[prov])
+    hoy = ahora.date().isoformat()
+    alguna_publico_hoy = any(j.get("fecha") == hoy for j in datos.values())
+    for prov, j in datos.items():
+        check_frescura(prov, j, ahora, alguna_publico_hoy)
 
 
 def main(argv):
@@ -184,8 +238,7 @@ def main(argv):
     check_poceado(base, "brinco", (6,), "21:00", (0, 39), ["tradicional", "junior"], ahora)
     check_poceado(base, "lotoplus", (2, 5), "21:30", (0, 45), ["tradicional", "match", "desquite", "sale_o_sale"], ahora)
     check_poceada_ciudad(base, ahora)
-    for prov in PROVINCIAS:
-        check_quiniela(base, prov, ahora)
+    check_quinielas(base, PROVINCIAS, ahora)
     print("[novedades]")
     try:
         nov = bajar(base, "novedades.json")["novedades"]

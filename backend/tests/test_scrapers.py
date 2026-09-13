@@ -8,6 +8,8 @@ sys.path.insert(0, os.path.dirname(HERE))
 import common
 import quini6_scraper as q
 import brinco_scraper as b
+import verificador
+from datetime import datetime, date
 
 FX = os.path.join(HERE, "fixtures")
 
@@ -317,3 +319,98 @@ class TestRobots(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestVerificadorQuiniela(unittest.TestCase):
+    """El verificador fallaba todos los sabados por pedirle a Montevideo un turno que no existe.
+
+    Montevideo sortea solo la nocturna los sabados: entre las 16:15 y las 22:15 el ultimo dia
+    publicado era el viernes y el verificador lo marcaba DESACTUALIZADO. Nueve corridas en rojo
+    sin ningun dato roto (ver ESTADO, regla 40).
+    """
+
+    def setUp(self):
+        self.v = verificador
+        self.v.PROBLEMAS = []
+        self.v.AVISOS = []
+        self._stdout = contextlib.redirect_stdout(io.StringIO())
+        self._stdout.__enter__()
+
+    def tearDown(self):
+        self._stdout.__exit__(None, None, None)
+
+    @staticmethod
+    def dia(fecha, turnos):
+        return {"fecha": fecha, "digitos": 4,
+                "turnos": [{"turno": t, "numeros": ["%04d" % i for i in range(20)]} for t in turnos]}
+
+    # sabado 12/09/2026 a las 19:00 ART: la vespertina de las provincias ya vencio,
+    # la nocturna (21:00) todavia no.
+    SABADO_19 = datetime(2026, 9, 12, 19, 0)
+    SABADO_1930 = datetime(2026, 9, 12, 19, 30)  # la vespertina (18:00) ya vencio
+    SABADO_23 = datetime(2026, 9, 12, 23, 0)
+    VIERNES_19 = datetime(2026, 9, 11, 19, 0)
+
+    def test_montevideo_no_tiene_vespertina_el_sabado(self):
+        self.assertEqual(self.v.horarios("uruguay", date(2026, 9, 12)), {"nocturna": "21:00"})
+        self.assertIn("vespertina", self.v.horarios("uruguay", date(2026, 9, 11)))
+
+    def test_las_provincias_si_tienen_vespertina_el_sabado(self):
+        # verificado en los datos publicados del 12/09/2026: los cinco turnos
+        self.assertEqual(len(self.v.horarios("ciudad", date(2026, 9, 12))), 5)
+
+    def test_domingo_no_se_exige_nada(self):
+        self.assertEqual(self.v.horarios("ciudad", date(2026, 9, 13)), {})
+        self.assertEqual(self.v.vencidos_de("ciudad", datetime(2026, 9, 13, 23, 0)), [])
+
+    def test_sabado_a_la_tarde_montevideo_con_el_viernes_no_es_problema(self):
+        # el caso exacto que rompia: ultimo dia publicado el viernes, sabado 19:00
+        self.v.check_frescura("uruguay", self.dia("2026-09-11", ["vespertina", "nocturna"]),
+                              self.SABADO_19, alguna_publico_hoy=True)
+        self.assertEqual(self.v.PROBLEMAS, [])
+        self.assertEqual(self.v.AVISOS, [])
+
+    def test_sabado_a_la_noche_montevideo_sin_la_nocturna_si_es_problema(self):
+        self.v.check_frescura("uruguay", self.dia("2026-09-11", ["vespertina", "nocturna"]),
+                              self.SABADO_23, alguna_publico_hoy=True)
+        self.assertEqual(len(self.v.PROBLEMAS), 1)
+
+    def test_sabado_montevideo_con_la_nocturna_esta_al_dia(self):
+        self.v.check_frescura("uruguay", self.dia("2026-09-12", ["nocturna"]),
+                              self.SABADO_23, alguna_publico_hoy=True)
+        self.assertEqual(self.v.PROBLEMAS, [])
+
+    def test_una_provincia_atrasada_mientras_las_otras_publicaron_es_problema(self):
+        self.v.check_frescura("cordoba", self.dia("2026-09-11", ["nocturna"]),
+                              self.SABADO_19, alguna_publico_hoy=True)
+        self.assertEqual(len(self.v.PROBLEMAS), 1)
+        self.assertIn("las demas quinielas si publicaron", self.v.PROBLEMAS[0])
+
+    def test_feriado_ninguna_publico_es_aviso_no_problema(self):
+        # viernes feriado: nadie sorteo. Un dia de atraso no puede distinguirse de un feriado.
+        self.v.check_frescura("ciudad", self.dia("2026-09-10", ["nocturna"]),
+                              self.VIERNES_19, alguna_publico_hoy=False)
+        self.assertEqual(self.v.PROBLEMAS, [])
+        self.assertEqual(len(self.v.AVISOS), 1)
+        self.assertIn("feriado o fuente caida", self.v.AVISOS[0])
+
+    def test_tres_dias_sin_publicar_ya_no_lo_explica_un_feriado(self):
+        self.v.check_frescura("ciudad", self.dia("2026-09-07", ["nocturna"]),
+                              self.VIERNES_19, alguna_publico_hoy=False)
+        self.assertEqual(len(self.v.PROBLEMAS), 1)
+        self.assertIn("DESACTUALIZADO", self.v.PROBLEMAS[0])
+
+    def test_dias_de_sorteo_entre_saltea_los_domingos(self):
+        # del viernes 11 al lunes 14: sabado y lunes, el domingo no cuenta
+        self.assertEqual(self.v.dias_de_sorteo_entre(date(2026, 9, 11), date(2026, 9, 14)), 2)
+        self.assertEqual(self.v.dias_de_sorteo_entre(date(2026, 9, 11), date(2026, 9, 12)), 1)
+
+    def test_falta_un_turno_del_dia_es_aviso_y_faltar_todos_es_problema(self):
+        self.v.check_frescura("ciudad", self.dia("2026-09-12", ["previa", "primera", "matutina"]),
+                              self.SABADO_1930, alguna_publico_hoy=True)
+        self.assertEqual(self.v.PROBLEMAS, [])
+        self.assertEqual(len(self.v.AVISOS), 1)
+        self.v.AVISOS = []
+        self.v.check_frescura("ciudad", self.dia("2026-09-12", []),
+                              self.SABADO_1930, alguna_publico_hoy=True)
+        self.assertEqual(len(self.v.PROBLEMAS), 1)

@@ -504,3 +504,38 @@ producción quedan atados al canal de pruebas** y reciben cada `eas update` de t
 Se lanzó una compilación nueva con `--profile production` (canal `production`) → **compilación 12**,
 commit 7462a52, y esa es la que se enlaza a la 1.0. Antes de enviar cualquier binario a la App
 Store: `eas build:view <id>` y confirmar que dice `Channel production`.
+
+## Sesión 18 — 13/09/2026 · El verificador en rojo los sábados
+
+El dueño pidió mirar "los errores que siguen saliendo a veces". De las últimas 200 corridas,
+47 en rojo, pero son **dos causas distintas y solo una seguía viva**:
+
+- 38 de `scrape`, todas del 10 y 11/09: el desfasaje de Loto Plus de la sesión 16. Ya arreglado.
+  Desde el 11/09 a la noche, `scrape` va 100 % en verde.
+- 9 de `verificar`. Seis eran el mismo Loto Plus. Las otras **tres eran un bug del verificador**.
+
+### Regla 40 — Montevideo no tiene vespertina los sábados
+
+`quiniela/uruguay: DESACTUALIZADO. Ultimo dia publicado 2026-09-11, hoy 2026-09-12 ya paso
+['vespertina']`. El verificador le exigía a Montevideo los mismos dos turnos todos los días.
+En los datos publicados, los sábados (05/09 y 12/09) Montevideo tiene **solo la nocturna**.
+Como el archivo del día no existe hasta las 21:00, entre las **16:15 y las 22:15 de cada sábado**
+el verificador veía el viernes como último día y lo marcaba desactualizado. Ningún dato roto.
+
+De paso, la regla tenía el error espejo: `horas.pop("vespertina")` los sábados para las
+provincias argentinas. Falso: el sábado 12/09 Ciudad, Provincia, Santa Fe, Córdoba, Mendoza y
+Entre Ríos publicaron **los cinco turnos**. Esa línea tapaba una vespertina faltante de verdad.
+(El sábado 05/09 tiene solo 2 turnos, pero es relleno: se generó el 07/09. No sirve de evidencia.)
+
+### Regla 41 — un feriado se ve igual que una fuente caída
+
+La quiniela no sortea los feriados nacionales, así que ese día no hay datos y el verificador
+habría gritado "DESACTUALIZADO" en las siete provincias. Se distingue mirando al resto: si
+**ninguna** quiniela publicó hoy, es feriado o la fuente está caída, y eso es **un aviso**. Pasa
+a problema si el atraso supera los 2 días de sorteo, que ya no lo explica ningún feriado. Si
+alguna publicó y otra no, esa otra sí es un problema real.
+
+Arreglo: `verificador.py` se partió en `horarios(prov, dia)`, `vencidos_de`, `dias_de_sorteo_entre`,
+`check_extractos`, `check_frescura` y `check_quinielas` (dos pasadas: primero baja todo, después
+decide con el panorama completo). El verificador **no tenía ni un test**, por eso pasó: ahora hay
+**11**, y el suite quedó en **56**.
