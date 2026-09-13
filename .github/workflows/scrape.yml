@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Tests sin red
         working-directory: backend
@@ -61,7 +61,7 @@ jobs:
 
       - name: Subir log del scrape
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: scraper-log-${{ github.run_id }}
           path: backend/scraper.log
