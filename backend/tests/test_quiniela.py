@@ -1,11 +1,12 @@
 # Tests sin red del scraper de quinielas, sobre HTML real del 07/09/2026.
-import os, sys, unittest, tempfile
+import os, sys, unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 
 import common
 import quiniela_scraper as q
+from tests.apoyo import entorno
 
 FX = os.path.join(HERE, "fixtures")
 
@@ -90,13 +91,8 @@ class TestCombinar(unittest.TestCase):
     def test_conflicto_no_publica_numeros(self):
         r = self.res("ciudad", ["A", "B"])
         r["B"]["2026-09-07"]["primera"]["numeros"][5] = "0000"
-        with tempfile.TemporaryDirectory() as tmp:
-            old_log = common.LOG
-            common.LOG = os.path.join(tmp, "log")  # que el MISMATCH simulado no ensucie scraper.log
-            try:
-                out = q.combinar("ciudad", r)["2026-09-07"]
-            finally:
-                common.LOG = old_log
+        with entorno(datos=False):
+            out = q.combinar("ciudad", r)["2026-09-07"]
         por = {t["turno"]: t for t in out["turnos"]}
         self.assertIsNone(por["primera"]["numeros"])
         self.assertTrue(por["primera"].get("conflicto"))
@@ -104,25 +100,20 @@ class TestCombinar(unittest.TestCase):
 
     def test_publicar_no_pisa_validado_con_no_validado(self):
         r = self.res("ciudad", ["A", "B"])
-        with tempfile.TemporaryDirectory() as tmp:
-            old = common.DATA, common.LOG
-            common.DATA, common.LOG = tmp, os.path.join(tmp, "log")
-            try:
-                q.publicar_prov("ciudad", q.combinar("ciudad", r))
-                p = os.path.join(tmp, "quiniela", "ciudad", "2026-09-07.json")
-                self.assertTrue(common.read_json(p)["turnos"][1]["validado"])
-                # segunda corrida: B cayo, primera queda con una sola fuente -> se conserva la validada
-                solo_a = q.combinar("ciudad", {"A": r["A"]})
-                q.publicar_prov("ciudad", solo_a)
-                j = common.read_json(p)
-                self.assertTrue(j["turnos"][1]["validado"])
-                self.assertEqual(j["turnos"][1]["fuentes"], ["A", "B"])
-                latest = common.read_json(os.path.join(tmp, "quiniela", "ciudad", "latest.json"))
-                self.assertEqual(latest["fecha"], "2026-09-07")
-                idx = common.read_json(os.path.join(tmp, "quiniela", "ciudad", "index.json"))
-                self.assertEqual(idx["fechas"][0]["fecha"], "2026-09-07")
-            finally:
-                common.DATA, common.LOG = old
+        with entorno() as tmp:
+            q.publicar_prov("ciudad", q.combinar("ciudad", r))
+            p = os.path.join(tmp, "quiniela", "ciudad", "2026-09-07.json")
+            self.assertTrue(common.read_json(p)["turnos"][1]["validado"])
+            # segunda corrida: B cayo, primera queda con una sola fuente -> se conserva la validada
+            solo_a = q.combinar("ciudad", {"A": r["A"]})
+            q.publicar_prov("ciudad", solo_a)
+            j = common.read_json(p)
+            self.assertTrue(j["turnos"][1]["validado"])
+            self.assertEqual(j["turnos"][1]["fuentes"], ["A", "B"])
+            latest = common.read_json(os.path.join(tmp, "quiniela", "ciudad", "latest.json"))
+            self.assertEqual(latest["fecha"], "2026-09-07")
+            idx = common.read_json(os.path.join(tmp, "quiniela", "ciudad", "index.json"))
+            self.assertEqual(idx["fechas"][0]["fecha"], "2026-09-07")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 # Tests sin red de Loto Plus y Poceada sobre HTML real (sorteos 3915 y 9712 del 05/09/2026).
-import os, sys, unittest, tempfile, json
+import os, sys, unittest, json
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 import common
 import lotoplus_scraper as lp
 import poceada_scraper as po
+from tests.apoyo import entorno
 
 FX = os.path.join(HERE, "fixtures")
 
@@ -78,15 +79,10 @@ class TestPoceada(unittest.TestCase):
                             "validado": validado, "fuentes": ["A", "B"] if validado else ["A"]}]}
 
     def con_data(self, doc, fn):
-        with tempfile.TemporaryDirectory() as tmp:
-            old = common.DATA, common.LOG
-            common.DATA, common.LOG = tmp, os.path.join(tmp, "log")
-            try:
-                if doc:
-                    common.write_json(os.path.join(tmp, "quiniela", "ciudad", "2026-09-05.json"), doc)
-                return fn()
-            finally:
-                common.DATA, common.LOG = old
+        with entorno() as tmp:
+            if doc:
+                common.write_json(os.path.join(tmp, "quiniela", "ciudad", "2026-09-05.json"), doc)
+            return fn()
 
     # nocturna real del 05/09/2026: dos numeros terminan en 52 y la Poceada agrega el 62
     NOCT = ["5915", "4996", "2011", "1132", "7952", "6872", "7843", "8205", "9352", "4509",
