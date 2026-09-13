@@ -539,3 +539,47 @@ Arreglo: `verificador.py` se partió en `horarios(prov, dia)`, `vencidos_de`, `d
 `check_extractos`, `check_frescura` y `check_quinielas` (dos pasadas: primero baja todo, después
 decide con el panorama completo). El verificador **no tenía ni un test**, por eso pasó: ahora hay
 **11**, y el suite quedó en **56**.
+
+## Sesión 19 — 13/09/2026 · Node 20 deprecado: las actions de v4 a v7
+
+Cada corrida de los dos workflows venía escupiendo `Node.js 20 is deprecated... being forced to
+run on Node.js 24`. No rompía nada todavía, pero cuando GitHub retire el runtime los workflows
+dejan de arrancar. `actions/checkout@v4` y `actions/upload-artifact@v4` corren sobre Node 20; la
+última de ambas al 13/09/2026 es **v7.0.1**. Se subieron las tres referencias a `@v7`
+(`scrape.yml:37`, `scrape.yml:64`, `verificar.yml:25`).
+
+Leídas las notas de v5, v6 y v7 de las dos actions antes de tocar. Lo único que rozaba a este
+repo era el cambio de v6 de `checkout`, y no rompe (ver regla 42). Lo demás:
+
+- **checkout v5**: runtime Node 24, exige runner ≥ 2.327.1. Los `ubuntu-latest` hosted ya están
+  muy por encima; solo importaría con runners propios.
+- **checkout v7**: bloquea el checkout de PRs de forks en `pull_request_target` y `workflow_run`.
+  Acá los triggers son `schedule` y `workflow_dispatch`, así que no toca.
+- **upload-artifact v7**: agrega el input `archive` (default `true`, o sea el comportamiento de
+  siempre) y pasa el módulo a ESM. `name`, `path` y `retention-days` siguen idénticos.
+
+Las dos corridas de prueba se dispararon **con `--ref` sobre la rama**, no sobre `main`: sin eso
+`gh workflow run` usa la rama por defecto y hubiera verificado el archivo viejo, dando un falso
+negativo. Ambas en verde y **sin un solo `##[warning]` en los logs**: el aviso de Node
+desapareció.
+
+**El `git push` de `data/` quedó sin ejercitar.** La corrida cayó en un momento sin sorteos
+nuevos y el paso salió por la rama `sin cambios en data/`, así que nunca llegó a `git push`.
+Lo que sí quedó probado es lo de atrás: el `git fetch` autenticado anduvo y el log muestra el
+`includeIf` de v6 apuntando a `$RUNNER_TEMP`. La confirmación de verdad la da la primera corrida
+programada con datos nuevos después del merge a `main`.
+
+### Regla 42 — desde checkout v6 el token no vive más en `.git/config`
+
+Hasta v5, `persist-credentials` dejaba el token en el `.git/config` local del workspace. Desde
+**v6** lo guarda en un archivo aparte bajo `$RUNNER_TEMP` y lo enlaza con un `includeIf.gitdir`:
+
+```
+git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path \
+  /github/runner_temp/git-credentials-<uuid>.config
+```
+
+Los `run:` que hacen `git push` **no necesitan ningún cambio**: git sigue resolviendo la
+credencial por el `includeIf`. La salvedad que documenta GitHub (runner ≥ 2.329.0) aplica
+**solo a Docker container actions**, que acá no se usan. Si algún día un paso deja de encontrar
+el token, el lugar donde mirar ya no es `.git/config` sino ese archivo de `$RUNNER_TEMP`.
