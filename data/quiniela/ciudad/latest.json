@@ -62,15 +62,17 @@
         "0393"
       ],
       "letras": "BDDK",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-14T12:15:34-03:00"
+  "generado": "2026-09-14T12:45:38-03:00"
 }
