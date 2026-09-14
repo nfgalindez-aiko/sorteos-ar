@@ -104,7 +104,7 @@
         {
           "turno": "vespertina",
           "hora": "18:00",
-          "cabeza": null,
+          "cabeza": "9434",
           "validado": false
         },
         {
@@ -226,5 +226,5 @@
       ]
     }
   ],
-  "generado": "2026-09-13T21:01:14-03:00"
+  "generado": "2026-09-14T00:30:42-03:00"
 }
