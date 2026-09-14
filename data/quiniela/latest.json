@@ -5,37 +5,13 @@
       "provincia": "ciudad",
       "nombre": "Ciudad de Buenos Aires",
       "digitos": 4,
-      "fecha": "2026-09-12",
+      "fecha": "2026-09-14",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "9147",
+          "cabeza": "9364",
           "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "3347",
-          "validado": true
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "1151",
-          "validado": true
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "5344",
-          "validado": true
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "0640",
-          "validado": true
         }
       ]
     },
@@ -43,37 +19,13 @@
       "provincia": "provincia",
       "nombre": "Provincia de Buenos Aires",
       "digitos": 4,
-      "fecha": "2026-09-12",
+      "fecha": "2026-09-14",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "7218",
+          "cabeza": "4729",
           "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "3851",
-          "validado": true
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "5949",
-          "validado": true
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "0126",
-          "validado": true
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "2993",
-          "validado": true
         }
       ]
     },
@@ -137,22 +89,16 @@
       "provincia": "entrerios",
       "nombre": "Entre Ríos",
       "digitos": 4,
-      "fecha": "2026-09-13",
+      "fecha": "2026-09-14",
       "turnos": [
         {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "4551",
-          "validado": false
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "1631",
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "6767",
           "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-09-14T10:31:46-03:00"
+  "generado": "2026-09-14T10:45:36-03:00"
 }
