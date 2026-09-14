@@ -63,6 +63,11 @@ def check_poceado(base, juego, dias, hora, rango, mods, ahora):
         (problema if antiguedad > 2 else aviso)(
             f"{juego}: el sorteo {j.get('sorteo')} sigue con una sola fuente"
             + (f" despues de {antiguedad} dias" if antiguedad > 2 else " (la otra todavia no lo publico)"))
+    if j.get("pozos_en_disputa"):
+        # regla 43: nadie gano esa fila, las fuentes dan distinta cifra del pozo vacante.
+        # Se avisa para que quede a la vista, pero no invalida el sorteo.
+        aviso(f"{juego}: el sorteo {j.get('sorteo')} tiene pozos vacantes con cifras distintas "
+              f"entre las fuentes: {j['pozos_en_disputa']}")
     for m in mods:
         mod = j.get("modalidades", {}).get(m)
         if not mod:

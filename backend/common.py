@@ -177,6 +177,44 @@ def compare(a, b):
     return diffs
 
 
+def fila_premios(d, mod, aciertos):
+    for p in d.get("modalidades", {}).get(mod, {}).get("premios", []):
+        if p.get("aciertos") == aciertos:
+            return p
+    return None
+
+
+def es_pozo_vacante(a, b, clave):
+    """True si `clave` (modalidades.<mod>.premios.<aciertos>) es una fila que las DOS fuentes
+    dan con cero ganadores: no es un premio que alguien cobre, es el pozo que quedo vacante."""
+    partes = clave.split(".")
+    if len(partes) != 4 or partes[0] != "modalidades" or partes[2] != "premios":
+        return False
+    try:
+        aciertos = int(partes[3])
+    except ValueError:
+        return False
+    fa, fb = fila_premios(a, partes[1], aciertos), fila_premios(b, partes[1], aciertos)
+    return bool(fa and fb) and fa.get("ganadores") == 0 and fb.get("ganadores") == 0
+
+
+def clasificar(a, b, diffs):
+    """Parte las diferencias en duras y blandas (regla 43).
+
+    Una fila con CERO ganadores en las dos fuentes no es un premio que alguien va a cobrar:
+    es el pozo vacante que pasa al sorteo siguiente, y cada sitio publica su propia cifra
+    (el 13/09/2026, Quini 6 3408 segunda: A $2.944.608.430 contra B $2.840.789.977, con los
+    seis numeros y todas las demas filas identicos). No hay forma de decidir cual tiene razon,
+    no afecta a ningun apostador, y dejar el job en rojo por eso repite el error de la regla 37:
+    el rojo permanente deja de significar algo. Va a `blandos`: se loguea, queda anotado en el
+    JSON publicado y el sorteo se confirma igual, porque lo que se cruza son los numeros.
+    """
+    duros, blandos = [], []
+    for k in diffs:
+        (blandos if es_pozo_vacante(a, b, k) else duros).append(k)
+    return duros, blandos
+
+
 def merge(a, b):
     """Base B (trae centavos truncados), completa con A lo que a B le falta."""
     out = copy.deepcopy(b)
@@ -202,8 +240,12 @@ def build(juego, res):
     a, b = res.get("A", {}), res.get("B", {})
     ok_a, ok_b = "error" not in a, "error" not in b
     conflictos = []
+    blandos = []
     if ok_a and ok_b and a.get("sorteo") == b.get("sorteo"):
-        conflictos = compare(a, b)
+        conflictos, blandos = clasificar(a, b, compare(a, b))
+        if blandos:
+            log(f"{juego} POZO VACANTE en disputa {blandos}: nadie gano esa fila, cada fuente "
+                f"publica su propia cifra; no invalida el sorteo")
         data, fuentes, validado = merge(a, b), ["A", "B"], not conflictos
     elif ok_a and ok_b:
         nueva, cual = (a, "A") if a.get("sorteo", -1) > b.get("sorteo", -1) else (b, "B")
@@ -221,6 +263,8 @@ def build(juego, res):
     out.update(data)
     out["validado"] = validado
     out["fuentes"] = fuentes
+    if blandos:
+        out["pozos_en_disputa"] = blandos
     out["generado"] = now_art()
     return out, conflictos
 

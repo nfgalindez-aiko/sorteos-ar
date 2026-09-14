@@ -16,7 +16,8 @@ def main():
         out, diffs = build(mod.JUEGO, res)
         estado = "OK" if out["validado"] else ("CONFLICTO" if diffs else "1 fuente")
         write_json(os.path.join(FIX, f"{mod.JUEGO}_out.json"),
-                   {"fuentes": res, "diferencias": diffs, "estado": estado, "salida": out})
+                   {"fuentes": res, "diferencias": diffs, "estado": estado,
+                    "pozos_en_disputa": out.get("pozos_en_disputa", []), "salida": out})
         log(f"{mod.JUEGO} ESTADO {estado} conflictos={diffs}")
         if "sorteo" in out:
             publish(mod.JUEGO, out)

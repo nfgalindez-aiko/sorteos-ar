@@ -583,3 +583,46 @@ Los `run:` que hacen `git push` **no necesitan ningún cambio**: git sigue resol
 credencial por el `includeIf`. La salvedad que documenta GitHub (runner ≥ 2.329.0) aplica
 **solo a Docker container actions**, que acá no se usan. Si algún día un paso deja de encontrar
 el token, el lugar donde mirar ya no es `.git/config` sino ese archivo de `$RUNNER_TEMP`.
+
+## Sesión 20 — 13/09/2026 · El pozo vacante no es un conflicto
+
+Domingo a la noche, minutos después de los sorteos de Quini 6 y Brinco: cinco corridas de
+`scrape` seguidas en rojo. `fallos=["quini6:['modalidades.segunda.premios.6']",
+"brinco:['modalidades.tradicional.premios.6']"]`.
+
+Las dos fuentes coincidían en **todo**: mismo número de sorteo, los seis números iguales, y
+todas las filas de premios iguales. La única diferencia estaba en la fila de 6 aciertos que las
+dos daban **vacante**, o sea con cero ganadores:
+
+| | fuente A | fuente B | diferencia |
+|---|---|---|---|
+| Quini 6 3408, segunda | 2.944.608.430 | 2.840.789.977 | 103.818.453 |
+| Brinco 1371, tradicional | 326.105.637 | 309.235.647 | 16.869.990 |
+
+Se miró el HTML crudo de las cuatro páginas: A rotula "Vac." y B "Vacante", las dos hablan de lo
+mismo. En el Quini 6 la tradicional coincidía al peso (2.481.211.505 en las dos) y solo discrepaba
+la segunda, así que no es un criterio distinto y sistemático: una de las dos tiene mal ese número
+o lo actualiza en otro momento. No convergieron en la hora siguiente.
+
+### Regla 43 — una fila con cero ganadores no es un premio, es un pozo
+
+Cuando nadie acierta, la columna "Premio" no es plata que alguien va a cobrar: es el pozo que
+queda vacante y pasa al sorteo siguiente. No hay un valor oficial por apuesta, cada sitio publica
+su propia cifra, y **no hay manera de decidir cuál tiene razón**. Dejar el job en rojo por eso
+repite exactamente el error de la regla 37: el rojo permanente deja de significar algo.
+
+- `common.clasificar(a, b, diffs)` parte las diferencias en **duras** y **blandas**. Blanda es
+  solo una fila `modalidades.<mod>.premios.<aciertos>` que las **dos** fuentes dan con cero
+  ganadores. Si una sola dice vacante y la otra reporta un ganador, es dura. Si la diferencia
+  está en los números, es dura. Si alguien ganó esa fila, la cifra sí es un premio cobrable y
+  vuelve a ser dura.
+- El sorteo **se confirma igual** (`validado: true`, 2 fuentes): lo que la app cruza y promete son
+  los números, y esos coinciden. Sale la novedad y la notificación.
+- Queda constancia: se loguea, y el JSON publicado suma `pozos_en_disputa`. Es una clave nueva y
+  aditiva, así que las versiones de la app ya instaladas la ignoran sin romperse.
+- El verificador lo levanta como **aviso**, para que esté a la vista sin poner nada en rojo.
+- Tests: 7 nuevos con las cifras reales de esta noche, incluidos los tres casos que tienen que
+  seguir siendo duros. El suite quedó en **63**.
+
+Verificado contra las fuentes en vivo antes de subir: los tres juegos quedan `validado=True`,
+sin conflictos duros, y Quini 6 y Brinco con su pozo anotado en disputa.

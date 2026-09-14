@@ -414,3 +414,78 @@ class TestVerificadorQuiniela(unittest.TestCase):
         self.v.check_frescura("ciudad", self.dia("2026-09-12", []),
                               self.SABADO_1930, alguna_publico_hoy=True)
         self.assertEqual(len(self.v.PROBLEMAS), 1)
+
+
+class TestPozoVacante(unittest.TestCase):
+    """Regla 43: una fila que las dos fuentes dan vacante no es un conflicto.
+
+    Caso real del 13/09/2026, minutos despues del sorteo: Quini 6 3408, los seis numeros y
+    todas las demas filas identicos en las dos fuentes, pero la segunda vuelta con 0 ganadores
+    valia $2.944.608.430 en A y $2.840.789.977 en B. Cinco corridas seguidas en rojo por una
+    cifra que nadie cobra.
+    """
+
+    @staticmethod
+    def sorteo(premio_segunda, ganadores_segunda=0):
+        return {"sorteo": 3408, "fecha": "2026-09-13",
+                "modalidades": {
+                    "tradicional": {"numeros": [5, 8, 22, 29, 34, 37],
+                                    "premios": [{"aciertos": 6, "ganadores": 0, "premio": 2481211505},
+                                                {"aciertos": 5, "ganadores": 23, "premio": 2431070}]},
+                    "segunda": {"numeros": [4, 20, 25, 31, 39, 42],
+                                "premios": [{"aciertos": 6, "ganadores": ganadores_segunda, "premio": premio_segunda},
+                                            {"aciertos": 5, "ganadores": 11, "premio": 5083147}]}},
+                "proximo": {"sorteo": 3409, "fecha": "2026-09-16", "pozo": 15250000000}}
+
+    def setUp(self):
+        self.a = self.sorteo(2944608430)
+        self.b = self.sorteo(2840789977)
+
+    def test_compare_sigue_viendo_la_diferencia(self):
+        self.assertEqual(common.compare(self.a, self.b), ["modalidades.segunda.premios.6"])
+
+    def test_se_clasifica_como_blanda_y_no_como_conflicto(self):
+        duros, blandos = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
+        self.assertEqual(duros, [])
+        self.assertEqual(blandos, ["modalidades.segunda.premios.6"])
+
+    def test_el_sorteo_se_confirma_igual_y_queda_la_constancia(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            out, conflictos = common.build("quini6", {"A": self.a, "B": self.b})
+        self.assertEqual(conflictos, [])          # el job no se pone en rojo
+        self.assertTrue(out["validado"])          # los numeros coinciden: confirmado
+        self.assertEqual(out["fuentes"], ["A", "B"])
+        self.assertEqual(out["pozos_en_disputa"], ["modalidades.segunda.premios.6"])
+
+    def test_si_alguien_gano_esa_fila_vuelve_a_ser_conflicto_duro(self):
+        # con ganadores > 0 la cifra SI es un premio que alguien cobra: no se puede relajar
+        a = self.sorteo(2944608430, ganadores_segunda=1)
+        b = self.sorteo(2840789977, ganadores_segunda=1)
+        duros, blandos = common.clasificar(a, b, common.compare(a, b))
+        self.assertEqual(duros, ["modalidades.segunda.premios.6"])
+        self.assertEqual(blandos, [])
+        with contextlib.redirect_stdout(io.StringIO()):
+            out, conflictos = common.build("quini6", {"A": a, "B": b})
+        self.assertEqual(conflictos, ["modalidades.segunda.premios.6"])
+        self.assertFalse(out["validado"])
+
+    def test_una_sola_fuente_vacante_no_alcanza(self):
+        # si una fuente dice vacante y la otra dice que hubo un ganador, es un conflicto real
+        b = self.sorteo(2840789977, ganadores_segunda=2)
+        duros, blandos = common.clasificar(self.a, b, common.compare(self.a, b))
+        self.assertEqual(blandos, [])
+        self.assertEqual(duros, ["modalidades.segunda.premios.6"])
+
+    def test_diferencia_en_los_numeros_nunca_es_blanda(self):
+        b = self.sorteo(2944608430)
+        b["modalidades"]["segunda"]["numeros"] = [4, 20, 25, 31, 39, 43]
+        duros, blandos = common.clasificar(self.a, b, common.compare(self.a, b))
+        self.assertEqual(blandos, [])
+        self.assertIn("modalidades.segunda.numeros", duros)
+
+    def test_sin_diferencias_no_se_agrega_la_clave(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            out, conflictos = common.build("quini6", {"A": self.a, "B": self.a})
+        self.assertEqual(conflictos, [])
+        self.assertTrue(out["validado"])
+        self.assertNotIn("pozos_en_disputa", out)
