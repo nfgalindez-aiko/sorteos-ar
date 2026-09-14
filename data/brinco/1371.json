@@ -59,10 +59,13 @@
     "fecha": "2026-09-20",
     "pozo": 400000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
     "A",
     "B"
   ],
-  "generado": "2026-09-13T21:10:29-03:00"
+  "pozos_en_disputa": [
+    "modalidades.tradicional.premios.6"
+  ],
+  "generado": "2026-09-13T21:40:34-03:00"
 }
