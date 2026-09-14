@@ -626,3 +626,34 @@ repite exactamente el error de la regla 37: el rojo permanente deja de significa
 
 Verificado contra las fuentes en vivo antes de subir: los tres juegos quedan `validado=True`,
 sin conflictos duros, y Quini 6 y Brinco con su pozo anotado en disputa.
+
+### Regla 44 — dos corridas encoladas nacen del mismo commit y la segunda no puede pushear
+
+Apenas quedó verde lo del pozo vacante, el job volvió a rojo con otra cosa: el paso "Commit y push
+de data/" con `! [rejected] main -> main (fetch first)`, y `RUN_ALL fin fallos=[]` justo arriba.
+O sea, los datos perfectos y el job en rojo igual.
+
+No fue un solapamiento: el `concurrency: group: scrape` funcionó y los jobs corrieron uno después
+del otro (00:40:26→00:40:47 y 00:40:50→00:41:00). La causa es otra y no es obvia:
+
+**`actions/checkout` saca el SHA con el que se creó la corrida, no la punta de `main`.** Las dos
+corridas se crearon con cuatro segundos de diferencia sobre el mismo commit. La primera commiteó
+data/ encima de esa base y pusheó. La segunda, ya encolada, arrancó después pero igual sacó **la
+base vieja**, commiteó encima, y su push salió rechazado porque el remoto ya había avanzado.
+Va a pasar cada vez que dos corridas se creen juntas, que es justo lo que hace el cron cada 5
+minutos en la ventana de sorteos.
+
+Arreglo: reintentar hasta 3 veces reaplicando `data/` sobre lo que ya está arriba.
+**No se rebasa**: los JSON son datos derivados y los dos commits tocan los mismos archivos, así
+que un rebase daría conflicto. Se hace `git reset --mixed FETCH_HEAD`, que deja los JSON recién
+scrapeados en el disco y mueve la base al remoto, y después `git add --ignore-removal data/`.
+
+- `--mixed` y no `--hard`: si no, se pierde el scrape recién hecho.
+- `--ignore-removal`: sin eso, un archivo que creó la otra corrida y que esta máquina nunca tuvo
+  se estadiaría como borrado, y el push lo borraría de verdad.
+- Estadiar solo `data/` y no el árbol entero: así no se revierte ningún cambio de código que haya
+  entrado en el medio.
+
+Probado antes de subir en un repo de mentira que reproduce la carrera completa: gana el scrape más
+fresco en `latest.json`, el archivo que creó la otra corrida **no** se pierde, y el cambio de
+código que entró en el medio **no** se revierte.

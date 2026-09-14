@@ -54,10 +54,36 @@ jobs:
           git add data/
           if git diff --cached --quiet; then
             echo "sin cambios en data/"
-          else
-            git commit -m "data: $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            exit 0
           fi
+          git commit -m "data: $(date -u +%Y-%m-%dT%H:%MZ)"
+          # Regla 44: checkout@vN saca el SHA con el que se CREO la corrida, no la punta de main.
+          # Dos corridas encoladas nacidas del mismo commit commitean las dos sobre esa misma base,
+          # asi que la segunda se come un "! [rejected] main -> main (fetch first)" y el job queda
+          # en rojo sin que haya nada mal en los datos. Se reintenta reaplicando data/ sobre lo que
+          # ya esta arriba. No se rebasa: los JSON son datos DERIVADOS y los dos commits tocan los
+          # mismos archivos, asi que un rebase daria conflicto. El nuestro es el scrape mas fresco
+          # y gana, sin tocar ningun cambio de codigo que haya entrado en el medio.
+          for intento in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "push rechazado (intento $intento): reaplico data/ sobre origin/main"
+            git fetch origin main
+            # --mixed deja los JSON recien scrapeados en el disco y mueve la base al remoto;
+            # --ignore-removal no estadia como borrado un archivo que subio la otra corrida y que
+            # esta compu nunca tuvo.
+            git reset --mixed FETCH_HEAD
+            git add --ignore-removal data/
+            if git diff --cached --quiet; then
+              echo "la otra corrida ya subio estos mismos datos, no hay nada que pushear"
+              exit 0
+            fi
+            git commit -m "data: $(date -u +%Y-%m-%dT%H:%MZ)"
+            sleep $((intento * 3))
+          done
+          echo "el push sigue rechazado despues de 3 intentos"
+          exit 1
 
       - name: Subir log del scrape
         if: always()
