@@ -191,3 +191,50 @@ export const DISCLAIMER =
 
 export const FUENTES = ["tujugada.com.ar", "quini-6-resultados.com.ar"];
 export const SITIO = "https://nfgalindez.com/sorteos/";
+
+// --- Turf. Por ahora solo el Hipodromo de San Isidro. ---
+// Una sola fuente y a proposito: es el parte de dividendos OFICIAL del hipodromo. Por eso el
+// sello dice "Fuente oficial: Hipodromo San Isidro" y NUNCA "2 fuentes" (decision del 15/09/2026).
+
+export interface PosicionCarrera {
+  puesto: "GAN" | "SEG" | "TER";
+  orden: number | null;
+  competidor: string;
+  /** Lo que pago cada peso apostado, a ganador / segundo / tercero segun corresponda. */
+  dividendos: number[];
+}
+
+export interface ApuestaCarrera {
+  apuesta: string;   // Exacta, Trifecta, Cuaterna, Quintuplo...
+  marcador: string;  // "07 10 05"
+  dividendo: number;
+}
+
+export interface Carrera {
+  numero: number;
+  posiciones: PosicionCarrera[];
+  apuestas: ApuestaCarrera[];
+}
+
+export interface Reunion {
+  hipodromo: string;
+  nombre: string;
+  reunion: number;
+  fecha: string; // YYYY-MM-DD
+  carreras: Carrera[];
+  validado: boolean;
+  fuentes: string[];
+  generado: string;
+}
+
+export interface IndiceReunion { fecha: string; reunion: number; carreras: number }
+export interface IndiceTurf { juego: "turf"; hipodromo: string; nombre: string; fechas: IndiceReunion[]; generado: string }
+
+export const TURF = {
+  hipodromo: "sanisidro",
+  nombre: "San Isidro",
+  /** Como se identifica la fuente en pantalla. */
+  fuente: "Hipódromo San Isidro",
+} as const;
+
+export const PUESTOS: Record<string, string> = { GAN: "Ganador", SEG: "Segundo", TER: "Tercero" };

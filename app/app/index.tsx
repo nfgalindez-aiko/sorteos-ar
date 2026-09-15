@@ -11,7 +11,8 @@ import { fechaLarga, horaCorta, instanteSorteo, pesos } from "../src/formato";
 import { JUEGOS, JuegoId, ORDEN_JUEGOS, PROVINCIAS, ResumenProvincia, Sorteo, nombreTurno } from "../src/modelos";
 import { paletaQuiniela } from "../src/quiniela-detalle";
 import { paletaPoceada } from "../src/poceada-detalle";
-import { POCEADA, Poceada } from "../src/modelos";
+import { POCEADA, Poceada, Reunion, TURF } from "../src/modelos";
+import { ChipOficial, paletaTurf } from "../src/turf-detalle";
 
 export default function Inicio() {
   const t = useTema();
@@ -43,6 +44,7 @@ export default function Inicio() {
           <TarjetaJuego key={j} juego={j} sorteo={r.ultimos[j]} />
         ))}
         {r.poceada && <TarjetaPoceada s={r.poceada} />}
+        {r.turf && <TarjetaTurf reunion={r.turf} />}
         {r.quinielas && r.quinielas.provincias.length > 0 && (
           <View style={{ gap: Espacio.s }}>
             <Text style={{ color: t.textoSec, fontSize: 12, fontWeight: "600", textTransform: "uppercase", letterSpacing: 0.5 }}>Quinielas</Text>
@@ -169,6 +171,40 @@ function TarjetaPoceada({ s }: { s: Poceada }) {
         {prox?.pozo != null && <Text style={{ color: p.secundario, fontWeight: "600" }}>Próximo pozo estimado: {pesos(prox.pozo)}</Text>}
         {objetivo && <CuentaRegresiva objetivo={objetivo} />}
         {!s.validado && <ChipFuentes fuentes={s.fuentes} validado={false} color={p.primario} />}
+      </Tarjeta>
+    </Pressable>
+  );
+}
+
+function TarjetaTurf({ reunion }: { reunion: Reunion }) {
+  const t = useTema();
+  const p = paletaTurf(t.oscuro);
+  const router = useRouter();
+  const ganadores = reunion.carreras
+    .map((c) => c.posiciones.find((x) => x.puesto === "GAN"))
+    .filter((x): x is NonNullable<typeof x> => !!x);
+  return (
+    <Pressable onPress={() => router.push("/turf")} accessibilityRole="button" accessibilityHint="Abre los resultados del Hipódromo San Isidro">
+      <Tarjeta fondo={p.fondoTarjeta} style={{ borderColor: p.primario + "40", gap: Espacio.s }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: Espacio.s }}>
+          <Text style={{ color: p.primario, fontSize: 22, fontWeight: "700" }}>{TURF.nombre}</Text>
+          <Chip texto={`Reunión ${reunion.reunion}`} color={p.primario} />
+        </View>
+        <Text style={{ color: t.textoSec, fontSize: 14 }}>
+          {fechaLarga(reunion.fecha)} · {reunion.carreras.length} carreras
+        </Text>
+        <View style={{ gap: 2 }} accessible accessibilityLabel={`Ganadores: ${ganadores.map((g) => g.competidor).join(", ")}`}>
+          {ganadores.slice(0, 3).map((g, i) => (
+            <Text key={i} style={{ color: t.texto, fontSize: 13 }} numberOfLines={1}>
+              <Text style={{ color: t.textoSec }}>{reunion.carreras[i].numero}ª · </Text>
+              {g.competidor}
+            </Text>
+          ))}
+          {ganadores.length > 3 && (
+            <Text style={{ color: t.textoSec, fontSize: 12 }}>y {ganadores.length - 3} carreras más</Text>
+          )}
+        </View>
+        <ChipOficial color={p.primario} />
       </Tarjeta>
     </Pressable>
   );

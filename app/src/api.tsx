@@ -3,7 +3,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
-import { DiaQuiniela, Indice, IndiceItem, IndiceQuiniela, JuegoId, ORDEN_JUEGOS, Poceada, ProvinciaId, ResumenQuinielas, Sorteo } from "./modelos";
+import { DiaQuiniela, Indice, IndiceItem, IndiceQuiniela, IndiceReunion, IndiceTurf, JuegoId, ORDEN_JUEGOS, Poceada, ProvinciaId, ResumenQuinielas, Reunion, Sorteo, TURF } from "./modelos";
 
 const BASE: string =
   (Constants.expoConfig?.extra?.baseURL as string | undefined) ?? "https://nfgalindez-aiko.github.io/sorteos-ar/data/";
@@ -62,8 +62,11 @@ interface EstadoResultados {
   quinielas: ResumenQuinielas | null;
   poceada: Poceada | null;
   poceadaIndice: IndiceItem[];
+  turf: Reunion | null;
+  turfIndice: IndiceReunion[];
   recargar: () => Promise<void>;
   poceadaSorteo: (numero: number) => Promise<Poceada>;
+  turfReunion: (fecha: string) => Promise<Reunion>;
   sorteo: (juego: JuegoId, numero: number) => Promise<Sorteo>;
   quinielaDia: (prov: ProvinciaId, fecha: string | "latest") => Promise<DiaQuiniela>;
   quinielaIndice: (prov: ProvinciaId) => Promise<IndiceQuiniela>;
@@ -80,6 +83,8 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
   const [quinielas, setQuinielas] = useState<ResumenQuinielas | null>(null);
   const [poceada, setPoceada] = useState<Poceada | null>(null);
   const [poceadaIndice, setPoceadaIndice] = useState<IndiceItem[]>([]);
+  const [turf, setTurf] = useState<Reunion | null>(null);
+  const [turfIndice, setTurfIndice] = useState<IndiceReunion[]>([]);
   const enCurso = useRef(false);
 
   const recargar = useCallback(async () => {
@@ -117,6 +122,14 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
     } catch {
       /* la poceada es opcional en la portada */
     }
+    try {
+      const r = await obtener<Reunion>(`turf/${TURF.hipodromo}/latest.json`);
+      setTurf(r.valor);
+      const i = await obtener<IndiceTurf>(`turf/${TURF.hipodromo}/index.json`);
+      setTurfIndice(i.valor.fechas);
+    } catch {
+      /* el turf es opcional: puede no haber ninguna reunión publicada todavía */
+    }
     const offline = fallos + deCache === ORDEN_JUEGOS.length;
     setSinConexion(offline);
     if (!offline) setUltima(new Date());
@@ -137,6 +150,8 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
       if (q) setQuinielas(q);
       const po = await leerCache<Poceada>("poceada/latest.json");
       if (po) setPoceada(po);
+      const tu = await leerCache<Reunion>(`turf/${TURF.hipodromo}/latest.json`);
+      if (tu) setTurf(tu);
       await recargar();
     })();
   }, [recargar]);
@@ -177,9 +192,17 @@ export function ResultadosProvider({ children }: { children: React.ReactNode }) 
     }
   }, []);
 
+  /** Una reunión puntual. Ya corrida y publicada: no cambia, la caché vale siempre. */
+  const turfReunion = useCallback(async (fecha: string): Promise<Reunion> => {
+    const path = `turf/${TURF.hipodromo}/${fecha}.json`;
+    const c = await leerCache<Reunion>(path);
+    if (c) return c;
+    return await descargar<Reunion>(path);
+  }, []);
+
   const valor = useMemo<EstadoResultados>(
-    () => ({ ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, poceada, poceadaIndice, recargar, sorteo, quinielaDia, quinielaIndice, poceadaSorteo }),
-    [ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, poceada, poceadaIndice, recargar, sorteo, quinielaDia, quinielaIndice, poceadaSorteo],
+    () => ({ ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, poceada, poceadaIndice, turf, turfIndice, recargar, sorteo, quinielaDia, quinielaIndice, poceadaSorteo, turfReunion }),
+    [ultimos, indices, sinConexion, cargando, ultimaActualizacion, quinielas, poceada, poceadaIndice, turf, turfIndice, recargar, sorteo, quinielaDia, quinielaIndice, poceadaSorteo, turfReunion],
   );
   return <Ctx.Provider value={valor}>{children}</Ctx.Provider>;
 }
