@@ -67,7 +67,7 @@ export default function Ajustes() {
       </Seccion>
       <Seccion titulo="Tus datos">
         <Text style={{ color: t.textoSec, fontSize: 13, lineHeight: 18 }}>
-          Esta app no tiene cuenta ni recolecta datos. Las jugadas que cargás quedan guardadas únicamente en este dispositivo.
+          Esta app no tiene cuenta, no muestra anuncios y no te rastrea. Las jugadas que cargás quedan guardadas únicamente en este dispositivo. Si activás las notificaciones, se guarda un código anónimo del teléfono; se borra al apagarlas todas.
         </Text>
         <Pressable
           disabled={js.jugadas.length === 0}

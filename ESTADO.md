@@ -788,3 +788,15 @@ en **`master`**, y la rama de producción del proyecto es **`main`**. El deploy 
 
 Siempre desplegar con **`--branch main`**. Y no confiar en el "Success": verificar contra
 nfgalindez.com, no contra la URL que devuelve wrangler.
+
+### Pendiente para la 1.1 — el mismo error estaba dentro de la app
+
+Ajustes > "Tus datos" decía *"Esta app no tiene cuenta ni recolecta datos"*, la misma frase que
+se corrigió en la web, y con la sección de Notificaciones justo arriba explicando lo contrario.
+Corregido en `app/app/ajustes.tsx`, pero **queda sin publicar a propósito**: la compilación 12
+está en revisión y un `eas update` al canal `production` le cambiaría el código a Apple mientras
+la mira. Sale con la 1.1, junto con valorar y compartir.
+
+Riesgo real de dejarlo así hasta entonces: bajo. La frase de la app subestima lo que se guarda,
+no lo oculta; la sección de Notificaciones de la misma pantalla explica el token, y la política
+publicada, que es la canónica y la que Apple mira, ya está correcta.
