@@ -709,13 +709,26 @@ Antes de que Apple la mire de nuevo se revisó todo lo que suele hacer caer un e
 | Datos en vivo | verificador en 0 problemas, corridas en verde |
 | Accesibilidad de la app | sección nueva, **opcional**, sin empezar. Se deja para la 1.1 |
 
-**Disponibilidad reducida a 6 países.** Estaba en 175, con **China continental** incluida: doble
-riesgo, porque la categoría es Noticias (China exige permiso de publicación para esa categoría) y
-el contenido son loterías (juego prohibido ahí). Por decisión del dueño quedó solo en
-**Argentina, Uruguay, Brasil, Paraguay, Bolivia y Chile**. Apple avisó que se retira de 169 países
-y que se aplica en 24 horas. La versión siguió en Pendiente de revisión: cambiar la disponibilidad
-no reinicia la revisión.
+**Disponibilidad: de 175 países a 37 elegidos.** Estaba en 175, con **China continental** incluida:
+doble riesgo, porque la categoría es Noticias (China exige permiso de publicación para esa
+categoría) y el contenido son loterías (juego prohibido ahí). Primero se bajó a 6 (Argentina y
+vecinos) y después el dueño pidió ampliar a "los que sean lógicos". Criterio final:
 
-Nota para más adelante: con esta lista, un argentino con cuenta de App Store en España, Estados
-Unidos, Italia o México **no puede descargarla**. La cuenta manda, no dónde esté la persona. Se
-puede ampliar cuando se quiera sin pasar por revisión.
+- **Latinoamérica (18)**: Argentina, Bolivia, Brasil, Chile, Colombia, Costa Rica, Ecuador,
+  El Salvador, Guatemala, Honduras, México, Nicaragua, Panamá, Paraguay, Perú, República
+  Dominicana, Uruguay, Venezuela.
+- **Donde vive la diáspora argentina (19)**: España, Italia, Portugal, Francia, Alemania, Reino
+  Unido, Suiza, Países Bajos, Bélgica, Suecia, Noruega, Dinamarca, Irlanda, Austria, Estados
+  Unidos, Canadá, Australia, Nueva Zelanda, Israel.
+
+**Por qué importa la diáspora**: la App Store va por el país de la **cuenta**, no por dónde está la
+persona. Un argentino con cuenta en España no podía bajarla con la lista de 6.
+
+Quedan fuera a propósito China continental, los países del Golfo y del norte de África, Turquía,
+Rusia, Singapur y el sudeste asiático: sin público para esto y con restricciones conocidas sobre
+contenido de juego. No es una opinión legal, es evitar riesgo donde no hay nada que ganar.
+También quedó **destildado** "disponible automáticamente en los países que se agreguen en el
+futuro", para que la lista no crezca sola.
+
+La versión siguió en Pendiente de revisión: cambiar la disponibilidad no reinicia la revisión.
+Apple aplica el cambio dentro de las 24 horas.
