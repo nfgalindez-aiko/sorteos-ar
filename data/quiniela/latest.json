@@ -30,6 +30,12 @@
           "hora": "18:00",
           "cabeza": "2544",
           "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "0535",
+          "validado": false
         }
       ]
     },
@@ -172,6 +178,12 @@
           "hora": "18:00",
           "cabeza": "3940",
           "validado": false
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "5863",
+          "validado": false
         }
       ]
     },
@@ -208,5 +220,5 @@
       ]
     }
   ],
-  "generado": "2026-09-14T18:56:53-03:00"
+  "generado": "2026-09-14T21:15:40-03:00"
 }
