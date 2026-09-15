@@ -800,3 +800,27 @@ la mira. Sale con la 1.1, junto con valorar y compartir.
 Riesgo real de dejarlo así hasta entonces: bajo. La frase de la app subestima lo que se guarda,
 no lo oculta; la sección de Notificaciones de la misma pantalla explica el token, y la política
 publicada, que es la canónica y la que Apple mira, ya está correcta.
+
+## Ideas evaluadas — caballos y radio (15/09/2026, sin implementar)
+
+**Caballos: solo San Isidro, con la fuente oficial.** `hipodromosanisidro.com` publica el parte
+oficial completo (posiciones, dividendos, exacta, trifecta, cuaterna) en
+`/partediv/?calendario_id=AAAAMMDD`. Lo arma con JavaScript, así que **no lo levanta un scraper
+de stdlib**: hay que encontrar la llamada que trae los datos o renderizar.
+
+Decisión del dueño: **una sola fuente alcanza si es la oficial**. Consecuencia para la app: estos
+sorteos no pueden mostrar "2 fuentes". Hay que etiquetarlos **"fuente oficial"**, que es más
+fuerte que dos sitios de terceros cruzados, y no mentir reusando el sello existente.
+
+**Palermo queda afuera** (decisión del dueño). Además había un motivo de fondo: su sitio oficial
+está en reconstrucción y el único botón activo lleva a una casa de apuestas. Usarlo como fuente
+nos dejaba a un clic de un sitio de juego, justo lo contrario de lo que se le declaró a Apple.
+
+**Radio: es un tema de permiso, no de código.** Tomar la URL del stream y reproducirla adentro de
+la app es retransmitir sin autorización (ley 11.723 y derechos de la emisora), y Apple exige
+demostrar los derechos sobre todo lo que se reproduce. Caminos legales: (a) permiso escrito de la
+emisora, que es un mail y suele darse porque les suma alcance; (b) un botón que abre la app o la
+web de la emisora, que no necesita permiso de nadie.
+
+**Lo que no se hace: relato de carreras en vivo.** Deja de ser una app de resultados y pasa a ser
+compañera de apuesta, que es otra categoría de revisión y contradice lo que ya se declaró.
