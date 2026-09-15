@@ -888,3 +888,29 @@ Contactos y borrador del mail: `docs/pedido-transmision.md`. Mandarlo a `gerenci
 
 **Sin esperar respuesta** se puede poner ya un botón que ABRA su canal de YouTube: un link no
 necesita autorización de nadie. Eso va en la 1.1 con o sin permiso.
+
+## Sesión 24 — 15/09/2026 · Turf en la app, publicado por aire al canal de pruebas
+
+Pantallas nuevas: tarjeta en la portada con los primeros ganadores, detalle de la reunión carrera
+por carrera (ganador, segundo, tercero y todos los dividendos), histórico de reuniones y pantalla
+por fecha. `src/turf-detalle.tsx`, `app/turf/index.tsx`, `historico.tsx` y `[fecha].tsx`.
+
+- **Sello propio `ChipOficial`**, no se reusa `ChipFuentes`. Dice **"Fuente oficial: Hipódromo San
+  Isidro"** y al tocarlo explica por qué acá no hay cruce de dos sitios. Reusar el sello de la
+  lotería hubiera dicho "1 fuente", que es cierto y suena peor de lo que es.
+- **Dividendos con centavos**, con `toLocaleString("es-AR")`. 2.05 es lo que paga cada peso.
+- Detalle que se puede pasar por alto: el ganador cobra a ganador, segundo y tercero; el segundo
+  solo a segundo y tercero; el tercero solo a tercero. Los dividendos vienen **alineados al final**
+  del arreglo, así que las etiquetas se calculan con `slice(3 - dividendos.length)`.
+
+### Regla 51 — publicar por aire al canal equivocado le cambia el código a Apple
+
+La compilación 12 está **en revisión** y escucha el canal `production`. Un `eas update` a ese canal
+le cambiaría el código al revisor mientras la mira. Se publicó a **`testflight`**, que es donde
+escucha la compilación 11, y se verificó después que `production` sigue **vacío**
+(`Runtime Version N/A`, `Group ID N/A`).
+
+Para probarlo hay que instalar la **compilación 11** desde TestFlight, no la 12.
+
+Pendiente para la 1.1: sumar el turf a los temas de notificaciones (hay que agregar el tema en
+`TEMAS_VALIDOS` del Worker de push y avisar desde el backend al publicar una reunión).
