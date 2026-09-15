@@ -777,3 +777,14 @@ archivos esperados, y recién ahí `npx wrangler@4 pages deploy site --project-n
 Nota: el deploy también publicó el commit de privacidad de GastoAI que estaba en el remoto sin
 publicar, y los arreglos de Ciclia y Hotel ya commiteados. Todo trabajo del dueño ya decidido,
 nada inventado acá.
+
+### Regla 48 — la rama de producción de Pages es `main`, no la rama local
+
+El primer `npx wrangler@4 pages deploy site --project-name nfgalindez` salió "Success" y el sitio
+**no cambió**. No era caché: wrangler toma el nombre de la rama de git actual, la copia local está
+en **`master`**, y la rama de producción del proyecto es **`main`**. El deploy quedó como
+**Preview**, visible solo en su URL propia. Se ve con
+`npx wrangler@4 pages deployment list --project-name nfgalindez`: columna `Environment`.
+
+Siempre desplegar con **`--branch main`**. Y no confiar en el "Success": verificar contra
+nfgalindez.com, no contra la URL que devuelve wrangler.
