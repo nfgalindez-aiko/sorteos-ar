@@ -1,0 +1,832 @@
+{
+  "hipodromo": "sanisidro",
+  "nombre": "San Isidro",
+  "reunion": 84,
+  "fecha": "2026-09-12",
+  "carreras": [
+    {
+      "numero": 1,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 7,
+          "competidor": "INNER CIRCLE",
+          "dividendos": [
+            2.05,
+            1.65,
+            1.8
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 10,
+          "competidor": "HI MONALISA",
+          "dividendos": [
+            3.0,
+            2.95
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 5,
+          "competidor": "LUNA PRECIOSA",
+          "dividendos": [
+            4.2
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "07 10",
+          "dividendo": 33500.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "07 10 05",
+          "dividendo": 519700.0
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 3,
+          "competidor": "HANNA",
+          "dividendos": [
+            49.1,
+            13.2,
+            14.6
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 1,
+          "competidor": "DESCONFIADA INC",
+          "dividendos": [
+            3.5,
+            3.65
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 7,
+          "competidor": "LA CHINA S",
+          "dividendos": [
+            4.95
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "03 01",
+          "dividendo": 907900.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "03 01 07",
+          "dividendo": 4016300.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "07 03",
+          "dividendo": 267300.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "07",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 2,
+          "competidor": "HUDSON",
+          "dividendos": [
+            17.0,
+            7.05,
+            5.05
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 7,
+          "competidor": "HI MOHMIX",
+          "dividendos": [
+            6.85,
+            4.6
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 8,
+          "competidor": "SIMPLE RULE",
+          "dividendos": [
+            3.45
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "02 07",
+          "dividendo": 249600.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "02 07 08",
+          "dividendo": 919300.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "03 02",
+          "dividendo": 2522200.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "03",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 4,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 7,
+          "competidor": "GRATIA PLENA",
+          "dividendos": [
+            4.2,
+            1.3,
+            1.25
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 3,
+          "competidor": "CLEAR CONSCIENCE",
+          "dividendos": [
+            1.2,
+            1.25
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 1,
+          "competidor": "BLUE EMULADA",
+          "dividendos": [
+            2.75
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Imperfecta",
+          "marcador": "07 03",
+          "dividendo": 7700.0
+        },
+        {
+          "apuesta": "Cuatrifecta",
+          "marcador": "07 03 01 04",
+          "dividendo": 451050.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "02 07",
+          "dividendo": 81800.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "02",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Cuaterna",
+          "marcador": "07 03 02 07",
+          "dividendo": 9366400.0
+        },
+        {
+          "apuesta": "Cuaterna Place",
+          "marcador": "",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 5,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 5,
+          "competidor": "LUNATICO BOMB",
+          "dividendos": [
+            1.55,
+            1.1,
+            0.0
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 2,
+          "competidor": "FIND ME",
+          "dividendos": [
+            1.1,
+            0.0
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "05 02",
+          "dividendo": 9400.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "05 02 06",
+          "dividendo": 27300.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "07 05",
+          "dividendo": 10400.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "07",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 6,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 8,
+          "competidor": "REAL WORLD",
+          "dividendos": [
+            10.2,
+            4.2,
+            3.6
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 7,
+          "competidor": "NIGHT CRAWLER",
+          "dividendos": [
+            2.3,
+            1.9
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 5,
+          "competidor": "PETER TOSH",
+          "dividendos": [
+            3.0
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "08 07",
+          "dividendo": 186100.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "08 07 05",
+          "dividendo": 352600.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "05 08",
+          "dividendo": 27100.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "05",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Cuaterna",
+          "marcador": "02 07 05 08",
+          "dividendo": 304575.0
+        },
+        {
+          "apuesta": "Cuaterna Place",
+          "marcador": "",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 7,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 4,
+          "competidor": "PASOS AL COSTADO",
+          "dividendos": [
+            3.1,
+            1.75,
+            1.55
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 13,
+          "competidor": "EFECTO DOMINO",
+          "dividendos": [
+            2.2,
+            1.6
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 9,
+          "competidor": "EL CAMINO",
+          "dividendos": [
+            2.35
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Imperfecta",
+          "marcador": "04 13",
+          "dividendo": 11000.0
+        },
+        {
+          "apuesta": "Cuatrifecta",
+          "marcador": "04 13 09 08",
+          "dividendo": 207250.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "08 04",
+          "dividendo": 54400.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "08",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Triplo",
+          "marcador": "05 08 04",
+          "dividendo": 65300.0
+        },
+        {
+          "apuesta": "Cadena Jackpot",
+          "marcador": "03 02 07 05 08 04",
+          "dividendo": 950625.0
+        },
+        {
+          "apuesta": "Cadena 6/6",
+          "marcador": "",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 8,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 1,
+          "competidor": "GOTA CLARA SOS",
+          "dividendos": [
+            1.95,
+            1.1,
+            0.0
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 2,
+          "competidor": "LA MAGIA EXISTE",
+          "dividendos": [
+            1.85,
+            0.0
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "01 02",
+          "dividendo": 11900.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "01 02 05",
+          "dividendo": 51100.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "04 01",
+          "dividendo": 13500.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "04",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Quintuplo",
+          "marcador": "07 05 08 04 01",
+          "dividendo": 126950.0
+        },
+        {
+          "apuesta": "Quintuplo Place",
+          "marcador": "",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 9,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 3,
+          "competidor": "FUURIN",
+          "dividendos": [
+            9.85,
+            1.85,
+            0.0
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 4,
+          "competidor": "RISK FREE (BR)",
+          "dividendos": [
+            3.6,
+            0.0
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "03 04",
+          "dividendo": 83200.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "03 04 02",
+          "dividendo": 829700.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "01 03",
+          "dividendo": 32500.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "01",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Cuaterna",
+          "marcador": "08 04 01 03",
+          "dividendo": 657900.0
+        },
+        {
+          "apuesta": "Cuaterna Place",
+          "marcador": "",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 10,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 7,
+          "competidor": "KALADY",
+          "dividendos": [
+            4.6,
+            2.45,
+            1.5
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 5,
+          "competidor": "PARATI (USA)",
+          "dividendos": [
+            4.3,
+            2.0
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 2,
+          "competidor": "LUNA CURIOSA",
+          "dividendos": [
+            1.95
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Imperfecta",
+          "marcador": "07 05",
+          "dividendo": 15400.0
+        },
+        {
+          "apuesta": "Cuatrifecta",
+          "marcador": "07 05 02 08",
+          "dividendo": 562800.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "03 07",
+          "dividendo": 54000.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "03",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 11,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 4,
+          "competidor": "MAGIC WAVE",
+          "dividendos": [
+            31.8,
+            8.1,
+            6.35
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 9,
+          "competidor": "ATAMOR BEACH",
+          "dividendos": [
+            2.8,
+            2.6
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 5,
+          "competidor": "ORPEN AGAIN",
+          "dividendos": [
+            7.4
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "04 09",
+          "dividendo": 332500.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "04 09 05",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "07 04",
+          "dividendo": 343000.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "07",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Triplo",
+          "marcador": "03 07 04",
+          "dividendo": 3333250.0
+        },
+        {
+          "apuesta": "Cuaterna",
+          "marcador": "01 03 07 04",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Cuaterna Place",
+          "marcador": "",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Quintuplo",
+          "marcador": "04 01 03 07 04",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Quintuplo Place",
+          "marcador": "",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 12,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 2,
+          "competidor": "MAREJADA",
+          "dividendos": [
+            22.75,
+            3.6,
+            0.0
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 3,
+          "competidor": "GREAT FIGHT",
+          "dividendos": [
+            2.8,
+            0.0
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Exacta",
+          "marcador": "02 03",
+          "dividendo": 116600.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "02 03 05",
+          "dividendo": 1114900.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "04 02",
+          "dividendo": 279200.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "04",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 13,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 12,
+          "competidor": "YA LO BERAN CORRER",
+          "dividendos": [
+            12.35,
+            3.1,
+            2.1
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 7,
+          "competidor": "EL SUEÑO",
+          "dividendos": [
+            2.45,
+            1.75
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 13,
+          "competidor": "BEACH ROCK",
+          "dividendos": [
+            2.05
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Imperfecta",
+          "marcador": "12 07",
+          "dividendo": 18100.0
+        },
+        {
+          "apuesta": "Trifecta",
+          "marcador": "12 07 13",
+          "dividendo": 1771200.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "02 12",
+          "dividendo": 192100.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "02",
+          "dividendo": 0.0
+        }
+      ]
+    },
+    {
+      "numero": 14,
+      "posiciones": [
+        {
+          "puesto": "GAN",
+          "orden": 6,
+          "competidor": "TENGO PRISA",
+          "dividendos": [
+            7.8,
+            2.85,
+            2.15
+          ]
+        },
+        {
+          "puesto": "SEG",
+          "orden": 12,
+          "competidor": "THE MAGIC WISH",
+          "dividendos": [
+            4.75,
+            3.0
+          ]
+        },
+        {
+          "puesto": "TER",
+          "orden": 5,
+          "competidor": "SHANIKA",
+          "dividendos": [
+            2.05
+          ]
+        }
+      ],
+      "apuestas": [
+        {
+          "apuesta": "Imperfecta",
+          "marcador": "06 12",
+          "dividendo": 231500.0
+        },
+        {
+          "apuesta": "Cuatrifecta",
+          "marcador": "06 12 05 10",
+          "dividendo": 2498600.0
+        },
+        {
+          "apuesta": "Doble",
+          "marcador": "12 06",
+          "dividendo": 275750.0
+        },
+        {
+          "apuesta": "Doble Consuelo",
+          "marcador": "12",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Triplo",
+          "marcador": "02 12 06",
+          "dividendo": 3067000.0
+        },
+        {
+          "apuesta": "Cuaterna",
+          "marcador": "04 02 12 06",
+          "dividendo": 25000000.0
+        },
+        {
+          "apuesta": "Cuaterna Place",
+          "marcador": "",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Quintuplo",
+          "marcador": "07 04 02 12 06",
+          "dividendo": 0.0
+        },
+        {
+          "apuesta": "Quintuplo Place",
+          "marcador": "",
+          "dividendo": 0.0
+        }
+      ]
+    }
+  ],
+  "validado": true,
+  "fuentes": [
+    "oficial"
+  ],
+  "generado": "2026-09-15T18:58:21-03:00"
+}

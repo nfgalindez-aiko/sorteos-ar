@@ -1,0 +1,58 @@
+{
+  "juego": "turf",
+  "hipodromo": "sanisidro",
+  "nombre": "San Isidro",
+  "fechas": [
+    {
+      "fecha": "2026-09-12",
+      "reunion": 84,
+      "carreras": 14
+    },
+    {
+      "fecha": "2026-09-09",
+      "reunion": 83,
+      "carreras": 11
+    },
+    {
+      "fecha": "2026-09-06",
+      "reunion": 82,
+      "carreras": 12
+    },
+    {
+      "fecha": "2026-09-04",
+      "reunion": 81,
+      "carreras": 12
+    },
+    {
+      "fecha": "2026-09-02",
+      "reunion": 80,
+      "carreras": 11
+    },
+    {
+      "fecha": "2026-08-30",
+      "reunion": 66,
+      "carreras": 12
+    },
+    {
+      "fecha": "2026-08-29",
+      "reunion": 79,
+      "carreras": 15
+    },
+    {
+      "fecha": "2026-08-26",
+      "reunion": 78,
+      "carreras": 14
+    },
+    {
+      "fecha": "2026-08-21",
+      "reunion": 77,
+      "carreras": 13
+    },
+    {
+      "fecha": "2026-08-19",
+      "reunion": 76,
+      "carreras": 12
+    }
+  ],
+  "generado": "2026-09-15T18:58:22-03:00"
+}

@@ -232,6 +232,55 @@ def check_quinielas(base, provincias, ahora):
         check_frescura(prov, j, ahora, alguna_publico_hoy)
 
 
+def check_turf(base, hipodromo, ahora):
+    """El turf tiene UNA fuente y es la oficial: no hay cruce que verificar, solo que el JSON
+    publicado este sano y que el indice acompane. La frescura no se chequea porque las reuniones
+    no tienen un calendario fijo: hay semanas con una y semanas con tres."""
+    print(f"[turf/{hipodromo}]")
+    try:
+        j = bajar(base, f"turf/{hipodromo}/latest.json")
+    except Exception as e:
+        # todavia puede no existir si no hubo ninguna reunion desde que se agrego el scraper
+        try:
+            bajar(base, f"turf/{hipodromo}/index.json")
+            aviso(f"turf/{hipodromo}: sin reuniones publicadas todavia ({e})")
+        except Exception:
+            problema(f"turf/{hipodromo}/latest.json no se puede leer: {e}")
+        return
+    for k in ("reunion", "fecha", "carreras", "validado", "fuentes", "generado"):
+        if k not in j:
+            problema(f"turf/{hipodromo}: falta '{k}' en latest.json")
+            return
+    if j["fuentes"] != ["oficial"]:
+        problema(f"turf/{hipodromo}: fuentes={j['fuentes']}, deberia ser ['oficial']")
+    if not j["carreras"]:
+        problema(f"turf/{hipodromo}: la reunion {j['reunion']} no tiene carreras")
+    for c in j["carreras"]:
+        if not c.get("posiciones"):
+            problema(f"turf/{hipodromo} reunion {j['reunion']}: carrera {c.get('numero')} sin posiciones")
+            continue
+        puestos = [p["puesto"] for p in c["posiciones"]]
+        if puestos != ["GAN", "SEG", "TER"][:len(puestos)]:
+            problema(f"turf/{hipodromo} reunion {j['reunion']}: carrera {c['numero']} con puestos {puestos}")
+        for p in c["posiciones"]:
+            if not p.get("competidor") or not p.get("dividendos"):
+                problema(f"turf/{hipodromo} reunion {j['reunion']}: carrera {c['numero']} "
+                         f"puesto {p.get('puesto')} incompleto")
+    try:
+        date.fromisoformat(j["fecha"])
+    except (KeyError, ValueError) as e:
+        problema(f"turf/{hipodromo}: fecha invalida: {e}")
+    try:
+        idx = bajar(base, f"turf/{hipodromo}/index.json")["fechas"]
+        if not idx or idx[0]["fecha"] < j["fecha"]:
+            problema(f"turf/{hipodromo}: index.json atrasado respecto de latest")
+        fechas = [f["fecha"] for f in idx]
+        if fechas != sorted(fechas, reverse=True):
+            problema(f"turf/{hipodromo}: index.json no esta ordenado")
+    except Exception as e:
+        problema(f"turf/{hipodromo}/index.json: {e}")
+
+
 def main(argv):
     base = argv[argv.index("--base") + 1] if "--base" in argv else BASE
     if "--ahora" in argv:
@@ -244,6 +293,7 @@ def main(argv):
     check_poceado(base, "lotoplus", (2, 5), "21:30", (0, 45), ["tradicional", "match", "desquite", "sale_o_sale"], ahora)
     check_poceada_ciudad(base, ahora)
     check_quinielas(base, PROVINCIAS, ahora)
+    check_turf(base, "sanisidro", ahora)
     print("[novedades]")
     try:
         nov = bajar(base, "novedades.json")["novedades"]

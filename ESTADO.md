@@ -824,3 +824,46 @@ web de la emisora, que no necesita permiso de nadie.
 
 **Lo que no se hace: relato de carreras en vivo.** Deja de ser una app de resultados y pasa a ser
 compañera de apuesta, que es otra categoría de revisión y contradice lo que ya se declaró.
+
+## Sesión 23 — 15/09/2026 · Turf: San Isidro con la fuente oficial
+
+Primer juego nuevo desde Poceada. Backend solamente: **la app no se toca** mientras la
+compilación 12 está en revisión.
+
+### Regla 49 — la página arma la tabla con JavaScript, pero adentro hay un endpoint limpio
+
+`hipodromosanisidro.com/partediv/` no sirve para bajar derecho: el HTML que contesta el servidor
+trae solo el menú. Pero en ese mismo HTML está la llamada que usa la página:
+
+```
+$.get("https://hipodromosanisidro.com/wacP/public/partediv/AAAAMMDD")
+```
+
+Ese endpoint devuelve la tabla ya armada y **se lee con la biblioteca estándar**, sin navegador.
+Antes de dar por imposible una fuente "hecha con JavaScript", buscar en el HTML el `$.get`,
+`fetch(` o `admin-ajax` que trae los datos. Se encontró con `grep -oE "fetch|\$\.(get|post|ajax)"`.
+
+### Regla 50 — un scraper que no encuentra nada no falla, y ese es el problema
+
+El primer intento devolvió **cero reuniones sin un solo error**. Causa: el HTML trae
+`Reuni&oacute;n Nro.84` con la entidad sin resolver y el regex buscaba `Reunión`. El parser
+concluía "este día no hubo carreras", que es una respuesta legítima y silenciosa.
+Los días sin carreras contestan igual pero con `Reunión Nro. -` sin número, así que ese silencio
+es indistinguible de un cambio de formato. El test `test_cabecera` existe por eso.
+
+### Decisiones
+
+- **Una sola fuente, y a propósito.** Es el parte oficial del hipódromo. Cruzar dos diarios que
+  copian de ese mismo parte no agrega nada. Se publica con `fuentes: ["oficial"]`.
+- **La app no puede mostrarles "2 fuentes".** Les corresponde **"fuente oficial"**. Esto hay que
+  implementarlo en la app cuando se agregue la pantalla: reusar el sello existente sería mentir.
+- **Los dividendos van con centavos, en `float`.** `money()` trunca a entero, que está bien para
+  un premio de la lotería pero acá diría otra cosa: 2.05 es lo que paga cada peso apostado.
+- **Palermo queda afuera** (decisión del dueño). Su sitio oficial está en reconstrucción y el
+  único botón activo lleva a una casa de apuestas.
+- El verificador chequea forma, no frescura: las reuniones no tienen calendario fijo, hay semanas
+  con una y semanas con tres.
+
+Datos: `data/turf/sanisidro/<fecha>.json` + `latest.json` + `index.json`. Se hizo backfill de 30
+días, 10 reuniones (la 76 a la 84). Tests: 9 nuevos sobre el parte real de la reunión 84.
+El suite quedó en **72**.
