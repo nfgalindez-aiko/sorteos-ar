@@ -126,9 +126,10 @@
         "0803"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -137,5 +138,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-09-15T18:15:33-03:00"
+  "generado": "2026-09-15T18:45:35-03:00"
 }
