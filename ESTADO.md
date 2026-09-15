@@ -732,3 +732,48 @@ futuro", para que la lista no crezca sola.
 
 La versión siguió en Pendiente de revisión: cambiar la disponibilidad no reinicia la revisión.
 Apple aplica el cambio dentro de las 24 horas.
+
+## Sesión 22 — 15/09/2026 · Abrir a 37 países obligó a revisar la privacidad
+
+El dueño preguntó si ampliar países rompía algún papel. La respuesta corta fue que no cambia el
+manejo de datos, pero **entrar a Europa sube la vara**, y revisando aparecieron tres cosas mal en
+la política de privacidad que venían de antes.
+
+### Regla 46 — el titular de la política contradecía a la propia política
+
+La página abría con *"Sorteos AR no recolecta, guarda ni transmite datos personales"* y tres
+párrafos más abajo la tabla explicaba que, si activás notificaciones, **se guarda un token del
+teléfono en Cloudflare**. Y a Apple le declaramos justamente eso: Identificadores → ID del
+dispositivo. Un titular que contradice la tabla de la misma página, la declaración de App Store
+Connect y la realidad del código es el peor de los tres errores posibles.
+
+Corregido a: no hay cuenta, ni anuncios, ni analítica, ni rastreo; las jugadas no salen del
+teléfono; **lo único que se guarda fuera es un código anónimo, y solo si activás notificaciones**.
+
+Otras dos:
+- **"clasificada 17+"** → ahora es **18+** (17+ solo en iOS anteriores a la 26). Quedó desfasado
+  al completarse el cuestionario nuevo (regla 45).
+- **"Como no guardamos nada tuyo, no hay nada que pedir"** → dejaba de ser cierto por el token.
+  Reescrito con el derecho de acceso, corrección y eliminación, el mail de privacidad, el plazo
+  de 30 días, y que en la UE y el Reino Unido la base legal de las notificaciones es el
+  **consentimiento**, que se retira apagándolas.
+
+Se actualizó la fecha de la política, que la propia política promete actualizar.
+
+### Regla 47 — el repo del sitio estaba desincronizado con lo publicado
+
+Antes de desplegar se encontró que `C:\Users\pc\Desktop\nfgalindez.com` **divergía en tres
+direcciones**: la rama local tenía 4 commits (Ciclia, Hotel) que el remoto no; el remoto tenía 1
+commit de privacidad de GastoAI que la local no; y **lo que estaba publicado no coincidía con
+ningún commit** (el botón de GastoAI en vivo decía algo que no existe en el historial: alguien
+desplegó sin commitear).
+
+Desplegar de una hubiera pisado trabajo ajeno. Se hizo: `git stash` de lo del dueño, `git merge
+origin/master`, `stash pop`, corregir, `python generar.py`, verificar que solo cambiaran los
+archivos esperados, y recién ahí `npx wrangler@4 pages deploy site --project-name nfgalindez`.
+
+**Antes de tocar ese repo: `git fetch` y `git status`.** No alcanza con mirar `git status`.
+
+Nota: el deploy también publicó el commit de privacidad de GastoAI que estaba en el remoto sin
+publicar, y los arreglos de Ciclia y Hotel ya commiteados. Todo trabajo del dueño ya decidido,
+nada inventado acá.

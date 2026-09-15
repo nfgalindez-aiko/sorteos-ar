@@ -2,12 +2,14 @@
 
 > Versión canónica publicada en https://nfgalindez.com/sorteos/privacidad/ . Este archivo es respaldo.
 
-Última actualización: 7 de septiembre de 2026.
+Última actualización: 15 de septiembre de 2026.
 
 ## Resumen
 
-Sorteos AR no recolecta, almacena ni transmite datos personales. No tiene cuenta de usuario,
-no usa publicidad ni herramientas de análisis, y no comparte información con terceros.
+Sorteos AR no tiene cuenta de usuario, no usa publicidad ni herramientas de análisis, no rastrea
+a nadie y no comparte información con terceros. Tus jugadas no salen del teléfono. Lo único que
+se guarda fuera del dispositivo es un código anónimo del teléfono, y solo si activás las
+notificaciones.
 
 ## Qué datos maneja la app
 
@@ -34,8 +36,18 @@ no usa publicidad ni herramientas de análisis, y no comparte información con t
 
 ## Menores
 
-La app está clasificada para mayores de 17 años en App Store y su contenido está dirigido a
-mayores de 18. No se recolectan datos de ninguna persona, de cualquier edad.
+La app está clasificada 18+ en App Store (17+ en versiones de iOS anteriores a la 26) y su
+contenido está dirigido a personas mayores de edad. No está pensada ni dirigida a menores, y no
+se les pide ningún dato.
+
+## Tus derechos
+
+Las jugadas están solo en tu teléfono: las ves y las borrás desde Ajustes. Si activaste las
+notificaciones, el código anónimo del teléfono se borra apagándolas todas en Ajustes o
+desinstalando la app. Podés pedir acceso, corrección o eliminación de cualquier dato escribiendo
+a privacidad@nfgalindez.com; se responde dentro de los 30 días. En la Unión Europea y el Reino
+Unido estos son los derechos del RGPD, y la base legal del envío de notificaciones es tu
+consentimiento, que retirás apagándolas.
 
 ## Cambios
 
@@ -44,7 +56,8 @@ actualizada.
 
 ## Contacto
 
-Responsable: https://nfgalindez.com
+Responsable: Nicolás Galindez, Buenos Aires, Argentina.
+Privacidad: privacidad@nfgalindez.com · Soporte: hola@nfgalindez.com · https://nfgalindez.com
 
 ---
 
