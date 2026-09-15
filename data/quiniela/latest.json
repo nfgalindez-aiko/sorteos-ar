@@ -198,9 +198,15 @@
           "hora": "15:00",
           "cabeza": "8695",
           "validado": false
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "5267",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-09-15T18:15:36-03:00"
+  "generado": "2026-09-15T18:30:52-03:00"
 }
