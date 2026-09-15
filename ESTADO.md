@@ -657,3 +657,35 @@ scrapeados en el disco y mueve la base al remoto, y después `git add --ignore-r
 Probado antes de subir en un repo de mentira que reproduce la carrera completa: gana el scrape más
 fresco en `latest.json`, el archivo que creó la otra corrida **no** se pierde, y el cambio de
 código que entró en el medio **no** se revierte.
+
+## Sesión 21 — 15/09/2026 · Rechazo 2.3.6: la app no tenía clasificación por edades
+
+Segundo rechazo, y otra vez **no es un defecto de la app**. Guideline 2.3.6, Accurate Metadata:
+*"We noticed that there is no rating assigned to the app."* Revisada el 15/09 en un iPad Air M3.
+
+Lo confuso: en App Store Connect la ficha **mostraba** 18+ en 173 países. Pero era la clasificación
+vieja. Apple estrenó un cuestionario nuevo de 7 pasos y el de esta app estaba **incompleto**: dos
+preguntas del paso 1, `socialMedia` y `socialMediaAgeRestricted`, nunca se habían respondido. Sin
+todas las respuestas no se calcula clasificación, y para la revisión la app figura sin clasificar.
+
+### Regla 45 — una clasificación visible en la ficha no significa que el cuestionario esté completo
+
+Se detectó comparando radio por radio con JS, no a ojo: la ficha se veía bien. El indicio visual
+era Brasil mostrando **"AB"**; después de completar y guardar pasó a **"A18"**.
+
+Respuestas cargadas (todas verificadas contra lo que la app hace de verdad):
+- Controles dentro de la app: sin controles parentales, sin verificación de edad.
+- Prestaciones: sin acceso web libre, sin contenido de usuarios, **sin redes sociales**, sin
+  mensajería, sin publicidad.
+- Temas adultos, medicina, sexualidad, violencia: ninguno de ningún tipo.
+- **Actividades basadas en el azar**: simulación de apuestas ninguna, concursos ninguno,
+  **apuestas con dinero real NO**, cajas de recompensas NO. La app solo muestra resultados
+  publicados; no se puede apostar, comprar un cartón ni mover plata.
+
+La clasificación **calculada** da **4+**. Se dejó el **reemplazo manual en 18+**, que ya estaba
+puesto, porque la app informa sorteos reales, la normativa argentina exige el aviso de juego
+responsable, y la ficha, la app y la respuesta del 11/09 a Apple dicen 18+. Coherencia ante todo:
+bajarla a 4+ hubiera contradicho el texto de la propia ficha.
+
+Se le respondió a Apple detallando cada respuesta del cuestionario y aclarando que **el binario no
+cambió**: sigue siendo la compilación 12. La 1.0 volvió a **Pendiente de revisión**.
