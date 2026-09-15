@@ -689,3 +689,33 @@ bajarla a 4+ hubiera contradicho el texto de la propia ficha.
 
 Se le respondió a Apple detallando cada respuesta del cuestionario y aclarando que **el binario no
 cambió**: sigue siendo la compilación 12. La 1.0 volvió a **Pendiente de revisión**.
+
+### Auditoría previa a la tercera revisión (15/09/2026)
+
+Antes de que Apple la mire de nuevo se revisó todo lo que suele hacer caer un envío. En orden:
+
+| Punto | Estado |
+|---|---|
+| Clasificación por edades | completa y guardada, 18+ (regla 45) |
+| Privacidad de la app | publicada, sin avisos, coincide con la web |
+| URL de soporte, marketing y privacidad | las tres responden 200 |
+| Mail de la página de soporte | se ve bien en el navegador (el HTML crudo lo ofusca con Cloudflare, no es un error) |
+| Capturas | 5, pantallas reales con contenido, sin maquetas |
+| Cifrado | `ITSAppUsesNonExemptEncryption: false` en `app.json`, sin paso manual |
+| "Es necesario iniciar sesión" | destildado |
+| Derechos de contenido y contrato | declarados, contrato estándar |
+| Publicación | automática al aprobarse |
+| iPad | `supportsTablet: false`, no hacen falta capturas de iPad aunque revisen ahí |
+| Datos en vivo | verificador en 0 problemas, corridas en verde |
+| Accesibilidad de la app | sección nueva, **opcional**, sin empezar. Se deja para la 1.1 |
+
+**Disponibilidad reducida a 6 países.** Estaba en 175, con **China continental** incluida: doble
+riesgo, porque la categoría es Noticias (China exige permiso de publicación para esa categoría) y
+el contenido son loterías (juego prohibido ahí). Por decisión del dueño quedó solo en
+**Argentina, Uruguay, Brasil, Paraguay, Bolivia y Chile**. Apple avisó que se retira de 169 países
+y que se aplica en 24 horas. La versión siguió en Pendiente de revisión: cambiar la disponibilidad
+no reinicia la revisión.
+
+Nota para más adelante: con esta lista, un argentino con cuenta de App Store en España, Estados
+Unidos, Italia o México **no puede descargarla**. La cuenta manda, no dónde esté la persona. Se
+puede ampliar cuando se quiera sin pasar por revisión.
