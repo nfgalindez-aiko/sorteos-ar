@@ -867,3 +867,24 @@ es indistinguible de un cambio de formato. El test `test_cabecera` existe por es
 Datos: `data/turf/sanisidro/<fecha>.json` + `latest.json` + `index.json`. Se hizo backfill de 30
 días, 10 reuniones (la 76 a la 84). Tests: 9 nuevos sobre el parte real de la reunión 84.
 El suite quedó en **72**.
+
+### Etiqueta confirmada y a quién escribirle por la transmisión (15/09/2026)
+
+El dueño confirmó el texto exacto del sello para el turf: **"Fuente oficial: Hipódromo San
+Isidro"**. Hay que implementarlo en la app cuando se agregue la pantalla, como un sello distinto
+del de "2 fuentes" y del de "1 fuente".
+
+**Radio: el destinatario no es una radio.** Buscando emisoras que transmitan turf apareció que el
+**propio hipódromo transmite sus carreras en vivo** en su canal de YouTube (112 mil suscriptores,
+33 mil videos), y que cada carrera del parte de dividendos ya tiene su link de video. Son los
+dueños de los derechos, ya publican en abierto, y ya usamos su parte oficial como fuente. Pedirles
+a ellos es más corto y da video en vez de solo audio.
+
+Radio Colonia AM 550 era la histórica del turf y la quiniela, pero su grilla publicada hoy no
+menciona ninguna de las dos.
+
+Contactos y borrador del mail: `docs/pedido-transmision.md`. Mandarlo a `gerenciaHSI@` y
+`comercializacion@jockeyclub.com.ar` juntos.
+
+**Sin esperar respuesta** se puede poner ya un botón que ABRA su canal de YouTube: un link no
+necesita autorización de nadie. Eso va en la 1.1 con o sin permiso.
