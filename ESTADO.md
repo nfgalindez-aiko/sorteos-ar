@@ -914,3 +914,25 @@ Para probarlo hay que instalar la **compilación 11** desde TestFlight, no la 12
 
 Pendiente para la 1.1: sumar el turf a los temas de notificaciones (hay que agregar el tema en
 `TEMAS_VALIDOS` del Worker de push y avisar desde el backend al publicar una reunión).
+
+### Regla 52 — el plan gratuito de EAS tiene cupo mensual de builds de iOS
+
+Se intentó compilar para TestFlight con los caballos adentro (para que al dueño le apareciera una
+compilación nueva en vez de tener que buscar la 11) y falló:
+
+```
+This account has used its iOS builds from the Free plan this month,
+which will reset in 14 days (on Thu Oct 01 2026).
+```
+
+Se gastaron las del mes entre las compilaciones 5 a 12. **Hasta el 1/10/2026 no se puede compilar
+para iOS**, salvo pagando un plan (`eas billing:subscribe starter`).
+
+Consecuencias:
+- Lo del turf solo se puede ver instalando la **compilación 11** desde TestFlight, que ya recibe
+  el update por aire publicado al canal `testflight`.
+- La **1.1** (turf, valorar, compartir, y el arreglo del texto de Ajustes) no se puede compilar
+  hasta el 1/10 o hasta que se pague. Valorar y compartir necesitan compilación nueva porque
+  `expo-store-review` no está en el binario; el turf y el texto de Ajustes sí van por aire.
+- La 1.0 en revisión no se toca: ya está enviada con la compilación 12, que está subida y
+  procesada. Si Apple la aprueba, sale sin problema.
