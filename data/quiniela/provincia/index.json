@@ -3,6 +3,11 @@
   "provincia": "provincia",
   "fechas": [
     {
+      "fecha": "2026-09-16",
+      "turnos": 1,
+      "validado": false
+    },
+    {
       "fecha": "2026-09-15",
       "turnos": 5,
       "validado": false
@@ -48,5 +53,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-09-15T21:15:24-03:00"
+  "generado": "2026-09-16T10:45:34-03:00"
 }
