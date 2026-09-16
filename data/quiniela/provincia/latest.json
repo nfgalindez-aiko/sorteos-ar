@@ -62,15 +62,17 @@
         "1820"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-16T12:15:52-03:00"
+  "generado": "2026-09-16T13:15:38-03:00"
 }
