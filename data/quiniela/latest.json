@@ -95,40 +95,16 @@
       "provincia": "entrerios",
       "nombre": "Entre Ríos",
       "digitos": 4,
-      "fecha": "2026-09-16",
+      "fecha": "2026-09-17",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "5445",
-          "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "6068",
-          "validado": false
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "3108",
-          "validado": false
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "1574",
-          "validado": false
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "8070",
+          "cabeza": "8869",
           "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-09-17T10:30:36-03:00"
+  "generado": "2026-09-17T10:45:32-03:00"
 }
