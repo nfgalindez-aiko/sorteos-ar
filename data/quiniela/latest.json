@@ -98,7 +98,7 @@
         {
           "turno": "matutina",
           "hora": "15:00",
-          "cabeza": null,
+          "cabeza": "6950",
           "validado": false
         },
         {
@@ -250,5 +250,5 @@
       ]
     }
   ],
-  "generado": "2026-09-16T22:40:39-03:00"
+  "generado": "2026-09-17T00:33:31-03:00"
 }
