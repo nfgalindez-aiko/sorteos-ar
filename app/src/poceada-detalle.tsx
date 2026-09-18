@@ -3,6 +3,7 @@ import React from "react";
 import { View } from "react-native";
 import { Text, useEscala } from "./texto";
 import { ChipFuentes, CuentaRegresiva, Tarjeta } from "./componentes";
+import { BotonCompartir, textoPoceada } from "./compartir";
 import { Espacio, Paleta, useTema } from "./design";
 import { entero, fechaLarga, instanteSorteo, pesos } from "./formato";
 import { POCEADA, Poceada } from "./modelos";
@@ -26,7 +27,10 @@ export function PoceadaDetalle({ sorteo }: { sorteo: Poceada }) {
           <Text style={{ color: t.texto, fontSize: 20, fontWeight: "700" }}>Sorteo {sorteo.sorteo}</Text>
           <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(sorteo.fecha)}</Text>
         </View>
-        <ChipFuentes fuentes={sorteo.fuentes} validado={sorteo.validado} color={p.primario} />
+        <View style={{ flexDirection: "row", alignItems: "center", gap: Espacio.s }}>
+          <BotonCompartir texto={textoPoceada(sorteo)} color={p.primario} />
+          <ChipFuentes fuentes={sorteo.fuentes} validado={sorteo.validado} color={p.primario} />
+        </View>
       </View>
 
       <Tarjeta fondo={p.fondoTarjeta} style={{ gap: Espacio.s }}>

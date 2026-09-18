@@ -2,13 +2,14 @@
   "expo": {
     "name": "Sorteos AR",
     "slug": "sorteos-ar",
-    "version": "0.1.0",
+    "version": "1.1",
     "scheme": "sorteosar",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "ios": {
       "bundleIdentifier": "ar.sorteos.app",
+      "appStoreUrl": "https://apps.apple.com/ar/app/sorteos-ar/id6809660906",
       "supportsTablet": false,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,

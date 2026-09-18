@@ -3,6 +3,7 @@ import React from "react";
 import { View } from "react-native";
 import { Text } from "./texto";
 import { ChipFuentes, Tarjeta } from "./componentes";
+import { BotonCompartir, textoQuinielaTurno } from "./compartir";
 import { Espacio, Paleta, useTema } from "./design";
 import { fechaLarga } from "./formato";
 import { DiaQuiniela, TurnoQuiniela, nombreTurno } from "./modelos";
@@ -26,14 +27,14 @@ export function QuinielaDia({ dia }: { dia: DiaQuiniela }) {
         </View>
       </View>
       {dia.turnos.map((turno) => (
-        <TurnoView key={turno.turno} turno={turno} paleta={p} />
+        <TurnoView key={turno.turno} turno={turno} paleta={p} dia={dia} />
       ))}
       {dia.turnos.length === 0 && <Text style={{ color: t.textoSec }}>Todavía no hay sorteos publicados para este día.</Text>}
     </View>
   );
 }
 
-function TurnoView({ turno, paleta }: { turno: TurnoQuiniela; paleta: Paleta }) {
+function TurnoView({ turno, paleta, dia }: { turno: TurnoQuiniela; paleta: Paleta; dia: DiaQuiniela }) {
   const t = useTema();
   const nums = turno.numeros;
   const etiqueta = `${nombreTurno(turno.turno)}${turno.hora ? ` ${turno.hora} hs` : ""}`;
@@ -41,7 +42,12 @@ function TurnoView({ turno, paleta }: { turno: TurnoQuiniela; paleta: Paleta }) 
     <Tarjeta fondo={paleta.fondoTarjeta} style={{ gap: Espacio.s }}>
       <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
         <Text style={{ color: paleta.primario, fontWeight: "700", fontSize: 16 }}>{etiqueta}</Text>
-        <ChipFuentes fuentes={turno.fuentes} validado={turno.validado} conflicto={!!turno.conflicto} color={paleta.primario} />
+        <View style={{ flexDirection: "row", alignItems: "center", gap: Espacio.s }}>
+          {!!nums && nums.length > 0 && (
+            <BotonCompartir texto={textoQuinielaTurno(dia, turno.turno, dia.nombre)} color={paleta.primario} />
+          )}
+          <ChipFuentes fuentes={turno.fuentes} validado={turno.validado} conflicto={!!turno.conflicto} color={paleta.primario} />
+        </View>
       </View>
       {nums ? (
         <>

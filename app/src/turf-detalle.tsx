@@ -9,6 +9,7 @@ import { Espacio, Paleta, useTema } from "./design";
 import { fechaLarga } from "./formato";
 import { Carrera, PUESTOS, Reunion, TURF } from "./modelos";
 import { Tarjeta } from "./componentes";
+import { BotonCompartir, textoReunion } from "./compartir";
 
 export function paletaTurf(oscuro: boolean): Paleta {
   return oscuro
@@ -131,7 +132,10 @@ export function ReunionDetalle({ reunion }: { reunion: Reunion }) {
         <Text style={{ color: t.textoSec, fontSize: 14 }}>
           {fechaLarga(reunion.fecha)} · {reunion.carreras.length} carreras
         </Text>
-        <ChipOficial color={p.primario} />
+        <View style={{ flexDirection: "row", alignItems: "center", gap: Espacio.s, flexWrap: "wrap" }}>
+          <ChipOficial color={p.primario} />
+          <BotonCompartir texto={textoReunion(reunion)} color={p.primario} />
+        </View>
       </View>
       {reunion.carreras.map((c) => (
         <TarjetaCarrera key={c.numero} c={c} paleta={p} />

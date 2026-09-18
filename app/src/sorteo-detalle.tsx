@@ -3,6 +3,7 @@ import React from "react";
 import { View } from "react-native";
 import { Text } from "./texto";
 import { ChipFuentes, CuentaRegresiva, FilaBolillas, PremiosTabla, Tarjeta } from "./componentes";
+import { BotonCompartir, textoSorteo } from "./compartir";
 import { Espacio, usePaleta, useTema } from "./design";
 import { entero, fechaLarga, instanteSorteo, pesos } from "./formato";
 import { JUEGOS, JuegoId, Sorteo, modalidadesOrdenadas, nombreModalidad } from "./modelos";
@@ -21,7 +22,10 @@ export function SorteoDetalle({ juego, sorteo }: { juego: JuegoId; sorteo: Sorte
           <Text style={{ color: t.texto, fontSize: 20, fontWeight: "700" }}>Sorteo {sorteo.sorteo}</Text>
           <Text style={{ color: t.textoSec, fontSize: 14 }}>{fechaLarga(sorteo.fecha)}</Text>
         </View>
-        <ChipFuentes fuentes={sorteo.fuentes} validado={sorteo.validado} color={p.primario} />
+        <View style={{ flexDirection: "row", alignItems: "center", gap: Espacio.s }}>
+          <BotonCompartir texto={textoSorteo(sorteo)} color={p.primario} />
+          <ChipFuentes fuentes={sorteo.fuentes} validado={sorteo.validado} color={p.primario} />
+        </View>
       </View>
 
       {modalidadesOrdenadas(sorteo, meta).map(({ clave, modalidad }) => (

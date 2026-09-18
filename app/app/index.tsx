@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Pressable, RefreshControl, ScrollView, View } from "react-native";
 import { Text } from "../src/texto";
 import { Link, Stack, useRouter } from "expo-router";
 import { useResultados } from "../src/api";
+import { registrarApertura } from "../src/valoracion";
 import { useJugadas } from "../src/jugadas";
 import { BannerSinConexion, Bolilla, Chip, ChipFuentes, CuentaRegresiva, Disclaimer, FilaBolillas, Tarjeta } from "../src/componentes";
 import { aciertos } from "../src/jugadas";
@@ -17,6 +18,15 @@ import { ChipOficial, paletaTurf } from "../src/turf-detalle";
 export default function Inicio() {
   const t = useTema();
   const r = useResultados();
+  // El cartel de valoración se pide una sola vez por arranque y recién cuando hay resultados en
+  // pantalla: es el momento en que la app hizo lo que promete. Nunca después de un error.
+  const pedido = useRef(false);
+  useEffect(() => {
+    if (pedido.current || r.cargando || r.sinConexion) return;
+    if (!ORDEN_JUEGOS.some((j) => r.ultimos[j])) return;
+    pedido.current = true;
+    void registrarApertura();
+  }, [r.cargando, r.sinConexion, r.ultimos]);
   return (
     <>
       <Stack.Screen
