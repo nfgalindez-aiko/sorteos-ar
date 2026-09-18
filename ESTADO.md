@@ -969,3 +969,41 @@ Web actualizada y desplegada:
    compilación nueva sí o sí.
 4. **Notificaciones de turf**: agregar el tema en el Worker de push.
 5. La cuenta de EAS ya es `gestionaikos-team`, con crédito.
+
+## Sesión 26 — 18/09/2026 · 1.1 enviada a revisión
+
+Compilación **15**, versión **1.1**, perfil y canal `production` (verificado con `build:view`
+antes de enviar, regla 39). Estado: **Pendiente de revisión**.
+
+Qué lleva:
+- **Turf** del Hipódromo San Isidro, con su sello "Fuente oficial".
+- **Compartir** en sorteo, poceada, turno de quiniela y reunión de turf. Arma el texto listo para
+  pegar, con el link a la app. No comparte nada de la persona ni de sus jugadas.
+- **Pedido de valoración** (`expo-store-review`) a las 10, 40 y 100 aperturas.
+- El texto de Ajustes que subestimaba lo que se guarda.
+- 8 paquetes de SDK 57 al parche esperado. `expo-doctor` 21/21 y `npm ci` limpio.
+
+### Regla 53 — la valoración no se pide "cada N veces", la decide iOS
+
+iOS muestra el cartel **como mucho 3 veces por año y por persona**, y decide si lo muestra. Pedir
+más seguido no consigue más valoraciones: gasta los tres intentos. Por eso los hitos son 10, 40 y
+100 aperturas, uno por intento, nunca dos el mismo día. Se pide desde la portada y solo con
+resultados en pantalla, nunca después de un error, porque ahí es cuando ponen una estrella.
+No se muestra en TestFlight: solo con la app instalada desde la App Store.
+
+### Regla 54 — la ficha tiene DOS idiomas y el segundo no avisa hasta que enviás
+
+"Añadir a revisión" falló con *"Español (México) - Novedades en esta versión - Este campo es
+obligatorio"*. La ficha tiene **Inglés (EE. UU.)** y **Español (México)**, y hay que completar
+los campos en los dos. Se cambia con el selector de idioma arriba a la derecha.
+
+De paso se descubrió que la descripción en español **nunca había mencionado las notificaciones**,
+que existen desde la 1.0. Se agregaron ahí el turf, los avisos y compartir, y el Jockey Club al
+aviso legal, en los dos idiomas.
+
+También se corrigió una frase de las novedades que yo había escrito sin poder sostenerla
+("faster startup"): actualizar 8 paquetes al parche no es "arranque más rápido".
+
+Las notas para el revisor ahora explican el turf: son resultados de carreras ya corridas, tomados
+del parte oficial, sin transmisión en vivo, sin cuotas, sin información previa a la carrera y sin
+un solo link a una casa de apuestas.
