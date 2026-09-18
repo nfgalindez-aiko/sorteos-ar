@@ -936,3 +936,36 @@ Consecuencias:
   `expo-store-review` no está en el binario; el turf y el texto de Ajustes sí van por aire.
 - La 1.0 en revisión no se toca: ya está enviada con la compilación 12, que está subida y
   procesada. Si Apple la aprueba, sale sin problema.
+
+## Sesión 25 — 18/09/2026 · PUBLICADA
+
+**Sorteos AR 1.0 salió al App Store el 17/09/2026 a las 23:57 UTC.**
+https://apps.apple.com/ar/app/sorteos-ar/id6809660906
+
+Datos de la ficha pública (`itunes.apple.com/lookup?id=6809660906`): versión 1.0, gratis,
+38,2 MB, iOS 16.4 o posterior, vendedor NICOLAS FEDERICO GALINDEZ. La API informa la
+clasificación vieja de 17+; la nueva, la que completamos, es 18+.
+
+Fueron tres rechazos hasta acá y ninguno fue un defecto de la app: el pedido de información
+estándar a cuentas nuevas (2.1) y el cuestionario de clasificación por edades incompleto (2.3.6).
+
+Web actualizada y desplegada:
+- Botón real de descarga en lugar de "Pronto en App Store".
+- Fuera el cartel de "todavía no está publicada".
+- La ficha ya puede decir **iOS 16.4**, que es dato de la tienda y antes no se sabía.
+- El turf pasó de "En camino" a "En la próxima actualización".
+- En la portada del sitio, la pastilla de Sorteos AR pasó a "En el App Store" y la línea de
+  prueba dice dos apps. **Ojo: `site/index.html` NO lo genera `generar.py`, se edita a mano.**
+
+### Lo que queda para la 1.1
+
+1. **Turf en la app.** Ya está hecho y probado en TestFlight (compilación 14). **No conviene
+   mandarlo por aire al canal `production`**: la ficha de la App Store no menciona turf, y
+   publicar un juego nuevo sin que figure en la descripción es justo el terreno de la 2.3
+   (metadatos exactos) que ya nos costó dos rechazos. Va con revisión, y en el mismo envío se
+   actualiza la descripción.
+2. **Texto de Ajustes** "Tus datos" (ya corregido en el código, sin publicar).
+3. **Valorar y compartir.** Valorar necesita `expo-store-review`, que no está en el binario:
+   compilación nueva sí o sí.
+4. **Notificaciones de turf**: agregar el tema en el Worker de push.
+5. La cuenta de EAS ya es `gestionaikos-team`, con crédito.
