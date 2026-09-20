@@ -16,17 +16,17 @@
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 4021819701
+          "premio": 4021819700
         },
         {
           "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 18,
+          "premio": 1116462
         },
         {
           "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 783,
+          "premio": 5133
         }
       ]
     },
@@ -43,17 +43,17 @@
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 1889720327
+          "premio": 1889720326
         },
         {
           "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 17,
+          "premio": 1182136
         },
         {
           "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 835,
+          "premio": 4813
         }
       ]
     },
@@ -70,7 +70,7 @@
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 2441301098
+          "premio": 2441301097
         }
       ]
     },
@@ -97,11 +97,12 @@
   "proximo": {
     "sorteo": 3920,
     "fecha": "2026-09-23",
-    "pozo": 0
+    "pozo": 25301000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-19T22:10:24-03:00"
+  "generado": "2026-09-19T22:41:25-03:00"
 }
