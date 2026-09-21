@@ -18,6 +18,14 @@
     "testflight": {
       "extends": "production",
       "channel": "testflight"
+    },
+    "apk": {
+      "extends": "production",
+      "channel": "production",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
     }
   },
   "submit": {
