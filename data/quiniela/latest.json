@@ -5,37 +5,13 @@
       "provincia": "ciudad",
       "nombre": "Ciudad de Buenos Aires",
       "digitos": 4,
-      "fecha": "2026-09-19",
+      "fecha": "2026-09-21",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "6553",
+          "cabeza": "7440",
           "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "5447",
-          "validado": true
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "9043",
-          "validado": true
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "6619",
-          "validado": true
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "2462",
-          "validado": true
         }
       ]
     },
@@ -81,37 +57,13 @@
       "provincia": "santafe",
       "nombre": "Santa Fe",
       "digitos": 4,
-      "fecha": "2026-09-19",
+      "fecha": "2026-09-21",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "2393",
+          "cabeza": "4122",
           "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "4693",
-          "validado": true
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "6801",
-          "validado": true
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "1537",
-          "validado": true
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "2011",
-          "validado": true
         }
       ]
     },
@@ -119,37 +71,13 @@
       "provincia": "cordoba",
       "nombre": "Córdoba",
       "digitos": 4,
-      "fecha": "2026-09-19",
+      "fecha": "2026-09-21",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "8318",
+          "cabeza": "9302",
           "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "2078",
-          "validado": true
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "2544",
-          "validado": true
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "8533",
-          "validado": true
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "3626",
-          "validado": true
         }
       ]
     },
@@ -171,36 +99,12 @@
       "provincia": "mendoza",
       "nombre": "Mendoza",
       "digitos": 4,
-      "fecha": "2026-09-19",
+      "fecha": "2026-09-21",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "0261",
-          "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "4221",
-          "validado": false
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "2367",
-          "validado": false
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "4488",
-          "validado": false
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "1833",
+          "cabeza": "5739",
           "validado": false
         }
       ]
@@ -226,5 +130,5 @@
       ]
     }
   ],
-  "generado": "2026-09-20T21:00:47-03:00"
+  "generado": "2026-09-21T10:30:30-03:00"
 }
