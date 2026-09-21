@@ -19,37 +19,13 @@
       "provincia": "provincia",
       "nombre": "Provincia de Buenos Aires",
       "digitos": 4,
-      "fecha": "2026-09-19",
+      "fecha": "2026-09-21",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "6890",
+          "cabeza": "4108",
           "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "4874",
-          "validado": true
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "0639",
-          "validado": true
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "5994",
-          "validado": true
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "6907",
-          "validado": true
         }
       ]
     },
@@ -113,22 +89,16 @@
       "provincia": "entrerios",
       "nombre": "Entre Ríos",
       "digitos": 4,
-      "fecha": "2026-09-20",
+      "fecha": "2026-09-21",
       "turnos": [
         {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "5018",
-          "validado": false
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "0324",
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "1274",
           "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-09-21T10:30:30-03:00"
+  "generado": "2026-09-21T10:45:39-03:00"
 }
