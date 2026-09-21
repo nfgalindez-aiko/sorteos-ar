@@ -62,15 +62,17 @@
         "6777"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-21T12:15:38-03:00"
+  "generado": "2026-09-21T13:00:34-03:00"
 }
