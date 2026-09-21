@@ -4,7 +4,7 @@
     {
       "sorteo": 3410,
       "fecha": "2026-09-20",
-      "validado": false
+      "validado": true
     },
     {
       "sorteo": 3409,
@@ -272,5 +272,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-09-20T21:30:30-03:00"
+  "generado": "2026-09-20T21:35:26-03:00"
 }
