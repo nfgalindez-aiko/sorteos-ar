@@ -61,7 +61,7 @@
           "turno": "vespertina",
           "hora": "18:00",
           "cabeza": "6250",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -208,5 +208,5 @@
       ]
     }
   ],
-  "generado": "2026-09-21T18:30:27-03:00"
+  "generado": "2026-09-21T18:45:35-03:00"
 }
