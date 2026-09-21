@@ -1031,3 +1031,27 @@ portada no la genera `generar.py`. El traductor tomó ese texto en español y lo
 
 **Después de tocar `site/index.html` a mano, revisar `site/en/` y `site/pt/`.**
 Se ve rápido con `grep -o 'class="pill [a-z]*">[^<]*' site/*/index.html | sort -u`.
+
+## Sesión 28 — 21/09/2026 · APK de Android
+
+El dueño pidió un APK. Android ya estaba configurado en `app.json` (package `ar.sorteos.app`,
+íconos adaptativos y monocromo), así que solo faltó el perfil de build:
+
+```json
+"apk": { "extends": "production", "channel": "production",
+         "distribution": "internal", "android": { "buildType": "apk" } }
+```
+
+`npx eas-cli build --platform android --profile apk`. Salió a la primera: versión 1.1,
+version code 2, **103 MB** (un APK sin partir por arquitectura pesa mucho más que el IPA de 38 MB).
+
+**Las notificaciones NO funcionan en este APK.** `expo-notifications` necesita Firebase en
+Android: falta `google-services.json` y `android.googleServicesFile` en `app.json`. La app no se
+rompe, pero al activar los avisos va a dar error. Todo el resto anda igual.
+
+Otras diferencias sabidas de Android, ninguna bloqueante:
+- El pedido de valoración no aparece: `expo-store-review` necesita Play Store.
+- Escucha el canal `production`, o sea recibe los mismos updates por aire que el iPhone.
+
+Si en algún momento se va a Google Play hay que mirar antes su política de juegos de azar, que es
+distinta de la de Apple, y que Play pide un AAB, no un APK.

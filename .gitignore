@@ -31,3 +31,4 @@ backend/app_key.txt
 worker/**/node_modules/
 worker/**/.wrangler/
 ScreenRecording_*.MP4
+SorteosAR-*.apk
