@@ -1007,3 +1007,27 @@ También se corrigió una frase de las novedades que yo había escrito sin poder
 Las notas para el revisor ahora explican el turf: son resultados de carreras ya corridas, tomados
 del parte oficial, sin transmisión en vivo, sin cuotas, sin información previa a la carrera y sin
 un solo link a una casa de apuestas.
+
+## Sesión 27 — 21/09/2026 · 1.1 aprobada y publicada
+
+**Sorteos AR 1.1 salió al App Store el 21/09/2026 a las 07:50 UTC**, tres días después de
+enviarla. Sin rechazos: el turf, compartir y el pedido de valoración pasaron revisión a la
+primera. Verificado en `itunes.apple.com/lookup`, que además ya devuelve las novedades en español.
+
+Que el turf pasara sin observaciones confirma que la decisión de no mandarlo por aire era la
+correcta: fue con la descripción actualizada y con las notas explicándole al revisor que son
+resultados de carreras ya corridas, del parte oficial, sin transmisión en vivo, sin cuotas y sin
+links a casas de apuestas.
+
+Web actualizada: se sacó "En la próxima actualización" de la tarjeta de turf y el titular ya lo
+nombra.
+
+### Regla 55 — editar `site/index.html` a mano rompe las traducciones
+
+Cuando salió la 1.0 cambié a mano la pastilla de Sorteos AR en `site/index.html`, porque esa
+portada no la genera `generar.py`. El traductor tomó ese texto en español y lo copió tal cual a
+`site/en/index.html` y `site/pt/index.html`: las páginas en inglés y portugués quedaron diciendo
+**"En el App Store"**. Corregido a "On the App Store" y "Na App Store".
+
+**Después de tocar `site/index.html` a mano, revisar `site/en/` y `site/pt/`.**
+Se ve rápido con `grep -o 'class="pill [a-z]*">[^<]*' site/*/index.html | sort -u`.
