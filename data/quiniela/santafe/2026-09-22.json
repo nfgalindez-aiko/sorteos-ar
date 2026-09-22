@@ -62,15 +62,17 @@
         "0643"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-22T12:30:43-03:00"
+  "generado": "2026-09-22T13:01:01-03:00"
 }
