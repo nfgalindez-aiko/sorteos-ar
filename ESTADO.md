@@ -1084,3 +1084,29 @@ Quedaron en `.agents/skills/` y `.claude/skills/`, versionadas, más `skills-loc
 
 **Lo que ninguna skill resuelve:** a seis días de publicada la app tiene **0 reseñas y 0
 calificaciones**. El problema hoy no es cómo se ve, es que nadie sabe que existe.
+
+## Sesión 30 — 23/09/2026 · La web, revisada con la skill de diseño
+
+Se usó `emil-design-eng` sobre nfgalindez.com. Encontró cuatro cosas reales, todas de teléfono:
+
+| Antes | Después | Por qué |
+| --- | --- | --- |
+| 14 reglas `:hover`, **cero** `:active` | `.btn:active{transform:scale(.97)}` y equivalentes | En el celular no existe el hover: tocabas y no pasaba nada |
+| `.card:hover{transform:translateY(-4px)}` suelto | dentro de `@media (hover:hover) and (pointer:fine)` | En táctil el hover se dispara al tocar y **queda pegado** |
+| `.shelf a:hover{translateY(-10px) scale(1.06)}` | lo mismo | El más visible: los logos quedaban levantados |
+| `.card{transition:.3s}` | `transition:border-color .3s,transform .3s,box-shadow .3s` | `transition:.3s` es `transition:all` |
+| `introOut .25s ease-in` | `ease-out` | `ease-in` arranca lento justo cuando el ojo mira |
+
+**Lo que la skill NO ve: las palabras.** El dueño dijo que no le gustaba "cómo están expresadas
+las cosas", y eso no es diseño. Contando en la portada: **"andar/andando" 6 veces**, "solo" 7,
+"publicado" 4. Cuando una palabra vuelve tanto deja de significar.
+
+- El subtítulo repetía el titular con otras palabras: *"que siguen funcionando sin nadie mirando"*
+  → *"que no dependen de mí"*.
+- *"Cada proyecto de esta página está publicado, medido y se puede verificar"* mezclaba dos
+  construcciones → *"Todo lo de esta página está publicado, medido y se puede comprobar"*.
+- *"Todo esto está andando hoy"* → *"funciona hoy"*.
+- *"0 · Personas por edición"* → *"0 · Personas escriben Wild Tech"*, que se entiende sin leer el pie.
+
+Aplicado en los tres idiomas (regla 55). El subtítulo estaba **dos veces** en cada archivo, en el
+`<h1>` y en la meta `og:description`: `str.replace` con `count=1` deja la mitad sin cambiar.
