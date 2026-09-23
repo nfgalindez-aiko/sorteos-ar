@@ -1055,3 +1055,32 @@ Otras diferencias sabidas de Android, ninguna bloqueante:
 
 Si en algún momento se va a Google Play hay que mirar antes su política de juegos de azar, que es
 distinta de la de Apple, y que Play pide un AAB, no un APK.
+
+## Sesión 29 — 23/09/2026 · Skills de diseño: se instaló una de tres
+
+Le recomendaron al dueño instalar tres cosas. Se verificó cada una y se instaló **solo una**.
+
+| Repo | Estrellas | Qué es | Decisión |
+|---|---|---|---|
+| `emilkowalski/skills` | 40.700 | 13 skills de Emil Kowalski (Vercel, Linear, autor de Sonner y Vaul) sobre animación y detalle de interfaz | **Instalada** |
+| `pbakaus/impeccable` | 70.200 | 1 skill, 24 comandos y 61 reglas para frontend web, con iteración en navegador | No |
+| `taste-skill` | varias | — | No |
+
+**Por qué solo una.** Las tres hacen lo mismo: decirle al agente cómo diseñar. Apiladas se
+contradicen y el consejo se vuelve puré. Conviene una, usarla, y recién ahí evaluar otra.
+
+**Por qué esa.** La app es Expo y `animate-expo` es exactamente eso. Además la procedencia es
+clara: una persona identificable con trabajo conocido, no un repo anónimo.
+
+**Por qué no impeccable.** Está hecha para frontend web, con iteración en navegador y reglas que
+corren en una extensión de Chrome. La app es React Native, así que la mayor parte no aplica.
+La web ya está hecha y quedó bien. Si en algún momento se rehace un sitio, vale la pena.
+
+**Por qué no taste-skill.** Hay al menos tres repos distintos con ese nombre y con cifras de
+estrellas enormes (89.564, 97.811, 367). Sin saber a cuál se refería la recomendación, instalar
+cualquiera es elegir al azar un repo que corre con permisos completos del agente.
+
+Quedaron en `.agents/skills/` y `.claude/skills/`, versionadas, más `skills-lock.json`.
+
+**Lo que ninguna skill resuelve:** a seis días de publicada la app tiene **0 reseñas y 0
+calificaciones**. El problema hoy no es cómo se ve, es que nadie sabe que existe.
