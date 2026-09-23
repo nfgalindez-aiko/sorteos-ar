@@ -62,15 +62,17 @@
         "3607"
       ],
       "letras": "EFSV",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-23T12:15:39-03:00"
+  "generado": "2026-09-23T12:30:31-03:00"
 }
