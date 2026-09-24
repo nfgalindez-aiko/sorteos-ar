@@ -16,17 +16,17 @@
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 4054944913
+          "premio": 4054944912
         },
         {
           "aciertos": 5,
           "ganadores": 1,
-          "premio": 15438773
+          "premio": 15438772
         },
         {
           "aciertos": 4,
           "ganadores": 169,
-          "premio": 18271
+          "premio": 18270
         }
       ]
     },
@@ -48,12 +48,12 @@
         {
           "aciertos": 5,
           "ganadores": 8,
-          "premio": 1929847
+          "premio": 1929846
         },
         {
           "aciertos": 4,
           "ganadores": 468,
-          "premio": 6598
+          "premio": 6597
         }
       ]
     },
@@ -70,7 +70,7 @@
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 2473856589
+          "premio": 2473856588
         }
       ]
     },
@@ -87,7 +87,7 @@
         {
           "aciertos": 4,
           "ganadores": 171,
-          "premio": 232553
+          "premio": 232552
         }
       ]
     }
@@ -99,9 +99,10 @@
     "fecha": "2026-09-26",
     "pozo": 25615000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-23T22:30:22-03:00"
+  "generado": "2026-09-23T23:40:33-03:00"
 }
