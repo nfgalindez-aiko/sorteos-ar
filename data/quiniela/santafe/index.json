@@ -3,6 +3,11 @@
   "provincia": "santafe",
   "fechas": [
     {
+      "fecha": "2026-09-24",
+      "turnos": 1,
+      "validado": false
+    },
+    {
       "fecha": "2026-09-23",
       "turnos": 5,
       "validado": false
@@ -83,5 +88,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-09-23T22:15:22-03:00"
+  "generado": "2026-09-24T10:31:16-03:00"
 }
