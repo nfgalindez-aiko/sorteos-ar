@@ -37,7 +37,7 @@
           "turno": "primera",
           "hora": "12:00",
           "cabeza": "4496",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -142,5 +142,5 @@
       ]
     }
   ],
-  "generado": "2026-09-24T12:30:46-03:00"
+  "generado": "2026-09-24T13:00:39-03:00"
 }
