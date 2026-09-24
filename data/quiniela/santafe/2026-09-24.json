@@ -62,15 +62,17 @@
         "5882"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-09-24T12:15:27-03:00"
+  "generado": "2026-09-24T12:30:45-03:00"
 }
