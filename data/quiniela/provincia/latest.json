@@ -158,9 +158,10 @@
         "9584"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -169,5 +170,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-09-23T21:15:35-03:00"
+  "generado": "2026-09-23T21:40:29-03:00"
 }
