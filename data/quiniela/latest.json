@@ -23,7 +23,7 @@
           "turno": "matutina",
           "hora": "15:00",
           "cabeza": "6933",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -43,6 +43,12 @@
           "turno": "primera",
           "hora": "12:00",
           "cabeza": "0894",
+          "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "5643",
           "validado": true
         }
       ]
@@ -69,7 +75,7 @@
           "turno": "matutina",
           "hora": "15:00",
           "cabeza": "6811",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -95,7 +101,7 @@
           "turno": "matutina",
           "hora": "15:00",
           "cabeza": "9237",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -103,18 +109,12 @@
       "provincia": "uruguay",
       "nombre": "Montevideo (Uruguay)",
       "digitos": 3,
-      "fecha": "2026-09-24",
+      "fecha": "2026-09-25",
       "turnos": [
         {
           "turno": "vespertina",
           "hora": "15:00",
-          "cabeza": "312",
-          "validado": false
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "774",
+          "cabeza": "112",
           "validado": false
         }
       ]
@@ -136,6 +136,12 @@
           "hora": "12:00",
           "cabeza": "4286",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "3700",
+          "validado": false
         }
       ]
     },
@@ -156,9 +162,15 @@
           "hora": "12:00",
           "cabeza": "0162",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "0889",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-09-25T15:15:30-03:00"
+  "generado": "2026-09-25T15:30:35-03:00"
 }
