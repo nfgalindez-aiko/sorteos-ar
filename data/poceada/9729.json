@@ -29,33 +29,33 @@
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 0
+      "premio": 263120041
     },
     {
       "aciertos": 7,
       "ganadores": 0,
-      "premio": 0
+      "premio": 3641201
     },
     {
       "aciertos": 6,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 15,
+      "premio": 121373
     },
     {
       "aciertos": 5,
-      "ganadores": 0,
+      "ganadores": 153,
       "premio": 1700
     }
   ],
   "proximo": {
     "sorteo": 9730,
     "fecha": "2026-09-26",
-    "pozo": 0
+    "pozo": 284900000
   },
   "validado": false,
   "fuentes": [
     "A",
     "ciudad-nocturna"
   ],
-  "generado": "2026-09-25T21:45:35-03:00"
+  "generado": "2026-09-25T22:15:34-03:00"
 }
