@@ -24,6 +24,18 @@
           "hora": "15:00",
           "cabeza": "2949",
           "validado": true
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "1086",
+          "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "5137",
+          "validado": false
         }
       ]
     },
@@ -50,6 +62,18 @@
           "hora": "15:00",
           "cabeza": "4319",
           "validado": true
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "0281",
+          "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "0542",
+          "validado": false
         }
       ]
     },
@@ -75,6 +99,12 @@
           "turno": "matutina",
           "hora": "15:00",
           "cabeza": "8262",
+          "validado": true
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "2517",
           "validado": true
         }
       ]
@@ -102,6 +132,18 @@
           "hora": "15:00",
           "cabeza": "6107",
           "validado": true
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "5508",
+          "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "2817",
+          "validado": false
         }
       ]
     },
@@ -142,6 +184,18 @@
           "hora": "15:00",
           "cabeza": "2027",
           "validado": false
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "0244",
+          "validado": false
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "2979",
+          "validado": false
         }
       ]
     },
@@ -168,9 +222,15 @@
           "hora": "15:00",
           "cabeza": "1760",
           "validado": false
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "7949",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-09-28T16:58:31-03:00"
+  "generado": "2026-09-28T21:14:21-03:00"
 }
