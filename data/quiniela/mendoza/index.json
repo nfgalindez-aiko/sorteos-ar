@@ -3,6 +3,11 @@
   "provincia": "mendoza",
   "fechas": [
     {
+      "fecha": "2026-09-30",
+      "turnos": 3,
+      "validado": false
+    },
+    {
       "fecha": "2026-09-29",
       "turnos": 5,
       "validado": false
@@ -108,5 +113,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-09-29T22:28:20-03:00"
+  "generado": "2026-09-30T15:14:42-03:00"
 }
