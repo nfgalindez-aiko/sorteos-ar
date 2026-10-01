@@ -33,18 +33,18 @@
     },
     {
       "aciertos": 7,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 4,
+      "premio": 1878331
     },
     {
       "aciertos": 6,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 7,
+      "premio": 286239
     },
     {
       "aciertos": 5,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 159,
+      "premio": 1700
     }
   ],
   "proximo": {
@@ -57,5 +57,5 @@
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-09-30T21:41:26-03:00"
+  "generado": "2026-09-30T21:46:30-03:00"
 }
