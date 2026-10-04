@@ -20,13 +20,13 @@
         },
         {
           "aciertos": 5,
-          "ganadores": 12,
-          "premio": 1715244
+          "ganadores": 0,
+          "premio": 0
         },
         {
           "aciertos": 4,
-          "ganadores": 584,
-          "premio": 7048
+          "ganadores": 0,
+          "premio": 0
         }
       ]
     },
@@ -47,13 +47,13 @@
         },
         {
           "aciertos": 5,
-          "ganadores": 14,
-          "premio": 1470209
+          "ganadores": 0,
+          "premio": 0
         },
         {
           "aciertos": 4,
-          "ganadores": 445,
-          "premio": 9250
+          "ganadores": 0,
+          "premio": 0
         }
       ]
     },
@@ -101,7 +101,8 @@
   },
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-03T22:35:20-03:00"
+  "generado": "2026-10-03T22:45:23-03:00"
 }
