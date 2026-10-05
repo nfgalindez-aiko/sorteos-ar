@@ -1110,3 +1110,49 @@ las cosas", y eso no es diseño. Contando en la portada: **"andar/andando" 6 vec
 
 Aplicado en los tres idiomas (regla 55). El subtítulo estaba **dos veces** en cada archivo, en el
 `<h1>` y en la meta `og:description`: `str.replace` con `count=1` deja la mitad sin cambiar.
+
+## Sesión 31 — 05/10/2026 · 100 corridas en rojo y premios en cero que sí se pagaron
+
+Al dueño le llegaban mails de fallo todos los días. De las últimas 200 corridas, **100 de
+`scrape` en rojo**, todas con el mismo `fallos=["lotoplus: ... premios.5, premios.4 ..."]`.
+
+### Regla 56 — una fila en 0 ganadores y $0 no es un resultado, es una tabla sin cargar
+
+A fines de septiembre la **fuente B dejó de publicar** las filas de 5 y 4 aciertos de Loto Plus,
+en tradicional y en match. Las manda en `0 ganadores, $0`. La fuente A tiene los números reales
+(el 3923: 12 ganadores de $1.715.244 y 584 de $7.048). `compare()` lo veía como desacuerdo entre
+fuentes y lo marcaba conflicto duro.
+
+No es un desacuerdo: es **ausencia de dato de un lado**. Y hubo algo peor.
+
+**El sorteo 3921 quedó publicado como confirmado, con premios en cero que sí se pagaron.** La
+reconstrucción, del historial de `data/lotoplus/3921.json`:
+
+1. Se publicó con una sola fuente, recién salido el sorteo, con la tabla todavía sin cargar.
+2. Apareció la segunda fuente y **coincidió**: también traía ceros. Pasó a `validado: true`.
+3. Llegaron los premios reales, se disparó el conflicto, y `publish()` se negó a degradar algo ya
+   confirmado (regla 38). Los ceros quedaron congelados.
+
+**Coincidir en "todavía no hay datos" no es coincidir en un resultado.** Un vacante de verdad
+tiene cero ganadores y un monto grande: eso es el pozo que pasa al sorteo siguiente. Cero
+ganadores **y** cero pesos es una fila que no cargó. El código no distinguía una cosa de la otra.
+
+Arreglo, en cuatro lugares:
+- `fila_vacia()`: cero ganadores **y** premio cero.
+- `clasificar()` devuelve ahora tres listas: duros, blandos (vacantes, regla 43) e **incompletos**.
+  Una fila vacía de un solo lado va a incompletos y no pone el job en rojo.
+- `merge()` tomaba a B como base a secas, y B es justo la que viene vacía. Ahora, fila por fila,
+  **gana la que tiene datos**.
+- `publish()`: rellenar filas vacías es una mejora, no una degradación. La guarda de la regla 38
+  ya no congela una tabla en ceros.
+- El verificador avisa de `premios_incompletos` y marca como **problema** cualquier sorteo
+  publicado con filas en 0 y $0, que es lo que la app muestra como "Vacante $0".
+
+Tests: 7 nuevos con las cifras reales del 3923, incluidos los tres casos que tienen que seguir
+siendo duros. El suite quedó en **79**.
+
+**Pendiente de decisión del dueño:** los sorteos **3921 y 3922** ya publicados siguen con cuatro
+filas en cero cada uno. **Ninguna de las dos fuentes sirve sorteos viejos** (ambas devuelven el
+último sin importar el parámetro), así que el dato no se puede recuperar. La opción honesta es
+borrar esas filas del JSON: una fila ausente dice "no lo tengo", una fila en cero dice "nadie
+ganó", que es falso.

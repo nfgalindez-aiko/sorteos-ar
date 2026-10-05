@@ -63,6 +63,17 @@ def check_poceado(base, juego, dias, hora, rango, mods, ahora):
         (problema if antiguedad > 2 else aviso)(
             f"{juego}: el sorteo {j.get('sorteo')} sigue con una sola fuente"
             + (f" despues de {antiguedad} dias" if antiguedad > 2 else " (la otra todavia no lo publico)"))
+    if j.get("premios_incompletos"):
+        # regla 56: una fuente no publico esa fila; se tomo la de la otra. Queda a la vista.
+        aviso(f"{juego}: el sorteo {j.get('sorteo')} tiene filas que publico una sola fuente: "
+              f"{j['premios_incompletos']}")
+    vacias = [(m, p["aciertos"]) for m, d in j.get("modalidades", {}).items()
+              for p in d.get("premios", []) if p.get("ganadores") == 0 and p.get("premio") == 0]
+    if vacias:
+        # 0 ganadores Y $0 no es un vacante, es una fila sin cargar. Si se publico asi, la app
+        # esta mostrando "Vacante $0" en un premio que puede haberse pagado.
+        problema(f"{juego}: el sorteo {j.get('sorteo')} tiene {len(vacias)} fila(s) de premios en "
+                 f"0 ganadores y $0, que la app muestra como vacantes: {vacias}")
     if j.get("pozos_en_disputa"):
         # regla 43: nadie gano esa fila, las fuentes dan distinta cifra del pozo vacante.
         # Se avisa para que quede a la vista, pero no invalida el sorteo.

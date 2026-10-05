@@ -198,6 +198,30 @@ def es_pozo_vacante(a, b, clave):
     return bool(fa and fb) and fa.get("ganadores") == 0 and fb.get("ganadores") == 0
 
 
+def fila_vacia(p):
+    """Una fila de premios con CERO ganadores y premio CERO es una tabla que todavia no cargo,
+    no un resultado. Un vacante de verdad tiene cero ganadores y un monto grande: ese monto es
+    justamente el pozo que pasa al sorteo siguiente."""
+    return bool(p) and p.get("ganadores") == 0 and p.get("premio") == 0
+
+
+def es_premio_incompleto(a, b, clave):
+    """True si la diferencia en esa fila es que UNA fuente todavia no la publico (0 ganadores y
+    $0) y la otra si tiene datos. No es un desacuerdo entre fuentes: es ausencia de dato de un
+    lado, y el dato del otro lado es el que vale."""
+    partes = clave.split(".")
+    if len(partes) != 4 or partes[0] != "modalidades" or partes[2] != "premios":
+        return False
+    try:
+        aciertos = int(partes[3])
+    except ValueError:
+        return False
+    fa, fb = fila_premios(a, partes[1], aciertos), fila_premios(b, partes[1], aciertos)
+    if not (fa and fb):
+        return False
+    return fila_vacia(fa) != fila_vacia(fb)
+
+
 def clasificar(a, b, diffs):
     """Parte las diferencias en duras y blandas (regla 43).
 
@@ -208,16 +232,37 @@ def clasificar(a, b, diffs):
     no afecta a ningun apostador, y dejar el job en rojo por eso repite el error de la regla 37:
     el rojo permanente deja de significar algo. Va a `blandos`: se loguea, queda anotado en el
     JSON publicado y el sorteo se confirma igual, porque lo que se cruza son los numeros.
+
+    Caso aparte, `incompletos` (regla 56): una fila que UNA fuente da en 0 ganadores y $0 y la
+    otra con datos reales. Eso no es desacuerdo, es que esa fuente no la publico. Desde fines de
+    septiembre de 2026 la fuente B dejo de publicar las filas de 5 y 4 aciertos de Loto Plus y
+    eso dejo 100 corridas seguidas en rojo. El dato del lado que SI lo tiene es el que vale.
     """
-    duros, blandos = [], []
+    duros, blandos, incompletos = [], [], []
     for k in diffs:
-        (blandos if es_pozo_vacante(a, b, k) else duros).append(k)
-    return duros, blandos
+        if es_premio_incompleto(a, b, k):
+            incompletos.append(k)
+        elif es_pozo_vacante(a, b, k):
+            blandos.append(k)
+        else:
+            duros.append(k)
+    return duros, blandos, incompletos
 
 
 def merge(a, b):
-    """Base B (trae centavos truncados), completa con A lo que a B le falta."""
+    """Base B (trae centavos truncados), completa con A lo que a B le falta.
+
+    Incluidas las filas de premios: si B trae una fila en 0 ganadores y $0 y A la tiene con
+    datos, vale la de A. Antes la base era B a secas y se publicaban premios en cero que en
+    realidad se habian pagado (regla 56).
+    """
     out = copy.deepcopy(b)
+    for mod, d in out.get("modalidades", {}).items():
+        for i, fila in enumerate(d.get("premios", [])):
+            if fila_vacia(fila):
+                otra = fila_premios(a, mod, fila.get("aciertos"))
+                if otra and not fila_vacia(otra):
+                    d["premios"][i] = copy.deepcopy(otra)
     for k in ("sorteo", "fecha", "pozo"):
         if out.setdefault("proximo", {}).get(k) is None and a.get("proximo", {}).get(k) is not None:
             out["proximo"][k] = a["proximo"][k]
@@ -236,16 +281,23 @@ def build(juego, res):
          pasa a confirmado cuando la otra se pone al dia.
       3. Mismo sorteo con datos distintos -> conflicto real: va en `conflictos`, el job queda
          en rojo y `publish` no pisa lo que ya estaba confirmado.
+
+    Dos diferencias NO cuentan como conflicto: un pozo vacante con cifras distintas (regla 43)
+    y una fila que una sola fuente todavia no publico (regla 56). La segunda se resuelve: vale
+    el lado que tiene el dato.
     """
     a, b = res.get("A", {}), res.get("B", {})
     ok_a, ok_b = "error" not in a, "error" not in b
     conflictos = []
-    blandos = []
+    blandos, incompletos = [], []
     if ok_a and ok_b and a.get("sorteo") == b.get("sorteo"):
-        conflictos, blandos = clasificar(a, b, compare(a, b))
+        conflictos, blandos, incompletos = clasificar(a, b, compare(a, b))
         if blandos:
             log(f"{juego} POZO VACANTE en disputa {blandos}: nadie gano esa fila, cada fuente "
                 f"publica su propia cifra; no invalida el sorteo")
+        if incompletos:
+            log(f"{juego} PREMIO INCOMPLETO {incompletos}: una fuente todavia no publico esa "
+                f"fila (0 ganadores y $0); se toma la que si la tiene")
         data, fuentes, validado = merge(a, b), ["A", "B"], not conflictos
     elif ok_a and ok_b:
         nueva, cual = (a, "A") if a.get("sorteo", -1) > b.get("sorteo", -1) else (b, "B")
@@ -265,6 +317,8 @@ def build(juego, res):
     out["fuentes"] = fuentes
     if blandos:
         out["pozos_en_disputa"] = blandos
+    if incompletos:
+        out["premios_incompletos"] = incompletos
     out["generado"] = now_art()
     return out, conflictos
 
@@ -360,6 +414,12 @@ def registrar_novedad(juego, out, maximo=50):
     return True
 
 
+def vacias(d):
+    """Cuantas filas de premios estan en 0 ganadores y $0, o sea sin cargar."""
+    return sum(1 for m in (d or {}).get("modalidades", {}).values()
+               for p in m.get("premios", []) if fila_vacia(p))
+
+
 def publish(juego, out, force_latest=False):
     """Escribe data/<juego>/NNNN.json y avanza latest.json.
 
@@ -377,9 +437,20 @@ def publish(juego, out, force_latest=False):
     if os.path.exists(path):
         try:
             prev = read_json(path)
-            if prev.get("validado") and not out["validado"]:
+            # Regla 56: "no degradar lo confirmado" no puede congelar una tabla de premios vacia.
+            # El sorteo 3921 de Loto Plus quedo confirmado cuando las DOS fuentes tenian las filas
+            # de 5 y 4 aciertos en 0 ganadores y $0; cuando llegaron los premios reales, esta misma
+            # guarda los dejo afuera y la app mostro $0 en premios que se pagaron. Rellenar filas
+            # vacias es una mejora, no una degradacion.
+            completa = vacias(prev) > vacias(out)
+            if prev.get("validado") and not out["validado"] and not completa:
                 log(f"PUBLISH {juego}: el sorteo {out['sorteo']} ya estaba confirmado, no lo degrado")
                 out = prev
+            elif completa:
+                log(f"PUBLISH {juego}: el sorteo {out['sorteo']} completa {vacias(prev) - vacias(out)} "
+                    f"fila(s) de premios que estaban en cero")
+                out = dict(out, validado=out["validado"] or prev.get("validado", False),
+                           fuentes=out["fuentes"] or prev.get("fuentes", []))
         except Exception:
             pass
     write_json(path, out)

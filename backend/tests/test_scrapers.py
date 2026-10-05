@@ -9,6 +9,7 @@ import common
 import quini6_scraper as q
 import brinco_scraper as b
 import verificador
+from tests.apoyo import entorno
 from datetime import datetime, date
 
 FX = os.path.join(HERE, "fixtures")
@@ -445,7 +446,7 @@ class TestPozoVacante(unittest.TestCase):
         self.assertEqual(common.compare(self.a, self.b), ["modalidades.segunda.premios.6"])
 
     def test_se_clasifica_como_blanda_y_no_como_conflicto(self):
-        duros, blandos = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
+        duros, blandos, _ = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
         self.assertEqual(duros, [])
         self.assertEqual(blandos, ["modalidades.segunda.premios.6"])
 
@@ -461,7 +462,7 @@ class TestPozoVacante(unittest.TestCase):
         # con ganadores > 0 la cifra SI es un premio que alguien cobra: no se puede relajar
         a = self.sorteo(2944608430, ganadores_segunda=1)
         b = self.sorteo(2840789977, ganadores_segunda=1)
-        duros, blandos = common.clasificar(a, b, common.compare(a, b))
+        duros, blandos, _ = common.clasificar(a, b, common.compare(a, b))
         self.assertEqual(duros, ["modalidades.segunda.premios.6"])
         self.assertEqual(blandos, [])
         with contextlib.redirect_stdout(io.StringIO()):
@@ -472,14 +473,14 @@ class TestPozoVacante(unittest.TestCase):
     def test_una_sola_fuente_vacante_no_alcanza(self):
         # si una fuente dice vacante y la otra dice que hubo un ganador, es un conflicto real
         b = self.sorteo(2840789977, ganadores_segunda=2)
-        duros, blandos = common.clasificar(self.a, b, common.compare(self.a, b))
+        duros, blandos, _ = common.clasificar(self.a, b, common.compare(self.a, b))
         self.assertEqual(blandos, [])
         self.assertEqual(duros, ["modalidades.segunda.premios.6"])
 
     def test_diferencia_en_los_numeros_nunca_es_blanda(self):
         b = self.sorteo(2944608430)
         b["modalidades"]["segunda"]["numeros"] = [4, 20, 25, 31, 39, 43]
-        duros, blandos = common.clasificar(self.a, b, common.compare(self.a, b))
+        duros, blandos, _ = common.clasificar(self.a, b, common.compare(self.a, b))
         self.assertEqual(blandos, [])
         self.assertIn("modalidades.segunda.numeros", duros)
 
@@ -489,3 +490,84 @@ class TestPozoVacante(unittest.TestCase):
         self.assertEqual(conflictos, [])
         self.assertTrue(out["validado"])
         self.assertNotIn("pozos_en_disputa", out)
+
+
+class TestPremioIncompleto(unittest.TestCase):
+    """Regla 56: una fila que una sola fuente da en 0 ganadores y $0 no es un desacuerdo.
+
+    Caso real: a fines de septiembre de 2026 la fuente B dejó de publicar las filas de 5 y 4
+    aciertos de Loto Plus. Eso dejó 100 corridas de `scrape` en rojo, y algo peor: el sorteo
+    3921 quedó confirmado cuando las DOS fuentes tenían esas filas vacías, y cuando llegaron los
+    premios reales `publish` se negó a "degradar" lo confirmado. La app mostró $0 en premios que
+    sí se pagaron.
+    """
+
+    @staticmethod
+    def sorteo(cinco_gan, cinco_premio, cuatro_gan=584, cuatro_premio=7048):
+        return {"sorteo": 3923, "fecha": "2026-10-03",
+                "modalidades": {"tradicional": {
+                    "numeros": [3, 11, 19, 24, 31, 40],
+                    "premios": [{"aciertos": 6, "ganadores": 0, "premio": 4101160369},
+                                {"aciertos": 5, "ganadores": cinco_gan, "premio": cinco_premio},
+                                {"aciertos": 4, "ganadores": cuatro_gan, "premio": cuatro_premio}]}},
+                "proximo": {"sorteo": 3924, "fecha": "2026-10-07", "pozo": 4200000000}}
+
+    def setUp(self):
+        self.a = self.sorteo(12, 1715244)            # A tiene los premios reales
+        self.b = self.sorteo(0, 0, 0, 0)             # B todavía no publicó esas filas
+
+    def test_no_es_conflicto_duro(self):
+        duros, blandos, incompletos = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
+        self.assertEqual(duros, [])
+        self.assertEqual(blandos, [])
+        self.assertEqual(sorted(incompletos),
+                         ["modalidades.tradicional.premios.4", "modalidades.tradicional.premios.5"])
+
+    def test_merge_toma_la_fila_que_tiene_datos(self):
+        # la base del merge es B, que es justo la que viene vacía: sin esto se publican los ceros
+        out = common.merge(self.a, self.b)
+        filas = {p["aciertos"]: p for p in out["modalidades"]["tradicional"]["premios"]}
+        self.assertEqual((filas[5]["ganadores"], filas[5]["premio"]), (12, 1715244))
+        self.assertEqual((filas[4]["ganadores"], filas[4]["premio"]), (584, 7048))
+
+    def test_el_sorteo_se_confirma_y_queda_la_constancia(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            out, conflictos = common.build("lotoplus", {"A": self.a, "B": self.b})
+        self.assertEqual(conflictos, [])          # el job no se pone en rojo
+        self.assertTrue(out["validado"])
+        self.assertEqual(sorted(out["premios_incompletos"]),
+                         ["modalidades.tradicional.premios.4", "modalidades.tradicional.premios.5"])
+
+    def test_un_vacante_de_verdad_no_se_confunde_con_una_fila_vacia(self):
+        # 0 ganadores con monto grande es un vacante; 0 ganadores y $0 es una tabla sin cargar
+        self.assertFalse(common.fila_vacia({"aciertos": 6, "ganadores": 0, "premio": 4101160369}))
+        self.assertTrue(common.fila_vacia({"aciertos": 5, "ganadores": 0, "premio": 0}))
+
+    def test_si_las_dos_estan_vacias_no_hay_diferencia(self):
+        vacio = self.sorteo(0, 0, 0, 0)
+        duros, blandos, incompletos = common.clasificar(vacio, vacio, common.compare(vacio, vacio))
+        self.assertEqual((duros, blandos, incompletos), ([], [], []))
+
+    def test_publish_completa_las_filas_que_estaban_en_cero(self):
+        # lo que pasó con el 3921: confirmado con la tabla vacía, y después bloqueado
+        with entorno() as tmp, contextlib.redirect_stdout(io.StringIO()):
+            vacio = self.sorteo(0, 0, 0, 0)
+            confirmado, _ = common.build("lotoplus", {"A": vacio, "B": vacio})
+            common.publish("lotoplus", confirmado)
+            path = os.path.join(tmp, "lotoplus", "3923.json")
+            self.assertEqual(common.vacias(common.read_json(path)), 2)
+
+            lleno, _ = common.build("lotoplus", {"A": self.a, "B": self.b})
+            common.publish("lotoplus", lleno)
+            j = common.read_json(path)
+            self.assertEqual(common.vacias(j), 0)
+            self.assertTrue(j["validado"])        # sigue confirmado, ahora con los premios reales
+            filas = {p["aciertos"]: p for p in j["modalidades"]["tradicional"]["premios"]}
+            self.assertEqual(filas[5]["ganadores"], 12)
+
+    def test_un_conflicto_de_verdad_sigue_siendo_duro(self):
+        # las dos fuentes con datos y distintos: eso sí es desacuerdo
+        b = self.sorteo(99, 1715244)
+        duros, _, incompletos = common.clasificar(self.a, b, common.compare(self.a, b))
+        self.assertEqual(duros, ["modalidades.tradicional.premios.5"])
+        self.assertEqual(incompletos, [])
