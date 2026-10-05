@@ -62,15 +62,17 @@
         "7076"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-05T12:15:33-03:00"
+  "generado": "2026-10-05T12:45:44-03:00"
 }
