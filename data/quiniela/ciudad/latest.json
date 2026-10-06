@@ -62,15 +62,17 @@
         "5821"
       ],
       "letras": "AHHQ",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-06T12:15:51-03:00"
+  "generado": "2026-10-06T12:30:52-03:00"
 }
