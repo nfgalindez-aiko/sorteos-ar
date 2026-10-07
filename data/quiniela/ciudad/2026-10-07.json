@@ -62,15 +62,17 @@
         "7877"
       ],
       "letras": "EHJP",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-07T12:30:38-03:00"
+  "generado": "2026-10-07T12:45:34-03:00"
 }
