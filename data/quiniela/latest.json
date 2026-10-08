@@ -143,7 +143,7 @@
           "turno": "nocturna",
           "hora": "21:00",
           "cabeza": "0387",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -244,5 +244,5 @@
       ]
     }
   ],
-  "generado": "2026-10-07T21:30:35-03:00"
+  "generado": "2026-10-07T21:45:28-03:00"
 }
