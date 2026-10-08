@@ -94,9 +94,10 @@
         "1033"
       ],
       "letras": "DJQQ",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -105,5 +106,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-10-08T15:15:45-03:00"
+  "generado": "2026-10-08T15:46:03-03:00"
 }
