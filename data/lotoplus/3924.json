@@ -99,9 +99,16 @@
     "fecha": "2026-10-10",
     "pozo": 27072000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-07T22:35:25-03:00"
+  "premios_incompletos": [
+    "modalidades.match.premios.5",
+    "modalidades.match.premios.4",
+    "modalidades.tradicional.premios.5",
+    "modalidades.tradicional.premios.4"
+  ],
+  "generado": "2026-10-07T22:45:21-03:00"
 }
