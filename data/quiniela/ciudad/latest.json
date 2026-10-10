@@ -62,15 +62,17 @@
         "9733"
       ],
       "letras": "CFLX",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-10T12:15:38-03:00"
+  "generado": "2026-10-10T12:30:44-03:00"
 }
