@@ -157,18 +157,12 @@
       "provincia": "uruguay",
       "nombre": "Montevideo (Uruguay)",
       "digitos": 3,
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-10",
       "turnos": [
-        {
-          "turno": "vespertina",
-          "hora": "15:00",
-          "cabeza": "202",
-          "validado": false
-        },
         {
           "turno": "nocturna",
           "hora": "21:00",
-          "cabeza": "231",
+          "cabeza": "515",
           "validado": false
         }
       ]
@@ -240,9 +234,15 @@
           "hora": "18:00",
           "cabeza": "0720",
           "validado": false
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "0564",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-10-10T21:20:32-03:00"
+  "generado": "2026-10-10T21:25:22-03:00"
 }
