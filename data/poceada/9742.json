@@ -34,28 +34,28 @@
     {
       "aciertos": 7,
       "ganadores": 0,
-      "premio": 0
+      "premio": 3099627
     },
     {
       "aciertos": 6,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 19,
+      "premio": 95164
     },
     {
       "aciertos": 5,
-      "ganadores": 0,
+      "ganadores": 221,
       "premio": 1700
     }
   ],
   "proximo": {
     "sorteo": 9743,
     "fecha": "2026-10-12",
-    "pozo": 0
+    "pozo": 442500000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-10-10T21:40:27-03:00"
+  "generado": "2026-10-10T21:50:32-03:00"
 }
