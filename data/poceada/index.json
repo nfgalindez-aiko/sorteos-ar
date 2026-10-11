@@ -2,6 +2,11 @@
   "juego": "poceada",
   "sorteos": [
     {
+      "sorteo": 9742,
+      "fecha": "2026-10-10",
+      "validado": false
+    },
+    {
       "sorteo": 9741,
       "fecha": "2026-10-09",
       "validado": true
@@ -152,5 +157,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-10-09T21:30:45-03:00"
+  "generado": "2026-10-10T21:30:38-03:00"
 }
