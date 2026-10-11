@@ -3,6 +3,11 @@
   "provincia": "entrerios",
   "fechas": [
     {
+      "fecha": "2026-10-11",
+      "turnos": 2,
+      "validado": false
+    },
+    {
       "fecha": "2026-10-10",
       "turnos": 5,
       "validado": false
@@ -178,5 +183,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-10-10T21:25:22-03:00"
+  "generado": "2026-10-11T16:25:58-03:00"
 }
