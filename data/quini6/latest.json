@@ -1,110 +1,109 @@
 {
   "juego": "quini6",
-  "sorteo": 3415,
-  "fecha": "2026-10-07",
+  "sorteo": 3416,
+  "fecha": "2026-10-11",
   "modalidades": {
     "tradicional": {
       "numeros": [
-        3,
-        10,
-        12,
+        13,
         14,
-        36,
-        38
+        15,
+        18,
+        20,
+        29
       ],
       "premios": [
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 1854657756
+          "premio": 2225118974
         },
         {
           "aciertos": 5,
-          "ganadores": 11,
-          "premio": 3745891
+          "ganadores": 48,
+          "premio": 1188406
         },
         {
           "aciertos": 4,
-          "ganadores": 1025,
-          "premio": 12059
+          "ganadores": 2550,
+          "premio": 6711
         }
       ]
     },
     "segunda": {
       "numeros": [
+        0,
+        4,
         5,
-        12,
-        13,
-        23,
-        24,
-        35
+        6,
+        8,
+        26
       ],
       "premios": [
         {
           "aciertos": 6,
-          "ganadores": 0,
-          "premio": 4932562597
+          "ganadores": 2,
+          "premio": 2651511907
         },
         {
           "aciertos": 5,
-          "ganadores": 38,
-          "premio": 1084337
+          "ganadores": 40,
+          "premio": 1426087
         },
         {
           "aciertos": 4,
-          "ganadores": 1792,
-          "premio": 6898
+          "ganadores": 2245,
+          "premio": 7622
         }
       ]
     },
     "revancha": {
       "numeros": [
+        0,
+        1,
         6,
-        7,
-        8,
-        39,
-        40,
-        41
+        27,
+        42,
+        45
       ],
       "premios": [
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 2572821792
+          "premio": 3206956234
         }
       ]
     },
     "siempre_sale": {
       "numeros": [
-        4,
-        7,
-        19,
-        32,
-        34,
-        42
+        2,
+        3,
+        11,
+        13,
+        37,
+        45
       ],
       "premios": [
         {
           "aciertos": 5,
-          "ganadores": 31,
-          "premio": 11920273
+          "ganadores": 29,
+          "premio": 17636537
         }
       ]
     }
   },
   "pozo_extra": {
-    "ganadores": 1549,
-    "premio": 129115
+    "ganadores": 1393,
+    "premio": 143575
   },
   "proximo": {
-    "sorteo": 3416,
-    "fecha": "2026-10-11",
-    "pozo": 11650000000
+    "sorteo": 3417,
+    "fecha": "2026-10-14",
+    "pozo": null
   },
-  "validado": true,
+  "validado": false,
   "fuentes": [
-    "A",
     "B"
   ],
-  "generado": "2026-10-07T21:35:24-03:00"
+  "generado": "2026-10-11T21:30:28-03:00"
 }
