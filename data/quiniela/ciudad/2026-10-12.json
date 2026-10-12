@@ -62,15 +62,17 @@
         "5809"
       ],
       "letras": "FMQS",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-12T12:15:49-03:00"
+  "generado": "2026-10-12T12:45:46-03:00"
 }
