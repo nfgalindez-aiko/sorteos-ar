@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "cordoba",
+  "nombre": "Córdoba",
+  "digitos": 4,
+  "fecha": "2026-10-12",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "5276",
+        "9362",
+        "8349",
+        "7862",
+        "8979",
+        "6282",
+        "3249",
+        "3984",
+        "5957",
+        "5738",
+        "4566",
+        "3701",
+        "6869",
+        "1054",
+        "6768",
+        "4505",
+        "0229",
+        "2039",
+        "7552",
+        "4999"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-12T11:00:58-03:00"
+}
