@@ -18,6 +18,12 @@
           "hora": "12:00",
           "cabeza": "5485",
           "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "3376",
+          "validado": true
         }
       ]
     },
@@ -37,6 +43,12 @@
           "turno": "primera",
           "hora": "12:00",
           "cabeza": "0310",
+          "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "1057",
           "validado": true
         }
       ]
@@ -58,6 +70,12 @@
           "hora": "12:00",
           "cabeza": "3385",
           "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "3723",
+          "validado": true
         }
       ]
     },
@@ -78,6 +96,12 @@
           "hora": "12:00",
           "cabeza": "8857",
           "validado": true
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "2413",
+          "validado": true
         }
       ]
     },
@@ -85,12 +109,12 @@
       "provincia": "uruguay",
       "nombre": "Montevideo (Uruguay)",
       "digitos": 3,
-      "fecha": "2026-10-10",
+      "fecha": "2026-10-13",
       "turnos": [
         {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "515",
+          "turno": "vespertina",
+          "hora": "15:00",
+          "cabeza": "629",
           "validado": false
         }
       ]
@@ -112,6 +136,12 @@
           "hora": "12:00",
           "cabeza": "3396",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "1968",
+          "validado": false
         }
       ]
     },
@@ -132,9 +162,15 @@
           "hora": "12:00",
           "cabeza": "4084",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "2284",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-10-13T12:46:12-03:00"
+  "generado": "2026-10-13T16:42:58-03:00"
 }
