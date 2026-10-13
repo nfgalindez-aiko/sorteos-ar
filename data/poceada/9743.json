@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9743,
+  "fecha": "2026-10-12",
+  "numeros": [
+    "02",
+    "04",
+    "09",
+    "17",
+    "28",
+    "29",
+    "38",
+    "42",
+    "51",
+    "53",
+    "57",
+    "58",
+    "59",
+    "62",
+    "63",
+    "73",
+    "74",
+    "82",
+    "93",
+    "95"
+  ],
+  "letras": "UULX",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 426548472
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 0,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9744,
+    "fecha": "2026-10-13",
+    "pozo": 0
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-10-12T21:30:34-03:00"
+}
