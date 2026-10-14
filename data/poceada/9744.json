@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9744,
+  "fecha": "2026-10-13",
+  "numeros": [
+    "01",
+    "06",
+    "07",
+    "10",
+    "12",
+    "13",
+    "15",
+    "19",
+    "22",
+    "32",
+    "34",
+    "56",
+    "72",
+    "78",
+    "81",
+    "83",
+    "85",
+    "87",
+    "95",
+    "96"
+  ],
+  "letras": "HLTT",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 438941058
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 2,
+      "premio": 3789734
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 54,
+      "premio": 28739
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 403,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9745,
+    "fecha": "2026-10-14",
+    "pozo": 456400000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-10-13T22:46:08-03:00"
+}

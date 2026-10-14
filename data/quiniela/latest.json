@@ -30,6 +30,12 @@
           "hora": "18:00",
           "cabeza": "6137",
           "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "3072",
+          "validado": true
         }
       ]
     },
@@ -61,6 +67,12 @@
           "turno": "vespertina",
           "hora": "18:00",
           "cabeza": "7888",
+          "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "1234",
           "validado": true
         }
       ]
@@ -94,6 +106,12 @@
           "hora": "18:00",
           "cabeza": "8190",
           "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "4625",
+          "validado": true
         }
       ]
     },
@@ -126,6 +144,12 @@
           "hora": "18:00",
           "cabeza": "7336",
           "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "5529",
+          "validado": true
         }
       ]
     },
@@ -139,6 +163,12 @@
           "turno": "vespertina",
           "hora": "15:00",
           "cabeza": "629",
+          "validado": false
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "117",
           "validado": false
         }
       ]
@@ -172,6 +202,12 @@
           "hora": "18:00",
           "cabeza": "5183",
           "validado": false
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "2390",
+          "validado": false
         }
       ]
     },
@@ -204,9 +240,15 @@
           "hora": "18:00",
           "cabeza": "6800",
           "validado": false
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "9192",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-10-13T20:26:46-03:00"
+  "generado": "2026-10-13T22:46:07-03:00"
 }
