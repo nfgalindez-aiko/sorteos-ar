@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9745,
+  "fecha": "2026-10-14",
+  "numeros": [
+    "08",
+    "10",
+    "11",
+    "14",
+    "27",
+    "51",
+    "54",
+    "56",
+    "60",
+    "62",
+    "64",
+    "65",
+    "73",
+    "75",
+    "79",
+    "81",
+    "82",
+    "96",
+    "97",
+    "99"
+  ],
+  "letras": "OPSY",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 451427190
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 2763272
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 17,
+      "premio": 94818
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 185,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9746,
+    "fecha": "2026-10-15",
+    "pozo": 472300000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-10-14T21:31:14-03:00"
+}

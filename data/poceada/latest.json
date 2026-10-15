@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9744,
-  "fecha": "2026-10-13",
+  "sorteo": 9745,
+  "fecha": "2026-10-14",
   "numeros": [
-    "01",
-    "06",
-    "07",
+    "08",
     "10",
-    "12",
-    "13",
-    "15",
-    "19",
-    "22",
-    "32",
-    "34",
+    "11",
+    "14",
+    "27",
+    "51",
+    "54",
     "56",
-    "72",
-    "78",
+    "60",
+    "62",
+    "64",
+    "65",
+    "73",
+    "75",
+    "79",
     "81",
-    "83",
-    "85",
-    "87",
-    "95",
-    "96"
+    "82",
+    "96",
+    "97",
+    "99"
   ],
-  "letras": "HLTT",
+  "letras": "OPSY",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 438941058
+      "premio": 451427190
     },
     {
       "aciertos": 7,
-      "ganadores": 2,
-      "premio": 3789734
+      "ganadores": 0,
+      "premio": 2763272
     },
     {
       "aciertos": 6,
-      "ganadores": 54,
-      "premio": 28739
+      "ganadores": 17,
+      "premio": 94818
     },
     {
       "aciertos": 5,
-      "ganadores": 403,
+      "ganadores": 185,
       "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9745,
-    "fecha": "2026-10-14",
-    "pozo": 456400000
+    "sorteo": 9746,
+    "fecha": "2026-10-15",
+    "pozo": 472300000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-10-13T22:46:08-03:00"
+  "generado": "2026-10-14T21:31:14-03:00"
 }
