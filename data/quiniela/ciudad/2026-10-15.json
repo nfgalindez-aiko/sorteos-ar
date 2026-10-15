@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-15",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "1184",
+        "9622",
+        "9620",
+        "3535",
+        "8944",
+        "5375",
+        "1023",
+        "1781",
+        "9305",
+        "7594",
+        "9099",
+        "1187",
+        "4617",
+        "6986",
+        "4601",
+        "0100",
+        "8059",
+        "5223",
+        "4632",
+        "3232"
+      ],
+      "letras": "BCHY",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-15T10:31:10-03:00"
+}
