@@ -20,13 +20,13 @@
         },
         {
           "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 4,
+          "premio": 3822300
         },
         {
           "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 166,
+          "premio": 18420
         }
       ]
     },
@@ -47,13 +47,13 @@
         },
         {
           "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 11,
+          "premio": 1389927
         },
         {
           "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 195,
+          "premio": 15681
         }
       ]
     },
@@ -70,7 +70,7 @@
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 2709608997
+          "premio": 2709608996
         }
       ]
     },
@@ -97,11 +97,12 @@
   "proximo": {
     "sorteo": 3927,
     "fecha": "2026-10-17",
-    "pozo": 0
+    "pozo": 27804000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-14T22:16:07-03:00"
+  "generado": "2026-10-14T22:36:09-03:00"
 }
