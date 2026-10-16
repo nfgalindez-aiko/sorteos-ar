@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9746,
+  "fecha": "2026-10-15",
+  "numeros": [
+    "02",
+    "04",
+    "07",
+    "10",
+    "11",
+    "15",
+    "18",
+    "30",
+    "37",
+    "41",
+    "44",
+    "48",
+    "56",
+    "66",
+    "67",
+    "70",
+    "78",
+    "79",
+    "91",
+    "96"
+  ],
+  "letras": "ECHT",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 462877817
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 5329724
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 21,
+      "premio": 71290
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 264,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9747,
+    "fecha": "2026-10-16",
+    "pozo": 479700000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-10-15T21:31:11-03:00"
+}
