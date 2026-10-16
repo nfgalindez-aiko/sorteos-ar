@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-16",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "0080",
+        "1318",
+        "8483",
+        "2497",
+        "4119",
+        "6629",
+        "0688",
+        "6636",
+        "9232",
+        "9122",
+        "7887",
+        "1897",
+        "8504",
+        "9784",
+        "0946",
+        "7374",
+        "8476",
+        "9513",
+        "7672",
+        "1846"
+      ],
+      "letras": "FRTV",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-16T10:31:06-03:00"
+}
