@@ -52,10 +52,10 @@
     "fecha": "2026-10-17",
     "pozo": 493800000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
     "A",
-    "ciudad-nocturna"
+    "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-10-16T21:46:40-03:00"
+  "generado": "2026-10-16T22:01:09-03:00"
 }
