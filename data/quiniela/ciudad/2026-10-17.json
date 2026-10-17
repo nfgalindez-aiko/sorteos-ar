@@ -62,15 +62,17 @@
         "9482"
       ],
       "letras": "UPSY",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-17T12:15:16-03:00"
+  "generado": "2026-10-17T12:30:17-03:00"
 }
