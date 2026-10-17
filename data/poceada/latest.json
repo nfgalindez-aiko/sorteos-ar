@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9746,
-  "fecha": "2026-10-15",
+  "sorteo": 9747,
+  "fecha": "2026-10-16",
   "numeros": [
-    "02",
-    "04",
-    "07",
-    "10",
-    "11",
-    "15",
-    "18",
-    "30",
+    "17",
+    "19",
+    "21",
+    "26",
+    "32",
+    "33",
+    "35",
     "37",
-    "41",
-    "44",
-    "48",
+    "38",
+    "40",
+    "53",
     "56",
-    "66",
-    "67",
-    "70",
-    "78",
-    "79",
-    "91",
-    "96"
+    "58",
+    "62",
+    "63",
+    "64",
+    "68",
+    "87",
+    "89",
+    "93"
   ],
-  "letras": "ECHT",
+  "letras": "FJLM",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 462877817
+      "premio": 475536256
     },
     {
       "aciertos": 7,
       "ganadores": 1,
-      "premio": 5329724
+      "premio": 2788333
     },
     {
       "aciertos": 6,
-      "ganadores": 21,
-      "premio": 71290
+      "ganadores": 20,
+      "premio": 81326
     },
     {
       "aciertos": 5,
-      "ganadores": 264,
+      "ganadores": 213,
       "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9747,
-    "fecha": "2026-10-16",
-    "pozo": 479700000
+    "sorteo": 9748,
+    "fecha": "2026-10-17",
+    "pozo": 493800000
   },
-  "validado": true,
+  "validado": false,
   "fuentes": [
     "A",
-    "ciudad-nocturna(A+B)"
+    "ciudad-nocturna"
   ],
-  "generado": "2026-10-15T21:31:11-03:00"
+  "generado": "2026-10-16T21:46:15-03:00"
 }

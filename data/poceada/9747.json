@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9747,
+  "fecha": "2026-10-16",
+  "numeros": [
+    "17",
+    "19",
+    "21",
+    "26",
+    "32",
+    "33",
+    "35",
+    "37",
+    "38",
+    "40",
+    "53",
+    "56",
+    "58",
+    "62",
+    "63",
+    "64",
+    "68",
+    "87",
+    "89",
+    "93"
+  ],
+  "letras": "FJLM",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 475536256
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 2788333
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 20,
+      "premio": 81326
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 213,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9748,
+    "fecha": "2026-10-17",
+    "pozo": 493800000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-10-16T21:46:15-03:00"
+}
