@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-17",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "3503",
+        "8461",
+        "0194",
+        "8759",
+        "9136",
+        "8584",
+        "1369",
+        "0927",
+        "6537",
+        "0690",
+        "8213",
+        "3155",
+        "8557",
+        "7411",
+        "7074",
+        "9029",
+        "6769",
+        "3824",
+        "9941",
+        "2826"
+      ],
+      "letras": "HKTX",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-17T10:30:13-03:00"
+}
