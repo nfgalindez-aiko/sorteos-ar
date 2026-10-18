@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9748,
+  "fecha": "2026-10-17",
+  "numeros": [
+    "03",
+    "05",
+    "06",
+    "10",
+    "39",
+    "49",
+    "50",
+    "51",
+    "55",
+    "59",
+    "68",
+    "71",
+    "76",
+    "77",
+    "78",
+    "84",
+    "91",
+    "92",
+    "94",
+    "99"
+  ],
+  "letras": "KQTZ",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 0,
+      "premio": 0
+    }
+  ],
+  "proximo": {
+    "sorteo": 9749,
+    "fecha": "2026-10-19",
+    "pozo": 0
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-10-17T22:15:20-03:00"
+}
