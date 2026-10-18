@@ -97,18 +97,12 @@
   "proximo": {
     "sorteo": 3928,
     "fecha": "2026-10-21",
-    "pozo": 0
+    "pozo": 28227000000
   },
   "validado": true,
   "fuentes": [
     "A",
     "B"
   ],
-  "premios_incompletos": [
-    "modalidades.match.premios.5",
-    "modalidades.match.premios.4",
-    "modalidades.tradicional.premios.5",
-    "modalidades.tradicional.premios.4"
-  ],
-  "generado": "2026-10-17T22:50:15-03:00"
+  "generado": "2026-10-17T23:10:15-03:00"
 }
