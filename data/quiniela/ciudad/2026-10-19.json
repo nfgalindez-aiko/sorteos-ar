@@ -62,15 +62,17 @@
         "8277"
       ],
       "letras": "GGVY",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-19T12:15:37-03:00"
+  "generado": "2026-10-19T12:30:34-03:00"
 }
