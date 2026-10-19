@@ -3,6 +3,11 @@
   "provincia": "uruguay",
   "fechas": [
     {
+      "fecha": "2026-10-19",
+      "turnos": 1,
+      "validado": false
+    },
+    {
       "fecha": "2026-10-17",
       "turnos": 1,
       "validado": false
@@ -183,5 +188,5 @@
       "validado": true
     }
   ],
-  "generado": "2026-10-17T21:25:20-03:00"
+  "generado": "2026-10-19T15:30:51-03:00"
 }
