@@ -216,9 +216,15 @@
           "hora": "12:00",
           "cabeza": "6339",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "3555",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-10-18T14:56:14-03:00"
+  "generado": "2026-10-18T21:00:22-03:00"
 }
