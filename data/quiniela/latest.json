@@ -89,22 +89,16 @@
       "provincia": "entrerios",
       "nombre": "Entre Ríos",
       "digitos": 4,
-      "fecha": "2026-10-18",
+      "fecha": "2026-10-19",
       "turnos": [
         {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "6339",
-          "validado": false
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "3555",
+          "turno": "previa",
+          "hora": "10:15",
+          "cabeza": "9752",
           "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-10-19T10:30:38-03:00"
+  "generado": "2026-10-19T10:45:32-03:00"
 }
