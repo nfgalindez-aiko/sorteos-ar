@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "provincia",
+  "nombre": "Provincia de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-19",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "0821",
+        "3104",
+        "3899",
+        "7589",
+        "9231",
+        "1264",
+        "8665",
+        "1224",
+        "6282",
+        "0727",
+        "3314",
+        "7511",
+        "8779",
+        "0659",
+        "7592",
+        "8069",
+        "0221",
+        "7940",
+        "0508",
+        "8401"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-19T10:30:35-03:00"
+}
