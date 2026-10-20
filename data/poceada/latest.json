@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9748,
-  "fecha": "2026-10-17",
+  "sorteo": 9749,
+  "fecha": "2026-10-19",
   "numeros": [
     "03",
-    "05",
-    "06",
-    "10",
-    "39",
+    "16",
+    "18",
+    "19",
+    "29",
+    "30",
+    "37",
+    "40",
+    "47",
     "49",
-    "50",
-    "51",
-    "55",
-    "59",
+    "53",
+    "58",
+    "63",
+    "67",
     "68",
-    "71",
-    "76",
-    "77",
-    "78",
-    "84",
-    "91",
+    "69",
+    "87",
+    "90",
     "92",
-    "94",
-    "99"
+    "97"
   ],
-  "letras": "KQTZ",
+  "letras": "HLPX",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 0
+      "premio": 501621685
     },
     {
       "aciertos": 7,
       "ganadores": 0,
-      "premio": 0
+      "premio": 5815530
     },
     {
       "aciertos": 6,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 12,
+      "premio": 127333
     },
     {
       "aciertos": 5,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 143,
+      "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9749,
-    "fecha": "2026-10-19",
-    "pozo": 0
+    "sorteo": 9750,
+    "fecha": "2026-10-20",
+    "pozo": 524600000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-10-17T22:15:20-03:00"
+  "generado": "2026-10-19T21:30:43-03:00"
 }
