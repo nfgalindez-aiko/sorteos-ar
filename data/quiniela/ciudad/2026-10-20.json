@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-20",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "6717",
+        "5994",
+        "9334",
+        "1145",
+        "7388",
+        "4537",
+        "9476",
+        "2922",
+        "5786",
+        "9517",
+        "9617",
+        "7984",
+        "4644",
+        "0065",
+        "1160",
+        "0392",
+        "9572",
+        "3457",
+        "4561",
+        "5788"
+      ],
+      "letras": "CFLY",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-20T10:30:38-03:00"
+}
