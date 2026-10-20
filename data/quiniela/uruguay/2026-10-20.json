@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "uruguay",
+  "nombre": "Montevideo (Uruguay)",
+  "digitos": 3,
+  "fecha": "2026-10-20",
+  "turnos": [
+    {
+      "turno": "vespertina",
+      "hora": "15:00",
+      "numeros": [
+        "987",
+        "593",
+        "318",
+        "509",
+        "210",
+        "515",
+        "815",
+        "218",
+        "953",
+        "837",
+        "769",
+        "752",
+        "515",
+        "863",
+        "963",
+        "892",
+        "861",
+        "480",
+        "932",
+        "309"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-20T15:30:51-03:00"
+}
