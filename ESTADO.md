@@ -1217,3 +1217,27 @@ identidad, que tarda unos días. Y para Play hay que compilar un **AAB**, no el 
 
 Falta todavía Firebase (`google-services.json`): sin eso las notificaciones no funcionan en
 Android. El resto de la app sí.
+
+### Página de descarga para Android (21/10/2026)
+
+`nfgalindez.com/sorteos/android/`, nueva en `generar.py` dentro de la app `sorteos`. Es el APK
+alojado en Expo pero servido desde el dominio propio, con los tres pasos de instalación y dicho
+de frente que las notificaciones no andan en Android y que no hay actualizaciones automáticas.
+Razón: el dueño necesita mandarla por WhatsApp sin pedirle el correo a nadie, y el link crudo de
+Expo se ve sospechoso.
+
+### Lo que NO se pudo confirmar sobre Google Play
+
+**La pregunta era si la prueba cerrada de 12 testers por 14 días se hace una vez por cuenta o una
+por cada app.** La página oficial de Google dice "una prueba cerrada de **su aplicación**", lo que
+apunta a por app, y varias guías de terceros afirman que no se traslada de una app a otra. Pero la
+página oficial **no lo dice de forma explícita**, y las guías son blogs, no Google. Queda sin
+confirmar: lo definitivo lo muestra la propia Play Console con la cuenta ya creada.
+
+**Lo que sí está claro y puede cambiar el plan:** el requisito aplica solo a **cuentas personales
+creadas después del 13/11/2023**. Las cuentas de **organización** están exentas. Con varias apps
+en camino, registrarse como organización en vez de persona ahorraría la prueba cerrada en todas.
+Pide un número D-U-N-S, que es gratis pero tarda.
+
+También quedó claro que la **prueba abierta** (link público para cualquiera) exige tener ya acceso
+a producción, así que no sirve de atajo.
