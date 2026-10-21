@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-21",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "6802",
+        "4322",
+        "3056",
+        "1269",
+        "3973",
+        "5225",
+        "2893",
+        "8827",
+        "7533",
+        "5303",
+        "6448",
+        "4884",
+        "7371",
+        "3331",
+        "0939",
+        "6562",
+        "9804",
+        "6394",
+        "4519",
+        "4010"
+      ],
+      "letras": "EFVY",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-21T10:30:44-03:00"
+}

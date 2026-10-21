@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "santafe",
+  "nombre": "Santa Fe",
+  "digitos": 4,
+  "fecha": "2026-10-21",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "4624",
+        "5684",
+        "3521",
+        "9836",
+        "0697",
+        "8154",
+        "8096",
+        "8415",
+        "7218",
+        "9496",
+        "2368",
+        "3393",
+        "0792",
+        "3615",
+        "1807",
+        "1064",
+        "9218",
+        "6764",
+        "5181",
+        "5010"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-21T10:30:45-03:00"
+}
