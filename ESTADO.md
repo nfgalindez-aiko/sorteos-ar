@@ -1186,3 +1186,34 @@ Ninguna de las dos fuentes sirve sorteos viejos: las dos devuelven el último si
 en cero dice "nadie ganó", y eso era falso.
 
 Verificador después de la reparación: **0 problemas**.
+
+## Cómo hacer que la gente pruebe la app en Android (21/10/2026)
+
+Hay dos caminos y conviene no confundirlos.
+
+### Hoy mismo, gratis y sin cuenta de Google: la página de instalación de EAS
+
+La compilación de Android ya está hecha con `distribution: internal`, así que Expo le arma una
+**página con QR**. Se le pasa el link a quien sea, entra desde el teléfono, toca instalar.
+
+- Página: https://expo.dev/accounts/gestionaikos-team/projects/sorteos-ar/builds/54fb0681-6746-489b-bc4a-39424ba5ea60
+- APK directo: https://expo.dev/artifacts/eas/lYoezwE-KvdHcYcr8ohLdhOMExRjBfYCV_rgZbCDUJQ.apk
+- Es la versión **1.1**, la misma que está en la App Store. Verificado el 21/10: el código de la
+  app no cambió desde que se compiló, y los dos links responden 200.
+
+Límites: Android pide habilitar "orígenes desconocidos", Play Protect puede mostrar un aviso, y
+**no hay actualizaciones automáticas**: cada versión nueva hay que volver a pasarla. Para diez o
+veinte personas conocidas alcanza y sobra.
+
+### Con cuenta de Google Play: prueba interna
+
+Importante, porque antes se dijo mal en esta conversación: **la regla de los 12 testers durante 14
+días es para pasar a producción**, no para probar. La **prueba interna** admite hasta **100
+testers** por correo, está disponible apenas se crea la app, y las compilaciones salen sin pasar
+por revisión. Fuente oficial: support.google.com/googleplay/android-developer/answer/14151465.
+
+Lo que sí hace falta: la cuenta de desarrollador (25 dólares, una vez) con verificación de
+identidad, que tarda unos días. Y para Play hay que compilar un **AAB**, no el APK.
+
+Falta todavía Firebase (`google-services.json`): sin eso las notificaciones no funcionan en
+Android. El resto de la app sí.
