@@ -17,16 +17,6 @@
           "aciertos": 6,
           "ganadores": 0,
           "premio": 4101160369
-        },
-        {
-          "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
-        },
-        {
-          "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
         }
       ]
     },
@@ -44,16 +34,6 @@
           "aciertos": 6,
           "ganadores": 0,
           "premio": 1969060995
-        },
-        {
-          "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
-        },
-        {
-          "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
         }
       ]
     },
@@ -104,5 +84,12 @@
     "A",
     "B"
   ],
-  "generado": "2026-09-26T22:36:15-03:00"
+  "generado": "2026-09-26T22:36:15-03:00",
+  "premios_faltantes": [
+    "modalidades.match.premios.4",
+    "modalidades.match.premios.5",
+    "modalidades.tradicional.premios.4",
+    "modalidades.tradicional.premios.5"
+  ],
+  "nota": "Las filas que faltan no se publicaron porque ninguna de las dos fuentes las tenia cuando se cerro el sorteo, y despues ya no se pudieron recuperar. Ante cualquier discrepancia vale el extracto oficial."
 }

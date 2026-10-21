@@ -1156,3 +1156,33 @@ filas en cero cada uno. **Ninguna de las dos fuentes sirve sorteos viejos** (amb
 último sin importar el parámetro), así que el dato no se puede recuperar. La opción honesta es
 borrar esas filas del JSON: una fila ausente dice "no lo tengo", una fila en cero dice "nadie
 ganó", que es falso.
+
+## Sesión 32 — 21/10/2026 · Dos arreglos más del mismo tipo
+
+### Regla 57 — que una fuente no conteste no es un fallo nuestro
+
+El arreglo de la regla 56 dejó el scraper en verde, pero volvieron a aparecer rojos: el sitio del
+Hipódromo de San Isidro **da timeout desde los runners de GitHub**. Desde una conexión normal
+contesta en 0,2 segundos, probado tres veces seguidas. Como el scraper revisa 7 días por corrida,
+un rato caído ponía 7 fallos de una.
+
+Un día que no se pudo bajar es indistinguible de un día sin carreras. `turf_scraper.correr()` ahora
+separa los errores de red (`URLError`, `timeout`, `ConnectionError`) del resto: los loguea, los
+cuenta, y **no los suma a `fallos`**. Si no contestó ningún día, lo dice en el log. El que avisa si
+los datos quedan viejos es el verificador, que para eso está.
+
+Un error de parseo, en cambio, sigue siendo un fallo: eso sí es la fuente cambiando de formato.
+
+### Reparación de los sorteos ya publicados con premios en cero
+
+`backend/reparar_premios_vacios.py`, de una sola vez y fuera del cron. Loto Plus **3921 y 3922**
+tenían cuatro filas cada uno en 0 ganadores y $0, congeladas por la guarda de la regla 38. La app
+renderiza "0 ganadores" como **Vacante**, así que estaba diciendo "nadie ganó" en premios que sí se
+pagaron.
+
+Ninguna de las dos fuentes sirve sorteos viejos: las dos devuelven el último sin importar
+`?sorteo=`. El dato no se recupera. Se sacaron las filas y se dejó constancia en el JSON con
+`premios_faltantes` y una `nota` que explica por qué. Una fila ausente dice "no la tengo"; una fila
+en cero dice "nadie ganó", y eso era falso.
+
+Verificador después de la reparación: **0 problemas**.

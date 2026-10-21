@@ -14,7 +14,7 @@
 # no es un error, es que no se corrio.
 #
 # Uso: python turf_scraper.py [--offline] [--no-publish] [--dias 7]
-import re, sys, os, glob, html
+import re, sys, os, glob, html, socket, urllib.error
 from datetime import timedelta
 
 import common
@@ -123,10 +123,21 @@ def publicar(dias):
 def correr(offline=False, publicar_=True, dias_atras=DIAS_ATRAS):
     hoy = common.datetime.now(common.ART).date()
     encontrados, fallos = [], []
+    caidas = 0
     for i in range(dias_atras):
         fecha = (hoy - timedelta(days=i)).isoformat()
         try:
             d = bajar(fecha, offline)
+        except (urllib.error.URLError, socket.timeout, TimeoutError, ConnectionError) as e:
+            # Regla 57: que el sitio del hipodromo no conteste NO es un fallo nuestro. Desde los
+            # runners de GitHub da timeout seguido (desde una conexion normal responde en 0,2 s),
+            # y como se revisan 7 dias por corrida, un rato caido ponia el job en rojo 7 veces.
+            # Un dia que no se pudo bajar es indistinguible de un dia sin carreras: lo levanta el
+            # verificador si los datos quedan viejos, no el scraper.
+            log(f"{JUEGO}/{HIPODROMO} {fecha} sin respuesta ({type(e).__name__}); se reintenta "
+                f"en la proxima corrida")
+            caidas += 1
+            continue
         except Exception as e:
             log(f"{JUEGO}/{HIPODROMO} {fecha} ERROR {e}")
             fallos.append(f"{fecha}: {e}")
@@ -137,6 +148,8 @@ def correr(offline=False, publicar_=True, dias_atras=DIAS_ATRAS):
         ult = encontrados[0]
         log(f"{JUEGO}/{HIPODROMO} OK {len(encontrados)} reunion(es); ultima {ult['fecha']} "
             f"Nro.{ult['reunion']} con {len(ult['carreras'])} carreras")
+    elif caidas == dias_atras:
+        log(f"{JUEGO}/{HIPODROMO} la fuente no contesto en ninguno de los {dias_atras} dias")
     else:
         log(f"{JUEGO}/{HIPODROMO} sin reuniones en los ultimos {dias_atras} dias")
     if publicar_ and encontrados:
