@@ -62,15 +62,17 @@
         "7079"
       ],
       "letras": "BBDX",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-22T12:15:43-03:00"
+  "generado": "2026-10-22T12:30:36-03:00"
 }
