@@ -2,6 +2,12 @@
   "novedades": [
     {
       "juego": "poceada",
+      "sorteo": 9751,
+      "fecha": "2026-10-21",
+      "validado_en": "2026-10-21T21:30:38-03:00"
+    },
+    {
+      "juego": "poceada",
       "sorteo": 9750,
       "fecha": "2026-10-20",
       "validado_en": "2026-10-20T21:45:44-03:00"
@@ -293,13 +299,7 @@
       "sorteo": 9723,
       "fecha": "2026-09-18",
       "validado_en": "2026-09-18T21:30:36-03:00"
-    },
-    {
-      "juego": "poceada",
-      "sorteo": 9722,
-      "fecha": "2026-09-17",
-      "validado_en": "2026-09-17T21:30:40-03:00"
     }
   ],
-  "generado": "2026-10-20T21:45:44-03:00"
+  "generado": "2026-10-21T21:30:38-03:00"
 }
