@@ -62,15 +62,17 @@
         "8753"
       ],
       "letras": "UCDN",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-23T12:15:18-03:00"
+  "generado": "2026-10-23T12:45:13-03:00"
 }
