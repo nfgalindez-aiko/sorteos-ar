@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-23",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "5372",
+        "5317",
+        "4621",
+        "8773",
+        "5710",
+        "2040",
+        "0998",
+        "8750",
+        "7044",
+        "8959",
+        "7771",
+        "7379",
+        "2923",
+        "5063",
+        "3241",
+        "2400",
+        "5339",
+        "3859",
+        "5545",
+        "9075"
+      ],
+      "letras": "BDPR",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-23T10:45:19-03:00"
+}
