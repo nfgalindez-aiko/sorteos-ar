@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9751,
-  "fecha": "2026-10-21",
+  "sorteo": 9752,
+  "fecha": "2026-10-22",
   "numeros": [
-    "00",
-    "05",
-    "10",
-    "15",
-    "16",
-    "20",
-    "22",
-    "26",
-    "31",
-    "46",
+    "11",
+    "12",
+    "14",
+    "19",
+    "21",
+    "33",
     "51",
+    "52",
     "55",
-    "58",
     "60",
+    "63",
     "69",
     "70",
-    "81",
-    "86",
-    "87",
-    "93"
+    "74",
+    "79",
+    "80",
+    "91",
+    "92",
+    "98",
+    "99"
   ],
-  "letras": "OBNT",
+  "letras": "AIDD",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 526935719
+      "premio": 538968404
     },
     {
       "aciertos": 7,
-      "ganadores": 0,
-      "premio": 2847636
+      "ganadores": 1,
+      "premio": 5538937
     },
     {
       "aciertos": 6,
-      "ganadores": 18,
-      "premio": 92285
+      "ganadores": 21,
+      "premio": 74758
     },
     {
       "aciertos": 5,
-      "ganadores": 223,
+      "ganadores": 199,
       "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9752,
-    "fecha": "2026-10-22",
-    "pozo": 548500000
+    "sorteo": 9753,
+    "fecha": "2026-10-23",
+    "pozo": 556600000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-10-21T21:30:38-03:00"
+  "generado": "2026-10-22T21:30:45-03:00"
 }
