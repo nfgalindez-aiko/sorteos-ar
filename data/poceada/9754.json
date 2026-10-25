@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9754,
+  "fecha": "2026-10-24",
+  "numeros": [
+    "00",
+    "01",
+    "04",
+    "14",
+    "16",
+    "19",
+    "27",
+    "30",
+    "34",
+    "42",
+    "61",
+    "65",
+    "68",
+    "75",
+    "76",
+    "77",
+    "87",
+    "89",
+    "93",
+    "95"
+  ],
+  "letras": "JNQZ",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 566762323
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 3265785
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 23,
+      "premio": 82828
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 175,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9755,
+    "fecha": "2026-10-26",
+    "pozo": 591500000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-10-24T21:30:22-03:00"
+}

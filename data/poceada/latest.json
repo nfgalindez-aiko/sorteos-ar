@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9753,
-  "fecha": "2026-10-23",
+  "sorteo": 9754,
+  "fecha": "2026-10-24",
   "numeros": [
-    "02",
-    "06",
+    "00",
+    "01",
+    "04",
+    "14",
     "16",
-    "21",
-    "26",
-    "29",
+    "19",
+    "27",
+    "30",
     "34",
-    "40",
     "42",
-    "44",
-    "45",
-    "48",
-    "53",
-    "55",
+    "61",
     "65",
-    "69",
-    "70",
-    "80",
+    "68",
+    "75",
+    "76",
+    "77",
+    "87",
+    "89",
     "93",
     "95"
   ],
-  "letras": "ORSY",
+  "letras": "JNQZ",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 551856803
+      "premio": 566762323
     },
     {
       "aciertos": 7,
-      "ganadores": 1,
-      "premio": 2846810
+      "ganadores": 0,
+      "premio": 3265785
     },
     {
       "aciertos": 6,
-      "ganadores": 14,
-      "premio": 118617
+      "ganadores": 23,
+      "premio": 82828
     },
     {
       "aciertos": 5,
-      "ganadores": 161,
+      "ganadores": 175,
       "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9754,
-    "fecha": "2026-10-24",
-    "pozo": 570500000
+    "sorteo": 9755,
+    "fecha": "2026-10-26",
+    "pozo": 591500000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-10-23T21:30:22-03:00"
+  "generado": "2026-10-24T21:30:22-03:00"
 }
