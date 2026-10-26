@@ -1,16 +1,16 @@
 {
   "juego": "quini6",
-  "sorteo": 3419,
-  "fecha": "2026-10-21",
+  "sorteo": 3420,
+  "fecha": "2026-10-25",
   "modalidades": {
     "tradicional": {
       "numeros": [
-        4,
-        5,
-        32,
-        39,
-        40,
-        44
+        0,
+        2,
+        3,
+        8,
+        19,
+        39
       ],
       "premios": [
         {
@@ -20,91 +20,91 @@
         },
         {
           "aciertos": 5,
-          "ganadores": 12,
-          "premio": 3460491
+          "ganadores": 21,
+          "premio": 2595977
         },
         {
           "aciertos": 4,
-          "ganadores": 604,
-          "premio": 20625
+          "ganadores": 1336,
+          "premio": 12241
         }
       ]
     },
     "segunda": {
       "numeros": [
-        4,
-        20,
-        21,
-        24,
-        42,
+        8,
+        25,
+        30,
+        36,
+        43,
         45
       ],
       "premios": [
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 1100000000
+          "premio": 1255420958
         },
         {
           "aciertos": 5,
-          "ganadores": 10,
-          "premio": 4152589
+          "ganadores": 6,
+          "premio": 9085920
         },
         {
           "aciertos": 4,
-          "ganadores": 767,
-          "premio": 16242
+          "ganadores": 838,
+          "premio": 19516
         }
       ]
     },
     "revancha": {
       "numeros": [
-        1,
-        2,
-        11,
-        14,
-        28,
-        33
+        5,
+        22,
+        23,
+        29,
+        41,
+        43
       ],
       "premios": [
         {
           "aciertos": 6,
-          "ganadores": 1,
-          "premio": 4684503197
+          "ganadores": 0,
+          "premio": 800000000
         }
       ]
     },
     "siempre_sale": {
       "numeros": [
+        0,
         13,
-        21,
-        39,
-        42,
-        43,
-        45
+        22,
+        24,
+        40,
+        43
       ],
       "premios": [
         {
           "aciertos": 5,
-          "ganadores": 12,
-          "premio": 31042872
+          "ganadores": 8,
+          "premio": 61136532
         }
       ]
     }
   },
   "pozo_extra": {
-    "ganadores": 1285,
-    "premio": 155642
+    "ganadores": 724,
+    "premio": 276243
   },
   "proximo": {
     "sorteo": 3420,
     "fecha": "2026-10-25",
-    "pozo": 4000000000
+    "pozo": 4400000000
   },
-  "validado": true,
+  "validado": false,
   "fuentes": [
     "A",
     "B"
   ],
-  "generado": "2026-10-21T21:40:34-03:00"
+  "generado": "2026-10-25T21:30:13-03:00"
 }
