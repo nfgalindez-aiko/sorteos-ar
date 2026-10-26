@@ -97,14 +97,14 @@
     "premio": 276243
   },
   "proximo": {
-    "sorteo": 3420,
-    "fecha": "2026-10-25",
+    "sorteo": 3421,
+    "fecha": "2026-10-28",
     "pozo": 4400000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
     "A",
     "B"
   ],
-  "generado": "2026-10-25T21:30:13-03:00"
+  "generado": "2026-10-25T21:35:10-03:00"
 }
