@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "mendoza",
+  "nombre": "Mendoza",
+  "digitos": 4,
+  "fecha": "2026-10-27",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "6832",
+        "7376",
+        "1336",
+        "5744",
+        "9128",
+        "8770",
+        "9935",
+        "7908",
+        "0021",
+        "2004",
+        "4161",
+        "0468",
+        "0964",
+        "6114",
+        "2251",
+        "3147",
+        "8501",
+        "6167",
+        "3418",
+        "0124"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-27T10:30:21-03:00"
+}
