@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9756,
+  "fecha": "2026-10-27",
+  "numeros": [
+    "00",
+    "04",
+    "10",
+    "11",
+    "16",
+    "17",
+    "18",
+    "28",
+    "30",
+    "33",
+    "34",
+    "45",
+    "52",
+    "55",
+    "59",
+    "68",
+    "69",
+    "91",
+    "95",
+    "96"
+  ],
+  "letras": "AUHW",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 590942994
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 3,
+      "premio": 912523
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 21,
+      "premio": 76044
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 258,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9757,
+    "fecha": "2026-10-28",
+    "pozo": 608900000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-10-27T21:31:04-03:00"
+}
