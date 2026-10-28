@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-28",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "7216",
+        "9155",
+        "8869",
+        "1236",
+        "5134",
+        "6930",
+        "0490",
+        "1493",
+        "4654",
+        "2218",
+        "3885",
+        "3745",
+        "8499",
+        "9291",
+        "3617",
+        "0717",
+        "8016",
+        "0030",
+        "6950",
+        "0803"
+      ],
+      "letras": "MNQY",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-28T10:30:44-03:00"
+}
