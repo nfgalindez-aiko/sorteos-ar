@@ -61,16 +61,18 @@
         "9639",
         "7556"
       ],
-      "letras": null,
-      "validado": false,
+      "letras": "ODLW",
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-10-28T12:15:36-03:00"
+  "generado": "2026-10-28T12:45:44-03:00"
 }
