@@ -126,9 +126,10 @@
         "3789"
       ],
       "letras": "NRSW",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -137,5 +138,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-10-29T18:15:54-03:00"
+  "generado": "2026-10-29T18:30:57-03:00"
 }
