@@ -1,32 +1,32 @@
 {
   "juego": "lotoplus",
-  "sorteo": 3929,
-  "fecha": "2026-10-24",
+  "sorteo": 3930,
+  "fecha": "2026-10-28",
   "modalidades": {
     "tradicional": {
       "numeros": [
-        7,
-        25,
-        32,
-        33,
-        37,
-        43
+        3,
+        4,
+        5,
+        11,
+        24,
+        37
       ],
       "premios": [
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 4424318990
+          "premio": 4458912656
         },
         {
           "aciertos": 5,
-          "ganadores": 4,
-          "premio": 5245317
+          "ganadores": 0,
+          "premio": 0
         },
         {
           "aciertos": 4,
-          "ganadores": 304,
-          "premio": 13803
+          "ganadores": 0,
+          "premio": 0
         }
       ]
     },
@@ -34,81 +34,74 @@
       "numeros": [
         0,
         2,
-        7,
-        17,
-        29,
-        42
+        20,
+        23,
+        32,
+        37
       ],
       "premios": [
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 2292219616
+          "premio": 2326813282
         },
         {
           "aciertos": 5,
-          "ganadores": 3,
-          "premio": 6993756
+          "ganadores": 0,
+          "premio": 0
         },
         {
           "aciertos": 4,
-          "ganadores": 423,
-          "premio": 9920
+          "ganadores": 0,
+          "premio": 0
         }
       ]
     },
     "desquite": {
       "numeros": [
-        2,
-        5,
-        12,
-        22,
-        44,
-        45
+        16,
+        18,
+        24,
+        25,
+        27,
+        31
       ],
       "premios": [
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 2836877795
+          "premio": 2870876483
         }
       ]
     },
     "sale_o_sale": {
       "numeros": [
-        4,
+        9,
         13,
         16,
-        17,
         18,
-        24
+        20,
+        37
       ],
       "premios": [
         {
           "aciertos": 5,
-          "ganadores": 14,
-          "premio": 3860190
+          "ganadores": 5,
+          "premio": 8305574
         }
       ]
     }
   },
-  "numero_plus": 6,
+  "numero_plus": 3,
   "pozo_extra": null,
   "proximo": {
-    "sorteo": 3930,
-    "fecha": "2026-10-28",
+    "sorteo": 3931,
+    "fecha": "2026-10-31",
     "pozo": 0
   },
-  "validado": true,
+  "validado": false,
   "fuentes": [
-    "A",
-    "B"
+    "A"
   ],
-  "premios_incompletos": [
-    "modalidades.match.premios.5",
-    "modalidades.match.premios.4",
-    "modalidades.tradicional.premios.5",
-    "modalidades.tradicional.premios.4"
-  ],
-  "generado": "2026-10-24T22:30:13-03:00"
+  "generado": "2026-10-28T22:15:31-03:00"
 }
