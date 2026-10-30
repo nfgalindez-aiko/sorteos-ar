@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9758,
+  "fecha": "2026-10-29",
+  "numeros": [
+    "00",
+    "04",
+    "06",
+    "09",
+    "15",
+    "33",
+    "38",
+    "39",
+    "41",
+    "56",
+    "57",
+    "58",
+    "65",
+    "68",
+    "70",
+    "71",
+    "76",
+    "87",
+    "95",
+    "96"
+  ],
+  "letras": "BFJS",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 616764911
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 5730156
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 14,
+      "premio": 117083
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 162,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9759,
+    "fecha": "2026-10-30",
+    "pozo": 635200000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-10-29T21:30:59-03:00"
+}
