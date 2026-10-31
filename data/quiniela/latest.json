@@ -17,7 +17,7 @@
           "turno": "primera",
           "hora": "12:00",
           "cabeza": "9504",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -31,6 +31,12 @@
           "turno": "previa",
           "hora": "10:15",
           "cabeza": "8237",
+          "validado": false
+        },
+        {
+          "turno": "primera",
+          "hora": "12:00",
+          "cabeza": "2889",
           "validado": false
         }
       ]
@@ -51,7 +57,7 @@
           "turno": "primera",
           "hora": "12:00",
           "cabeza": "9459",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -71,7 +77,7 @@
           "turno": "primera",
           "hora": "12:00",
           "cabeza": "8096",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -136,5 +142,5 @@
       ]
     }
   ],
-  "generado": "2026-10-31T12:16:09-03:00"
+  "generado": "2026-10-31T12:31:12-03:00"
 }
