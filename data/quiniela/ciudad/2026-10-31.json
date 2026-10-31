@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-10-31",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "7098",
+        "4597",
+        "6866",
+        "6437",
+        "6346",
+        "5709",
+        "9620",
+        "4359",
+        "9811",
+        "0278",
+        "0937",
+        "9260",
+        "0560",
+        "1827",
+        "9875",
+        "2944",
+        "6355",
+        "4668",
+        "8008",
+        "5400"
+      ],
+      "letras": "AXYZ",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-10-31T10:46:06-03:00"
+}
