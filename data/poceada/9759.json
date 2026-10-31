@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9759,
+  "fecha": "2026-10-30",
+  "numeros": [
+    "12",
+    "20",
+    "26",
+    "28",
+    "32",
+    "43",
+    "44",
+    "48",
+    "54",
+    "55",
+    "59",
+    "62",
+    "65",
+    "72",
+    "74",
+    "77",
+    "79",
+    "82",
+    "86",
+    "93"
+  ],
+  "letras": "IQVY",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 630028175
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 2933653
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 25,
+      "premio": 68452
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 172,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9760,
+    "fecha": "2026-10-31",
+    "pozo": 649300000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-10-30T21:30:33-03:00"
+}
