@@ -4,7 +4,7 @@
   "fechas": [
     {
       "fecha": "2026-10-31",
-      "turnos": 2,
+      "turnos": 3,
       "validado": false
     },
     {
@@ -248,5 +248,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-10-31T12:16:08-03:00"
+  "generado": "2026-10-31T15:16:08-03:00"
 }
