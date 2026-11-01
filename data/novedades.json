@@ -1,6 +1,12 @@
 {
   "novedades": [
     {
+      "juego": "lotoplus",
+      "sorteo": 3931,
+      "fecha": "2026-10-31",
+      "validado_en": "2026-10-31T22:26:08-03:00"
+    },
+    {
       "juego": "poceada",
       "sorteo": 9760,
       "fecha": "2026-10-31",
@@ -293,13 +299,7 @@
       "sorteo": 9733,
       "fecha": "2026-09-30",
       "validado_en": "2026-09-30T21:41:26-03:00"
-    },
-    {
-      "juego": "quini6",
-      "sorteo": 3413,
-      "fecha": "2026-09-30",
-      "validado_en": "2026-09-30T21:31:21-03:00"
     }
   ],
-  "generado": "2026-10-31T21:36:17-03:00"
+  "generado": "2026-10-31T22:26:08-03:00"
 }
