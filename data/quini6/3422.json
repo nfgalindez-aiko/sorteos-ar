@@ -1,0 +1,110 @@
+{
+  "juego": "quini6",
+  "sorteo": 3422,
+  "fecha": "2026-11-01",
+  "modalidades": {
+    "tradicional": {
+      "numeros": [
+        7,
+        8,
+        9,
+        10,
+        14,
+        41
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 1243482887
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 32,
+          "premio": 1694274
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 2453,
+          "premio": 6630
+        }
+      ]
+    },
+    "segunda": {
+      "numeros": [
+        2,
+        4,
+        16,
+        24,
+        27,
+        37
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 1855682086
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 32,
+          "premio": 1694274
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 1924,
+          "premio": 8453
+        }
+      ]
+    },
+    "revancha": {
+      "numeros": [
+        0,
+        2,
+        14,
+        23,
+        29,
+        39
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 800000000
+        }
+      ]
+    },
+    "siempre_sale": {
+      "numeros": [
+        2,
+        5,
+        8,
+        9,
+        14,
+        40
+      ],
+      "premios": [
+        {
+          "aciertos": 5,
+          "ganadores": 54,
+          "premio": 9006984
+        }
+      ]
+    }
+  },
+  "pozo_extra": {
+    "ganadores": 1221,
+    "premio": 163800
+  },
+  "proximo": {
+    "sorteo": 3423,
+    "fecha": "2026-11-04",
+    "pozo": 5400000000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "B"
+  ],
+  "generado": "2026-11-01T21:31:06-03:00"
+}
