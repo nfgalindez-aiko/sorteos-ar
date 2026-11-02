@@ -1,0 +1,68 @@
+{
+  "juego": "brinco",
+  "sorteo": 1378,
+  "fecha": "2026-11-01",
+  "modalidades": {
+    "tradicional": {
+      "numeros": [
+        5,
+        10,
+        15,
+        23,
+        27,
+        38
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 621178158
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 14,
+          "premio": 473625
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 347,
+          "premio": 6305
+        },
+        {
+          "aciertos": 3,
+          "ganadores": 4953,
+          "premio": 1500
+        }
+      ]
+    },
+    "junior": {
+      "numeros": [
+        3,
+        12,
+        18,
+        22,
+        25,
+        39
+      ],
+      "premios": [
+        {
+          "aciertos": 5,
+          "ganadores": 11,
+          "premio": 3013037
+        }
+      ]
+    }
+  },
+  "pozo_extra": null,
+  "proximo": {
+    "sorteo": 1379,
+    "fecha": "2026-11-08",
+    "pozo": 720000000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "B"
+  ],
+  "generado": "2026-11-01T21:11:05-03:00"
+}
