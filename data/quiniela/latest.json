@@ -136,6 +136,12 @@
           "hora": "12:00",
           "cabeza": "3096",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "0733",
+          "validado": false
         }
       ]
     },
@@ -156,9 +162,15 @@
           "hora": "12:00",
           "cabeza": "4473",
           "validado": false
+        },
+        {
+          "turno": "matutina",
+          "hora": "15:00",
+          "cabeza": "7559",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-11-03T15:16:14-03:00"
+  "generado": "2026-11-03T15:31:04-03:00"
 }
