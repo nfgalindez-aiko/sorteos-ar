@@ -126,9 +126,15 @@
           "hora": "10:15",
           "cabeza": "6723",
           "validado": false
+        },
+        {
+          "turno": "primera",
+          "hora": "12:00",
+          "cabeza": "4473",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-11-03T12:16:07-03:00"
+  "generado": "2026-11-03T12:31:02-03:00"
 }
