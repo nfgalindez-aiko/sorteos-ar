@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9761,
+  "fecha": "2026-11-02",
+  "numeros": [
+    "12",
+    "13",
+    "15",
+    "18",
+    "23",
+    "25",
+    "26",
+    "30",
+    "35",
+    "39",
+    "41",
+    "62",
+    "75",
+    "79",
+    "88",
+    "91",
+    "92",
+    "94",
+    "95",
+    "98"
+  ],
+  "letras": "AUXY",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 658223122
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 6273612
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 20,
+      "premio": 83447
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 183,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9762,
+    "fecha": "2026-11-03",
+    "pozo": 683300000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-11-02T21:30:59-03:00"
+}
