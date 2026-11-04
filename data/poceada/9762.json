@@ -33,29 +33,29 @@
     },
     {
       "aciertos": 7,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 2,
+      "premio": 4574394
     },
     {
       "aciertos": 6,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 8,
+      "premio": 209648
     },
     {
       "aciertos": 5,
-      "ganadores": 0,
+      "ganadores": 155,
       "premio": 1700
     }
   ],
   "proximo": {
     "sorteo": 9763,
     "fecha": "2026-11-04",
-    "pozo": 0
+    "pozo": 690000000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-11-03T21:31:00-03:00"
+  "generado": "2026-11-03T21:46:04-03:00"
 }
