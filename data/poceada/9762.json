@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9762,
+  "fecha": "2026-11-03",
+  "numeros": [
+    "00",
+    "07",
+    "14",
+    "16",
+    "19",
+    "24",
+    "30",
+    "41",
+    "42",
+    "49",
+    "51",
+    "60",
+    "61",
+    "73",
+    "74",
+    "77",
+    "78",
+    "79",
+    "89",
+    "98"
+  ],
+  "letras": "FTYY",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 671168482
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 0,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9763,
+    "fecha": "2026-11-04",
+    "pozo": 0
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-11-03T21:31:00-03:00"
+}
