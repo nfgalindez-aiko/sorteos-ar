@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-04",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "5992",
+        "1442",
+        "6769",
+        "8190",
+        "2674",
+        "5163",
+        "3500",
+        "4157",
+        "6946",
+        "1534",
+        "4652",
+        "7471",
+        "9414",
+        "8202",
+        "6718",
+        "3274",
+        "7605",
+        "4171",
+        "0788",
+        "8621"
+      ],
+      "letras": "CCRR",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-04T10:31:00-03:00"
+}
