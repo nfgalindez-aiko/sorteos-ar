@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-05",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "8390",
+        "2994",
+        "8157",
+        "4495",
+        "8831",
+        "6630",
+        "5440",
+        "2883",
+        "3868",
+        "3641",
+        "7933",
+        "4001",
+        "2580",
+        "4205",
+        "3700",
+        "2873",
+        "5505",
+        "9785",
+        "3367",
+        "8010"
+      ],
+      "letras": "IFGN",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-05T10:30:57-03:00"
+}
