@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9764,
+  "fecha": "2026-11-05",
+  "numeros": [
+    "07",
+    "12",
+    "16",
+    "25",
+    "38",
+    "43",
+    "54",
+    "58",
+    "60",
+    "62",
+    "68",
+    "70",
+    "73",
+    "74",
+    "75",
+    "83",
+    "86",
+    "89",
+    "91",
+    "92"
+  ],
+  "letras": "GSTV",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 698920816
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 6152069
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 14,
+      "premio": 125468
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 137,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9765,
+    "fecha": "2026-11-06",
+    "pozo": 724800000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-11-05T21:46:07-03:00"
+}
