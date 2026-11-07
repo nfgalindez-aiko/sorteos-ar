@@ -126,9 +126,10 @@
         "2915"
       ],
       "letras": "LTXY",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -137,5 +138,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-11-07T18:15:49-03:00"
+  "generado": "2026-11-07T18:30:51-03:00"
 }
