@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9765,
+  "fecha": "2026-11-06",
+  "numeros": [
+    "31",
+    "32",
+    "33",
+    "36",
+    "40",
+    "44",
+    "49",
+    "52",
+    "53",
+    "54",
+    "65",
+    "66",
+    "68",
+    "73",
+    "76",
+    "86",
+    "89",
+    "94",
+    "96",
+    "99"
+  ],
+  "letras": "DDFS",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 713209853
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 9310999
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 13,
+      "premio": 141747
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 134,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9766,
+    "fecha": "2026-11-07",
+    "pozo": 743300000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-11-06T21:30:51-03:00"
+}
