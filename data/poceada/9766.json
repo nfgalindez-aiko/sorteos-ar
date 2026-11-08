@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9766,
+  "fecha": "2026-11-07",
+  "numeros": [
+    "02",
+    "04",
+    "06",
+    "07",
+    "12",
+    "13",
+    "22",
+    "30",
+    "31",
+    "34",
+    "39",
+    "47",
+    "53",
+    "55",
+    "57",
+    "63",
+    "85",
+    "93",
+    "96",
+    "98"
+  ],
+  "letras": "BKNT",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 729382672
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 12861455
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 42,
+      "premio": 49312
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 310,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9767,
+    "fecha": "2026-11-09",
+    "pozo": 752700000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-11-07T21:30:51-03:00"
+}
