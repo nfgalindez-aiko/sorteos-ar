@@ -85,9 +85,9 @@
       ],
       "premios": [
         {
-          "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "aciertos": 5,
+          "ganadores": 7,
+          "premio": 336428571
         }
       ]
     }
@@ -103,5 +103,5 @@
   "fuentes": [
     "A"
   ],
-  "generado": "2026-11-07T22:20:51-03:00"
+  "generado": "2026-11-07T22:50:48-03:00"
 }
