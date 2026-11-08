@@ -16,17 +16,17 @@
         {
           "aciertos": 6,
           "ganadores": 0,
-          "premio": 4628044253
+          "premio": 4628044269
         },
         {
           "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 11,
+          "premio": 3266483
         },
         {
           "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 388,
+          "premio": 18521
         }
       ]
     },
@@ -47,13 +47,13 @@
         },
         {
           "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 16,
+          "premio": 2245707
         },
         {
           "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 641,
+          "premio": 11211
         }
       ]
     },
@@ -87,7 +87,7 @@
         {
           "aciertos": 5,
           "ganadores": 7,
-          "premio": 336428571
+          "premio": 466613830
         }
       ]
     }
@@ -101,7 +101,17 @@
   },
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-11-07T22:50:48-03:00"
+  "pozos_en_disputa": [
+    "modalidades.tradicional.premios.6"
+  ],
+  "premios_incompletos": [
+    "modalidades.match.premios.5",
+    "modalidades.match.premios.4",
+    "modalidades.tradicional.premios.5",
+    "modalidades.tradicional.premios.4"
+  ],
+  "generado": "2026-11-07T23:30:48-03:00"
 }
