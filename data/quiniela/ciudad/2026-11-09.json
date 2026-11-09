@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-09",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "4215",
+        "9436",
+        "6824",
+        "0607",
+        "2725",
+        "8110",
+        "0823",
+        "4716",
+        "1201",
+        "8090",
+        "4308",
+        "1921",
+        "4802",
+        "9169",
+        "2874",
+        "4214",
+        "3141",
+        "1341",
+        "9996",
+        "0024"
+      ],
+      "letras": "GHLQ",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-09T10:30:17-03:00"
+}
