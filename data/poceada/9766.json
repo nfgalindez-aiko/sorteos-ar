@@ -40,6 +40,11 @@
       "aciertos": 6,
       "ganadores": 42,
       "premio": 49312
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 310,
+      "premio": 1700
     }
   ],
   "proximo": {
@@ -52,5 +57,5 @@
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-11-08T22:10:56-03:00"
+  "generado": "2026-11-08T22:25:58-03:00"
 }
