@@ -29,7 +29,7 @@
           "turno": "vespertina",
           "hora": "18:00",
           "cabeza": "0924",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -55,6 +55,12 @@
           "turno": "matutina",
           "hora": "15:00",
           "cabeza": "4583",
+          "validado": true
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "9779",
           "validado": true
         }
       ]
@@ -87,7 +93,7 @@
           "turno": "vespertina",
           "hora": "18:00",
           "cabeza": "6064",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -192,9 +198,15 @@
           "hora": "15:00",
           "cabeza": "4139",
           "validado": false
+        },
+        {
+          "turno": "vespertina",
+          "hora": "18:00",
+          "cabeza": "0221",
+          "validado": false
         }
       ]
     }
   ],
-  "generado": "2026-11-09T18:15:20-03:00"
+  "generado": "2026-11-09T18:30:16-03:00"
 }
