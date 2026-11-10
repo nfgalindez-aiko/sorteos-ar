@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "cordoba",
+  "nombre": "Córdoba",
+  "digitos": 4,
+  "fecha": "2026-11-10",
+  "turnos": [
+    {
+      "turno": "matutina",
+      "hora": "15:00",
+      "numeros": [
+        "0061",
+        "5284",
+        "0550",
+        "9611",
+        "1922",
+        "0009",
+        "6411",
+        "0841",
+        "7654",
+        "9260",
+        "7795",
+        "4980",
+        "2128",
+        "0059",
+        "0113",
+        "5893",
+        "4866",
+        "8628",
+        "5530",
+        "2176"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "B"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "B"
+  ],
+  "generado": "2026-11-10T16:45:16-03:00"
+}
