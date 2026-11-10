@@ -93,7 +93,7 @@
           "turno": "vespertina",
           "hora": "18:00",
           "cabeza": "6013",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -190,5 +190,5 @@
       ]
     }
   ],
-  "generado": "2026-11-10T18:30:20-03:00"
+  "generado": "2026-11-10T18:45:16-03:00"
 }
