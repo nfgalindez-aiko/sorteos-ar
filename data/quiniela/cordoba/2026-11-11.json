@@ -62,15 +62,17 @@
         "0354"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-11-11T12:15:19-03:00"
+  "generado": "2026-11-11T12:30:18-03:00"
 }
