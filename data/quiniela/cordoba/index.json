@@ -3,6 +3,11 @@
   "provincia": "cordoba",
   "fechas": [
     {
+      "fecha": "2026-11-11",
+      "turnos": 1,
+      "validado": false
+    },
+    {
       "fecha": "2026-11-10",
       "turnos": 3,
       "validado": false
@@ -288,5 +293,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-11-10T22:15:16-03:00"
+  "generado": "2026-11-11T10:30:18-03:00"
 }

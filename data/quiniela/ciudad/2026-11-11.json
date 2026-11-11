@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-11",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "8060",
+        "0506",
+        "3376",
+        "4144",
+        "9709",
+        "8449",
+        "0838",
+        "1688",
+        "8713",
+        "1503",
+        "2902",
+        "4303",
+        "3949",
+        "4416",
+        "5552",
+        "8651",
+        "2612",
+        "1203",
+        "7198",
+        "1273"
+      ],
+      "letras": "BFRT",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-11T10:30:16-03:00"
+}
