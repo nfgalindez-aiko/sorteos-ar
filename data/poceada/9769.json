@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9769,
+  "fecha": "2026-11-11",
+  "numeros": [
+    "04",
+    "06",
+    "16",
+    "19",
+    "22",
+    "29",
+    "37",
+    "49",
+    "53",
+    "57",
+    "66",
+    "67",
+    "71",
+    "79",
+    "84",
+    "90",
+    "91",
+    "94",
+    "95",
+    "99"
+  ],
+  "letras": "OKVY",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 763114582
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 3090722
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 22,
+      "premio": 81951
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 156,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9770,
+    "fecha": "2026-11-12",
+    "pozo": 783400000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-11-11T21:30:15-03:00"
+}

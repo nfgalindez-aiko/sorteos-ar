@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9768,
-  "fecha": "2026-11-10",
+  "sorteo": 9769,
+  "fecha": "2026-11-11",
   "numeros": [
-    "03",
-    "08",
-    "20",
-    "24",
-    "26",
-    "28",
-    "31",
+    "04",
+    "06",
+    "16",
+    "19",
+    "22",
+    "29",
     "37",
-    "42",
-    "43",
-    "46",
-    "47",
-    "48",
-    "54",
-    "55",
+    "49",
+    "53",
     "57",
-    "60",
-    "82",
-    "85",
-    "91"
+    "66",
+    "67",
+    "71",
+    "79",
+    "84",
+    "90",
+    "91",
+    "94",
+    "95",
+    "99"
   ],
-  "letras": "ACDL",
+  "letras": "OKVY",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 0
+      "premio": 763114582
     },
     {
       "aciertos": 7,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 1,
+      "premio": 3090722
     },
     {
       "aciertos": 6,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 22,
+      "premio": 81951
     },
     {
       "aciertos": 5,
-      "ganadores": 0,
-      "premio": 0
+      "ganadores": 156,
+      "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9769,
-    "fecha": "2026-11-11",
-    "pozo": 0
+    "sorteo": 9770,
+    "fecha": "2026-11-12",
+    "pozo": 783400000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-11-10T21:39:00-03:00"
+  "generado": "2026-11-11T21:30:15-03:00"
 }
