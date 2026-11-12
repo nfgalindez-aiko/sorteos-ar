@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "entrerios",
+  "nombre": "Entre Ríos",
+  "digitos": 4,
+  "fecha": "2026-11-12",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "6766",
+        "5576",
+        "1071",
+        "1771",
+        "6214",
+        "9185",
+        "3433",
+        "3612",
+        "6726",
+        "2054",
+        "1413",
+        "4266",
+        "2207",
+        "0275",
+        "3559",
+        "5174",
+        "5402",
+        "2571",
+        "8925",
+        "3055"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-12T11:01:10-03:00"
+}
