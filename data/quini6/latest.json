@@ -101,9 +101,10 @@
     "fecha": "2026-11-15",
     "pozo": 7800000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
+    "A",
     "B"
   ],
-  "generado": "2026-11-11T21:30:11-03:00"
+  "generado": "2026-11-11T21:35:10-03:00"
 }
