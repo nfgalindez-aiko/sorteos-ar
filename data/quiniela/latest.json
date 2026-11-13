@@ -47,37 +47,13 @@
       "provincia": "cordoba",
       "nombre": "Córdoba",
       "digitos": 4,
-      "fecha": "2026-11-12",
+      "fecha": "2026-11-13",
       "turnos": [
         {
           "turno": "previa",
           "hora": "10:15",
-          "cabeza": "4174",
+          "cabeza": "5601",
           "validado": false
-        },
-        {
-          "turno": "primera",
-          "hora": "12:00",
-          "cabeza": "3846",
-          "validado": true
-        },
-        {
-          "turno": "matutina",
-          "hora": "15:00",
-          "cabeza": "6316",
-          "validado": true
-        },
-        {
-          "turno": "vespertina",
-          "hora": "18:00",
-          "cabeza": "7491",
-          "validado": true
-        },
-        {
-          "turno": "nocturna",
-          "hora": "21:00",
-          "cabeza": "9834",
-          "validado": true
         }
       ]
     },
@@ -130,5 +106,5 @@
       ]
     }
   ],
-  "generado": "2026-11-13T10:31:07-03:00"
+  "generado": "2026-11-13T10:46:01-03:00"
 }
