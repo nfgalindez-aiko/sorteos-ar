@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9771,
+  "fecha": "2026-11-13",
+  "numeros": [
+    "03",
+    "08",
+    "11",
+    "16",
+    "22",
+    "26",
+    "35",
+    "39",
+    "42",
+    "44",
+    "48",
+    "61",
+    "66",
+    "67",
+    "69",
+    "71",
+    "73",
+    "84",
+    "89",
+    "90"
+  ],
+  "letras": "IBMN",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 790488883
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 2,
+      "premio": 3036285
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 30,
+      "premio": 61954
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 243,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9772,
+    "fecha": "2026-11-14",
+    "pozo": 911400000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-11-13T21:31:03-03:00"
+}
