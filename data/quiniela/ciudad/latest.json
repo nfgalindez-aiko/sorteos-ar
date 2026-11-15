@@ -158,9 +158,10 @@
         "6783"
       ],
       "letras": "AKPT",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -169,5 +170,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-11-14T21:10:29-03:00"
+  "generado": "2026-11-14T21:30:32-03:00"
 }
