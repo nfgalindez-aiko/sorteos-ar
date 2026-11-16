@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "provincia",
+  "nombre": "Provincia de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-16",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "9367",
+        "8398",
+        "9545",
+        "4856",
+        "6983",
+        "8750",
+        "3823",
+        "8629",
+        "1879",
+        "8913",
+        "2666",
+        "9899",
+        "4256",
+        "3555",
+        "9724",
+        "0228",
+        "2723",
+        "3809",
+        "8665",
+        "3613"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-16T10:30:52-03:00"
+}

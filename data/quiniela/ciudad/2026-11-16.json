@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-16",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "7177",
+        "7898",
+        "3529",
+        "4463",
+        "6517",
+        "7518",
+        "4129",
+        "4373",
+        "1421",
+        "0204",
+        "4634",
+        "1908",
+        "2985",
+        "8480",
+        "7681",
+        "0677",
+        "5012",
+        "1631",
+        "7290",
+        "5996"
+      ],
+      "letras": "ADGS",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-16T10:30:52-03:00"
+}
