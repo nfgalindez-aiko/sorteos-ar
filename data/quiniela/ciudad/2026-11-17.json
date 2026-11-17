@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-17",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "1452",
+        "1998",
+        "2609",
+        "9710",
+        "0595",
+        "2867",
+        "1542",
+        "7951",
+        "9950",
+        "8795",
+        "4856",
+        "6059",
+        "8925",
+        "2059",
+        "9302",
+        "7391",
+        "7222",
+        "0914",
+        "9676",
+        "4887"
+      ],
+      "letras": "BKMY",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-17T10:30:34-03:00"
+}
