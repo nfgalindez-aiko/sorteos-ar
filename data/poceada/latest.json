@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9772,
-  "fecha": "2026-11-14",
+  "sorteo": 9773,
+  "fecha": "2026-11-16",
   "numeros": [
-    "10",
-    "11",
-    "23",
-    "24",
-    "38",
-    "43",
+    "02",
+    "05",
+    "09",
+    "17",
+    "21",
+    "25",
+    "26",
+    "31",
+    "34",
     "44",
-    "49",
-    "51",
     "54",
-    "56",
-    "57",
-    "58",
+    "59",
     "61",
-    "64",
-    "74",
-    "80",
-    "83",
+    "77",
+    "79",
+    "81",
+    "84",
     "88",
-    "96"
+    "93",
+    "99"
   ],
-  "letras": "AKPT",
+  "letras": "AEGW",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 806739870
+      "premio": 819872043
     },
     {
       "aciertos": 7,
-      "ganadores": 0,
-      "premio": 3568817
+      "ganadores": 2,
+      "premio": 3276067
     },
     {
       "aciertos": 6,
-      "ganadores": 19,
-      "premio": 109569
+      "ganadores": 26,
+      "premio": 66933
     },
     {
       "aciertos": 5,
-      "ganadores": 178,
+      "ganadores": 264,
       "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9773,
-    "fecha": "2026-11-16",
-    "pozo": 833800000
+    "sorteo": 9774,
+    "fecha": "2026-11-17",
+    "pozo": 839500000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-11-14T21:35:30-03:00"
+  "generado": "2026-11-16T21:30:57-03:00"
 }

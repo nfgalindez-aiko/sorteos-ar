@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9773,
+  "fecha": "2026-11-16",
+  "numeros": [
+    "02",
+    "05",
+    "09",
+    "17",
+    "21",
+    "25",
+    "26",
+    "31",
+    "34",
+    "44",
+    "54",
+    "59",
+    "61",
+    "77",
+    "79",
+    "81",
+    "84",
+    "88",
+    "93",
+    "99"
+  ],
+  "letras": "AEGW",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 819872043
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 2,
+      "premio": 3276067
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 26,
+      "premio": 66933
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 264,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9774,
+    "fecha": "2026-11-17",
+    "pozo": 839500000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-11-16T21:30:57-03:00"
+}
