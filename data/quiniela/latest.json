@@ -125,7 +125,7 @@
           "turno": "vespertina",
           "hora": "18:00",
           "cabeza": "2039",
-          "validado": false
+          "validado": true
         }
       ]
     },
@@ -208,5 +208,5 @@
       ]
     }
   ],
-  "generado": "2026-11-18T18:31:18-03:00"
+  "generado": "2026-11-18T18:46:16-03:00"
 }
