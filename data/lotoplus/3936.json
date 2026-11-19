@@ -1,0 +1,107 @@
+{
+  "juego": "lotoplus",
+  "sorteo": 3936,
+  "fecha": "2026-11-18",
+  "modalidades": {
+    "tradicional": {
+      "numeros": [
+        10,
+        11,
+        13,
+        16,
+        33,
+        34
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 4744316984
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 0,
+          "premio": 0
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 0,
+          "premio": 0
+        }
+      ]
+    },
+    "match": {
+      "numeros": [
+        0,
+        9,
+        14,
+        21,
+        25,
+        29
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 2612217610
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 0,
+          "premio": 0
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 0,
+          "premio": 0
+        }
+      ]
+    },
+    "desquite": {
+      "numeros": [
+        7,
+        9,
+        11,
+        15,
+        23,
+        28
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 3149630013
+        }
+      ]
+    },
+    "sale_o_sale": {
+      "numeros": [
+        7,
+        16,
+        17,
+        25,
+        26,
+        34
+      ],
+      "premios": [
+        {
+          "aciertos": 5,
+          "ganadores": 11,
+          "premio": 3928608
+        }
+      ]
+    }
+  },
+  "numero_plus": 7,
+  "pozo_extra": null,
+  "proximo": {
+    "sorteo": 3937,
+    "fecha": "2026-11-21",
+    "pozo": 0
+  },
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-18T22:11:08-03:00"
+}
