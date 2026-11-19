@@ -97,13 +97,14 @@
     "premio": 600600
   },
   "proximo": {
-    "sorteo": 3427,
-    "fecha": "2026-11-18",
-    "pozo": 8200000000
+    "sorteo": 3428,
+    "fecha": "2026-11-22",
+    "pozo": 6900000000
   },
   "validado": false,
   "fuentes": [
+    "A",
     "B"
   ],
-  "generado": "2026-11-18T21:31:06-03:00"
+  "generado": "2026-11-18T21:36:08-03:00"
 }
