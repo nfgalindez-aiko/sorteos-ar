@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9776,
+  "fecha": "2026-11-19",
+  "numeros": [
+    "03",
+    "04",
+    "06",
+    "17",
+    "24",
+    "25",
+    "39",
+    "47",
+    "50",
+    "60",
+    "62",
+    "63",
+    "67",
+    "68",
+    "71",
+    "75",
+    "79",
+    "80",
+    "90",
+    "97"
+  ],
+  "letras": "BVWY",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 862297827
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 6387536
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 22,
+      "premio": 82740
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 183,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9777,
+    "fecha": "2026-11-20",
+    "pozo": 882800000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-11-19T21:31:18-03:00"
+}
