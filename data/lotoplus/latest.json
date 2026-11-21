@@ -20,13 +20,13 @@
         },
         {
           "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 3,
+          "premio": 5592490
         },
         {
           "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 273,
+          "premio": 12291
         }
       ]
     },
@@ -47,13 +47,13 @@
         },
         {
           "aciertos": 5,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 5,
+          "premio": 7797200
         },
         {
           "aciertos": 4,
-          "ganadores": 0,
-          "premio": 0
+          "ganadores": 308,
+          "premio": 10894
         }
       ]
     },
@@ -97,12 +97,18 @@
   "proximo": {
     "sorteo": 3937,
     "fecha": "2026-11-21",
-    "pozo": 0
+    "pozo": 31897000000
   },
   "validado": true,
   "fuentes": [
     "A",
     "B"
   ],
-  "generado": "2026-11-18T22:36:12-03:00"
+  "premios_incompletos": [
+    "modalidades.match.premios.5",
+    "modalidades.match.premios.4",
+    "modalidades.tradicional.premios.5",
+    "modalidades.tradicional.premios.4"
+  ],
+  "generado": "2026-11-21T00:12:10-03:00"
 }

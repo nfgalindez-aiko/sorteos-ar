@@ -49,11 +49,6 @@
           "aciertos": 5,
           "ganadores": 30,
           "premio": 1370834
-        },
-        {
-          "aciertos": 4,
-          "ganadores": 2460,
-          "premio": 5015
         }
       ]
     },
@@ -97,13 +92,17 @@
     "premio": 600600
   },
   "proximo": {
-    "sorteo": 3427,
-    "fecha": "2026-11-18",
-    "pozo": 8200000000
+    "sorteo": 3428,
+    "fecha": "2026-11-22",
+    "pozo": 6900000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
+    "A",
     "B"
   ],
-  "generado": "2026-11-18T21:31:06-03:00"
+  "premios_en_disputa": [
+    "modalidades.segunda.premios.4"
+  ],
+  "generado": "2026-11-21T00:12:09-03:00"
 }
