@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9776,
-  "fecha": "2026-11-19",
+  "sorteo": 9777,
+  "fecha": "2026-11-20",
   "numeros": [
-    "03",
-    "04",
+    "01",
+    "02",
     "06",
-    "17",
-    "24",
+    "08",
+    "11",
+    "14",
+    "18",
+    "19",
     "25",
-    "39",
-    "47",
-    "50",
-    "60",
-    "62",
-    "63",
-    "67",
-    "68",
+    "26",
+    "34",
+    "40",
+    "44",
+    "46",
+    "53",
+    "54",
+    "69",
     "71",
-    "75",
-    "79",
-    "80",
-    "90",
-    "97"
+    "74",
+    "78"
   ],
-  "letras": "BVWY",
+  "letras": "IJPS",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 862297827
+      "premio": 876740170
     },
     {
       "aciertos": 7,
-      "ganadores": 1,
-      "premio": 6387536
+      "ganadores": 3,
+      "premio": 1066838
     },
     {
       "aciertos": 6,
-      "ganadores": 22,
-      "premio": 82740
+      "ganadores": 54,
+      "premio": 34573
     },
     {
       "aciertos": 5,
-      "ganadores": 183,
+      "ganadores": 410,
       "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9777,
-    "fecha": "2026-11-20",
-    "pozo": 882800000
+    "sorteo": 9778,
+    "fecha": "2026-11-21",
+    "pozo": 897800000
   },
-  "validado": true,
+  "validado": false,
   "fuentes": [
     "A",
-    "ciudad-nocturna(A+B)"
+    "ciudad-nocturna"
   ],
-  "generado": "2026-11-19T22:01:16-03:00"
+  "generado": "2026-11-20T21:30:22-03:00"
 }

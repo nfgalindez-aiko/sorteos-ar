@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9777,
+  "fecha": "2026-11-20",
+  "numeros": [
+    "01",
+    "02",
+    "06",
+    "08",
+    "11",
+    "14",
+    "18",
+    "19",
+    "25",
+    "26",
+    "34",
+    "40",
+    "44",
+    "46",
+    "53",
+    "54",
+    "69",
+    "71",
+    "74",
+    "78"
+  ],
+  "letras": "IJPS",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 876740170
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 3,
+      "premio": 1066838
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 54,
+      "premio": 34573
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 410,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9778,
+    "fecha": "2026-11-21",
+    "pozo": 897800000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-11-20T21:30:22-03:00"
+}
