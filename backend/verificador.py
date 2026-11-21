@@ -79,6 +79,10 @@ def check_poceado(base, juego, dias, hora, rango, mods, ahora):
         # Se avisa para que quede a la vista, pero no invalida el sorteo.
         aviso(f"{juego}: el sorteo {j.get('sorteo')} tiene pozos vacantes con cifras distintas "
               f"entre las fuentes: {j['pozos_en_disputa']}")
+    if j.get("premios_en_disputa"):
+        # regla 58: mismos ganadores, distinto monto. El sorteo se confirma y esa fila no se publica.
+        aviso(f"{juego}: el sorteo {j.get('sorteo')} tiene premios con monto distinto entre las "
+              f"fuentes, sin publicar: {j['premios_en_disputa']}")
     for m in mods:
         mod = j.get("modalidades", {}).get(m)
         if not mod:

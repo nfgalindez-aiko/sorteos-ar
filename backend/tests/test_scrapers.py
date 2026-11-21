@@ -446,7 +446,7 @@ class TestPozoVacante(unittest.TestCase):
         self.assertEqual(common.compare(self.a, self.b), ["modalidades.segunda.premios.6"])
 
     def test_se_clasifica_como_blanda_y_no_como_conflicto(self):
-        duros, blandos, _ = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
+        duros, blandos, _, _ = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
         self.assertEqual(duros, [])
         self.assertEqual(blandos, ["modalidades.segunda.premios.6"])
 
@@ -458,29 +458,31 @@ class TestPozoVacante(unittest.TestCase):
         self.assertEqual(out["fuentes"], ["A", "B"])
         self.assertEqual(out["pozos_en_disputa"], ["modalidades.segunda.premios.6"])
 
-    def test_si_alguien_gano_esa_fila_vuelve_a_ser_conflicto_duro(self):
-        # con ganadores > 0 la cifra SI es un premio que alguien cobra: no se puede relajar
+    def test_si_alguien_gano_esa_fila_el_monto_no_se_publica(self):
+        # con ganadores > 0 la cifra SI es un premio que alguien cobra: no se puede tomar la de
+        # ninguna de las dos. Hasta la regla 58 eso dejaba el sorteo entero sin confirmar; ahora
+        # se confirman los numeros y esa fila queda afuera hasta que las fuentes coincidan.
         a = self.sorteo(2944608430, ganadores_segunda=1)
         b = self.sorteo(2840789977, ganadores_segunda=1)
-        duros, blandos, _ = common.clasificar(a, b, common.compare(a, b))
-        self.assertEqual(duros, ["modalidades.segunda.premios.6"])
-        self.assertEqual(blandos, [])
+        duros, blandos, _, montos = common.clasificar(a, b, common.compare(a, b))
+        self.assertEqual((duros, blandos), ([], []))
+        self.assertEqual(montos, ["modalidades.segunda.premios.6"])
         with contextlib.redirect_stdout(io.StringIO()):
             out, conflictos = common.build("quini6", {"A": a, "B": b})
-        self.assertEqual(conflictos, ["modalidades.segunda.premios.6"])
-        self.assertFalse(out["validado"])
+        self.assertEqual(conflictos, [])
+        self.assertNotIn(6, [p["aciertos"] for p in out["modalidades"]["segunda"]["premios"]])
 
     def test_una_sola_fuente_vacante_no_alcanza(self):
         # si una fuente dice vacante y la otra dice que hubo un ganador, es un conflicto real
         b = self.sorteo(2840789977, ganadores_segunda=2)
-        duros, blandos, _ = common.clasificar(self.a, b, common.compare(self.a, b))
+        duros, blandos, _, _ = common.clasificar(self.a, b, common.compare(self.a, b))
         self.assertEqual(blandos, [])
         self.assertEqual(duros, ["modalidades.segunda.premios.6"])
 
     def test_diferencia_en_los_numeros_nunca_es_blanda(self):
         b = self.sorteo(2944608430)
         b["modalidades"]["segunda"]["numeros"] = [4, 20, 25, 31, 39, 43]
-        duros, blandos, _ = common.clasificar(self.a, b, common.compare(self.a, b))
+        duros, blandos, _, _ = common.clasificar(self.a, b, common.compare(self.a, b))
         self.assertEqual(blandos, [])
         self.assertIn("modalidades.segunda.numeros", duros)
 
@@ -517,7 +519,7 @@ class TestPremioIncompleto(unittest.TestCase):
         self.b = self.sorteo(0, 0, 0, 0)             # B todavía no publicó esas filas
 
     def test_no_es_conflicto_duro(self):
-        duros, blandos, incompletos = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
+        duros, blandos, incompletos, _ = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
         self.assertEqual(duros, [])
         self.assertEqual(blandos, [])
         self.assertEqual(sorted(incompletos),
@@ -545,7 +547,7 @@ class TestPremioIncompleto(unittest.TestCase):
 
     def test_si_las_dos_estan_vacias_no_hay_diferencia(self):
         vacio = self.sorteo(0, 0, 0, 0)
-        duros, blandos, incompletos = common.clasificar(vacio, vacio, common.compare(vacio, vacio))
+        duros, blandos, incompletos, _ = common.clasificar(vacio, vacio, common.compare(vacio, vacio))
         self.assertEqual((duros, blandos, incompletos), ([], [], []))
 
     def test_publish_completa_las_filas_que_estaban_en_cero(self):
@@ -568,6 +570,70 @@ class TestPremioIncompleto(unittest.TestCase):
     def test_un_conflicto_de_verdad_sigue_siendo_duro(self):
         # las dos fuentes con datos y distintos: eso sí es desacuerdo
         b = self.sorteo(99, 1715244)
-        duros, _, incompletos = common.clasificar(self.a, b, common.compare(self.a, b))
+        duros, _, incompletos, _ = common.clasificar(self.a, b, common.compare(self.a, b))
         self.assertEqual(duros, ["modalidades.tradicional.premios.5"])
         self.assertEqual(incompletos, [])
+
+
+class TestMontoEnDisputa(unittest.TestCase):
+    """Regla 58: mismos números y mismos ganadores, distinto monto en una fila de premios.
+
+    Caso real: Quini 6 3427 (18/11/2026), segunda, 4 aciertos: 2460 ganadores en las dos fuentes,
+    A $5.547 y B $5.015,25. Por esa sola fila el sorteo entero quedó tres días sin confirmar, sin
+    notificación, y `scrape` en rojo cada 15 minutos.
+    """
+
+    @staticmethod
+    def sorteo(premio_cuatro):
+        return {"sorteo": 3427, "fecha": "2026-11-18",
+                "modalidades": {"segunda": {
+                    "numeros": [7, 18, 20, 26, 28, 36],
+                    "premios": [{"aciertos": 6, "ganadores": 1, "premio": 3294600472},
+                                {"aciertos": 5, "ganadores": 30, "premio": 1370834},
+                                {"aciertos": 4, "ganadores": 2460, "premio": premio_cuatro}]}},
+                "proximo": {"sorteo": 3428, "fecha": "2026-11-22", "pozo": 6900000000}}
+
+    def setUp(self):
+        self.a, self.b = self.sorteo(5547), self.sorteo(5015)
+
+    def test_no_es_conflicto_duro(self):
+        duros, _, _, montos = common.clasificar(self.a, self.b, common.compare(self.a, self.b))
+        self.assertEqual(duros, [])
+        self.assertEqual(montos, ["modalidades.segunda.premios.4"])
+
+    def test_se_confirma_sin_publicar_el_monto_dudoso(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            out, conflictos = common.build("quini6", {"A": self.a, "B": self.b})
+        self.assertEqual(conflictos, [])
+        self.assertTrue(out["validado"])
+        self.assertEqual(out["premios_en_disputa"], ["modalidades.segunda.premios.4"])
+        # ni el de A ni el de B: la app mostraría cualquiera de los dos como confirmado
+        self.assertEqual([p["aciertos"] for p in out["modalidades"]["segunda"]["premios"]], [6, 5])
+
+    def test_distintos_ganadores_sigue_siendo_duro(self):
+        b = self.sorteo(5015)
+        b["modalidades"]["segunda"]["premios"][2]["ganadores"] = 2461
+        duros, _, _, montos = common.clasificar(self.a, b, common.compare(self.a, b))
+        self.assertEqual(duros, ["modalidades.segunda.premios.4"])
+        self.assertEqual(montos, [])
+
+    def test_no_saca_una_fila_de_un_sorteo_ya_confirmado_entero(self):
+        with entorno() as tmp, contextlib.redirect_stdout(io.StringIO()):
+            bien, _ = common.build("quini6", {"A": self.a, "B": self.a})
+            common.publish("quini6", bien)
+            dudoso, _ = common.build("quini6", {"A": self.a, "B": self.b})
+            common.publish("quini6", dudoso)
+            j = common.read_json(os.path.join(tmp, "quini6", "3427.json"))
+            self.assertNotIn("premios_en_disputa", j)
+            self.assertEqual(len(j["modalidades"]["segunda"]["premios"]), 3)
+
+    def test_latest_sigue_al_archivo_cuando_cambia_el_mismo_sorteo(self):
+        # Loto Plus 3936: 3936.json se completó y latest.json se quedó con los ceros
+        with entorno() as tmp, contextlib.redirect_stdout(io.StringIO()):
+            primero, _ = common.build("quini6", {"A": self.a, "B": self.b})
+            common.publish("quini6", primero)
+            resuelto, _ = common.build("quini6", {"A": self.a, "B": self.a})
+            common.publish("quini6", resuelto)
+            latest = common.read_json(os.path.join(tmp, "quini6", "latest.json"))
+            self.assertNotIn("premios_en_disputa", latest)
+            self.assertEqual(len(latest["modalidades"]["segunda"]["premios"]), 3)

@@ -1241,3 +1241,33 @@ Pide un número D-U-N-S, que es gratis pero tarda.
 
 También quedó claro que la **prueba abierta** (link público para cualquiera) exige tener ya acceso
 a producción, así que no sirve de atajo.
+
+## Sesión 33 — 21/11/2026 · Más correos de "failed"
+
+### Regla 58 — un monto distinto con los mismos ganadores no deja el sorteo sin confirmar
+
+Quini 6 **3427** (18/11/2026), segunda, 4 aciertos: **2460 ganadores en las dos fuentes**, A $5.547
+y B $5.015,25. Los números de las cuatro modalidades eran idénticos. Por esa sola fila el sorteo
+entero quedó **tres días sin confirmar**, sin notificación, con el chip en gris, y `scrape` en rojo
+cada 15 minutos. No se pudo saber cuál de los dos montos es el bueno: el sitio de la Lotería de
+Santa Fe no devolvió el extracto y ningún diario publicó esa fila.
+
+Ahora `clasificar()` devuelve una cuarta lista, `montos`: misma fila, mismos ganadores (más de
+cero), distinto premio, ninguna vacía. El sorteo **se confirma** (lo que se cruza son los
+números) y esa fila **sale de la tabla publicada**, anotada en `premios_en_disputa`. No se
+publica la de ninguna de las dos: la app la mostraría como confirmada. El verificador lo deja
+como aviso. Si un sorteo ya estaba confirmado con la tabla entera, `publish()` no le saca la fila
+porque después una fuente cambie el monto.
+
+Esto **corrige un test de la regla 43** que decía lo contrario ("si alguien ganó esa fila, vuelve
+a ser conflicto duro"). La idea de fondo se mantiene: un monto que alguien cobra nunca se publica
+si las fuentes no coinciden. Lo que cambia es que ya no tira abajo el sorteo entero.
+
+Distintos **ganadores** sigue siendo conflicto duro.
+
+### `latest.json` no seguía al archivo del sorteo
+
+Loto Plus **3936**: la regla 56 completó bien `3936.json`, pero `latest.json` —que es lo que lee
+la app— se quedó con las cuatro filas en $0. `publish()` solo reescribía `latest.json` cuando
+llegaba un sorteo más nuevo o cuando se confirmaba. Ahora, si es el mismo sorteo y los datos
+cambiaron, también lo reescribe (`write_json` ya ignora `generado`, así que no hay commits de más).

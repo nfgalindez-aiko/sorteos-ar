@@ -222,6 +222,24 @@ def es_premio_incompleto(a, b, clave):
     return fila_vacia(fa) != fila_vacia(fb)
 
 
+def es_monto_en_disputa(a, b, clave):
+    """True si en esa fila de premios las dos fuentes dan los MISMOS ganadores (y alguno hay) pero
+    un monto distinto. Regla 58: el 18/11/2026, Quini 6 3427 segunda, 4 aciertos: 2460 ganadores
+    en las dos, A $5.547 contra B $5.015,25. Los numeros eran identicos y por esa fila el sorteo
+    entero quedo tres dias sin confirmar, sin aviso, y el job en rojo cada 15 minutos."""
+    partes = clave.split(".")
+    if len(partes) != 4 or partes[0] != "modalidades" or partes[2] != "premios":
+        return False
+    try:
+        aciertos = int(partes[3])
+    except ValueError:
+        return False
+    fa, fb = fila_premios(a, partes[1], aciertos), fila_premios(b, partes[1], aciertos)
+    if not (fa and fb) or fila_vacia(fa) or fila_vacia(fb):
+        return False
+    return fa.get("ganadores") == fb.get("ganadores") and fa.get("ganadores", 0) > 0
+
+
 def clasificar(a, b, diffs):
     """Parte las diferencias en duras y blandas (regla 43).
 
@@ -237,16 +255,23 @@ def clasificar(a, b, diffs):
     otra con datos reales. Eso no es desacuerdo, es que esa fuente no la publico. Desde fines de
     septiembre de 2026 la fuente B dejo de publicar las filas de 5 y 4 aciertos de Loto Plus y
     eso dejo 100 corridas seguidas en rojo. El dato del lado que SI lo tiene es el que vale.
+
+    Y `montos` (regla 58): misma fila, mismos ganadores, distinto monto. Lo que se cruza son los
+    numeros, y esos coinciden: el sorteo se confirma. Pero un monto que no se sabe cual es no se
+    publica: esa fila sale de la tabla y queda en `premios_en_disputa`. No se muestra la de
+    ninguna de las dos, porque la app la presentaria como confirmada.
     """
-    duros, blandos, incompletos = [], [], []
+    duros, blandos, incompletos, montos = [], [], [], []
     for k in diffs:
         if es_premio_incompleto(a, b, k):
             incompletos.append(k)
+        elif es_monto_en_disputa(a, b, k):
+            montos.append(k)
         elif es_pozo_vacante(a, b, k):
             blandos.append(k)
         else:
             duros.append(k)
-    return duros, blandos, incompletos
+    return duros, blandos, incompletos, montos
 
 
 def merge(a, b):
@@ -289,9 +314,12 @@ def build(juego, res):
     a, b = res.get("A", {}), res.get("B", {})
     ok_a, ok_b = "error" not in a, "error" not in b
     conflictos = []
-    blandos, incompletos = [], []
+    blandos, incompletos, montos = [], [], []
     if ok_a and ok_b and a.get("sorteo") == b.get("sorteo"):
-        conflictos, blandos, incompletos = clasificar(a, b, compare(a, b))
+        conflictos, blandos, incompletos, montos = clasificar(a, b, compare(a, b))
+        if montos:
+            log(f"{juego} MONTO EN DISPUTA {montos}: mismos numeros y ganadores, distinto premio; "
+                f"el sorteo se confirma y esa fila no se publica hasta que coincidan")
         if blandos:
             log(f"{juego} POZO VACANTE en disputa {blandos}: nadie gano esa fila, cada fuente "
                 f"publica su propia cifra; no invalida el sorteo")
@@ -319,6 +347,11 @@ def build(juego, res):
         out["pozos_en_disputa"] = blandos
     if incompletos:
         out["premios_incompletos"] = incompletos
+    if montos:
+        quitar = {(k.split(".")[1], int(k.split(".")[3])) for k in montos}
+        for mod, d in out.get("modalidades", {}).items():
+            d["premios"] = [p for p in d.get("premios", []) if (mod, p.get("aciertos")) not in quitar]
+        out["premios_en_disputa"] = montos
     out["generado"] = now_art()
     return out, conflictos
 
@@ -443,7 +476,15 @@ def publish(juego, out, force_latest=False):
             # guarda los dejo afuera y la app mostro $0 en premios que se pagaron. Rellenar filas
             # vacias es una mejora, no una degradacion.
             completa = vacias(prev) > vacias(out)
-            if prev.get("validado") and not out["validado"] and not completa:
+            # Regla 58: si ya estaba confirmado con la tabla entera, que una fuente cambie despues
+            # un monto no saca esa fila de lo publicado.
+            pierde = (prev.get("validado") and not prev.get("premios_en_disputa")
+                      and out.get("premios_en_disputa"))
+            if pierde:
+                log(f"PUBLISH {juego}: el sorteo {out['sorteo']} ya estaba confirmado con todos los "
+                    f"premios, no saco {out['premios_en_disputa']}")
+                out = prev
+            elif prev.get("validado") and not out["validado"] and not completa:
                 log(f"PUBLISH {juego}: el sorteo {out['sorteo']} ya estaba confirmado, no lo degrado")
                 out = prev
             elif completa:
@@ -467,6 +508,13 @@ def publish(juego, out, force_latest=False):
             f"({'2 fuentes' if out['validado'] else '1 fuente'})")
         if out["validado"]:
             registrar_novedad(juego, out)
+    elif out["sorteo"] == prev_sorteo and write_json(latest, out):
+        # Mismo sorteo que ya estaba, con datos que cambiaron (filas de premios que se
+        # completaron, regla 56, o un monto en disputa que se resolvio, regla 58). Antes latest.json
+        # solo se tocaba al confirmar, y el 18/11/2026 el Loto Plus 3936 quedo bien en 3936.json y
+        # con $0 en latest.json, que es lo que lee la app.
+        updated = True
+        log(f"PUBLISH {juego}: latest.json se actualiza con los datos nuevos del sorteo {out['sorteo']}")
     else:
         log(f"PUBLISH {juego}: latest.json queda en el sorteo {prev_sorteo}")
     rebuild_index(juego)
