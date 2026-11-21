@@ -30,6 +30,12 @@
           "hora": "18:00",
           "cabeza": "9080",
           "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "6401",
+          "validado": false
         }
       ]
     },
@@ -62,6 +68,12 @@
           "hora": "18:00",
           "cabeza": "4172",
           "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "6282",
+          "validado": false
         }
       ]
     },
@@ -94,6 +106,12 @@
           "hora": "18:00",
           "cabeza": "7027",
           "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "3876",
+          "validado": false
         }
       ]
     },
@@ -126,6 +144,12 @@
           "hora": "18:00",
           "cabeza": "9682",
           "validado": true
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "0508",
+          "validado": false
         }
       ]
     },
@@ -172,6 +196,12 @@
           "hora": "18:00",
           "cabeza": "4168",
           "validado": false
+        },
+        {
+          "turno": "nocturna",
+          "hora": "21:00",
+          "cabeza": "2264",
+          "validado": false
         }
       ]
     },
@@ -208,5 +238,5 @@
       ]
     }
   ],
-  "generado": "2026-11-20T18:45:22-03:00"
+  "generado": "2026-11-20T21:15:32-03:00"
 }
