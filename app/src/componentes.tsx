@@ -5,8 +5,10 @@ import { Espacio, Paleta, Radio, useTema } from "./design";
 import { cuentaRegresiva, dosDigitos, entero, pesos } from "./formato";
 import { DISCLAIMER, PremioFila } from "./modelos";
 
-export function Bolilla({ numero, paleta, resaltada = false, tamano: base = 44 }: { numero: number; paleta: Paleta; resaltada?: boolean; tamano?: number }) {
-  const tamano = base * useEscala(); // crece con la letra grande, hasta 1,5×
+export function Bolilla({ numero, paleta, resaltada = false, tamano: base = 44, tope }: { numero: number; paleta: Paleta; resaltada?: boolean; tamano?: number; tope?: number }) {
+  const esc = useEscala();
+  // crece con la letra grande, hasta 1,25×, pero nunca más que `tope` (el lugar que le toca en la fila)
+  const tamano = tope ? Math.min(base * esc, tope) : base * esc;
   return (
     <View
       accessible
@@ -22,8 +24,9 @@ export function Bolilla({ numero, paleta, resaltada = false, tamano: base = 44 }
         borderColor: resaltada ? paleta.primario : "transparent",
       }}
     >
+      {/* el Text propio ya multiplica por la escala: se divide para que el número acompañe a la bolilla */}
       <Text
-        style={{ color: paleta.textoBolilla, fontWeight: "800", fontSize: base * 0.42, fontVariant: ["tabular-nums"] }}
+        style={{ color: paleta.textoBolilla, fontWeight: "800", fontSize: (tamano * 0.42) / esc, fontVariant: ["tabular-nums"] }}
       >
         {dosDigitos(numero)}
       </Text>
@@ -31,21 +34,25 @@ export function Bolilla({ numero, paleta, resaltada = false, tamano: base = 44 }
   );
 }
 
-/** Fila de 6 bolillas. VoiceOver la lee como un solo elemento: "Tradicional: 2, 16, 20, 21, 22, 38". */
+/** Fila de bolillas. VoiceOver la lee como un solo elemento: "Tradicional: 2, 16, 20, 21, 22, 38".
+ *  Con letra grande las 6 bolillas no entraban en el ancho de la tarjeta y la última caía sola a
+ *  otra línea. Ahora se mide la fila y cada bolilla se achica lo justo para que entren todas juntas. */
 export function FilaBolillas({ titulo, numeros, paleta, resaltados = [] }: { titulo: string; numeros: number[]; paleta: Paleta; resaltados?: number[] }) {
+  const [ancho, setAncho] = useState(0);
+  const tope = ancho && numeros.length <= 8 ? Math.floor((ancho - Espacio.s * (numeros.length - 1)) / numeros.length) : undefined;
   return (
     <View accessible accessibilityLabel={`${titulo}: ${numeros.join(", ")}`} style={{ gap: Espacio.s }}>
       <Text style={{ color: paleta.primario, fontWeight: "600", fontSize: 14 }}>{titulo}</Text>
-      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: Espacio.s }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: Espacio.s }} onLayout={(e) => setAncho(e.nativeEvent.layout.width)}>
         {numeros.map((n) => (
-          <Bolilla key={n} numero={n} paleta={paleta} resaltada={resaltados.includes(n)} />
+          <Bolilla key={n} numero={n} paleta={paleta} resaltada={resaltados.includes(n)} tope={tope} />
         ))}
       </View>
     </View>
   );
 }
 
-export function PremiosTabla({ premios }: { premios: PremioFila[] }) {
+export function PremiosTabla({ premios, enDisputa = [] }: { premios: PremioFila[]; enDisputa?: number[] }) {
   const t = useTema();
   // Aciertos es corto, Premio es largo: anchos 0,7 / 1 / 1,6 y Ganadores centrada
   const ANCHO = { left: 0.7, center: 1, right: 1.6 } as const;
@@ -71,6 +78,14 @@ export function PremiosTabla({ premios }: { premios: PremioFila[] }) {
           {col(String(f.aciertos), "left")}
           {col(f.ganadores === 0 ? "Vacante" : entero(f.ganadores), "center")}
           {col(pesos(f.premio), "right")}
+        </View>
+      ))}
+      {enDisputa.map((a) => (
+        // las fuentes no coinciden en el monto: no se muestra ninguno de los dos
+        <View key={`d${a}`} style={{ flexDirection: "row" }} accessible accessibilityLabel={`${a} aciertos, monto a confirmar con el extracto oficial`}>
+          {col(String(a), "left")}
+          {col("—", "center")}
+          {col("A confirmar", "right")}
         </View>
       ))}
     </View>

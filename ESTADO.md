@@ -1271,3 +1271,13 @@ Loto Plus **3936**: la regla 56 completó bien `3936.json`, pero `latest.json` �
 la app— se quedó con las cuatro filas en $0. `publish()` solo reescribía `latest.json` cuando
 llegaba un sorteo más nuevo o cuando se confirmaba. Ahora, si es el mismo sorteo y los datos
 cambiaron, también lo reescribe (`write_json` ya ignora `generado`, así que no hay commits de más).
+
+### Jugadas con letra grande, y varias en el mismo juego
+
+Varias jugadas por juego y "Repetir" ya existían desde septiembre; lo que fallaba era cómo se
+veían. Con la letra al 125% las 6 bolillas medían ~370 px y la tarjeta deja ~310: la última caía
+sola a otra línea. `FilaBolillas` ahora mide la fila y achica cada bolilla lo justo para que entren
+las seis. En control, cada jugada sin nombre se numera ("Jugada 1", "Jugada 2", también en la
+portada), y "Repetir"/"Borrar" pasaron de texto chico en una esquina a botones: "Jugarla de nuevo"
+en las que ya se sortearon, "Copiar jugada" en las pendientes. La tabla de premios muestra las
+filas de la regla 58 como "A confirmar".

@@ -18,6 +18,17 @@ export interface Sorteo {
   validado: boolean;
   fuentes: string[];
   generado: string;
+  /** Filas que las fuentes dan con los mismos ganadores y distinto monto: no se publican hasta que
+   *  coincidan. Formato "modalidades.<mod>.premios.<aciertos>" (regla 58 del backend). */
+  premios_en_disputa?: string[];
+}
+
+/** Aciertos de la modalidad `mod` cuyo monto todavía no coincide entre las fuentes. */
+export function enDisputa(s: Sorteo, mod: string): number[] {
+  return (s.premios_en_disputa ?? [])
+    .map((k) => k.split("."))
+    .filter((p) => p.length === 4 && p[1] === mod)
+    .map((p) => Number(p[3]));
 }
 
 export interface Poceada {

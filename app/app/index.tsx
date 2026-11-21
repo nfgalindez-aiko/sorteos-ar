@@ -228,14 +228,14 @@ function JugadasEnCurso({ juego, ultimo, paleta }: { juego: JuegoId; ultimo: Sor
   if (vigentes.length === 0) return null;
   return (
     <View style={{ gap: Espacio.xs, marginTop: Espacio.xs, paddingTop: Espacio.s, borderTopWidth: 1, borderTopColor: t.borde }}>
-      {vigentes.slice(0, 3).map((j) => {
+      {vigentes.slice(0, 3).map((j, i) => {
         const paraProximo = j.objetivo != null && j.objetivo > ultimo.sorteo;
         const hits = paraProximo ? [] : Array.from(new Set(Object.values(aciertos(j, ultimo)).flat()));
         const etiqueta = j.objetivo == null ? "la jugás siempre" : paraProximo ? `para el sorteo ${j.objetivo}` : `sorteo ${j.objetivo}`;
         return (
           <View key={j.id} accessible accessibilityLabel={`Tu jugada ${j.nombre || ""}: ${j.numeros.join(", ")}, ${etiqueta}`}>
             <Text style={{ color: t.textoSec, fontSize: 12 }}>
-              Tu jugada{j.nombre ? ` "${j.nombre}"` : ""} · {etiqueta}
+              {j.nombre ? `Tu jugada "${j.nombre}"` : vigentes.length > 1 ? `Jugada ${i + 1}` : "Tu jugada"} · {etiqueta}
             </Text>
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: 2 }}>
               {j.numeros.map((n) => (

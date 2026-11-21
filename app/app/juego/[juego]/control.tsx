@@ -99,15 +99,15 @@ function Cuerpo({ juego }: { juego: JuegoId }) {
 
         {vigentes.length === 0 && anteriores.length === 0 && <Vacio texto="No hay jugadas guardadas. Tocá ＋ para cargar tus 6 números." />}
 
-        {vigentes.map((j) => (
-          <FilaJugada key={j.id} jugada={j} estado={estadoDe(j, ultimo)} ultimo={ultimo} juego={juego} onBorrar={() => js.borrar(j.id)} onRepetir={() => setAlta({ numeros: j.numeros, nombre: j.nombre })} />
+        {vigentes.map((j, i) => (
+          <FilaJugada key={j.id} jugada={j} numero={vigentes.length > 1 ? i + 1 : null} estado={estadoDe(j, ultimo)} ultimo={ultimo} juego={juego} onBorrar={() => js.borrar(j.id)} onRepetir={() => setAlta({ numeros: j.numeros, nombre: j.nombre })} />
         ))}
 
         {anteriores.length > 0 && (
           <>
             <Text style={{ color: t.textoSec, fontSize: 12, fontWeight: "600", textTransform: "uppercase", letterSpacing: 0.5, marginTop: Espacio.s }}>Anteriores</Text>
             {anteriores.map((j) => (
-              <FilaJugada key={j.id} jugada={j} estado={estadoDe(j, ultimo)} ultimo={ultimo} juego={juego} onBorrar={() => js.borrar(j.id)} onRepetir={() => setAlta({ numeros: j.numeros, nombre: j.nombre })} />
+              <FilaJugada key={j.id} jugada={j} numero={null} estado={estadoDe(j, ultimo)} ultimo={ultimo} juego={juego} onBorrar={() => js.borrar(j.id)} onRepetir={() => setAlta({ numeros: j.numeros, nombre: j.nombre })} />
             ))}
           </>
         )}
@@ -131,7 +131,7 @@ function Cuerpo({ juego }: { juego: JuegoId }) {
   );
 }
 
-function FilaJugada({ jugada, estado, ultimo, juego, onBorrar, onRepetir }: { jugada: Jugada; estado: Estado; ultimo?: Sorteo; juego: JuegoId; onBorrar: () => void; onRepetir: () => void }) {
+function FilaJugada({ jugada, numero, estado, ultimo, juego, onBorrar, onRepetir }: { jugada: Jugada; numero: number | null; estado: Estado; ultimo?: Sorteo; juego: JuegoId; onBorrar: () => void; onRepetir: () => void }) {
   const t = useTema();
   const p = usePaleta(juego);
   const meta = JUEGOS[juego];
@@ -141,7 +141,7 @@ function FilaJugada({ jugada, estado, ultimo, juego, onBorrar, onRepetir }: { ju
   let hits: Record<string, number[]> | null = null;
   let modalidades: string[] = [];
   if (estado.tipo === "siempre") {
-    titulo = ultimo ? `Contra el sorteo ${ultimo.sorteo} del ${fechaCorta(ultimo.fecha)} · la jugás siempre` : "La jugás siempre";
+    titulo = ultimo ? `La jugás siempre · comparada con el sorteo ${ultimo.sorteo} del ${fechaCorta(ultimo.fecha)}` : "La jugás siempre";
     if (ultimo) {
       hits = aciertos(jugada, ultimo);
       modalidades = meta.modalidades.filter((m) => ultimo.modalidades[m]);
@@ -155,40 +155,43 @@ function FilaJugada({ jugada, estado, ultimo, juego, onBorrar, onRepetir }: { ju
   }
   const todos = hits ? Array.from(new Set(Object.values(hits).flat())) : [];
   const mejor = hits ? Math.max(0, ...Object.values(hits).map((h) => h.length)) : 0;
+  // Con dos jugadas sin nombre en el mismo juego, "Jugada" y "Jugada" no se distinguen.
+  const nombre = jugada.nombre || (numero ? `Jugada ${numero}` : "Jugada");
+  const borrar = () =>
+    Alert.alert(`¿Borrar ${jugada.nombre ? `"${jugada.nombre}"` : "esta jugada"}?`, jugada.numeros.map(dosDigitos).join(" · "), [
+      { text: "Cancelar", style: "cancel" },
+      { text: "Borrar", style: "destructive", onPress: onBorrar },
+    ]);
 
   return (
     <Tarjeta style={{ gap: Espacio.s, opacity: estado.tipo === "resuelta" ? 0.92 : 1 }}>
-      <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-        <Text style={{ color: t.texto, fontWeight: "600", fontSize: 16 }}>{jugada.nombre || "Jugada"}</Text>
-        <View style={{ flexDirection: "row", gap: Espacio.m }}>
-          <Pressable onPress={onRepetir} accessibilityLabel="Repetir esta jugada para el próximo sorteo" hitSlop={12}>
-            <Text style={{ color: p.primario, fontSize: 13, fontWeight: "600" }}>Repetir</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => Alert.alert("¿Borrar esta jugada?", undefined, [{ text: "Cancelar", style: "cancel" }, { text: "Borrar", style: "destructive", onPress: onBorrar }])}
-            accessibilityLabel="Borrar jugada"
-            hitSlop={12}
-          >
-            <Text style={{ color: t.textoSec, fontSize: 13 }}>Borrar</Text>
-          </Pressable>
-        </View>
+      <View style={{ gap: 2 }}>
+        <Text style={{ color: t.texto, fontWeight: "700", fontSize: 17 }}>{nombre}</Text>
+        <Text style={{ color: t.textoSec, fontSize: 13 }}>{titulo}</Text>
       </View>
-      <Text style={{ color: t.textoSec, fontSize: 12 }}>{titulo}</Text>
       <FilaBolillas titulo="Tus números" numeros={jugada.numeros} paleta={p} resaltados={todos} />
       {hits &&
         modalidades.map((clave) => {
           const h = hits![clave] ?? [];
           const fuerte = h.length >= 4;
           return (
-            <View key={clave} style={{ flexDirection: "row", justifyContent: "space-between" }} accessible>
-              <Text style={{ color: t.texto, fontSize: 14 }}>{nombreModalidad(clave)}</Text>
-              <Text style={{ color: fuerte ? p.primario : t.textoSec, fontWeight: fuerte ? "700" : "400", fontSize: 14 }}>
+            // con letra grande el resultado baja a otra línea en vez de pisar el nombre
+            <View key={clave} style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", columnGap: Espacio.s }} accessible>
+              <Text style={{ color: t.texto, fontSize: 15 }}>{nombreModalidad(clave)}</Text>
+              <Text style={{ color: fuerte ? p.primario : t.textoSec, fontWeight: fuerte ? "700" : "400", fontSize: 15 }}>
                 {h.length === 0 ? "0 aciertos" : `${h.length} ${h.length === 1 ? "acierto" : "aciertos"}: ${h.join(", ")}`}
               </Text>
             </View>
           );
         })}
       {estado.tipo === "resuelta" && mejor >= 4 && <Chip texto={`Mejor: ${mejor} aciertos. Verificá con el extracto oficial.`} color={p.primario} />}
+      {/* Botones de verdad, no texto chico en una esquina: es lo que más se toca de esta pantalla */}
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: Espacio.s, marginTop: Espacio.xs }}>
+        {estado.tipo !== "siempre" && (
+          <Boton titulo={estado.tipo === "resuelta" ? "Jugarla de nuevo" : "Copiar jugada"} color={p.primario} onPress={onRepetir} />
+        )}
+        <Boton titulo="Borrar" color={t.textoSec} onPress={borrar} />
+      </View>
     </Tarjeta>
   );
 }
@@ -235,7 +238,9 @@ function NuevaJugada({ visible, juego, proximoSorteo, inicial, onCerrar, onGuard
           <Pressable onPress={cerrar} hitSlop={12} accessibilityRole="button">
             <Text style={{ color: p.primario, fontSize: 16 }}>Cancelar</Text>
           </Pressable>
-          <Text style={{ color: t.texto, fontWeight: "600", fontSize: 16 }}>Nueva jugada · {meta.nombre}</Text>
+          <Text numberOfLines={1} style={{ flex: 1, textAlign: "center", marginHorizontal: Espacio.s, color: t.texto, fontWeight: "600", fontSize: 16 }}>
+            {inicial?.numeros ? "Jugar de nuevo" : "Nueva jugada"} · {meta.nombre}
+          </Text>
           <Pressable onPress={guardar} disabled={sel.length !== 6} hitSlop={12} accessibilityRole="button">
             <Text style={{ color: p.primario, fontSize: 16, fontWeight: "700", opacity: sel.length === 6 ? 1 : 0.4 }}>Guardar</Text>
           </Pressable>

@@ -6,7 +6,7 @@ import { ChipFuentes, CuentaRegresiva, FilaBolillas, PremiosTabla, Tarjeta } fro
 import { BotonCompartir, textoSorteo } from "./compartir";
 import { Espacio, usePaleta, useTema } from "./design";
 import { entero, fechaLarga, instanteSorteo, pesos } from "./formato";
-import { JUEGOS, JuegoId, Sorteo, modalidadesOrdenadas, nombreModalidad } from "./modelos";
+import { JUEGOS, JuegoId, Sorteo, enDisputa, modalidadesOrdenadas, nombreModalidad } from "./modelos";
 
 export function SorteoDetalle({ juego, sorteo }: { juego: JuegoId; sorteo: Sorteo }) {
   const t = useTema();
@@ -32,7 +32,7 @@ export function SorteoDetalle({ juego, sorteo }: { juego: JuegoId; sorteo: Sorte
         <Tarjeta key={clave} fondo={p.fondoTarjeta}>
           <View style={{ gap: Espacio.s }}>
             <FilaBolillas titulo={nombreModalidad(clave)} numeros={modalidad.numeros} paleta={p} />
-            <PremiosTabla premios={modalidad.premios} />
+            <PremiosTabla premios={modalidad.premios} enDisputa={enDisputa(sorteo, clave)} />
           </View>
         </Tarjeta>
       ))}
