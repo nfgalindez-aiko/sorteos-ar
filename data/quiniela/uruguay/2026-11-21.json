@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "uruguay",
+  "nombre": "Montevideo (Uruguay)",
+  "digitos": 3,
+  "fecha": "2026-11-21",
+  "turnos": [
+    {
+      "turno": "nocturna",
+      "hora": "21:00",
+      "numeros": [
+        "318",
+        "528",
+        "475",
+        "740",
+        "172",
+        "906",
+        "244",
+        "041",
+        "246",
+        "667",
+        "996",
+        "370",
+        "381",
+        "462",
+        "127",
+        "234",
+        "342",
+        "121",
+        "801",
+        "642"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-21T21:20:40-03:00"
+}
