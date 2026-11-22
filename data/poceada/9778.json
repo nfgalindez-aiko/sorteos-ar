@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9778,
+  "fecha": "2026-11-21",
+  "numeros": [
+    "06",
+    "09",
+    "11",
+    "12",
+    "14",
+    "15",
+    "28",
+    "31",
+    "34",
+    "38",
+    "45",
+    "51",
+    "67",
+    "68",
+    "69",
+    "74",
+    "75",
+    "83",
+    "86",
+    "87"
+  ],
+  "letras": "OBRX",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 893418669
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 5,
+      "premio": 731150
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 18,
+      "premio": 118473
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 303,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9779,
+    "fecha": "2026-11-23",
+    "pozo": 917400000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-11-21T21:25:40-03:00"
+}
