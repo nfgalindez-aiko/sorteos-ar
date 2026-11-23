@@ -1,6 +1,12 @@
 {
   "novedades": [
     {
+      "juego": "brinco",
+      "sorteo": 1381,
+      "fecha": "2026-11-22",
+      "validado_en": "2026-11-22T21:10:17-03:00"
+    },
+    {
       "juego": "lotoplus",
       "sorteo": 3937,
       "fecha": "2026-11-21",
@@ -293,13 +299,7 @@
       "sorteo": 9751,
       "fecha": "2026-10-21",
       "validado_en": "2026-10-21T21:30:38-03:00"
-    },
-    {
-      "juego": "poceada",
-      "sorteo": 9750,
-      "fecha": "2026-10-20",
-      "validado_en": "2026-10-20T21:45:44-03:00"
     }
   ],
-  "generado": "2026-11-21T22:35:38-03:00"
+  "generado": "2026-11-22T21:10:17-03:00"
 }

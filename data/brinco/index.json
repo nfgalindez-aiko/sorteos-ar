@@ -2,6 +2,11 @@
   "juego": "brinco",
   "sorteos": [
     {
+      "sorteo": 1381,
+      "fecha": "2026-11-22",
+      "validado": true
+    },
+    {
       "sorteo": 1380,
       "fecha": "2026-11-15",
       "validado": true
@@ -57,5 +62,5 @@
       "validado": true
     }
   ],
-  "generado": "2026-11-15T21:10:54-03:00"
+  "generado": "2026-11-22T21:10:18-03:00"
 }

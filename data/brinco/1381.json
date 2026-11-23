@@ -1,0 +1,68 @@
+{
+  "juego": "brinco",
+  "sorteo": 1381,
+  "fecha": "2026-11-22",
+  "modalidades": {
+    "tradicional": {
+      "numeros": [
+        6,
+        26,
+        31,
+        34,
+        35,
+        39
+      ],
+      "premios": [
+        {
+          "aciertos": 6,
+          "ganadores": 0,
+          "premio": 756241862
+        },
+        {
+          "aciertos": 5,
+          "ganadores": 2,
+          "premio": 3386006
+        },
+        {
+          "aciertos": 4,
+          "ganadores": 162,
+          "premio": 13794
+        },
+        {
+          "aciertos": 3,
+          "ganadores": 2980,
+          "premio": 1500
+        }
+      ]
+    },
+    "junior": {
+      "numeros": [
+        1,
+        7,
+        16,
+        22,
+        29,
+        30
+      ],
+      "premios": [
+        {
+          "aciertos": 5,
+          "ganadores": 18,
+          "premio": 1880524
+        }
+      ]
+    }
+  },
+  "pozo_extra": null,
+  "proximo": {
+    "sorteo": 1382,
+    "fecha": "2026-11-29",
+    "pozo": 850000000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "B"
+  ],
+  "generado": "2026-11-22T21:10:17-03:00"
+}
