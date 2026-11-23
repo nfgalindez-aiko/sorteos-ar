@@ -21,12 +21,12 @@
         {
           "aciertos": 5,
           "ganadores": 54,
-          "premio": 10002611
+          "premio": 1002611
         },
         {
           "aciertos": 4,
           "ganadores": 2084,
-          "premio": 7723
+          "premio": 7793
         }
       ]
     },
@@ -101,9 +101,10 @@
     "fecha": "2026-11-25",
     "pozo": 7500000000
   },
-  "validado": false,
+  "validado": true,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-11-22T21:30:17-03:00"
+  "generado": "2026-11-22T21:35:15-03:00"
 }
