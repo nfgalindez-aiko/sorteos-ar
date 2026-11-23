@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-23",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "4413",
+        "6021",
+        "4501",
+        "5969",
+        "4712",
+        "0734",
+        "2953",
+        "9016",
+        "0194",
+        "1463",
+        "8638",
+        "9713",
+        "5542",
+        "6465",
+        "1386",
+        "2019",
+        "4061",
+        "8562",
+        "3776",
+        "6835"
+      ],
+      "letras": "BFRW",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-23T10:30:20-03:00"
+}
