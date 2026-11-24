@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9778,
-  "fecha": "2026-11-21",
+  "sorteo": 9779,
+  "fecha": "2026-11-23",
   "numeros": [
-    "06",
-    "09",
-    "11",
+    "00",
+    "04",
+    "05",
+    "08",
     "12",
-    "14",
-    "15",
+    "17",
+    "22",
+    "24",
+    "27",
     "28",
-    "31",
-    "34",
-    "38",
-    "45",
-    "51",
-    "67",
-    "68",
-    "69",
-    "74",
-    "75",
-    "83",
-    "86",
-    "87"
+    "29",
+    "36",
+    "42",
+    "50",
+    "56",
+    "61",
+    "76",
+    "80",
+    "82",
+    "89"
   ],
-  "letras": "OBRX",
+  "letras": "UBRZ",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 893418669
+      "premio": 903044220
     },
     {
       "aciertos": 7,
-      "ganadores": 5,
-      "premio": 731150
+      "ganadores": 1,
+      "premio": 2290685
     },
     {
       "aciertos": 6,
-      "ganadores": 18,
-      "premio": 118473
+      "ganadores": 32,
+      "premio": 41757
     },
     {
       "aciertos": 5,
-      "ganadores": 303,
+      "ganadores": 284,
       "premio": 1700
     }
   ],
   "proximo": {
-    "sorteo": 9779,
-    "fecha": "2026-11-23",
-    "pozo": 917400000
+    "sorteo": 9780,
+    "fecha": "2026-11-24",
+    "pozo": 918100000
   },
   "validado": true,
   "fuentes": [
     "A",
     "ciudad-nocturna(A+B)"
   ],
-  "generado": "2026-11-21T21:45:39-03:00"
+  "generado": "2026-11-23T21:30:20-03:00"
 }
