@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "mendoza",
+  "nombre": "Mendoza",
+  "digitos": 4,
+  "fecha": "2026-11-24",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "5761",
+        "5029",
+        "9729",
+        "1270",
+        "3607",
+        "1153",
+        "3355",
+        "5491",
+        "3047",
+        "1391",
+        "4479",
+        "2020",
+        "1048",
+        "2465",
+        "7814",
+        "0504",
+        "3203",
+        "1565",
+        "3588",
+        "5258"
+      ],
+      "letras": null,
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-24T10:30:42-03:00"
+}

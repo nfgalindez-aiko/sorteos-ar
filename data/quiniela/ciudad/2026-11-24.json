@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-24",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "7570",
+        "3018",
+        "6580",
+        "5034",
+        "7216",
+        "3840",
+        "5533",
+        "7917",
+        "6522",
+        "0047",
+        "7610",
+        "3422",
+        "0620",
+        "3244",
+        "1885",
+        "3531",
+        "7071",
+        "4692",
+        "6582",
+        "8328"
+      ],
+      "letras": "OLPT",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-24T10:30:40-03:00"
+}
