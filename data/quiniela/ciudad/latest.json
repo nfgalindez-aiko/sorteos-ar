@@ -93,10 +93,11 @@
         "3579",
         "6617"
       ],
-      "letras": "EDXX",
-      "validado": false,
+      "letras": "EWXX",
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -105,5 +106,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-11-24T15:15:41-03:00"
+  "generado": "2026-11-24T15:30:41-03:00"
 }
