@@ -62,15 +62,17 @@
         "5969"
       ],
       "letras": "EKSZ",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-11-25T12:15:37-03:00"
+  "generado": "2026-11-25T12:30:39-03:00"
 }
