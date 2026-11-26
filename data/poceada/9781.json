@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9781,
+  "fecha": "2026-11-25",
+  "numeros": [
+    "03",
+    "16",
+    "21",
+    "25",
+    "27",
+    "37",
+    "42",
+    "46",
+    "47",
+    "51",
+    "72",
+    "74",
+    "75",
+    "76",
+    "78",
+    "80",
+    "85",
+    "95",
+    "97",
+    "98"
+  ],
+  "letras": "AUBS",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 933092013
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 3388154
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 17,
+      "premio": 116260
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 164,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9782,
+    "fecha": "2026-11-26",
+    "pozo": 955300000
+  },
+  "validado": true,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna(A+B)"
+  ],
+  "generado": "2026-11-25T21:36:09-03:00"
+}
