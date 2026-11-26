@@ -2,6 +2,11 @@
   "juego": "quini6",
   "sorteos": [
     {
+      "sorteo": 3429,
+      "fecha": "2026-11-25",
+      "validado": true
+    },
+    {
       "sorteo": 3428,
       "fecha": "2026-11-22",
       "validado": true
@@ -362,5 +367,5 @@
       "validado": false
     }
   ],
-  "generado": "2026-11-22T21:35:15-03:00"
+  "generado": "2026-11-25T21:31:08-03:00"
 }
