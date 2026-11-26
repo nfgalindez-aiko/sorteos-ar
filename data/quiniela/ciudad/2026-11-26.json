@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-26",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "0257",
+        "0924",
+        "6138",
+        "6625",
+        "4258",
+        "4915",
+        "3010",
+        "7025",
+        "6699",
+        "0148",
+        "9822",
+        "5087",
+        "1714",
+        "8787",
+        "9456",
+        "0637",
+        "9530",
+        "2596",
+        "5932",
+        "2516"
+      ],
+      "letras": "JMPQ",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-26T10:31:13-03:00"
+}
