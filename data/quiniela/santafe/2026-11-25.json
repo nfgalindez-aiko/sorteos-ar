@@ -158,9 +158,10 @@
         "7637"
       ],
       "letras": null,
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
@@ -169,5 +170,5 @@
     "A",
     "B"
   ],
-  "generado": "2026-11-25T22:16:08-03:00"
+  "generado": "2026-11-25T22:31:09-03:00"
 }
