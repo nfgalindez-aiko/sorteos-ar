@@ -1,6 +1,12 @@
 {
   "novedades": [
     {
+      "juego": "poceada",
+      "sorteo": 9782,
+      "fecha": "2026-11-26",
+      "validado_en": "2026-11-26T21:46:11-03:00"
+    },
+    {
       "juego": "lotoplus",
       "sorteo": 3938,
       "fecha": "2026-11-25",
@@ -293,13 +299,7 @@
       "sorteo": 1377,
       "fecha": "2026-10-25",
       "validado_en": "2026-10-25T21:10:11-03:00"
-    },
-    {
-      "juego": "lotoplus",
-      "sorteo": 3929,
-      "fecha": "2026-10-24",
-      "validado_en": "2026-10-24T22:30:13-03:00"
     }
   ],
-  "generado": "2026-11-25T22:31:07-03:00"
+  "generado": "2026-11-26T21:46:11-03:00"
 }
