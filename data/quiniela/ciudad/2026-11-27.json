@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-27",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "6211",
+        "2400",
+        "9527",
+        "3150",
+        "6490",
+        "6778",
+        "0453",
+        "7240",
+        "3459",
+        "9281",
+        "8028",
+        "9022",
+        "6665",
+        "5751",
+        "3673",
+        "3563",
+        "6625",
+        "4718",
+        "4834",
+        "2853"
+      ],
+      "letras": "UJRZ",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-27T10:30:54-03:00"
+}
