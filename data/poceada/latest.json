@@ -1,61 +1,61 @@
 {
   "juego": "poceada",
-  "sorteo": 9781,
-  "fecha": "2026-11-25",
+  "sorteo": 9782,
+  "fecha": "2026-11-26",
   "numeros": [
-    "03",
-    "16",
-    "21",
-    "25",
-    "27",
+    "08",
+    "11",
+    "14",
+    "15",
+    "17",
+    "23",
+    "28",
+    "33",
     "37",
-    "42",
+    "38",
     "46",
-    "47",
-    "51",
-    "72",
-    "74",
-    "75",
-    "76",
+    "58",
+    "68",
+    "77",
     "78",
-    "80",
+    "83",
     "85",
-    "95",
-    "97",
+    "87",
+    "91",
     "98"
   ],
-  "letras": "AUBS",
+  "letras": "ECNZ",
   "premios": [
     {
       "aciertos": 8,
       "ganadores": 0,
-      "premio": 933092013
+      "premio": 0
     },
     {
       "aciertos": 7,
-      "ganadores": 1,
-      "premio": 3388154
+      "ganadores": 0,
+      "premio": 0
     },
     {
       "aciertos": 6,
-      "ganadores": 17,
-      "premio": 116260
+      "ganadores": 0,
+      "premio": 0
     },
     {
       "aciertos": 5,
-      "ganadores": 164,
-      "premio": 1700
+      "ganadores": 0,
+      "premio": 0
     }
   ],
   "proximo": {
-    "sorteo": 9782,
-    "fecha": "2026-11-26",
-    "pozo": 955300000
+    "sorteo": 9783,
+    "fecha": "2026-11-27",
+    "pozo": 0
   },
-  "validado": true,
+  "validado": false,
   "fuentes": [
     "A",
-    "ciudad-nocturna(A+B)"
+    "ciudad-nocturna"
   ],
-  "generado": "2026-11-25T21:36:09-03:00"
+  "generado": "2026-11-26T21:31:09-03:00"
 }

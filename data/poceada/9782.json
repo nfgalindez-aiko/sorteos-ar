@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9782,
+  "fecha": "2026-11-26",
+  "numeros": [
+    "08",
+    "11",
+    "14",
+    "15",
+    "17",
+    "23",
+    "28",
+    "33",
+    "37",
+    "38",
+    "46",
+    "58",
+    "68",
+    "77",
+    "78",
+    "83",
+    "85",
+    "87",
+    "91",
+    "98"
+  ],
+  "letras": "ECNZ",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 0,
+      "premio": 0
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 0,
+      "premio": 0
+    }
+  ],
+  "proximo": {
+    "sorteo": 9783,
+    "fecha": "2026-11-27",
+    "pozo": 0
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-11-26T21:31:09-03:00"
+}
