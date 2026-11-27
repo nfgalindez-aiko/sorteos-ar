@@ -62,15 +62,17 @@
         "0245"
       ],
       "letras": "AUKP",
-      "validado": false,
+      "validado": true,
       "fuentes": [
-        "A"
+        "A",
+        "B"
       ]
     }
   ],
   "validado": false,
   "fuentes": [
-    "A"
+    "A",
+    "B"
   ],
-  "generado": "2026-11-27T12:15:54-03:00"
+  "generado": "2026-11-27T12:30:52-03:00"
 }
