@@ -1,0 +1,61 @@
+{
+  "juego": "poceada",
+  "sorteo": 9783,
+  "fecha": "2026-11-27",
+  "numeros": [
+    "06",
+    "10",
+    "18",
+    "19",
+    "23",
+    "25",
+    "30",
+    "31",
+    "37",
+    "44",
+    "48",
+    "55",
+    "59",
+    "65",
+    "72",
+    "74",
+    "82",
+    "83",
+    "94",
+    "95"
+  ],
+  "letras": "AEPS",
+  "premios": [
+    {
+      "aciertos": 8,
+      "ganadores": 0,
+      "premio": 962518870
+    },
+    {
+      "aciertos": 7,
+      "ganadores": 1,
+      "premio": 3326373
+    },
+    {
+      "aciertos": 6,
+      "ganadores": 23,
+      "premio": 84365
+    },
+    {
+      "aciertos": 5,
+      "ganadores": 232,
+      "premio": 1700
+    }
+  ],
+  "proximo": {
+    "sorteo": 9784,
+    "fecha": "2026-11-28",
+    "pozo": 984400000
+  },
+  "validado": false,
+  "fuentes": [
+    "A",
+    "ciudad-nocturna"
+  ],
+  "generado": "2026-11-27T21:31:01-03:00"
+}
