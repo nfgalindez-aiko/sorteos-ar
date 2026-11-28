@@ -1,0 +1,45 @@
+{
+  "juego": "quiniela",
+  "provincia": "ciudad",
+  "nombre": "Ciudad de Buenos Aires",
+  "digitos": 4,
+  "fecha": "2026-11-28",
+  "turnos": [
+    {
+      "turno": "previa",
+      "hora": "10:15",
+      "numeros": [
+        "4405",
+        "3262",
+        "6122",
+        "4773",
+        "7925",
+        "3281",
+        "9850",
+        "8734",
+        "8265",
+        "6752",
+        "4557",
+        "4407",
+        "0158",
+        "2227",
+        "0131",
+        "7597",
+        "1721",
+        "0140",
+        "6333",
+        "7975"
+      ],
+      "letras": "AOUX",
+      "validado": false,
+      "fuentes": [
+        "A"
+      ]
+    }
+  ],
+  "validado": false,
+  "fuentes": [
+    "A"
+  ],
+  "generado": "2026-11-28T10:30:57-03:00"
+}
